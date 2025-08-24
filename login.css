@@ -79,6 +79,7 @@ body {
   text-decoration: none;
 }
 
+###<<<<<<< codex/desarrollar-landing-page-para-app-web-nysh0f
 .login-form .back-arrow {
   align-self: flex-start;
   text-decoration: none;
@@ -126,6 +127,8 @@ body {
   font-size: 0.875rem;
 }
 
+=======
+##>>>>>>> main
 .login-hero {
   flex: 1;
   position: relative;
