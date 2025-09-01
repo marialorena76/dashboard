@@ -161,9 +161,9 @@ body {
 }
 
 .login-hero.individual {
-  background: url('images/family.jpg') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/marialorena76/dashboard/main/images/imagen%20blanca.png') center/cover no-repeat;
 }
 
 .login-hero.business {
-  background: url('images/team.jpg') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/marialorena76/dashboard/main/images/Imagen%20rosa.png') center/cover no-repeat;
 }
