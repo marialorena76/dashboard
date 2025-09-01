@@ -103,10 +103,19 @@ body {
   flex-direction: column;
 }
 
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+#family-card {
+  background-image: url('images/family.jpg');
+}
+
+#team-card {
+  background-image: url('images/team.jpg');
+}
+
+#family-card,
+#team-card {
+  min-height: 200px;
+  background-size: cover;
+  background-position: center;
 }
 
 .card-content {
