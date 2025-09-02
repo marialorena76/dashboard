@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updatePaymentBtn.addEventListener('click', () => {
+codex/add-images-and-create-user-dashboard-vak73b
+    window.location.href = 'payments.html';
+
     alert('Payment method update not implemented.');
+ main
   });
 });

@@ -125,11 +125,14 @@ body {
 .promo-text h2 {
   margin: 0 0 0.5rem 0;
 }
+codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
 
 codex/add-images-and-create-user-dashboard-heebri
 codex/add-images-and-create-user-dashboard-ligup1
 codex/add-images-and-create-user-dashboard-31fdkc
+main
 main
 main
 main
@@ -178,11 +181,14 @@ main
   object-fit: cover;
 }
 
+ codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
 
 coex/add-images-and-create-user-dashboard-heebri
 coex/add-images-and-create-user-dashboard-ligup1
 main
+ main
  main
 
 .identification-documents .doc-item {
@@ -202,6 +208,8 @@ main
   color: #2e7d32;
 }
 
+ codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
 
 codex/add-images-and-create-user-dashboard-heebri
@@ -216,6 +224,7 @@ codex/add-images-and-create-user-dashboard-heebri
 main
 main
  main
+ main
 .identification-documents .doc-item:last-child {
   margin-bottom: 0;
 }
@@ -225,12 +234,15 @@ main
   justify-content: space-between;
   align-items: center;
 }
+ codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
 
 codex/add-images-and-create-user-dashboard-heebri
 
 codex/add-images-and-create-user-dashboard-ligup1
 main
+ main
  main
 
 .language-preference .language-row select {
@@ -293,9 +305,12 @@ main
   background: #ccc;
   color: #163c30;
 }
+ codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
 
 codex/add-images-and-create-user-dashboard-heebri
+ main
  main
 
 /* Protected Members styles */
@@ -339,7 +354,10 @@ codex/add-images-and-create-user-dashboard-heebri
   background: #c62828;
 }
 
+ codex/add-images-and-create-user-dashboard-vak73b
+
  codex/add-images-and-create-user-dashboard-iq4qsb
+ main
 /* Manage My Plan styles */
 .plan-overview .plan-row,
 .plan-type .plan-row {
@@ -390,8 +408,55 @@ codex/add-images-and-create-user-dashboard-heebri
   background: #c62828;
 }
 
+ codex/add-images-and-create-user-dashboard-vak73b
+/* Payments styles */
+.payment-history .table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.payment-history input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.payment-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.payment-history th,
+.payment-history td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+.payment-history th {
+  background: #f5f5f5;
+}
+.payment-history .status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.payment-history .status.paid {
+  background: #c8e6c9;
+  color: #2e7d32;
+}
+.payment-history button {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+=======
 
 main
 main
 main
+ main
  main
