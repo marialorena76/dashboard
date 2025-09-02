@@ -125,3 +125,66 @@ body {
 .promo-text h2 {
   margin: 0 0 0.5rem 0;
 }
+##codex/add-images-and-create-user-dashboard-31fdkc
+/* Additional styles for My Profile page */
+.menu a.active {
+  font-weight: 700;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.section-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-card h2 {
+  margin-top: 0;
+}
+
+.section-card button {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.personal-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.personal-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.identification-documents .doc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.identification-documents .doc-item:last-child {
+  margin-bottom: 0;
+}
+
+.language-preference .language-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+##main
