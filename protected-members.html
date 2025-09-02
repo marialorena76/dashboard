@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Protected Members</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <h2>Maria Thompson</h2>
+        <p>Welcome to your Dashboard</p>
+      </div>
+      <nav class="menu">
+        <a href="my-profile.html" class="active">My Account</a>
+        <a href="payments.html">Payments</a>
+        <a href="#">Help</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="logout">Log Out</button>
+        <div class="lang">
+          <button>English</button>
+          <button>Español</button>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="breadcrumb">Dashboard - My Account - Protected Members</div>
+      <h1>Protected Members</h1>
+
+      <section class="section-card members-table">
+        <div class="table-header">
+          <h2>Who's Protected</h2>
+          <button id="toAdd">Add Member</button>
+        </div>
+        <table id="membersTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>DOB</th>
+              <th>Relation</th>
+              <th>ID/Passport Expiration</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="section-card" id="addMemberSection">
+        <h2>Add New Family Member</h2>
+        <form id="addMemberForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="addFirstName">First Name</label>
+              <input type="text" id="addFirstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="addLastName">Last Name</label>
+              <input type="text" id="addLastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+              <label for="addDob">Date of Birth</label>
+              <input type="date" id="addDob" name="dob" required>
+            </div>
+            <div class="form-group">
+              <label for="addRelation">Relation</label>
+              <input type="text" id="addRelation" name="relation" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="addExpiration">ID/Passport Expiration</label>
+              <input type="date" id="addExpiration" name="expiration">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="cancel" id="cancelAdd">Cancel</button>
+            <button type="submit">Add Member</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-card" id="editMemberSection">
+        <h2>Edit Family Member</h2>
+        <form id="editMemberForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editSelect">Select</label>
+              <select id="editSelect"></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editFirstName">First Name</label>
+              <input type="text" id="editFirstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="editLastName">Last Name</label>
+              <input type="text" id="editLastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+              <label for="editDob">Date of Birth</label>
+              <input type="date" id="editDob" name="dob" required>
+            </div>
+            <div class="form-group">
+              <label for="editRelation">Relation</label>
+              <input type="text" id="editRelation" name="relation" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editExpiration">ID/Passport Expiration</label>
+              <input type="date" id="editExpiration" name="expiration">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="cancel" id="cancelEdit">Cancel</button>
+            <button type="submit">Update Member</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-card" id="removeMemberSection">
+        <h2>Remove Family Member</h2>
+        <form id="removeMemberForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="removeSelect">Select</label>
+              <select id="removeSelect"></select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="cancel" id="cancelRemove">Cancel</button>
+            <button type="submit" class="danger">Remove Member</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="members.js"></script>
+</body>
+</html>
