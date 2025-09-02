@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Manage My Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <h2>Maria Thompson</h2>
+        <p>Welcome to your Dashboard</p>
+      </div>
+      <nav class="menu">
+        <a href="#" class="active">My Account</a>
+        <a href="#">Payments</a>
+        <a href="#">Help</a>
+        <a href="#">Settings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="logout">Log Out</button>
+        <div class="lang">
+          <button>English</button>
+          <button>Español</button>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="breadcrumb">Dashboard - My Account - Manage My Plan</div>
+      <h1>Manage My Plan</h1>
+
+      <section class="section-card plan-overview">
+        <h2>Plan Overview</h2>
+        <div class="plan-row">
+          <span>Your Plan Status</span>
+          <span class="status" id="planStatus">ACTIVE</span>
+        </div>
+        <div class="plan-row">
+          <span>Your Coverage</span>
+          <span id="planCoverage">Up to $100,000</span>
+        </div>
+        <div class="plan-row">
+          <span>Next Payment</span>
+          <span id="nextPayment">$490.03 due Jan 17, 2025</span>
+        </div>
+        <button id="updatePayment">Update Payment Method</button>
+      </section>
+
+      <section class="section-card plan-type">
+        <h2>Plan Type</h2>
+        <div class="plan-grid">
+          <div class="current-plan">
+            <h3>Current Plan</h3>
+            <div class="plan-row">
+              <span id="currentPlan">Individual Plan</span>
+              <button id="expirePlan" class="expire-btn">Expire</button>
+            </div>
+          </div>
+          <div class="available-upgrades">
+            <h3>Available Upgrades</h3>
+            <div class="plan-row">
+              <span>Family Plan</span>
+              <button class="upgrade-btn" data-plan="Family Plan">Upgrade</button>
+            </div>
+            <div class="plan-row">
+              <span>Premium Plan</span>
+              <button class="upgrade-btn" data-plan="Premium Plan">Upgrade</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="plan.js"></script>
+</body>
+</html>
