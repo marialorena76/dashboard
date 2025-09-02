@@ -1,0 +1,301 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f5f5f5;
+  color: #163c30;
+}
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 260px;
+  background: #d7b56d url('images/office-meeting.jpg') center/cover no-repeat;
+  color: #163c30;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
+}
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(215, 181, 109, 0.9);
+}
+.sidebar > * {
+  position: relative;
+}
+.profile {
+  text-align: center;
+}
+.profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.menu a {
+  display: block;
+  color: #163c30;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.logout {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.lang button {
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #163c30;
+  background: transparent;
+  cursor: pointer;
+}
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.hero-top {
+  background: url('images/flying-kite.jpg') center/cover no-repeat;
+  border-radius: 8px;
+  min-height: 140px;
+}
+.welcome {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.status-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.status-cards .card {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 150px;
+}
+.status-cards .active {
+  color: #2e7d32;
+  font-weight: 700;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.actions button {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.promo {
+  background: url('images/white-flowers.jpg') center/cover no-repeat;
+  border-radius: 8px;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  min-height: 160px;
+}
+.promo-text h2 {
+  margin: 0 0 0.5rem 0;
+}
+/* Additional styles for My Profile page */
+.menu a.active {
+  font-weight: 700;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.section-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-card h2 {
+  margin-top: 0;
+}
+
+.section-card button {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.personal-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.personal-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.identification-documents .doc-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.identification-documents .doc-item .status {
+  margin-left: auto;
+  font-weight: 600;
+  color: #c62828;
+}
+
+.identification-documents .doc-item .status.uploaded {
+  color: #2e7d32;
+}
+
+.identification-documents .doc-item:last-child {
+  margin-bottom: 0;
+}
+
+.language-preference .language-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language-preference .language-row select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Form styles for My Profile personal details */
+.personal-info-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.personal-info-form img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.personal-info-form form {
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.form-actions .cancel {
+  background: #ccc;
+  color: #163c30;
+}
+
+/* Protected Members styles */
+.members-table .table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.members-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.members-table th,
+.members-table td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+.members-table th {
+  background: #f5f5f5;
+}
+.members-table button {
+  background: #163c30;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.members-table .delete-btn {
+  background: #c62828;
+}
+.form-group select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-actions .danger {
+  background: #c62828;
+}
