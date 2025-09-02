@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Payments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <h2>Maria Thompson</h2>
+        <p>Welcome to your Dashboard</p>
+      </div>
+      <nav class="menu">
+        <a href="my-profile.html">My Account</a>
+        <a href="payments.html" class="active">Payments</a>
+        <a href="#">Help</a>
+        <a href="#">Settings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="logout">Log Out</button>
+        <div class="lang">
+          <button>English</button>
+          <button>Español</button>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="breadcrumb">Dashboard - Payments</div>
+      <h1>Payments</h1>
+
+      <section class="section-card payment-edit" id="editSection">
+        <h2>Edit Current Payment Method</h2>
+        <form id="editPaymentForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="currentMethod">Current Payment Method</label>
+              <input type="text" id="currentMethod" name="currentMethod">
+            </div>
+            <div class="form-group">
+              <label for="currentCard">Card Number</label>
+              <input type="text" id="currentCard" name="currentCard">
+            </div>
+            <div class="form-group">
+              <label for="currentExp">Expiration Date</label>
+              <input type="text" id="currentExp" name="currentExp" placeholder="MM/YY">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="cancelEdit" class="cancel">Cancel</button>
+            <button type="submit">Save Card</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-card payment-add" id="addSection">
+        <h2>Add New Payment Method</h2>
+        <form id="addPaymentForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newMethod">Payment Method Name</label>
+              <input type="text" id="newMethod" name="newMethod" placeholder="Visa, Mastercard...">
+            </div>
+            <div class="form-group">
+              <label for="newCard">Card Number</label>
+              <input type="text" id="newCard" name="newCard">
+            </div>
+            <div class="form-group">
+              <label for="newExp">Expiration Date</label>
+              <input type="text" id="newExp" name="newExp" placeholder="MM/YY">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="cancelAdd" class="cancel">Cancel</button>
+            <button type="submit">Add Card</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-card payment-history">
+        <div class="table-header">
+          <h2>Payment History</h2>
+          <input type="text" id="paymentSearch" placeholder="Search...">
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Receipt</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="payments.js"></script>
+</body>
+</html>
