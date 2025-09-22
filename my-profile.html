@@ -20,7 +20,7 @@
       <nav class="menu">
         <a href="my-profile.html" class="active">My Account</a>
         <a href="payments.html">Payments</a>
-        <a href="manage-my-plan.html">Manage My Plan</a>
+        <a href="#">Help</a>
         <a href="settings.html">Settings</a>
       </nav>
       <div class="sidebar-bottom">
@@ -31,41 +31,108 @@
         </div>
       </div>
     </aside>
-    <main class="main-content profile-main">
-      <div class="profile-wrapper">
-        <section class="profile-summary">
-          <p class="profile-eyebrow">My Account Overview</p>
-          <h1>Welcome back, Maria</h1>
-          <div class="status-grid">
-            <article class="status-card">
-              <span class="label">Your Plan Status</span>
-              <span class="value status-active">ACTIVE</span>
-            </article>
-            <article class="status-card">
-              <span class="label">Your Coverage</span>
-              <span class="value">Up to $100,000</span>
-            </article>
-            <article class="status-card">
-              <span class="label">Next Payment</span>
-              <span class="value">$498.00 due Sep 15, 2025</span>
-            </article>
-          </div>
-          <div class="action-grid">
-            <a class="action-button" href="settings.html">Update My Profile</a>
-            <a class="action-button" href="manage-my-plan.html">Manage My Plan</a>
-            <a class="action-button" href="protected-members.html">Add a Family Member</a>
-            <a class="action-button" href="#">Manage Alerts</a>
-          </div>
-        </section>
 
-        <section class="benefits-banner">
-          <div class="banner-text">
-            <h2>Human-centered benefits for your team.</h2>
-            <p>Offer your employees reliable medical coverage with flexible plan options, curated wellness programs, and dedicated support when they need it most.</p>
-            <p class="banner-meta">&copy;2025 MallowCare | Privacy Policy</p>
+    <main class="main-content profile-details">
+      <header class="content-header">
+        <div>
+          <span class="eyebrow">Account Center</span>
+          <h1>My Profile</h1>
+        </div>
+        <p class="member-since">Member since March 2023</p>
+      </header>
+
+      <section class="info-card personal-card">
+        <div class="card-header">
+          <h2>Personal Details</h2>
+          <a href="settings.html" class="card-link">Edit Profile</a>
+        </div>
+        <div class="personal-body">
+          <div class="profile-glyph" aria-hidden="true">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="presentation">
+              <circle cx="60" cy="60" r="56" fill="#fbf5e7" />
+              <path d="M88 42c-6-8-16-13-27-13-16 0-30 11-33 26-3 17 10 32 30 32 16 0 28-11 28-25 0-11-8-19-19-19-8 0-15 5-16 12-1 6 3 11 9 11 5 0 8-3 9-7" fill="none" stroke="#d8b86a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
-        </section>
-      </div>
+          <div class="personal-fields">
+            <h3>Maria Thompson</h3>
+            <p>maria.thompson@email.com</p>
+            <p>+1 (555) 123-4567</p>
+            <p>123 Main Street, Miami, FL 33130</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-card beneficiary-card">
+        <div class="card-header">
+          <h2>My Beneficiary</h2>
+        </div>
+        <div class="beneficiary-body">
+          <div class="beneficiary-details">
+            <h3>Nicole Thompson</h3>
+            <p>Primary Beneficiary</p>
+            <p>+1 (555) 987-6543</p>
+            <p>123 Biscayne Blvd, Miami, FL 33132</p>
+          </div>
+          <div class="beneficiary-actions">
+            <button class="button outline-button">Add Beneficiary</button>
+            <button class="button solid-button">Edit / Remove Beneficiary</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-card documents-card">
+        <div class="card-header">
+          <div>
+            <h2>Identification Documents</h2>
+            <p>Keep your identification up to date to avoid coverage interruptions.</p>
+          </div>
+        </div>
+        <div class="document-list">
+          <article class="document-item">
+            <div class="document-info">
+              <h3>Passport</h3>
+              <p>Uploaded March 2, 2025</p>
+            </div>
+            <div class="document-actions">
+              <span class="status-pill status-success">Uploaded</span>
+              <button class="button ghost-button">Upload / Replace Document</button>
+            </div>
+          </article>
+          <article class="document-item">
+            <div class="document-info">
+              <h3>Driver's License</h3>
+              <p>Expiring October 18, 2025</p>
+            </div>
+            <div class="document-actions">
+              <span class="status-pill status-warning">Expiring Soon</span>
+              <button class="button ghost-button">Upload / Replace Document</button>
+            </div>
+          </article>
+          <article class="document-item">
+            <div class="document-info">
+              <h3>Social Security</h3>
+              <p>Required for beneficiary payouts</p>
+            </div>
+            <div class="document-actions">
+              <span class="status-pill status-pending">Not Submitted</span>
+              <button class="button ghost-button">Upload Document</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="info-card language-card">
+        <div class="card-header">
+          <h2>Language Preference</h2>
+        </div>
+        <div class="language-body">
+          <div>
+            <p>Current</p>
+            <h3>English</h3>
+          </div>
+          <button class="button outline-button">Update Preference</button>
+        </div>
+      </section>
     </main>
   </div>
   <script src="profile.js"></script>
