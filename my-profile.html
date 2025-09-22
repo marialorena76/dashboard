@@ -6,280 +6,68 @@
   <title>Dashboard - My Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard">
+  <div class="dashboard profile-dashboard">
     <aside class="sidebar">
       <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <img src="images/flying-kite.jpg" alt="Portrait of Maria Thompson">
         <h2>Maria Thompson</h2>
         <p>Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-codex/add-images-and-create-user-dashboard-v85he0
         <a href="my-profile.html" class="active">My Account</a>
         <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
+        <a href="manage-my-plan.html">Manage My Plan</a>
         <a href="settings.html">Settings</a>
-
- codex/add-images-and-create-user-dashboard-vak73b
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-
-        <a href="#" class="active">My Account</a>
-        <a href="#">Payments</a>
- main
-        <a href="#">Help</a>
-        <a href="#">Settings</a>
- main
       </nav>
       <div class="sidebar-bottom">
         <button class="logout">Log Out</button>
         <div class="lang">
-          <button>English</button>
+          <button class="active">English</button>
           <button>Español</button>
         </div>
       </div>
     </aside>
-    <main class="main-content">
-      <div class="breadcrumb">Dashboard - My Account - My Profile</div>
-      <h1>My Profile</h1>
-
-      <section class="section-card personal-details">
- codex/add-images-and-create-user-dashboard-v85he0
-
- codex/add-images-and-create-user-dashboard-vak73b
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-
-codex/add-images-and-create-user-dashboard-heebri
-
-codex/add-images-and-create-user-dashboard-ligup1
- main
-main
- main
- main
-        <h2>Personal Details</h2>
-        <p>View or edit your personal info and account details.</p>
-        <div class="personal-info-form">
-          <img src="images/imagen blanca.png" alt="Profile icon">
-          <form id="personalForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" value="Maria">
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" value="Thompson">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" value="maria@gmail.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" value="123-123-4567">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="address1">Address Line 1</label>
-                <input type="text" id="address1" name="address1" value="123 Main Street">
-              </div>
-              <div class="form-group">
-                <label for="address2">Address Line 2</label>
-                <input type="text" id="address2" name="address2">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" value="Miami">
-              </div>
-              <div class="form-group">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" value="FL">
-              </div>
-              <div class="form-group">
-                <label for="postal">Postal Code</label>
-                <input type="text" id="postal" name="postal" value="33101">
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" id="cancelBtn" class="cancel">Cancel</button>
-              <button type="submit">Save Changes</button>
-            </div>
-          </form>
- codex/add-images-and-create-user-dashboard-v85he0
-
- codex/add-images-and-create-user-dashboard-vak73b
-
-codex/add-images-and-create-user-dashboard-iq4qsb
-
- codex/add-images-and-create-user-dashboard-heebri
-
-
-        <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <h2>Personal Details</h2>
-            <p>View or edit your personal info and account details.</p>
+    <main class="main-content profile-main">
+      <div class="profile-wrapper">
+        <section class="profile-summary">
+          <p class="profile-eyebrow">My Account Overview</p>
+          <h1>Welcome back, Maria</h1>
+          <div class="status-grid">
+            <article class="status-card">
+              <span class="label">Your Plan Status</span>
+              <span class="value status-active">ACTIVE</span>
+            </article>
+            <article class="status-card">
+              <span class="label">Your Coverage</span>
+              <span class="value">Up to $100,000</span>
+            </article>
+            <article class="status-card">
+              <span class="label">Next Payment</span>
+              <span class="value">$498.00 due Sep 15, 2025</span>
+            </article>
           </div>
-          <button>Edit Details</button>
-        </div>
-        <div class="personal-info">
-          <img src="images/imagen blanca.png" alt="Profile icon">
-          <div class="info">
-            <p>Maria Thompson</p>
-            <p>maria@gmail.com</p>
-            <p>123-123-4567</p>
-            <p>123 Main Street, Miami, FL</p>
+          <div class="action-grid">
+            <a class="action-button" href="settings.html">Update My Profile</a>
+            <a class="action-button" href="manage-my-plan.html">Manage My Plan</a>
+            <a class="action-button" href="protected-members.html">Add a Family Member</a>
+            <a class="action-button" href="#">Manage Alerts</a>
           </div>
-main
-main
- main
- main
- main
-        </div>
-      </section>
+        </section>
 
-      <section class="section-card identification-documents">
-        <h2>Identification Documents</h2>
-        <div class="doc-item">
-          <span>Passport</span>
- codex/add-images-and-create-user-dashboard-v85he0
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-vak73b
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-heebri
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-ligup1
-          <span class="status uploaded">UPLOADED</span>
-
- main
- main
- main
- main
- main
-          <button>Upload/Update Document</button>
-        </div>
-        <div class="doc-item">
-          <span>Driver's License</span>
-codex/add-images-and-create-user-dashboard-v85he0
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-vak73b
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-          <span class="status uploaded">UPLOADED</span>
-
- codex/add-images-and-create-user-dashboard-heebri
-          <span class="status uploaded">UPLOADED</span>
- codex/add-images-and-create-user-dashboard-ligup1
-          <span class="status uploaded">UPLOADED</span>
- main
-main
- main
-main
-main
-          <button>Upload/Update Document</button>
-        </div>
-        <div class="doc-item">
-          <span>Social Security</span>
-codex/add-images-and-create-user-dashboard-v85he0
-          <span class="status">PENDING</span>
-
- codex/add-images-and-create-user-dashboard-vak73b
-          <span class="status">PENDING</span>
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-          <span class="status">PENDING</span>
-
- codex/add-images-and-create-user-dashboard-heebri
-          <span class="status">PENDING</span>
-
- codex/add-images-and-create-user-dashboard-ligup1
-          <span class="status">PENDING</span>
-
- main
- main
- main
- main
- main
-          <button>Upload/Update Document</button>
-        </div>
-      </section>
-
-      <section class="section-card language-preference">
-        <h2>Language Preference</h2>
-        <div class="language-row">
-codex/add-images-and-create-user-dashboard-v85he0
-
- codex/add-images-and-create-user-dashboard-vak73b
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-
- codex/add-images-and-create-user-dashboard-heebri
-
- codex/add-images-and-create-user-dashboard-ligup1
- main
- main
-main
- main
-          <select id="languageSelect">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-          </select>
-          <button id="updateLang">Update Language</button>
- codex/add-images-and-create-user-dashboard-v85he0
-
-codex/add-images-and-create-user-dashboard-vak73b
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-
- codex/add-images-and-create-user-dashboard-heebri
-
-
-          <span>Current: English</span>
-          <button>Change Language</button>
- main
- main
-main
- main
- main
-        </div>
-      </section>
+        <section class="benefits-banner">
+          <div class="banner-text">
+            <h2>Human-centered benefits for your team.</h2>
+            <p>Offer your employees reliable medical coverage with flexible plan options, curated wellness programs, and dedicated support when they need it most.</p>
+            <p class="banner-meta">&copy;2025 MallowCare | Privacy Policy</p>
+          </div>
+        </section>
+      </div>
     </main>
   </div>
- codex/add-images-and-create-user-dashboard-v85he0
   <script src="profile.js"></script>
-
-codex/add-images-and-create-user-dashboard-vak73b
-  <script src="profile.js"></script>
-
- codex/add-images-and-create-user-dashboard-iq4qsb
-  <script src="profile.js"></script>
-
- codex/add-images-and-create-user-dashboard-heebri
-  <script src="profile.js"></script>
-
- codex/add-images-and-create-user-dashboard-ligup1
-  <script src="profile.js"></script>
- main
- main
- main
- main
- main
 </body>
 </html>
