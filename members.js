@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateSelects() {
     const members = loadMembers();
     [editSelect, removeSelect].forEach(sel => {
-      sel.innerHTML = '<option value="">Select</option>';
+      sel.innerHTML = '<option value="">Select Member</option>';
       members.forEach((m, idx) => {
         const opt = document.createElement('option');
         opt.value = idx;
@@ -67,7 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
       lastName: addForm.lastName.value,
       dob: addForm.dob.value,
       relation: addForm.relation.value,
-      idExpiration: addForm.expiration.value
+      idExpiration: addForm.expiration.value,
+      address: '',
+      city: '',
+      state: '',
+      zip: ''
     };
     const members = loadMembers();
     members.push(member);
@@ -87,12 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
       editForm.reset();
       return;
     }
-    const member = loadMembers()[idx];
+    const members = loadMembers();
+    const member = members[idx];
+    if (!member) {
+      editForm.reset();
+      return;
+    }
     editForm.firstName.value = member.firstName;
     editForm.lastName.value = member.lastName;
     editForm.dob.value = member.dob;
     editForm.relation.value = member.relation;
-    editForm.expiration.value = member.idExpiration;
+    editForm.address.value = member.address || '';
+    editForm.city.value = member.city || '';
+    editForm.state.value = member.state || '';
+    editForm.zip.value = member.zip || '';
   });
 
   editForm.addEventListener('submit', e => {
@@ -101,11 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idx === '') return;
     const members = loadMembers();
     members[idx] = {
-      firstName: editForm.firstName.value,
-      lastName: editForm.lastName.value,
-      dob: editForm.dob.value,
-      relation: editForm.relation.value,
-      idExpiration: editForm.expiration.value
+      ...members[idx],
+      address: editForm.address.value,
+      city: editForm.city.value,
+      state: editForm.state.value,
+      zip: editForm.zip.value
     };
     saveMembers(members);
     renderTable();
