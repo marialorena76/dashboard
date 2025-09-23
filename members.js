@@ -289,11 +289,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!editSelect || !removeSelect) return;
     [editSelect, removeSelect].forEach(sel => {
       sel.innerHTML = '<option value="">Select Member</option>';
+codex/editar-solo-datos-columna-derecha-x49oz3
       members.forEach((member, index) => {
         const option = document.createElement('option');
         option.value = index;
         option.textContent = `${member.firstName} ${member.lastName}`.trim() || `Member ${index + 1}`;
         sel.appendChild(option);
+
+      members.forEach((m, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = `${m.firstName} ${m.lastName}`;
+        sel.appendChild(opt);
+ main
       });
     });
   }
@@ -323,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Add Member
+ codex/editar-solo-datos-columna-derecha-x49oz3
   if (addForm) {
     addForm.addEventListener('submit', event => {
       event.preventDefault();
@@ -344,6 +353,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  addForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const member = {
+      firstName: addForm.firstName.value,
+      lastName: addForm.lastName.value,
+      dob: addForm.dob.value,
+      relation: addForm.relation.value,
+      idExpiration: addForm.expiration.value,
+      address: '',
+      city: '',
+      state: '',
+      zip: ''
+    };
+    const members = loadMembers();
+    members.push(member);
+    saveMembers(members);
+    addForm.reset();
+    renderTable();
+  });
+    main
+
   if (cancelAdd && addForm) {
     cancelAdd.addEventListener('click', () => {
       addForm.reset();
@@ -351,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Edit Member
+ codex/editar-solo-datos-columna-derecha-x49oz3
   if (editSelect && editForm) {
     editSelect.addEventListener('change', () => {
       const idx = editSelect.value;
@@ -395,6 +426,47 @@ document.addEventListener('DOMContentLoaded', () => {
       editSelect.value = '';
     });
   }
+
+  editSelect.addEventListener('change', () => {
+    const idx = editSelect.value;
+    if (idx === '') {
+      editForm.reset();
+      return;
+    }
+    const members = loadMembers();
+    const member = members[idx];
+    if (!member) {
+      editForm.reset();
+      return;
+    }
+    editForm.firstName.value = member.firstName;
+    editForm.lastName.value = member.lastName;
+    editForm.dob.value = member.dob;
+    editForm.relation.value = member.relation;
+    editForm.address.value = member.address || '';
+    editForm.city.value = member.city || '';
+    editForm.state.value = member.state || '';
+    editForm.zip.value = member.zip || '';
+  });
+
+  editForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const idx = editSelect.value;
+    if (idx === '') return;
+    const members = loadMembers();
+    members[idx] = {
+      ...members[idx],
+      address: editForm.address.value,
+      city: editForm.city.value,
+      state: editForm.state.value,
+      zip: editForm.zip.value
+    };
+    saveMembers(members);
+    renderTable();
+    editForm.reset();
+    editSelect.value = '';
+  });
+    main
 
   if (cancelEdit && editForm) {
     cancelEdit.addEventListener('click', () => {
