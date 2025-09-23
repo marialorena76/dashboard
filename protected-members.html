@@ -36,22 +36,51 @@
       <h1>Protected Members</h1>
 
       <section class="section-card members-table">
+codex/editar-solo-datos-columna-derecha-x49oz3
+        <div class="members-table__header">
+          <div>
+            <h2>Who's Protected</h2>
+            <p class="members-table__subtitle">Add the loved ones you wish to include in your coverage and update them anytime.</p>
+          </div>
+          <button type="button" id="toAdd" class="primary">+ Add Member</button>
+        </div>
+        <div class="members-table__controls">
+          <label class="members-table__entries" for="entriesSelect">
+            Show
+            <select id="entriesSelect">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+            entries
+          </label>
+          <label class="members-table__search" for="memberSearch">
+            Search
+            <input type="search" id="memberSearch" placeholder="Search members">
+          </label>
+        </div>
+        <div class="table-wrapper">
+          <table id="membersTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Relationship</th>
+                <th>Status</th>
+                <th class="actions-column">Edit / Remove</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="members-table__footer">
+          <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+          <nav class="members-table__pagination" id="membersPagination" aria-label="Protected members pagination"></nav>
+
         <div class="table-header">
           <h2>Who's Protected</h2>
           <button id="toAdd">+ Add Member</button>
+ main
         </div>
-        <table id="membersTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>DOB</th>
-              <th>Relation</th>
-              <th>ID/Passport Expiration</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
       </section>
 
       <section class="section-card" id="addMemberSection">
