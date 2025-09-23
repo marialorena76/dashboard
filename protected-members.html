@@ -18,22 +18,10 @@
         <p>Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-codex/add-images-and-create-user-dashboard-v85he0
         <a href="my-profile.html" class="active">My Account</a>
         <a href="payments.html">Payments</a>
         <a href="#">Help</a>
         <a href="settings.html">Settings</a>
-
- codex/add-images-and-create-user-dashboard-vak73b
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-
-        <a href="#" class="active">My Account</a>
-        <a href="#">Payments</a>
-main
-        <a href="#">Help</a>
-        <a href="#">Settings</a>
- main
       </nav>
       <div class="sidebar-bottom">
         <button class="logout">Log Out</button>
@@ -48,22 +36,45 @@ main
       <h1>Protected Members</h1>
 
       <section class="section-card members-table">
-        <div class="table-header">
-          <h2>Who's Protected</h2>
-          <button id="toAdd">Add Member</button>
+        <div class="members-table__header">
+          <div>
+            <h2>Who's Protected</h2>
+            <p class="members-table__subtitle">Add the loved ones you wish to include in your coverage and update them anytime.</p>
+          </div>
+          <button type="button" id="toAdd" class="primary">+ Add Member</button>
         </div>
-        <table id="membersTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>DOB</th>
-              <th>Relation</th>
-              <th>ID/Passport Expiration</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="members-table__controls">
+          <label class="members-table__entries" for="entriesSelect">
+            Show
+            <select id="entriesSelect">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+            entries
+          </label>
+          <label class="members-table__search" for="memberSearch">
+            Search
+            <input type="search" id="memberSearch" placeholder="Search members">
+          </label>
+        </div>
+        <div class="table-wrapper">
+          <table id="membersTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Relationship</th>
+                <th>Status</th>
+                <th class="actions-column">Edit / Remove</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="members-table__footer">
+          <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+          <nav class="members-table__pagination" id="membersPagination" aria-label="Protected members pagination"></nav>
+        </div>
       </section>
 
       <section class="section-card" id="addMemberSection">
@@ -105,37 +116,51 @@ main
         <form id="editMemberForm">
           <div class="form-row">
             <div class="form-group">
-              <label for="editSelect">Select</label>
+              <label for="editSelect">Select Member</label>
               <select id="editSelect"></select>
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="editFirstName">First Name</label>
-              <input type="text" id="editFirstName" name="firstName" required>
+          <div class="form-columns">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="editFirstName">First Name</label>
+                <input type="text" id="editFirstName" name="firstName" readonly>
+              </div>
+              <div class="form-group">
+                <label for="editLastName">Last Name</label>
+                <input type="text" id="editLastName" name="lastName" readonly>
+              </div>
+              <div class="form-group">
+                <label for="editRelation">Relationship</label>
+                <input type="text" id="editRelation" name="relation" readonly>
+              </div>
+              <div class="form-group">
+                <label for="editDob">Date of Birth</label>
+                <input type="date" id="editDob" name="dob" readonly>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="editLastName">Last Name</label>
-              <input type="text" id="editLastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-              <label for="editDob">Date of Birth</label>
-              <input type="date" id="editDob" name="dob" required>
-            </div>
-            <div class="form-group">
-              <label for="editRelation">Relation</label>
-              <input type="text" id="editRelation" name="relation" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="editExpiration">ID/Passport Expiration</label>
-              <input type="date" id="editExpiration" name="expiration">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="editAddress">Address</label>
+                <input type="text" id="editAddress" name="address" placeholder="Enter address">
+              </div>
+              <div class="form-group">
+                <label for="editCity">City</label>
+                <input type="text" id="editCity" name="city" placeholder="Enter city">
+              </div>
+              <div class="form-group">
+                <label for="editState">State</label>
+                <input type="text" id="editState" name="state" placeholder="Enter state">
+              </div>
+              <div class="form-group">
+                <label for="editZip">Zip Code</label>
+                <input type="text" id="editZip" name="zip" placeholder="Enter zip code">
+              </div>
             </div>
           </div>
           <div class="form-actions">
             <button type="button" class="cancel" id="cancelEdit">Cancel</button>
-            <button type="submit">Update Member</button>
+            <button type="submit">Save Changes</button>
           </div>
         </form>
       </section>
@@ -145,7 +170,7 @@ main
         <form id="removeMemberForm">
           <div class="form-row">
             <div class="form-group">
-              <label for="removeSelect">Select</label>
+              <label for="removeSelect">Select Member</label>
               <select id="removeSelect"></select>
             </div>
           </div>
