@@ -1,10 +1,9 @@
-const STORAGE_PREFIX = 'ivy-settings-';
-
-function buildStorageKey(input) {
-  return `${STORAGE_PREFIX}${input.dataset.storage}`;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+  const settingsRoot = document.querySelector('[data-settings-prefix]');
+  const storagePrefix = settingsRoot?.dataset.settingsPrefix ?? 'ivy-settings-';
+
+  const buildStorageKey = input => `${storagePrefix}${input.dataset.storage}`;
+
   const panels = document.querySelectorAll('.settings-panel');
   const navButtons = document.querySelectorAll('.settings-nav .nav-link');
   const toggleInputs = document.querySelectorAll('input[data-storage]');
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const twoFAButton = document.querySelector('[data-action="toggleTwoFA"]');
   const twoFAStatus = document.querySelector('[data-twofa-status]');
-  const twoFAKey = `${STORAGE_PREFIX}twoFA`;
+  const twoFAKey = `${storagePrefix}twoFA`;
 
   function updateTwoFAControls() {
     const enabled = localStorage.getItem(twoFAKey) === 'true';
