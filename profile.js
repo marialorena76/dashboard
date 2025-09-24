@@ -4,6 +4,8 @@ const STATUS_MAP = {
   pending: { label: 'Not Submitted', className: 'status-pending' }
 };
 
+const USER_TYPE_PREFIX = 'mallow-individual-';
+
 document.addEventListener('DOMContentLoaded', () => {
   const formConfigs = [
     { id: 'personalForm', storageKey: 'personalDetails', successMessage: 'Personal details updated' },
@@ -20,8 +22,9 @@ function setupForm({ id, storageKey, successMessage }) {
   const form = document.getElementById(id);
   if (!form) return;
 
+  const fullStorageKey = `${USER_TYPE_PREFIX}${storageKey}`;
   const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
-  let savedData = readStoredData(storageKey);
+  let savedData = readStoredData(fullStorageKey);
 
   inputs.forEach(input => {
     if (input.type === 'file') {
@@ -110,7 +113,7 @@ function setupForm({ id, storageKey, successMessage }) {
 
     savedData = updated;
     try {
-      localStorage.setItem(storageKey, JSON.stringify(updated));
+      localStorage.setItem(fullStorageKey, JSON.stringify(updated));
     } catch (error) {
       console.error('Unable to persist form data', error);
     }
@@ -144,13 +147,13 @@ function setupLanguagePreference() {
     return;
   }
 
-  const savedLang = localStorage.getItem('language');
+  const savedLang = localStorage.getItem(`${USER_TYPE_PREFIX}language`);
   if (savedLang) {
     languageSelect.value = savedLang;
   }
 
   updateLangBtn.addEventListener('click', () => {
-    localStorage.setItem('language', languageSelect.value);
+    localStorage.setItem(`${USER_TYPE_PREFIX}language`, languageSelect.value);
     alert('Language preference updated');
   });
 }
