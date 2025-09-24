@@ -1,193 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Protected Members</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
-        <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
-      </div>
-      <nav class="menu">
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
-      </nav>
-      <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
-        <div class="lang">
-          <button>English</button>
-          <button>Español</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Protected Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard dashboard--enterprise">
+      <aside class="sidebar sidebar--enterprise" aria-label="Employer navigation">
+        <div class="enterprise-brand">
+          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+          <div class="enterprise-brand__text">
+            <span class="enterprise-brand__label">LegacyBridge</span>
+            <span class="enterprise-brand__sub">Employer Portal</span>
+          </div>
         </div>
-      </div>
-    </aside>
-    <main class="main-content">
-      <div class="breadcrumb">Dashboard - My Account - Protected Members</div>
-      <h1>Protected Members</h1>
+        <nav class="menu enterprise-menu" aria-label="Primary">
+          <a href="business-dashboard.html">Overview</a>
+          <a href="protected-members.html" class="active">Protected Team</a>
+          <a href="#">Plans &amp; Billing</a>
+          <a href="#">Support</a>
+          <a href="#">Settings</a>
+        </nav>
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout" type="button">Log Out</button>
+          <div class="lang" role="group" aria-label="Language selection">
+            <button type="button" class="active">English</button>
+            <button type="button">Español</button>
+          </div>
+        </div>
+      </aside>
 
-      <section class="section-card members-table">
-codex/editar-solo-datos-columna-derecha-gmsuwo
-        <div class="members-table__header">
-          <div>
-            <h2>Who's Protected</h2>
-            <p class="members-table__subtitle">Add the loved ones you wish to include in your coverage and update them anytime.</p>
-          </div>
-          <button type="button" id="toAdd" class="primary">+ Add Member</button>
-        </div>
-        <div class="members-table__controls">
-          <label class="members-table__entries" for="entriesSelect">
-            Show
-            <select id="entriesSelect">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="25">25</option>
-            </select>
-            entries
-          </label>
-          <label class="members-table__search" for="memberSearch">
-            Search
-            <input type="search" id="memberSearch" placeholder="Search members">
-          </label>
-        </div>
-        <div class="table-wrapper">
-          <table id="membersTable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Relationship</th>
-                <th>Status</th>
-                <th class="actions-column">Edit / Remove</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <div class="members-table__footer">
-          <p class="members-table__count" id="membersCount">Showing 0 entries</p>
-          <nav class="members-table__pagination" id="membersPagination" aria-label="Protected members pagination"></nav>
+      <main class="main-content main-content--enterprise">
+        <header class="page-heading page-heading--enterprise">
+          <p class="breadcrumb">Dashboard • Protected Team</p>
+          <h1>Protected Team</h1>
+          <p class="page-heading__subtitle">
+            Keep your employee roster current and confirm coverage details before each payroll run.
+          </p>
+        </header>
 
-        <div class="table-header">
-          <h2>Who's Protected</h2>
-          <button id="toAdd">+ Add Member</button>
- main
-        </div>
-      </section>
+        <section class="section-card members-table" aria-labelledby="protectedTeamHeading">
+          <div class="members-table__header">
+            <div>
+              <h2 id="protectedTeamHeading">Who's Protected</h2>
+              <p class="members-table__subtitle">
+                Add employees to extend coverage, adjust plan access as roles change, and keep invitations up to date.
+              </p>
+            </div>
+            <div class="members-table__actions">
+              <button type="button" class="ghost" id="exportRoster">Export roster</button>
+              <button type="button" class="primary" id="toAdd">+ Add Employee</button>
+            </div>
+          </div>
+          <div class="members-table__controls">
+            <label class="members-table__entries" for="entriesSelect">
+              Show
+              <select id="entriesSelect">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+              </select>
+              entries
+            </label>
+            <label class="members-table__search" for="memberSearch">
+              Search
+              <input type="search" id="memberSearch" placeholder="Search team" />
+            </label>
+          </div>
+          <div class="table-wrapper">
+            <table id="membersTable">
+              <thead>
+                <tr>
+                  <th scope="col">Employee</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Coverage</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" class="actions-column">Manage</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="members-table__footer">
+            <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+            <nav class="members-table__pagination" id="membersPagination" aria-label="Protected team pagination"></nav>
+          </div>
+        </section>
 
-      <section class="section-card" id="addMemberSection">
-        <h2>Add New Family Member</h2>
-        <form id="addMemberForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="addFirstName">First Name</label>
-              <input type="text" id="addFirstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-              <label for="addLastName">Last Name</label>
-              <input type="text" id="addLastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-              <label for="addDob">Date of Birth</label>
-              <input type="date" id="addDob" name="dob" required>
-            </div>
-            <div class="form-group">
-              <label for="addRelation">Relation</label>
-              <input type="text" id="addRelation" name="relation" required>
-            </div>
+        <section class="section-card" id="addMemberSection" aria-labelledby="addMemberHeading">
+          <div class="section-card__header">
+            <h2 id="addMemberHeading">Add New Employee</h2>
+            <p>Invite your team to the plan and confirm when their coverage should begin.</p>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="addExpiration">ID/Passport Expiration</label>
-              <input type="date" id="addExpiration" name="expiration">
+          <form id="addMemberForm" autocomplete="off">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addFirstName">First Name</label>
+                <input type="text" id="addFirstName" name="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="addLastName">Last Name</label>
+                <input type="text" id="addLastName" name="lastName" required />
+              </div>
+              <div class="form-group">
+                <label for="addEmail">Work Email</label>
+                <input type="email" id="addEmail" name="email" required />
+              </div>
             </div>
-          </div>
-          <div class="form-actions">
-            <button type="button" class="cancel" id="cancelAdd">Cancel</button>
-            <button type="submit">Add Member</button>
-          </div>
-        </form>
-      </section>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addRole">Role</label>
+                <input type="text" id="addRole" name="role" placeholder="e.g., Product Manager" required />
+              </div>
+              <div class="form-group">
+                <label for="addDepartment">Department</label>
+                <input type="text" id="addDepartment" name="department" placeholder="e.g., Product" />
+              </div>
+              <div class="form-group">
+                <label for="addCoverageStart">Coverage Start</label>
+                <input type="date" id="addCoverageStart" name="coverageStart" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="addPlanAccess">Plan Access</label>
+                <select id="addPlanAccess" name="planAccess">
+                  <option value="Full Coverage">Full Coverage</option>
+                  <option value="Health + Vision">Health + Vision</option>
+                  <option value="Health + Dental">Health + Dental</option>
+                  <option value="Dental Only">Dental Only</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="addStatus">Status</label>
+                <select id="addStatus" name="status">
+                  <option value="Protected">Protected</option>
+                  <option value="Invited">Invited</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Suspended">Suspended</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="cancel" id="cancelAdd">Cancel</button>
+              <button type="submit">Add Employee</button>
+            </div>
+          </form>
+        </section>
 
-      <section class="section-card" id="editMemberSection">
-        <h2>Edit Family Member</h2>
-        <form id="editMemberForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="editSelect">Select Member</label>
-              <select id="editSelect"></select>
-            </div>
+        <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
+          <div class="section-card__header">
+            <h2 id="editMemberHeading">Edit Employee</h2>
+            <p>Adjust coverage access or update employee details as roles evolve.</p>
           </div>
-          <div class="form-columns">
-            <div class="form-column">
+          <form id="editMemberForm" autocomplete="off">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editSelect">Select Employee</label>
+                <select id="editSelect" name="selectedMember">
+                  <option value="">Select employee</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
                 <label for="editFirstName">First Name</label>
-                <input type="text" id="editFirstName" name="firstName" readonly>
+                <input type="text" id="editFirstName" name="firstName" required />
               </div>
               <div class="form-group">
                 <label for="editLastName">Last Name</label>
-                <input type="text" id="editLastName" name="lastName" readonly>
+                <input type="text" id="editLastName" name="lastName" required />
               </div>
               <div class="form-group">
-                <label for="editRelation">Relationship</label>
-                <input type="text" id="editRelation" name="relation" readonly>
-              </div>
-              <div class="form-group">
-                <label for="editDob">Date of Birth</label>
-                <input type="date" id="editDob" name="dob" readonly>
+                <label for="editEmail">Work Email</label>
+                <input type="email" id="editEmail" name="email" required />
               </div>
             </div>
-            <div class="form-column">
+            <div class="form-row">
               <div class="form-group">
-                <label for="editAddress">Address</label>
-                <input type="text" id="editAddress" name="address" placeholder="Enter address">
+                <label for="editRole">Role</label>
+                <input type="text" id="editRole" name="role" required />
               </div>
               <div class="form-group">
-                <label for="editCity">City</label>
-                <input type="text" id="editCity" name="city" placeholder="Enter city">
+                <label for="editDepartment">Department</label>
+                <input type="text" id="editDepartment" name="department" />
               </div>
               <div class="form-group">
-                <label for="editState">State</label>
-                <input type="text" id="editState" name="state" placeholder="Enter state">
-              </div>
-              <div class="form-group">
-                <label for="editZip">Zip Code</label>
-                <input type="text" id="editZip" name="zip" placeholder="Enter zip code">
+                <label for="editCoverageStart">Coverage Start</label>
+                <input type="date" id="editCoverageStart" name="coverageStart" />
               </div>
             </div>
-          </div>
-          <div class="form-actions">
-            <button type="button" class="cancel" id="cancelEdit">Cancel</button>
-            <button type="submit">Save Changes</button>
-          </div>
-        </form>
-      </section>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="editPlanAccess">Plan Access</label>
+                <select id="editPlanAccess" name="planAccess">
+                  <option value="Full Coverage">Full Coverage</option>
+                  <option value="Health + Vision">Health + Vision</option>
+                  <option value="Health + Dental">Health + Dental</option>
+                  <option value="Dental Only">Dental Only</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="editStatus">Status</label>
+                <select id="editStatus" name="status">
+                  <option value="Protected">Protected</option>
+                  <option value="Invited">Invited</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Suspended">Suspended</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="cancel" id="cancelEdit">Cancel</button>
+              <button type="submit">Save Changes</button>
+            </div>
+          </form>
+        </section>
 
-      <section class="section-card" id="removeMemberSection">
-        <h2>Remove Family Member</h2>
-        <form id="removeMemberForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="removeSelect">Select Member</label>
-              <select id="removeSelect"></select>
+        <section class="section-card" id="removeMemberSection" aria-labelledby="removeMemberHeading">
+          <div class="section-card__header">
+            <h2 id="removeMemberHeading">Remove Employee</h2>
+            <p>Deactivate coverage for someone who has left the company.</p>
+          </div>
+          <form id="removeMemberForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="removeSelect">Select Employee</label>
+                <select id="removeSelect" name="selectedRemove">
+                  <option value="">Select employee</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="form-actions">
-            <button type="button" class="cancel" id="cancelRemove">Cancel</button>
-            <button type="submit" class="danger">Remove Member</button>
-          </div>
-        </form>
-      </section>
-    </main>
-  </div>
-  <script src="members.js"></script>
-</body>
+            <div class="form-actions">
+              <button type="button" class="cancel" id="cancelRemove">Cancel</button>
+              <button type="submit" class="danger">Remove Employee</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="members.js"></script>
+  </body>
 </html>
