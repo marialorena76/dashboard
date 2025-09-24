@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard">
+  <div class="dashboard settings-dashboard">
     <aside class="sidebar">
       <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <img src="images/flying-kite.jpg" alt="Portrait of Maria Thompson">
         <h2>Maria Thompson</h2>
         <p>Welcome to your Dashboard</p>
       </div>
@@ -26,67 +26,218 @@
       <div class="sidebar-bottom">
         <button class="logout">Log Out</button>
         <div class="lang">
-          <button>English</button>
+          <button class="active">English</button>
           <button>Español</button>
         </div>
       </div>
     </aside>
-    <main class="main-content">
-      <div class="breadcrumb">Dashboard - Settings</div>
-      <h1>Settings</h1>
 
-      <section class="section-card settings-section" id="notificationsSection">
-        <h2>Notifications</h2>
-        <div class="option-row">
-          <span>Email Notifications</span>
-          <label class="switch">
-            <input type="checkbox" id="emailNotif">
-            <span class="slider"></span>
-          </label>
+    <main class="main-content settings-main">
+      <header class="content-header settings-header">
+        <div>
+          <span class="eyebrow">Account Center</span>
+          <h1>Settings</h1>
         </div>
-        <div class="option-row">
-          <span>Push Notifications</span>
-          <label class="switch">
-            <input type="checkbox" id="pushNotif">
-            <span class="slider"></span>
-          </label>
+        <p class="member-since">Last reviewed April 4, 2024</p>
+      </header>
+
+      <section class="settings-hero" aria-label="Account overview">
+        <div class="hero-copy">
+          <h2>Keep your preferences in sync</h2>
+          <p>Control how Ivy keeps you informed, protect your account security, and manage the information we store for you.</p>
         </div>
-        <div class="option-row">
-          <span>SMS Notifications</span>
-          <label class="switch">
-            <input type="checkbox" id="smsNotif">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div class="form-actions">
-          <button id="saveNotifs">Save Changes</button>
-        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt>Plan</dt>
+            <dd>Ivy Family Plus</dd>
+          </div>
+          <div>
+            <dt>Member ID</dt>
+            <dd>MT-482195</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd class="status-pill success">Active</dd>
+          </div>
+        </dl>
       </section>
 
-      <section class="section-card settings-section" id="privacySection">
-        <h2>Privacy &amp; Security</h2>
-        <div class="option-row">
-          <span>Password</span>
-          <button id="changePassword">Change</button>
-        </div>
-        <div class="option-row">
-          <span>Two-Factor Authentication</span>
-          <button id="toggle2FA">Enable</button>
-        </div>
-      </section>
+      <div class="settings-layout">
+        <aside class="settings-nav" aria-label="Settings sections">
+          <div class="nav-heading">
+            <span class="eyebrow">Ivy Settings</span>
+            <h2>Manage your experience</h2>
+            <p>Select a category to update how we stay connected and protect your membership.</p>
+          </div>
+          <nav class="nav-links" role="tablist">
+            <button class="nav-link active" id="tabNotifications" type="button" role="tab" aria-selected="true" aria-controls="notificationsPanel" data-target="notificationsPanel">Notifications</button>
+            <button class="nav-link" id="tabPrivacy" type="button" role="tab" aria-selected="false" aria-controls="privacyPanel" data-target="privacyPanel">Privacy &amp; Security</button>
+            <button class="nav-link" id="tabData" type="button" role="tab" aria-selected="false" aria-controls="dataPanel" data-target="dataPanel">Data &amp; Privacy</button>
+          </nav>
+          <div class="nav-support">
+            <h3>Need assistance?</h3>
+            <p>Visit the help center to chat with a care specialist or explore common questions.</p>
+            <a href="#" class="support-link">Go to Help Center</a>
+          </div>
+        </aside>
 
-      <section class="section-card settings-section" id="dataSection">
-        <h2>Data &amp; Privacy</h2>
-        <div class="option-row">
-          <span>Download My Data</span>
-          <button id="downloadData">Download</button>
+        <div class="settings-content" role="presentation">
+          <section id="notificationsPanel" class="settings-panel active" role="tabpanel" aria-labelledby="tabNotifications" tabindex="0">
+            <header class="panel-header">
+              <h2 id="notificationsTitle">Notifications</h2>
+              <p>Choose the ways Ivy keeps you posted about policy updates, important reminders, and special programs.</p>
+            </header>
+            <div class="preference-list">
+              <article class="preference-item">
+                <div class="preference-copy">
+                  <h3>Email notifications</h3>
+                  <p>Receive coverage updates, monthly summaries, and digital statements.</p>
+                </div>
+                <label class="toggle" for="notifyEmail">
+                  <input type="checkbox" id="notifyEmail" data-storage="notifyEmail" checked>
+                  <span class="toggle-control" aria-hidden="true"></span>
+                </label>
+              </article>
+              <article class="preference-item">
+                <div class="preference-copy">
+                  <h3>Mobile push</h3>
+                  <p>Be alerted instantly when there is new activity or a claim status change.</p>
+                </div>
+                <label class="toggle" for="notifyPush">
+                  <input type="checkbox" id="notifyPush" data-storage="notifyPush" checked>
+                  <span class="toggle-control" aria-hidden="true"></span>
+                </label>
+              </article>
+              <article class="preference-item">
+                <div class="preference-copy">
+                  <h3>Text messages</h3>
+                  <p>Get short reminders about payments and time-sensitive appointments.</p>
+                </div>
+                <label class="toggle" for="notifySMS">
+                  <input type="checkbox" id="notifySMS" data-storage="notifySMS" checked>
+                  <span class="toggle-control" aria-hidden="true"></span>
+                </label>
+              </article>
+              <article class="preference-item">
+                <div class="preference-copy">
+                  <h3>Monthly recap</h3>
+                  <p>Receive a once-a-month digest covering benefits usage and healthy living tips.</p>
+                </div>
+                <label class="toggle" for="notifySummary">
+                  <input type="checkbox" id="notifySummary" data-storage="notifySummary">
+                  <span class="toggle-control" aria-hidden="true"></span>
+                </label>
+              </article>
+            </div>
+            <div class="panel-actions">
+              <button class="button outline-button" type="button" data-action="resetNotifications">Reset</button>
+              <button class="button solid-button" type="button" id="saveNotifications">Save changes</button>
+            </div>
+          </section>
+
+          <section id="privacyPanel" class="settings-panel" role="tabpanel" aria-labelledby="tabPrivacy" tabindex="0">
+            <header class="panel-header">
+              <h2 id="privacyTitle">Privacy &amp; Security</h2>
+              <p>Set up secure sign-in options and decide how Ivy protects your account.</p>
+            </header>
+            <div class="security-grid">
+              <article class="security-item">
+                <div>
+                  <h3>Password</h3>
+                  <p>Update your password at least every 90 days to keep your details safe.</p>
+                </div>
+                <div class="item-actions">
+                  <span class="status-pill neutral">Last changed 54 days ago</span>
+                  <button class="button ghost-button" type="button" data-action="openPasswordModal">Change</button>
+                </div>
+              </article>
+              <article class="security-item">
+                <div>
+                  <h3>Two-factor authentication</h3>
+                  <p>Use a one-time code whenever you sign in on a new device.</p>
+                </div>
+                <div class="item-actions">
+                  <span class="status-pill" data-twofa-status>Disabled</span>
+                  <button class="button solid-button" type="button" data-action="toggleTwoFA">Enable</button>
+                </div>
+              </article>
+              <article class="security-item">
+                <div>
+                  <h3>Login alerts</h3>
+                  <p>Get alerted if someone signs in from an unrecognized browser.</p>
+                </div>
+                <label class="toggle" for="loginAlerts">
+                  <input type="checkbox" id="loginAlerts" data-storage="loginAlerts" data-auto-save="true" checked>
+                  <span class="toggle-control" aria-hidden="true"></span>
+                </label>
+              </article>
+            </div>
+          </section>
+
+          <section id="dataPanel" class="settings-panel" role="tabpanel" aria-labelledby="tabData" tabindex="0">
+            <header class="panel-header">
+              <h2 id="dataTitle">Data &amp; Privacy</h2>
+              <p>Download the information we store for you or manage requests to remove data.</p>
+            </header>
+            <div class="data-grid">
+              <article class="data-item">
+                <div>
+                  <h3>Download my data</h3>
+                  <p>Receive a secure link with your claims, documents, and communications history.</p>
+                </div>
+                <button class="button solid-button" type="button" data-action="downloadData">Send download</button>
+              </article>
+              <article class="data-item">
+                <div>
+                  <h3>Export statements</h3>
+                  <p>Request PDF statements for your records and yearly tax filings.</p>
+                </div>
+                <button class="button ghost-button" type="button" data-action="exportStatements">Export</button>
+              </article>
+              <article class="data-item danger">
+                <div>
+                  <h3>Delete my account</h3>
+                  <p>This permanently removes your information after a 30-day review period.</p>
+                </div>
+                <button class="button danger-button" type="button" data-action="deleteAccount">Request removal</button>
+              </article>
+            </div>
+          </section>
         </div>
-        <div class="option-row">
-          <span>Remove My Account</span>
-          <button id="deleteAccount" class="danger">Delete</button>
-        </div>
-      </section>
+      </div>
     </main>
+  </div>
+
+  <div class="modal" id="passwordModal" role="dialog" aria-modal="true" aria-labelledby="passwordModalTitle" hidden>
+    <div class="modal-card">
+      <header class="modal-header">
+        <div>
+          <span class="eyebrow">Security</span>
+          <h2 id="passwordModalTitle">Change password</h2>
+          <p>Choose a unique password that you have not used elsewhere.</p>
+        </div>
+        <button class="modal-close" type="button" data-action="closePasswordModal" aria-label="Close dialog">&times;</button>
+      </header>
+      <form id="passwordForm" class="modal-form">
+        <label class="modal-field" for="currentPassword">
+          <span>Current password</span>
+          <input type="password" id="currentPassword" name="currentPassword" required autocomplete="current-password">
+        </label>
+        <label class="modal-field" for="newPassword">
+          <span>New password</span>
+          <input type="password" id="newPassword" name="newPassword" minlength="8" required autocomplete="new-password">
+        </label>
+        <label class="modal-field" for="confirmPassword">
+          <span>Confirm new password</span>
+          <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" required autocomplete="new-password">
+        </label>
+        <p class="password-hint">Use at least 8 characters with a mix of numbers, letters, and symbols.</p>
+        <div class="panel-actions">
+          <button class="button outline-button" type="button" data-action="closePasswordModal">Cancel</button>
+          <button class="button solid-button" type="submit">Save password</button>
+        </div>
+      </form>
+    </div>
   </div>
   <script src="settings.js"></script>
 </body>
