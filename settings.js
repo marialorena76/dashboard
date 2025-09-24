@@ -1,4 +1,4 @@
-const STORAGE_PREFIX = 'ivy-settings-';
+const STORAGE_PREFIX = 'mallow-individual-';
 
 function buildStorageKey(input) {
   return `${STORAGE_PREFIX}${input.dataset.storage}`;
@@ -141,8 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
       if (confirmed) {
-        localStorage.clear();
+        // Clear only the data for this user type
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith(STORAGE_PREFIX)) {
+            localStorage.removeItem(key);
+          }
+        });
+        localStorage.removeItem('userType');
         window.alert('Your deletion request has been submitted. A specialist will contact you shortly.');
+        window.location.href = 'index.html';
       }
     });
   }
