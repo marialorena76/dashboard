@@ -3,10 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!tableBody) return;
 
   const toAddBtn = document.getElementById('toAdd');
+  const exportButton = document.getElementById('exportRoster');
 
   const addForm = document.getElementById('addMemberForm');
   const editForm = document.getElementById('editMemberForm');
   const removeForm = document.getElementById('removeMemberForm');
+
+  const addSection = document.getElementById('addMemberSection');
+  const editSection = document.getElementById('editMemberSection');
+  const removeSection = document.getElementById('removeMemberSection');
 
   const editSelect = document.getElementById('editSelect');
   const removeSelect = document.getElementById('removeSelect');
@@ -20,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pagination = document.getElementById('membersPagination');
   const countLabel = document.getElementById('membersCount');
 
+  const STORAGE_KEY = 'businessMembers';
   let currentPage = 1;
 
   const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -28,106 +34,126 @@ document.addEventListener('DOMContentLoaded', () => {
     year: 'numeric'
   });
 
-  const EDIT_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-2.88-2.88a1.5 1.5 0 0 0-2.12 0L3 15v5z"></path><path d="M13.5 6.5l4 4"></path></svg>';
-  const DELETE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 7l1-2h4l1 2"></path><path d="M6 7l1 12a1 1 0 0 0 1 .9h8a1 1 0 0 0 1-.9L18 7"></path></svg>';
+  const EDIT_ICON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-2.88-2.88a1.5 1.5 0 0 0-2.12 0L3 15v5z"></path><path d="M13.5 6.5l4 4"></path></svg>';
+  const DELETE_ICON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 7l1-2h4l1 2"></path><path d="M6 7l1 12a1 1 0 0 0 1 .9h8a1 1 0 0 0 1-.9L18 7"></path></svg>';
 
-  function formatDate(value) {
-    if (!value) return '';
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) return value;
-    return dateFormatter.format(date);
-  }
+  const defaultMembers = [
+    {
+      firstName: 'Ava',
+      lastName: 'Montgomery',
+      email: 'ava.montgomery@legacybridge.com',
+      role: 'People Operations Lead',
+      department: 'People Operations',
+      coverageStart: '2023-01-15',
+      planAccess: 'Full Coverage',
+      status: 'Protected'
+    },
+    {
+      firstName: 'Jordan',
+      lastName: 'Lee',
+      email: 'jordan.lee@legacybridge.com',
+      role: 'Product Manager',
+      department: 'Product',
+      coverageStart: '2024-03-01',
+      planAccess: 'Health + Vision',
+      status: 'Protected'
+    },
+    {
+      firstName: 'Priya',
+      lastName: 'Shah',
+      email: 'priya.shah@legacybridge.com',
+      role: 'Finance Director',
+      department: 'Finance',
+      coverageStart: '2022-09-12',
+      planAccess: 'Full Coverage',
+      status: 'Protected'
+    },
+    {
+      firstName: 'Noah',
+      lastName: 'Garcia',
+      email: 'noah.garcia@legacybridge.com',
+      role: 'Customer Success Manager',
+      department: 'Customer Success',
+      coverageStart: '2024-07-08',
+      planAccess: 'Health + Dental',
+      status: 'Invited'
+    },
+    {
+      firstName: 'Sofía',
+      lastName: 'Alvarez',
+      email: 'sofia.alvarez@legacybridge.com',
+      role: 'HR Coordinator',
+      department: 'People Operations',
+      coverageStart: '2023-11-20',
+      planAccess: 'Dental Only',
+      status: 'Pending'
+    }
+  ];
 
   function normalizeMember(member = {}) {
     return {
-      firstName: member.firstName || '',
-      lastName: member.lastName || '',
-      dob: member.dob || '',
-      relation: member.relation || '',
-      idExpiration: member.idExpiration || member.expiration || '',
-      address: member.address || '',
-      city: member.city || '',
-      state: member.state || '',
-      zip: member.zip || '',
+      firstName: (member.firstName || '').trim(),
+      lastName: (member.lastName || '').trim(),
+      email: (member.email || '').trim(),
+      role: (member.role || '').trim(),
+      department: (member.department || '').trim(),
+      coverageStart: member.coverageStart || '',
+      planAccess: member.planAccess || 'Full Coverage',
       status: member.status || 'Protected'
     };
   }
 
   function loadMembers() {
     try {
-      return (JSON.parse(localStorage.getItem('members') || '[]') || []).map(normalizeMember);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (!stored) {
+        return [];
+      }
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+      return parsed.map(normalizeMember);
     } catch (error) {
+      console.error('Unable to load members from storage', error);
       return [];
     }
   }
 
   function saveMembers(members) {
-    localStorage.setItem('members', JSON.stringify(members.map(normalizeMember)));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(members.map(normalizeMember))
+    );
   }
 
-  function bootstrapMembers() {
-    const stored = localStorage.getItem('members');
-    if (!stored || stored === '[]') {
-      const seededMembers = [
-        {
-          firstName: 'Daniel',
-          lastName: 'Thompson',
-          dob: '1982-03-12',
-          relation: 'Spouse',
-          idExpiration: '2026-09-15',
-          address: '215 Grove Street',
-          city: 'Austin',
-          state: 'TX',
-          zip: '73301',
-          status: 'Protected'
-        },
-        {
-          firstName: 'Amelia',
-          lastName: 'Thompson',
-          dob: '2011-07-04',
-          relation: 'Daughter',
-          idExpiration: '2028-01-30',
-          address: '215 Grove Street',
-          city: 'Austin',
-          state: 'TX',
-          zip: '73301',
-          status: 'Protected'
-        },
-        {
-          firstName: 'Andy',
-          lastName: 'Thompson',
-          dob: '2009-11-18',
-          relation: 'Son',
-          idExpiration: '2027-06-22',
-          address: '215 Grove Street',
-          city: 'Austin',
-          state: 'TX',
-          zip: '73301',
-          status: 'Protected'
-        },
-        {
-          firstName: 'José',
-          lastName: 'Ramirez',
-          dob: '1954-02-09',
-          relation: 'Parent',
-          idExpiration: '2025-12-01',
-          address: '45 Laurel Ave',
-          city: 'San Antonio',
-          state: 'TX',
-          zip: '78205',
-          status: 'Protected'
-        }
-      ];
-      saveMembers(seededMembers);
-      return;
+  function seedMembers() {
+    if (loadMembers().length === 0) {
+      saveMembers(defaultMembers);
     }
-
-    const normalized = loadMembers();
-    saveMembers(normalized);
   }
 
   function getMembersWithIndex() {
     return loadMembers().map((member, index) => ({ member, index }));
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return value;
+    }
+    return dateFormatter.format(date);
+  }
+
+  function getStatusClass(status) {
+    const normalized = (status || '').toLowerCase();
+    if (normalized === 'invited') return 'status-chip--invited';
+    if (normalized === 'pending') return 'status-chip--pending';
+    if (normalized === 'suspended') return 'status-chip--suspended';
+    return 'status-chip--protected';
   }
 
   function filterMembers(collection) {
@@ -137,11 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const haystack = [
         member.firstName,
         member.lastName,
-        member.relation,
-        member.status,
-        member.city,
-        member.state,
-        member.zip
+        member.email,
+        member.role,
+        member.department,
+        member.planAccess,
+        member.status
       ]
         .join(' ')
         .toLowerCase();
@@ -212,21 +238,21 @@ document.addEventListener('DOMContentLoaded', () => {
       tableBody.innerHTML = '';
       const emptyRow = document.createElement('tr');
       const emptyCell = document.createElement('td');
-      emptyCell.colSpan = 4;
+      emptyCell.colSpan = 5;
       emptyCell.className = 'members-table__empty';
 
       if (membersCollection.length === 0) {
-        emptyCell.textContent = 'No protected members yet.';
+        emptyCell.textContent = 'No team members yet.';
         if (countLabel) {
-          countLabel.textContent = 'No protected members yet.';
+          countLabel.textContent = 'No team members yet.';
         }
       } else {
-        emptyCell.textContent = 'No members match your search.';
+        const query = (searchInput?.value || '').trim();
+        emptyCell.textContent = query
+          ? `No matches found for “${query}”.`
+          : 'No members match your search.';
         if (countLabel) {
-          const query = (searchInput?.value || '').trim();
-          countLabel.textContent = query
-            ? `No matches found for “${query}”.`
-            : 'No members match your search.';
+          countLabel.textContent = emptyCell.textContent;
         }
       }
 
@@ -247,21 +273,29 @@ document.addEventListener('DOMContentLoaded', () => {
     tableBody.innerHTML = '';
     pageMembers.forEach(({ member, index }) => {
       const row = document.createElement('tr');
-      const fullName = `${member.firstName} ${member.lastName}`.trim();
-      const statusText = (member.status || 'Protected').toUpperCase();
-      const dobDisplay = formatDate(member.dob);
-      const expirationDisplay = formatDate(member.idExpiration);
-      const metaParts = [];
-      if (dobDisplay) metaParts.push(`DOB: ${dobDisplay}`);
-      if (expirationDisplay) metaParts.push(`ID Exp: ${expirationDisplay}`);
-      const metaText = metaParts.join(' • ');
+      const fullName = `${member.firstName} ${member.lastName}`.trim() || '—';
+      const coverageStart = formatDate(member.coverageStart);
+      const coveragePrimary = coverageStart ? `Coverage start ${coverageStart}` : member.planAccess || '—';
+      const coverageSecondary = coverageStart ? member.planAccess : '';
+      const statusText = member.status || 'Protected';
+      const statusClass = getStatusClass(statusText);
+
       row.innerHTML = `
         <td>
-          <div class="member-name">${fullName || '—'}</div>
-          <div class="member-meta">${metaText}</div>
+          <div class="member-name">${fullName}</div>
+          <div class="member-meta">${member.email || ''}</div>
         </td>
-        <td>${member.relation || '—'}</td>
-        <td><span class="status-chip">${statusText}</span></td>
+        <td>
+          <div class="member-name">${member.role || '—'}</div>
+          <div class="member-meta">${member.department || ''}</div>
+        </td>
+        <td>
+          <div class="member-name">${coveragePrimary}</div>
+          <div class="member-meta">${coverageSecondary}</div>
+        </td>
+        <td>
+          <span class="status-chip ${statusClass}">${statusText}</span>
+        </td>
         <td class="actions-column">
           <div class="table-actions">
             <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${fullName}">
@@ -278,40 +312,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rangeStart = startIndex + 1;
     const rangeEnd = startIndex + pageMembers.length;
+    const labelSuffix = totalFiltered === 1 ? 'team member' : 'team members';
     if (countLabel) {
-      countLabel.textContent = `Showing ${rangeStart}-${rangeEnd} of ${totalFiltered} entries`;
+      countLabel.textContent = `Showing ${rangeStart}-${rangeEnd} of ${totalFiltered} ${labelSuffix}`;
     }
 
     renderPagination(totalPages);
   }
 
   function updateSelects(members = loadMembers()) {
-    if (!editSelect || !removeSelect) return;
-    [editSelect, removeSelect].forEach(sel => {
-      sel.innerHTML = '<option value="">Select Member</option>';
-//codex/editar-solo-datos-columna-derecha-gmsuwo
+    if (!editSelect && !removeSelect) return;
+    const selects = [editSelect, removeSelect].filter(Boolean);
+    selects.forEach(select => {
+      const currentValue = select.value;
+      select.innerHTML = '<option value="">Select employee</option>';
       members.forEach((member, index) => {
         const option = document.createElement('option');
-        option.value = index;
-        option.textContent = `${member.firstName} ${member.lastName}`.trim() || `Member ${index + 1}`;
-        sel.appendChild(option);
-      members.forEach((m, idx) => {
-        const opt = document.createElement('option');
-        opt.value = idx;
-        opt.textContent = `${m.firstName} ${m.lastName}`;
-        sel.appendChild(opt);
- main
+        option.value = String(index);
+        const name = `${member.firstName} ${member.lastName}`.trim();
+        option.textContent = name || `Employee ${index + 1}`;
+        select.appendChild(option);
       });
+      if (currentValue && Number(currentValue) < members.length) {
+        select.value = currentValue;
+      } else {
+        select.value = '';
+      }
     });
   }
 
-  bootstrapMembers();
+  function populateEditForm(index) {
+    if (!editForm) return;
+    const members = loadMembers();
+    const member = members[index];
+    if (!member) {
+      editForm.reset();
+      return;
+    }
+    editForm.elements.firstName.value = member.firstName;
+    editForm.elements.lastName.value = member.lastName;
+    editForm.elements.email.value = member.email;
+    editForm.elements.role.value = member.role;
+    editForm.elements.department.value = member.department;
+    editForm.elements.coverageStart.value = member.coverageStart;
+    editForm.elements.planAccess.value = member.planAccess;
+    editForm.elements.status.value = member.status;
+  }
+
+  function exportRoster() {
+    const members = loadMembers();
+    const header = ['First Name', 'Last Name', 'Email', 'Role', 'Department', 'Coverage Start', 'Plan Access', 'Status'];
+    const rows = members.map(member => [
+      member.firstName,
+      member.lastName,
+      member.email,
+      member.role,
+      member.department,
+      member.coverageStart,
+      member.planAccess,
+      member.status
+    ]);
+    const csvContent = [header, ...rows]
+      .map(row => row.map(field => `"${String(field || '').replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'protected-team.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  seedMembers();
   renderTable();
   updateSelects();
 
-  if (toAddBtn) {
+  if (toAddBtn && addSection) {
     toAddBtn.addEventListener('click', () => {
-      document.getElementById('addMemberSection').scrollIntoView({ behavior: 'smooth' });
+      addSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
@@ -329,20 +411,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Add Member
- codex/editar-solo-datos-columna-derecha-gmsuwo
+  if (exportButton) {
+    exportButton.addEventListener('click', exportRoster);
+  }
+
   if (addForm) {
     addForm.addEventListener('submit', event => {
       event.preventDefault();
-      const member = normalizeMember({
-        firstName: addForm.firstName.value,
-        lastName: addForm.lastName.value,
-        dob: addForm.dob.value,
-        relation: addForm.relation.value,
-        idExpiration: addForm.expiration.value,
-        status: 'Protected'
-      });
       const members = loadMembers();
+      const member = normalizeMember({
+        firstName: addForm.elements.firstName.value,
+        lastName: addForm.elements.lastName.value,
+        email: addForm.elements.email.value,
+        role: addForm.elements.role.value,
+        department: addForm.elements.department.value,
+        coverageStart: addForm.elements.coverageStart.value,
+        planAccess: addForm.elements.planAccess.value,
+        status: addForm.elements.status.value
+      });
       members.push(member);
       saveMembers(members);
       addForm.reset();
@@ -352,35 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  addForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const member = {
-      firstName: addForm.firstName.value,
-      lastName: addForm.lastName.value,
-      dob: addForm.dob.value,
-      relation: addForm.relation.value,
-      idExpiration: addForm.expiration.value,
-      address: '',
-      city: '',
-      state: '',
-      zip: ''
-    };
-    const members = loadMembers();
-    members.push(member);
-    saveMembers(members);
-    addForm.reset();
-    renderTable();
-  });
- main
-
   if (cancelAdd && addForm) {
     cancelAdd.addEventListener('click', () => {
       addForm.reset();
     });
   }
 
-  // Edit Member
- codex/editar-solo-datos-columna-derecha-gmsuwo
   if (editSelect && editForm) {
     editSelect.addEventListener('change', () => {
       const idx = editSelect.value;
@@ -388,36 +451,31 @@ document.addEventListener('DOMContentLoaded', () => {
         editForm.reset();
         return;
       }
-      const members = loadMembers();
-      const member = members[idx];
-      if (!member) {
-        editForm.reset();
-        return;
-      }
-      editForm.firstName.value = member.firstName;
-      editForm.lastName.value = member.lastName;
-      editForm.dob.value = member.dob;
-      editForm.relation.value = member.relation;
-      editForm.address.value = member.address || '';
-      editForm.city.value = member.city || '';
-      editForm.state.value = member.state || '';
-      editForm.zip.value = member.zip || '';
+      populateEditForm(Number(idx));
     });
   }
 
   if (editForm) {
     editForm.addEventListener('submit', event => {
       event.preventDefault();
-      const idx = editSelect.value;
-      if (idx === '') return;
+      const idx = Number(editSelect.value);
+      if (Number.isNaN(idx)) {
+        return;
+      }
       const members = loadMembers();
-      members[idx] = {
-        ...members[idx],
-        address: editForm.address.value,
-        city: editForm.city.value,
-        state: editForm.state.value,
-        zip: editForm.zip.value
-      };
+      if (!members[idx]) {
+        return;
+      }
+      members[idx] = normalizeMember({
+        firstName: editForm.elements.firstName.value,
+        lastName: editForm.elements.lastName.value,
+        email: editForm.elements.email.value,
+        role: editForm.elements.role.value,
+        department: editForm.elements.department.value,
+        coverageStart: editForm.elements.coverageStart.value,
+        planAccess: editForm.elements.planAccess.value,
+        status: editForm.elements.status.value
+      });
       saveMembers(members);
       renderTable();
       updateSelects(members);
@@ -426,62 +484,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  editSelect.addEventListener('change', () => {
-    const idx = editSelect.value;
-    if (idx === '') {
-      editForm.reset();
-      return;
-    }
-    const members = loadMembers();
-    const member = members[idx];
-    if (!member) {
-      editForm.reset();
-      return;
-    }
-    editForm.firstName.value = member.firstName;
-    editForm.lastName.value = member.lastName;
-    editForm.dob.value = member.dob;
-    editForm.relation.value = member.relation;
-    editForm.address.value = member.address || '';
-    editForm.city.value = member.city || '';
-    editForm.state.value = member.state || '';
-    editForm.zip.value = member.zip || '';
-  });
-
-  editForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const idx = editSelect.value;
-    if (idx === '') return;
-    const members = loadMembers();
-    members[idx] = {
-      ...members[idx],
-      address: editForm.address.value,
-      city: editForm.city.value,
-      state: editForm.state.value,
-      zip: editForm.zip.value
-    };
-    saveMembers(members);
-    renderTable();
-    editForm.reset();
-    editSelect.value = '';
-  });
-main
-
   if (cancelEdit && editForm) {
     cancelEdit.addEventListener('click', () => {
       editForm.reset();
-      editSelect.value = '';
+      if (editSelect) {
+        editSelect.value = '';
+      }
     });
   }
 
-  // Remove Member
-  if (removeForm) {
+  if (removeForm && removeSelect) {
     removeForm.addEventListener('submit', event => {
       event.preventDefault();
-      const idx = removeSelect.value;
-      if (idx === '') return;
+      const idx = Number(removeSelect.value);
+      if (Number.isNaN(idx)) {
+        return;
+      }
       const members = loadMembers();
-      members.splice(Number(idx), 1);
+      if (idx < 0 || idx >= members.length) {
+        return;
+      }
+      members.splice(idx, 1);
       saveMembers(members);
       currentPage = 1;
       renderTable();
@@ -498,7 +521,6 @@ main
     });
   }
 
-  // Table action buttons
   tableBody.addEventListener('click', event => {
     const actionButton = event.target.closest('.table-action');
     if (!actionButton) return;
@@ -510,14 +532,18 @@ main
         editSelect.value = idx;
         editSelect.dispatchEvent(new Event('change'));
       }
-      document.getElementById('editMemberSection').scrollIntoView({ behavior: 'smooth' });
+      if (editSection) {
+        editSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     if (actionButton.classList.contains('action-delete')) {
       if (removeSelect) {
         removeSelect.value = idx;
       }
-      document.getElementById('removeMemberSection').scrollIntoView({ behavior: 'smooth' });
+      if (removeSection) {
+        removeSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   });
 });
