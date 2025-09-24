@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard dashboard--enterprise" data-settings-prefix="legacybridge-settings-">
+      <aside class="sidebar sidebar--enterprise" aria-label="Employer portal navigation">
+        <div class="enterprise-brand">
+          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+          <div class="enterprise-brand__text">
+            <span class="enterprise-brand__label">LegacyBridge</span>
+            <span class="enterprise-brand__sub">Employer Portal</span>
+          </div>
+        </div>
+        <nav class="menu enterprise-menu" aria-label="Primary">
+          <a href="business-dashboard.html">Overview</a>
+          <a href="business-plans-billing.html">Plans &amp; Billing</a>
+          <a href="business-support.html">Support</a>
+          <a href="business-settings.html" class="active" aria-current="page">Settings</a>
+        </nav>
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout" type="button">Log Out</button>
+          <div class="lang" aria-label="Language selection">
+            <button class="active" type="button">English</button>
+            <button type="button">Español</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content main-content--enterprise settings-main settings-main--enterprise">
+        <header class="content-header settings-header">
+          <div>
+            <span class="eyebrow">Employer Controls</span>
+            <h1>Settings</h1>
+          </div>
+          <p class="member-since">Workspace last reviewed April 12, 2025</p>
+        </header>
+
+        <section class="settings-hero enterprise-settings-hero" aria-label="Workspace overview">
+          <div class="hero-copy">
+            <h2>Tailor LegacyBridge for your organization</h2>
+            <p>
+              Manage how administrators receive alerts, keep your login experience secure, and control the data we retain for your workforce.
+            </p>
+          </div>
+          <dl class="hero-meta">
+            <div>
+              <dt>Plan</dt>
+              <dd>Enterprise Shield</dd>
+            </div>
+            <div>
+              <dt>Employees covered</dt>
+              <dd>62 active · 4 pending</dd>
+            </div>
+            <div>
+              <dt>Assigned specialist</dt>
+              <dd>Jordan Patel</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd class="status-pill success">In good standing</dd>
+            </div>
+          </dl>
+        </section>
+
+        <div class="settings-layout enterprise-settings-layout">
+          <aside class="settings-nav" aria-label="Settings sections">
+            <div class="nav-heading">
+              <span class="eyebrow">LegacyBridge Settings</span>
+              <h2>Manage your workspace</h2>
+              <p>Choose a category to update notifications, account security, or retained data.</p>
+            </div>
+            <nav class="nav-links" role="tablist">
+              <button
+                class="nav-link active"
+                id="enterpriseTabNotifications"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="enterpriseNotificationsPanel"
+                data-target="enterpriseNotificationsPanel"
+              >
+                Notifications
+              </button>
+              <button
+                class="nav-link"
+                id="enterpriseTabPrivacy"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="enterprisePrivacyPanel"
+                data-target="enterprisePrivacyPanel"
+              >
+                Privacy &amp; Security
+              </button>
+              <button
+                class="nav-link"
+                id="enterpriseTabData"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="enterpriseDataPanel"
+                data-target="enterpriseDataPanel"
+              >
+                Data &amp; Privacy
+              </button>
+            </nav>
+            <div class="nav-support">
+              <h3>Need assistance?</h3>
+              <p>Visit the help center to chat with a specialist or review onboarding checklists.</p>
+              <a class="support-link" href="business-support.html">Open support</a>
+            </div>
+          </aside>
+
+          <div class="settings-content" role="presentation">
+            <section
+              id="enterpriseNotificationsPanel"
+              class="settings-panel active"
+              role="tabpanel"
+              aria-labelledby="enterpriseTabNotifications"
+              tabindex="0"
+            >
+              <header class="panel-header">
+                <h2>Notifications</h2>
+                <p>Decide which LegacyBridge alerts reach your administrator team.</p>
+              </header>
+              <div class="preference-list">
+                <article class="preference-item">
+                  <div class="preference-copy">
+                    <h3>Plan announcements</h3>
+                    <p>New coverage options, enhancements, and changes to employee eligibility.</p>
+                  </div>
+                  <label class="toggle" for="notifyPlan">
+                    <input type="checkbox" id="notifyPlan" data-storage="notifyPlan" checked />
+                    <span class="toggle-control" aria-hidden="true"></span>
+                  </label>
+                </article>
+                <article class="preference-item">
+                  <div class="preference-copy">
+                    <h3>Renewal reminders</h3>
+                    <p>Heads-up emails leading into open enrollment or rate adjustments.</p>
+                  </div>
+                  <label class="toggle" for="notifyRenewal">
+                    <input type="checkbox" id="notifyRenewal" data-storage="notifyRenewal" checked />
+                    <span class="toggle-control" aria-hidden="true"></span>
+                  </label>
+                </article>
+                <article class="preference-item">
+                  <div class="preference-copy">
+                    <h3>Onboarding updates</h3>
+                    <p>Alerts when employees accept invitations or require additional documents.</p>
+                  </div>
+                  <label class="toggle" for="notifyOnboarding">
+                    <input type="checkbox" id="notifyOnboarding" data-storage="notifyOnboarding" />
+                    <span class="toggle-control" aria-hidden="true"></span>
+                  </label>
+                </article>
+                <article class="preference-item">
+                  <div class="preference-copy">
+                    <h3>Billing notifications</h3>
+                    <p>Invoices posted, payment confirmations, and autopay status changes.</p>
+                  </div>
+                  <label class="toggle" for="notifyBilling">
+                    <input type="checkbox" id="notifyBilling" data-storage="notifyBilling" checked />
+                    <span class="toggle-control" aria-hidden="true"></span>
+                  </label>
+                </article>
+              </div>
+              <div class="panel-actions">
+                <button class="button outline-button" type="button" data-action="resetNotifications">Reset</button>
+                <button class="button solid-button" type="button" id="saveNotifications">Save changes</button>
+              </div>
+            </section>
+
+            <section
+              id="enterprisePrivacyPanel"
+              class="settings-panel"
+              role="tabpanel"
+              aria-labelledby="enterpriseTabPrivacy"
+              tabindex="0"
+            >
+              <header class="panel-header">
+                <h2>Privacy &amp; Security</h2>
+                <p>Protect administrator accounts and integrate with your identity provider.</p>
+              </header>
+              <div class="security-grid">
+                <article class="security-item">
+                  <div>
+                    <h3>Single sign-on</h3>
+                    <p>Connect Okta, Azure AD, or Google Workspace for seamless access.</p>
+                  </div>
+                  <div class="item-actions">
+                    <span class="status-pill neutral">Not connected</span>
+                    <button class="button ghost-button" type="button">Configure SSO</button>
+                  </div>
+                </article>
+                <article class="security-item">
+                  <div>
+                    <h3>Multi-factor authentication</h3>
+                    <p>Require a secondary code whenever admins sign in on a new device.</p>
+                  </div>
+                  <div class="item-actions">
+                    <span class="status-pill" data-twofa-status>Disabled</span>
+                    <button class="button solid-button" type="button" data-action="toggleTwoFA">Enable</button>
+                  </div>
+                </article>
+                <article class="security-item">
+                  <div>
+                    <h3>Login alerts</h3>
+                    <p>Be notified when access is detected from unusual locations or browsers.</p>
+                  </div>
+                  <label class="toggle" for="enterpriseLoginAlerts">
+                    <input
+                      type="checkbox"
+                      id="enterpriseLoginAlerts"
+                      data-storage="enterpriseLoginAlerts"
+                      data-auto-save="true"
+                      checked
+                    />
+                    <span class="toggle-control" aria-hidden="true"></span>
+                  </label>
+                </article>
+              </div>
+            </section>
+
+            <section
+              id="enterpriseDataPanel"
+              class="settings-panel"
+              role="tabpanel"
+              aria-labelledby="enterpriseTabData"
+              tabindex="0"
+            >
+              <header class="panel-header">
+                <h2>Data &amp; Privacy</h2>
+                <p>Request exports or control retention for employee information.</p>
+              </header>
+              <div class="data-grid">
+                <article class="data-item">
+                  <div>
+                    <h3>Download coverage roster</h3>
+                    <p>Receive a secure CSV of employees, dependents, and current plan selections.</p>
+                  </div>
+                  <button class="button solid-button" type="button" data-action="downloadData">Send download</button>
+                </article>
+                <article class="data-item">
+                  <div>
+                    <h3>Audit invoice archive</h3>
+                    <p>Generate a year-to-date folder of invoices and payment confirmations.</p>
+                  </div>
+                  <button class="button ghost-button" type="button" data-action="exportStatements">Export</button>
+                </article>
+                <article class="data-item danger">
+                  <div>
+                    <h3>Request data purge</h3>
+                    <p>This begins a 30-day review before we delete all saved employee records.</p>
+                  </div>
+                  <button class="button danger-button" type="button" data-action="deleteAccount">Request removal</button>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="settings.js"></script>
+  </body>
+</html>
