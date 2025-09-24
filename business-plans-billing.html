@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Plans &amp; Billing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard business-dashboard">
+      <aside class="sidebar sidebar--business" aria-label="Workspace navigation">
+        <div class="company-summary">
+          <div class="company-avatar" aria-hidden="true">LB</div>
+          <h1>LegacyBridge</h1>
+          <p class="company-plan">Enterprise Shield · 62 seats</p>
+          <p class="company-renewal">Renewal in 120 days</p>
+        </div>
+        <nav class="menu menu--business" aria-label="Primary">
+          <p class="menu-label">Workspace</p>
+          <a href="business-dashboard.html">Overview</a>
+          <a href="business-profile.html">Business Profile</a>
+          <a href="#">Team Access</a>
+          <a href="#">Verification</a>
+          <a href="business-plans-billing.html" class="active">Plans &amp; Billing</a>
+          <a href="#">Support</a>
+        </nav>
+        <div class="sidebar-bottom sidebar-bottom--business">
+          <div class="support-card">
+            <p>Need a hand with onboarding?</p>
+            <button class="business-button business-button--ghost" type="button">
+              Contact Support
+            </button>
+          </div>
+          <button class="logout logout--business" type="button">Sign Out</button>
+        </div>
+      </aside>
+
+      <main class="business-main business-main--billing">
+        <div class="breadcrumb">Dashboard • Plans &amp; Billing</div>
+        <header class="business-header">
+          <div>
+            <h2 class="business-eyebrow">Company Plans &amp; Billing</h2>
+            <h1>Plans &amp; Billing</h1>
+            <p class="business-subtitle">
+              Review active coverage, manage payment preferences, and download invoices for
+              compliance records in one place.
+            </p>
+            <div class="business-header__meta">
+              <span class="business-badge">Coverage renewed Apr 18, 2025</span>
+              <span class="business-badge business-badge--success" data-autopay-pill>
+                Autopay Enabled
+              </span>
+            </div>
+          </div>
+          <div class="business-header__actions">
+            <button
+              class="business-button business-button--primary"
+              type="button"
+              data-open-forms="edit"
+            >
+              Update payment method
+            </button>
+            <button class="business-button business-button--ghost" type="button">Download invoice CSV</button>
+          </div>
+        </header>
+
+        <div
+          id="billingFeedback"
+          class="page-feedback page-feedback--success"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+
+        <section id="billingOverview" class="billing-overview">
+          <div class="billing-grid">
+            <article class="business-card billing-card billing-card--plan">
+              <div class="business-card__header">
+                <div>
+                  <h3>Plan Overview</h3>
+                  <p>Snapshot of your company coverage and renewal cadence.</p>
+                </div>
+                <span class="status-pill status-pill--success" data-plan-status>Active</span>
+              </div>
+              <dl class="info-grid">
+                <div class="info-item">
+                  <dt>Plan name</dt>
+                  <dd data-plan-name>Enterprise Shield</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Employees covered</dt>
+                  <dd data-plan-employees>62 active · 4 pending invites</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Annual coverage</dt>
+                  <dd data-plan-coverage>$250,000 across medical &amp; wellness</dd>
+                </div>
+                <div class="info-item">
+                  <dt>Next renewal</dt>
+                  <dd data-plan-renewal>Apr 18, 2026 · Auto-renew</dd>
+                </div>
+              </dl>
+              <div class="billing-plan__actions">
+                <button class="business-button business-button--ghost" type="button">View plan documents</button>
+                <button class="business-button business-button--ghost" type="button">Share coverage summary</button>
+              </div>
+            </article>
+
+            <article class="business-card billing-card billing-card--payment" id="billingSummaryCard">
+              <div class="business-card__header">
+                <div>
+                  <h3>Billing Details</h3>
+                  <p>Primary payment method, billing cadence, and autopay settings.</p>
+                </div>
+                <button class="business-button business-button--ghost" type="button" data-open-forms="edit">
+                  Manage
+                </button>
+              </div>
+              <div class="billing-summary">
+                <div class="billing-summary__method">
+                  <h4>Primary payment method</h4>
+                  <p class="billing-summary__value" data-summary-method>Corporate Visa •••• 4321</p>
+                  <p class="billing-summary__meta" data-summary-meta>LegacyBridge Benefits · Exp 11/27</p>
+                </div>
+                <div class="billing-summary__meta">
+                  <p><strong>Next invoice:</strong> <span data-summary-next>May 15, 2025 · $4,820.00</span></p>
+                  <p><strong>Billing address:</strong> <span data-summary-address>4100 Market Street, Suite 1200 · Denver, CO 80205</span></p>
+                  <div class="billing-autopay">
+                    <span class="business-badge business-badge--success" data-autopay-pill>Autopay Enabled</span>
+                    <button class="business-button business-button--ghost" type="button" data-toggle-autopay>
+                      Pause autopay
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="billing-summary__actions">
+                <button class="business-button business-button--primary" type="button" data-open-forms="edit">
+                  Update payment method
+                </button>
+                <button class="business-button business-button--ghost" type="button" data-open-forms="add">
+                  Add backup method
+                </button>
+              </div>
+            </article>
+
+            <article class="business-card billing-card billing-card--contacts">
+              <div class="business-card__header">
+                <div>
+                  <h3>Billing Contacts</h3>
+                  <p>People copied on invoices, reminders, and renewal notices.</p>
+                </div>
+                <button class="business-button business-button--ghost" type="button">Manage contacts</button>
+              </div>
+              <ul class="billing-contact-list" aria-label="Billing contacts">
+                <li class="billing-contact">
+                  <div>
+                    <h4>Ana Velásquez</h4>
+                    <p>Finance Lead · ana.velasquez@legacybridge.co</p>
+                  </div>
+                  <span class="business-badge">Primary</span>
+                </li>
+                <li class="billing-contact">
+                  <div>
+                    <h4>Jordan Patel</h4>
+                    <p>Controller · jordan.patel@legacybridge.co</p>
+                  </div>
+                  <span class="business-badge business-badge--muted">CC</span>
+                </li>
+                <li class="billing-contact">
+                  <div>
+                    <h4>Samira Rhodes</h4>
+                    <p>HR Operations · samira.rhodes@legacybridge.co</p>
+                  </div>
+                  <span class="business-badge business-badge--muted">CC</span>
+                </li>
+              </ul>
+              <p class="business-card__footnote">
+                Keep at least one billing contact updated to ensure renewal reminders are never missed.
+              </p>
+            </article>
+          </div>
+
+          <section class="business-card billing-history" aria-labelledby="billing-history-heading">
+            <div class="billing-history__header">
+              <div>
+                <h3 id="billing-history-heading">Billing History</h3>
+                <p>Track recent invoices, payment status, and download receipts.</p>
+              </div>
+              <label class="billing-history__search" for="billingHistorySearch">
+                <span class="sr-only">Search invoices</span>
+                <input type="search" id="billingHistorySearch" placeholder="Search invoices" />
+              </label>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Invoice</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Receipt</th>
+                  </tr>
+                </thead>
+                <tbody id="billingHistoryBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="billing-forms" id="billingForms" hidden aria-label="Manage payment methods">
+          <div class="billing-forms__intro">
+            <h2>Manage Payment Methods</h2>
+            <p>
+              Update the active card on file or add a backup method for manual payments. Changes apply to
+              all future invoices.
+            </p>
+          </div>
+          <div class="billing-forms__grid">
+            <form class="billing-form business-form business-card" id="editBillingForm" data-form="edit">
+              <div class="business-card__header">
+                <div>
+                  <h3>Edit primary payment method</h3>
+                  <p>Adjust billing details that appear on monthly invoices.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Payment method name</span>
+                  <input type="text" name="method" id="editMethod" required />
+                </label>
+                <label class="form-field">
+                  <span>Cardholder or account name</span>
+                  <input type="text" name="cardholder" id="editCardholder" required />
+                </label>
+                <label class="form-field">
+                  <span>Card number</span>
+                  <input type="text" name="cardNumber" id="editCard" inputmode="numeric" autocomplete="cc-number" required />
+                </label>
+                <label class="form-field">
+                  <span>Expiration (MM/YY)</span>
+                  <input type="text" name="expiry" id="editExpiry" placeholder="MM/YY" autocomplete="cc-exp" required />
+                </label>
+                <label class="form-field">
+                  <span>Autopay status</span>
+                  <select name="autopay" id="editAutopay">
+                    <option value="enabled">Enabled</option>
+                    <option value="paused">Paused</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>Next invoice date</span>
+                  <input type="date" name="nextPayment" id="editNextPayment" required />
+                </label>
+                <label class="form-field">
+                  <span>Invoice amount</span>
+                  <input type="number" name="invoiceAmount" id="editAmount" min="0" step="0.01" required />
+                </label>
+                <label class="form-field">
+                  <span>Billing address</span>
+                  <input type="text" name="billingAddress" id="editAddress" required />
+                </label>
+              </div>
+              <div class="billing-form__actions">
+                <button class="business-button business-button--ghost" type="button" data-close-forms>Cancel</button>
+                <button class="business-button business-button--primary" type="submit">Save changes</button>
+              </div>
+            </form>
+
+            <form class="billing-form business-form business-card" id="addBillingForm" data-form="add">
+              <div class="business-card__header">
+                <div>
+                  <h3>Add backup payment method</h3>
+                  <p>Store an additional method for manual or emergency payments.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Payment method name</span>
+                  <input type="text" name="method" id="addMethod" placeholder="Corporate Amex, ACH" required />
+                </label>
+                <label class="form-field">
+                  <span>Account owner</span>
+                  <input type="text" name="cardholder" id="addCardholder" required />
+                </label>
+                <label class="form-field">
+                  <span>Account number</span>
+                  <input type="text" name="cardNumber" id="addAccountNumber" inputmode="numeric" required />
+                </label>
+                <label class="form-field">
+                  <span>Expiration or routing</span>
+                  <input type="text" name="expiry" id="addExpiry" placeholder="MM/YY or Routing" />
+                </label>
+                <label class="form-field">
+                  <span>Preferred usage</span>
+                  <select name="preferredUsage" id="addUsage">
+                    <option value="backup">Backup - only if primary fails</option>
+                    <option value="manual">Manual one-time payments</option>
+                    <option value="split">Split invoices with primary</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>Billing contact email</span>
+                  <input type="email" name="billingEmail" id="addEmail" placeholder="billing@legacybridge.co" />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Notes</span>
+                  <textarea name="notes" id="addNotes" rows="4" placeholder="Add internal instructions or handoff details"></textarea>
+                </label>
+              </div>
+              <div class="billing-form__actions">
+                <button class="business-button business-button--ghost" type="button" data-close-forms>Cancel</button>
+                <button class="business-button business-button--primary" type="submit">Add payment method</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="business-billing.js"></script>
+  </body>
+</html>
