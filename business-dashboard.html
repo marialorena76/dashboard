@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Business Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard dashboard--enterprise">
+      <aside class="sidebar sidebar--enterprise">
+        <div class="enterprise-brand">
+          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+          <div class="enterprise-brand__text">
+            <span class="enterprise-brand__label">LegacyBridge</span>
+            <span class="enterprise-brand__sub">Employer Portal</span>
+          </div>
+        </div>
+        <nav class="menu enterprise-menu">
+          <a class="active" href="#">Overview</a>
+          <a href="#">Plans &amp; Billing</a>
+          <a href="#">Support</a>
+          <a href="#">Settings</a>
+        </nav>
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout">Log Out</button>
+          <div class="lang">
+            <button class="active">English</button>
+            <button>Español</button>
+          </div>
+        </div>
+      </aside>
+      <main class="main-content main-content--enterprise">
+        <header class="page-heading page-heading--enterprise">
+          <p class="breadcrumb">Dashboard • Overview</p>
+          <h1>
+            Welcome back,
+            <span class="page-heading__highlight">LegacyBridge</span>
+          </h1>
+          <p class="page-heading__subtitle">
+            You&apos;re all caught up. Review the latest plan insights or invite
+            new team members to keep everyone covered.
+          </p>
+        </header>
+        <section class="enterprise-status">
+          <div class="metrics-card">
+            <div class="metrics-card__heading">
+              <span>Plan Status</span>
+              <span class="status-pill status-pill--active">Active</span>
+            </div>
+            <p class="metrics-card__detail">Coverage renewed Apr 18, 2025</p>
+          </div>
+          <div class="metrics-card">
+            <div class="metrics-card__heading">
+              <span>Total Coverage</span>
+              <span class="status-pill">Up to $150,000</span>
+            </div>
+            <p class="metrics-card__detail">Across medical, vision &amp; dental</p>
+          </div>
+          <div class="metrics-card">
+            <div class="metrics-card__heading">
+              <span>Next Payment</span>
+              <span class="status-pill">May 01, 2025</span>
+            </div>
+            <p class="metrics-card__detail">Auto pay scheduled via ACH</p>
+          </div>
+        </section>
+        <section class="enterprise-actions">
+          <button class="enterprise-action">Add employees</button>
+          <button class="enterprise-action">View headcount</button>
+          <button class="enterprise-action">Update payment</button>
+          <button class="enterprise-action">Manage alerts</button>
+        </section>
+        <section class="enterprise-banner">
+          <div class="enterprise-banner__content">
+            <h2>Human-centered benefits for your team.</h2>
+            <p class="enterprise-banner__meta">©2025 MallowCare — Privacy Policy</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
