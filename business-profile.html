@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Business Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard business-dashboard">
+    <aside class="sidebar sidebar--business" aria-label="Workspace navigation">
+      <div class="company-summary">
+        <div class="company-avatar" aria-hidden="true">SB</div>
+        <h1>Spacebridge</h1>
+        <p class="company-plan">Business Protect · 48 seats</p>
+        <p class="company-renewal">Renewal in 14 days</p>
+      </div>
+      <nav class="menu menu--business" aria-label="Primary">
+        <p class="menu-label">Workspace</p>
+        <a href="#" class="active">Overview</a>
+        <a href="#">Business Profile</a>
+        <a href="#">Team Access</a>
+        <a href="#">Verification</a>
+        <a href="#">Billing</a>
+        <a href="#">Support</a>
+      </nav>
+      <div class="sidebar-bottom sidebar-bottom--business">
+        <div class="support-card">
+          <p>Need a hand with onboarding?</p>
+          <button class="business-button business-button--ghost" type="button">Contact Support</button>
+        </div>
+        <button class="logout logout--business" type="button">Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="business-main" data-view="overview">
+      <div class="breadcrumb">Overview · Business Profile</div>
+      <header class="business-header">
+        <div>
+          <h2 class="business-eyebrow">Business Workspace</h2>
+          <h1>Business Profile</h1>
+          <p class="business-subtitle">Keep your company contact details, verification records, and language preferences current so employees have uninterrupted coverage.</p>
+          <div class="business-header__meta">
+            <span class="business-badge">Last updated 2 days ago</span>
+            <span class="business-badge business-badge--success">Status: Verified</span>
+          </div>
+        </div>
+        <div class="business-header__actions">
+          <button id="businessViewToggle" class="business-button business-button--primary" type="button">Edit details</button>
+        </div>
+      </header>
+
+      <section class="business-panel is-active" data-business-panel="overview" aria-labelledby="overview-heading">
+        <h2 id="overview-heading" class="sr-only">Overview</h2>
+        <div class="business-grid">
+          <article class="business-card business-card--full">
+            <div class="business-card__header">
+              <div>
+                <h3>Contact Information</h3>
+                <p>Primary company details used for communications, billing, and compliance notifications.</p>
+              </div>
+              <button class="business-button business-button--ghost" type="button">Download summary</button>
+            </div>
+            <dl class="info-grid">
+              <div class="info-item">
+                <dt>Company name</dt>
+                <dd>Spacebridge Studio LLC</dd>
+              </div>
+              <div class="info-item">
+                <dt>Primary contact</dt>
+                <dd>Ana Velásquez</dd>
+              </div>
+              <div class="info-item">
+                <dt>Work email</dt>
+                <dd>ana.velasquez@spacebridge.co</dd>
+              </div>
+              <div class="info-item">
+                <dt>Work phone</dt>
+                <dd>+1 (305) 555-9823</dd>
+              </div>
+              <div class="info-item">
+                <dt>Headquarters</dt>
+                <dd>8290 NW 27th Street, Suite 400 · Doral, FL 33122</dd>
+              </div>
+              <div class="info-item">
+                <dt>Tax ID (EIN)</dt>
+                <dd>65-9182034</dd>
+              </div>
+              <div class="info-item">
+                <dt>Employees covered</dt>
+                <dd>48 active · 12 pending invitations</dd>
+              </div>
+              <div class="info-item">
+                <dt>Billing cadence</dt>
+                <dd>Monthly on the 15th</dd>
+              </div>
+            </dl>
+            <footer class="business-card__footer">
+              <p>Need to make updates? Switch to edit mode or email <a href="mailto:support@mallowcare.com">support@mallowcare.com</a>.</p>
+            </footer>
+          </article>
+
+          <article class="business-card">
+            <div class="business-card__header">
+              <div>
+                <h3>Verification Documents</h3>
+                <p>Keep required documents current to maintain uninterrupted employee benefits.</p>
+              </div>
+              <button class="business-button business-button--ghost" type="button">Manage documents</button>
+            </div>
+            <ul class="document-list" aria-label="Verification documents">
+              <li class="document-item">
+                <div class="document-item__details">
+                  <h4>Articles of Incorporation</h4>
+                  <p>Uploaded Feb 12, 2025</p>
+                </div>
+                <span class="status-pill status-success">Approved</span>
+                <button class="business-button business-button--ghost" type="button">View</button>
+              </li>
+              <li class="document-item">
+                <div class="document-item__details">
+                  <h4>IRS Form W-9</h4>
+                  <p>Uploaded Jan 28, 2025</p>
+                </div>
+                <span class="status-pill status-warning">In Review</span>
+                <button class="business-button business-button--ghost" type="button">View</button>
+              </li>
+              <li class="document-item">
+                <div class="document-item__details">
+                  <h4>Beneficiary Policy</h4>
+                  <p>Requested Mar 04, 2025</p>
+                </div>
+                <span class="status-pill status-pending">Requested</span>
+                <button class="business-button business-button--ghost" type="button">Upload</button>
+              </li>
+              <li class="document-item">
+                <div class="document-item__details">
+                  <h4>State Registration</h4>
+                  <p>Uploaded Nov 20, 2024</p>
+                </div>
+                <span class="status-pill status-success">Approved</span>
+                <button class="business-button business-button--ghost" type="button">View</button>
+              </li>
+            </ul>
+          </article>
+
+          <article class="business-card">
+            <div class="business-card__header">
+              <div>
+                <h3>Language Preference</h3>
+                <p>Control how plan updates and onboarding resources appear for your team.</p>
+              </div>
+            </div>
+            <p class="language-selected"><strong>Primary language:</strong> <span data-language-display>English (US)</span></p>
+            <div class="language-options" role="group" aria-label="Language preference">
+              <button class="business-chip is-selected" type="button" data-language-option="en">English</button>
+              <button class="business-chip" type="button" data-language-option="es">Español</button>
+              <button class="business-chip" type="button" data-language-option="pt">Português</button>
+            </div>
+            <p class="business-card__footnote">Team notifications and billing reminders will use this language.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="business-panel" data-business-panel="edit" aria-labelledby="edit-heading">
+        <h2 id="edit-heading" class="sr-only">Edit details</h2>
+        <div class="business-grid">
+          <article class="business-card business-card--full">
+            <form id="businessContactForm" class="business-form" autocomplete="on">
+              <div class="business-card__header">
+                <div>
+                  <h3>Contact Information</h3>
+                  <p>Update core business details so your benefits never miss an important update.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Company name</span>
+                  <input type="text" name="companyName" value="Spacebridge Studio LLC" autocomplete="organization" required>
+                </label>
+                <label class="form-field">
+                  <span>Primary contact</span>
+                  <input type="text" name="primaryContact" value="Ana Velásquez" autocomplete="name" required>
+                </label>
+                <label class="form-field">
+                  <span>Work email</span>
+                  <input type="email" name="workEmail" value="ana.velasquez@spacebridge.co" autocomplete="email" required>
+                </label>
+                <label class="form-field">
+                  <span>Work phone</span>
+                  <input type="tel" name="workPhone" value="+1 (305) 555-9823" autocomplete="tel" required>
+                </label>
+                <label class="form-field">
+                  <span>Headquarters street</span>
+                  <input type="text" name="hqStreet" value="8290 NW 27th Street" autocomplete="street-address" required>
+                </label>
+                <label class="form-field">
+                  <span>Suite or unit</span>
+                  <input type="text" name="hqUnit" value="Suite 400" autocomplete="address-line2">
+                </label>
+                <label class="form-field">
+                  <span>City</span>
+                  <input type="text" name="hqCity" value="Doral" autocomplete="address-level2" required>
+                </label>
+                <label class="form-field">
+                  <span>State</span>
+                  <input type="text" name="hqState" value="FL" autocomplete="address-level1" required>
+                </label>
+                <label class="form-field">
+                  <span>Postal code</span>
+                  <input type="text" name="hqPostal" value="33122" autocomplete="postal-code" required>
+                </label>
+                <label class="form-field">
+                  <span>Tax ID (EIN)</span>
+                  <input type="text" name="taxId" value="65-9182034" autocomplete="off" required>
+                </label>
+                <label class="form-field">
+                  <span>Employees covered</span>
+                  <input type="number" name="employeesCovered" value="48" min="0" required>
+                </label>
+                <label class="form-field">
+                  <span>Billing cadence</span>
+                  <select name="billingCadence" required>
+                    <option value="monthly" selected>Monthly on the 15th</option>
+                    <option value="quarterly">Quarterly on the 1st</option>
+                    <option value="annually">Annually on enrollment date</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-actions">
+                <button class="business-button business-button--ghost" type="button" data-action="cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit">Save changes</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="business-card">
+            <form id="businessDocumentsForm" class="business-form">
+              <div class="business-card__header">
+                <div>
+                  <h3>Verification Documents</h3>
+                  <p>Upload refreshed documentation or update review statuses from your compliance workspace.</p>
+                </div>
+                <button class="business-button business-button--ghost" type="button">Add document</button>
+              </div>
+              <div class="document-editor">
+                <div class="document-editor__row">
+                  <div class="document-editor__details">
+                    <h4>Articles of Incorporation</h4>
+                    <p>PDF · Last uploaded Feb 12, 2025</p>
+                  </div>
+                  <div class="document-editor__status">
+                    <label>
+                      <span>Status</span>
+                      <select name="docArticles" data-status-pill="docArticles">
+                        <option value="approved" selected>Approved</option>
+                        <option value="review">In Review</option>
+                        <option value="requested">Requested</option>
+                      </select>
+                    </label>
+                    <span class="status-pill status-success" data-status-pill-target="docArticles">Approved</span>
+                  </div>
+                  <div class="document-editor__actions">
+                    <button class="business-button business-button--ghost" type="button">Upload new</button>
+                  </div>
+                </div>
+                <div class="document-editor__row">
+                  <div class="document-editor__details">
+                    <h4>IRS Form W-9</h4>
+                    <p>PDF · Last uploaded Jan 28, 2025</p>
+                  </div>
+                  <div class="document-editor__status">
+                    <label>
+                      <span>Status</span>
+                      <select name="docW9" data-status-pill="docW9">
+                        <option value="approved">Approved</option>
+                        <option value="review" selected>In Review</option>
+                        <option value="requested">Requested</option>
+                      </select>
+                    </label>
+                    <span class="status-pill status-warning" data-status-pill-target="docW9">In Review</span>
+                  </div>
+                  <div class="document-editor__actions">
+                    <button class="business-button business-button--ghost" type="button">Upload new</button>
+                  </div>
+                </div>
+                <div class="document-editor__row">
+                  <div class="document-editor__details">
+                    <h4>Beneficiary Policy</h4>
+                    <p>None on file · Requested Mar 04, 2025</p>
+                  </div>
+                  <div class="document-editor__status">
+                    <label>
+                      <span>Status</span>
+                      <select name="docPolicy" data-status-pill="docPolicy">
+                        <option value="approved">Approved</option>
+                        <option value="review">In Review</option>
+                        <option value="requested" selected>Requested</option>
+                      </select>
+                    </label>
+                    <span class="status-pill status-pending" data-status-pill-target="docPolicy">Requested</span>
+                  </div>
+                  <div class="document-editor__actions">
+                    <button class="business-button business-button--primary" type="button">Request upload</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="business-button business-button--ghost" type="button" data-action="cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit">Save updates</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="business-card">
+            <form id="businessLanguageForm" class="business-form">
+              <div class="business-card__header">
+                <div>
+                  <h3>Language Preference</h3>
+                  <p>Select the default language for notifications and onboarding.</p>
+                </div>
+              </div>
+              <div class="form-grid single-column">
+                <label class="form-field">
+                  <span>Preferred language</span>
+                  <select id="languageSelect" name="preferredLanguage">
+                    <option value="en" selected>English (US)</option>
+                    <option value="es">Español (LatAm)</option>
+                    <option value="pt">Português (Brasil)</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>Internal notes</span>
+                  <textarea name="languageNotes" rows="3" placeholder="Share context for our onboarding team"></textarea>
+                </label>
+              </div>
+              <div class="form-actions">
+                <button class="business-button business-button--ghost" type="button" data-action="cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit">Update preference</button>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="business-profile.js"></script>
+</body>
+</html>
