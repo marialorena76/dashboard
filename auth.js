@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const individualLoginForm = document.querySelector('form');
-  const businessLoginForm = document.querySelector('form');
+  const individualLoginForm = document.getElementById('individual-login-form');
+  const businessLoginForm = document.getElementById('business-login-form');
 
-  if (individualLoginForm && window.location.pathname.includes('individual-login.html')) {
+  if (individualLoginForm) {
     individualLoginForm.addEventListener('submit', (event) => {
       event.preventDefault();
       localStorage.setItem('userType', 'individual');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (businessLoginForm && window.location.pathname.includes('business-login.html')) {
+  if (businessLoginForm) {
     businessLoginForm.addEventListener('submit', (event) => {
       event.preventDefault();
       localStorage.setItem('userType', 'business');
