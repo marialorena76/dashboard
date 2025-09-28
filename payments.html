@@ -13,46 +13,46 @@
   <div class="dashboard">
     <aside class="sidebar">
       <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
+        <img src="images/foto_personal(1).jpg" alt="Profile picture">
         <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+        <p data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-        <a href="my-profile.html">My Account</a>
-        <a href="payments.html" class="active">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
+        <a href="my-profile.html" data-i18n-key="menu_my_account">My Account</a>
+        <a href="payments.html" class="active" data-i18n-key="menu_payments">Payments</a>
+        <a href="#" data-i18n-key="menu_help">Help</a>
+        <a href="settings.html" data-i18n-key="menu_settings">Settings</a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang">
-          <button>English</button>
-          <button>Español</button>
+          <button data-lang="en" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
       </div>
     </aside>
     <main class="main-content payments">
-      <div class="breadcrumb">Dashboard - Payments</div>
+      <div class="breadcrumb" data-i18n-key="payments_breadcrumb">Dashboard - Payments</div>
       <header class="page-heading">
-        <h1>My Payments</h1>
-        <p class="page-heading__subtitle">Review your active card, update billing details, or add a new payment method in just a few steps.</p>
+        <h1 data-i18n-key="payments_title">My Payments</h1>
+        <p class="page-heading__subtitle" data-i18n-key="payments_subtitle">Review your active card, update billing details, or add a new payment method in just a few steps.</p>
       </header>
       <div class="page-feedback" data-feedback role="status" aria-live="polite" hidden></div>
 
       <section class="section-card payment-summary" id="currentPaymentCard">
         <div class="payment-summary__details">
-          <h2>Current Payment Method</h2>
+          <h2 data-i18n-key="payments_current_method_title">Current Payment Method</h2>
           <p class="payment-summary__method" data-summary="method">Visa •••• 4321</p>
           <p class="payment-summary__meta" data-summary="meta">Maria Thompson · Exp 09/27</p>
           <div class="payment-summary__status">
-            <span class="status-pill status-pill--success" data-summary="autopay">Autopay Active</span>
+            <span class="status-pill status-pill--success" data-summary="autopay" data-i18n-key="payments_autopay_active">Autopay Active</span>
             <span class="payment-summary__next" data-summary="next">Next payment Sep 15, 2025</span>
           </div>
           <p class="payment-summary__address" data-summary="address">123 Garden Avenue, Austin, TX 78704</p>
         </div>
         <div class="payment-summary__actions">
-          <button type="button" id="openEdit">Edit Payment Method</button>
-          <button type="button" id="openAdd" class="ghost">Add Payment Method</button>
+          <button type="button" id="openEdit" data-i18n-key="payments_edit_method_button">Edit Payment Method</button>
+          <button type="button" id="openAdd" class="ghost" data-i18n-key="payments_add_method_button">Add Payment Method</button>
         </div>
       </section>
 
@@ -60,101 +60,101 @@
         <div class="payment-forms__grid">
           <form class="section-card payment-form-card" id="editPaymentForm">
             <div class="payment-form-card__header">
-              <h2>Edit Current Payment Method</h2>
-              <p>Update the billing details that appear on your monthly invoices.</p>
+              <h2 data-i18n-key="payments_edit_form_title">Edit Current Payment Method</h2>
+              <p data-i18n-key="payments_edit_form_subtitle">Update the billing details that appear on your monthly invoices.</p>
             </div>
             <div class="form-columns">
               <div class="form-column">
                 <div class="form-group">
-                  <label for="editMethod">Payment Method Name</label>
+                  <label for="editMethod" data-i18n-key="payments_form_method_name">Payment Method Name</label>
                   <input type="text" id="editMethod" name="method" required>
                 </div>
                 <div class="form-group">
-                  <label for="editCardholder">Cardholder Name</label>
+                  <label for="editCardholder" data-i18n-key="payments_form_cardholder_name">Cardholder Name</label>
                   <input type="text" id="editCardholder" name="cardholder" required>
                 </div>
               </div>
               <div class="form-column">
                 <div class="form-group">
-                  <label for="editCard">Card Number</label>
+                  <label for="editCard" data-i18n-key="payments_form_card_number">Card Number</label>
                   <input type="text" id="editCard" name="cardNumber" inputmode="numeric" autocomplete="cc-number" required>
                 </div>
                 <div class="form-group">
-                  <label for="editExp">Expiration Date</label>
+                  <label for="editExp" data-i18n-key="payments_form_expiry_date">Expiration Date</label>
                   <input type="text" id="editExp" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" required>
                 </div>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="editAutopay">Autopay Status</label>
+                <label for="editAutopay" data-i18n-key="payments_form_autopay_status">Autopay Status</label>
                 <select id="editAutopay" name="autopay">
-                  <option value="active">Active</option>
-                  <option value="paused">Paused</option>
+                  <option value="active" data-i18n-key="option_active">Active</option>
+                  <option value="paused" data-i18n-key="option_paused">Paused</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="editNextPayment">Next Payment Date</label>
+                <label for="editNextPayment" data-i18n-key="payments_form_next_payment_date">Next Payment Date</label>
                 <input type="date" id="editNextPayment" name="nextPayment" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="editAddress">Billing Address</label>
+              <label for="editAddress" data-i18n-key="payments_form_billing_address">Billing Address</label>
               <input type="text" id="editAddress" name="billingAddress" required>
             </div>
             <div class="form-actions">
-              <button type="button" class="cancel" data-close-forms>Cancel</button>
-              <button type="submit">Save Changes</button>
+              <button type="button" class="cancel" data-close-forms data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" data-i18n-key="button_save_changes">Save Changes</button>
             </div>
           </form>
 
           <form class="section-card payment-form-card" id="addPaymentForm">
             <div class="payment-form-card__header">
-              <h2>Add New Payment Method</h2>
-              <p>Store an additional card on file and switch to it when you are ready.</p>
+              <h2 data-i18n-key="payments_add_form_title">Add New Payment Method</h2>
+              <p data-i18n-key="payments_add_form_subtitle">Store an additional card on file and switch to it when you are ready.</p>
             </div>
             <div class="form-columns">
               <div class="form-column">
                 <div class="form-group">
-                  <label for="addMethod">Payment Method Name</label>
+                  <label for="addMethod" data-i18n-key="payments_form_method_name">Payment Method Name</label>
                   <input type="text" id="addMethod" name="method" placeholder="Visa, Mastercard…" required>
                 </div>
                 <div class="form-group">
-                  <label for="addCardholder">Cardholder Name</label>
+                  <label for="addCardholder" data-i18n-key="payments_form_cardholder_name">Cardholder Name</label>
                   <input type="text" id="addCardholder" name="cardholder" required>
                 </div>
               </div>
               <div class="form-column">
                 <div class="form-group">
-                  <label for="addCard">Card Number</label>
+                  <label for="addCard" data-i18n-key="payments_form_card_number">Card Number</label>
                   <input type="text" id="addCard" name="cardNumber" inputmode="numeric" autocomplete="cc-number" required>
                 </div>
                 <div class="form-group">
-                  <label for="addExp">Expiration Date</label>
+                  <label for="addExp" data-i18n-key="payments_form_expiry_date">Expiration Date</label>
                   <input type="text" id="addExp" name="expiry" placeholder="MM/YY" autocomplete="cc-exp" required>
                 </div>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="addAutopay">Autopay Status</label>
+                <label for="addAutopay" data-i18n-key="payments_form_autopay_status">Autopay Status</label>
                 <select id="addAutopay" name="autopay">
-                  <option value="active">Active</option>
-                  <option value="paused">Paused</option>
+                  <option value="active" data-i18n-key="option_active">Active</option>
+                  <option value="paused" data-i18n-key="option_paused">Paused</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="addNextPayment">Next Payment Date</label>
+                <label for="addNextPayment" data-i18n-key="payments_form_next_payment_date">Next Payment Date</label>
                 <input type="date" id="addNextPayment" name="nextPayment">
               </div>
             </div>
             <div class="form-group">
-              <label for="addAddress">Billing Address</label>
+              <label for="addAddress" data-i18n-key="payments_form_billing_address">Billing Address</label>
               <input type="text" id="addAddress" name="billingAddress" placeholder="123 Main St, City, ST 12345" required>
             </div>
             <div class="form-actions">
-              <button type="button" class="cancel" data-close-forms>Cancel</button>
-              <button type="submit">Add Payment Method</button>
+              <button type="button" class="cancel" data-close-forms data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" data-i18n-key="payments_add_method_button">Add Payment Method</button>
             </div>
           </form>
         </div>
@@ -163,22 +163,22 @@
       <section class="section-card payment-history">
         <div class="payment-history__header">
           <div>
-            <h2>Payment History</h2>
-            <p>Track recent charges, their status, and download receipts.</p>
+            <h2 data-i18n-key="payments_history_title">Payment History</h2>
+            <p data-i18n-key="payments_history_subtitle">Track recent charges, their status, and download receipts.</p>
           </div>
           <label class="payment-history__search" for="paymentSearch">
-            <span class="sr-only">Search payments</span>
-            <input type="search" id="paymentSearch" placeholder="Search payments">
+            <span class="sr-only" data-i18n-key="payments_search_placeholder">Search payments</span>
+            <input type="search" id="paymentSearch" data-i18n-key="payments_search_placeholder" placeholder="Search payments">
           </label>
         </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Status</th>
-                <th scope="col">Receipt</th>
+                <th scope="col" data-i18n-key="table_header_date">Date</th>
+                <th scope="col" data-i18n-key="table_header_amount">Amount</th>
+                <th scope="col" data-i18n-key="table_header_status">Status</th>
+                <th scope="col" data-i18n-key="table_header_receipt">Receipt</th>
               </tr>
             </thead>
             <tbody id="historyBody"></tbody>
@@ -187,6 +187,7 @@
       </section>
     </main>
   </div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="payments.js"></script>
 </body>

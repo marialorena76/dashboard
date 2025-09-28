@@ -13,21 +13,21 @@
   <div class="dashboard settings-dashboard">
     <aside class="sidebar">
       <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Portrait of Maria Thompson">
+        <img src="images/foto_personal(1).jpg" alt="Portrait of Maria Thompson">
         <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+        <p data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-        <a href="my-profile.html">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html" class="active">Settings</a>
+        <a href="my-profile.html" data-i18n-key="menu_my_account">My Account</a>
+        <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
+        <a href="#" data-i18n-key="menu_help">Help</a>
+        <a href="settings.html" class="active" data-i18n-key="menu_settings">Settings</a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang">
-          <button class="active">English</button>
-          <button>Español</button>
+          <button class="active" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
       </div>
     </aside>
@@ -35,29 +35,29 @@
     <main class="main-content settings-main">
       <header class="content-header settings-header">
         <div>
-          <span class="eyebrow">Account Center</span>
-          <h1>Settings</h1>
+          <span class="eyebrow" data-i18n-key="profile_account_center">Account Center</span>
+          <h1 data-i18n-key="settings_title">Settings</h1>
         </div>
-        <p class="member-since">Last reviewed April 4, 2024</p>
+        <p class="member-since" data-i18n-key="settings_last_reviewed">Last reviewed April 4, 2024</p>
       </header>
 
       <section class="settings-hero" aria-label="Account overview">
         <div class="hero-copy">
-          <h2>Keep your preferences in sync</h2>
-          <p>Control how Ivy keeps you informed, protect your account security, and manage the information we store for you.</p>
+          <h2 data-i18n-key="settings_hero_title">Keep your preferences in sync</h2>
+          <p data-i18n-key="settings_hero_subtitle">Control how Ivy keeps you informed, protect your account security, and manage the information we store for you.</p>
         </div>
         <dl class="hero-meta">
           <div>
-            <dt>Plan</dt>
+            <dt data-i18n-key="settings_plan_label">Plan</dt>
             <dd>Ivy Family Plus</dd>
           </div>
           <div>
-            <dt>Member ID</dt>
+            <dt data-i18n-key="form_member_id">Member ID</dt>
             <dd>MT-482195</dd>
           </div>
           <div>
-            <dt>Status</dt>
-            <dd class="status-pill success">Active</dd>
+            <dt data-i18n-key="settings_status_label">Status</dt>
+            <dd class="status-pill success" data-i18n-key="option_active">Active</dd>
           </div>
         </dl>
       </section>
@@ -66,32 +66,32 @@
         <aside class="settings-nav" aria-label="Settings sections">
           <div class="nav-heading">
             <span class="eyebrow">Ivy Settings</span>
-            <h2>Manage your experience</h2>
-            <p>Select a category to update how we stay connected and protect your membership.</p>
+            <h2 data-i18n-key="settings_nav_title">Manage your experience</h2>
+            <p data-i18n-key="settings_nav_subtitle">Select a category to update how we stay connected and protect your membership.</p>
           </div>
           <nav class="nav-links" role="tablist">
-            <button class="nav-link active" id="tabNotifications" type="button" role="tab" aria-selected="true" aria-controls="notificationsPanel" data-target="notificationsPanel">Notifications</button>
-            <button class="nav-link" id="tabPrivacy" type="button" role="tab" aria-selected="false" aria-controls="privacyPanel" data-target="privacyPanel">Privacy &amp; Security</button>
-            <button class="nav-link" id="tabData" type="button" role="tab" aria-selected="false" aria-controls="dataPanel" data-target="dataPanel">Data &amp; Privacy</button>
+            <button class="nav-link active" id="tabNotifications" type="button" role="tab" aria-selected="true" aria-controls="notificationsPanel" data-target="notificationsPanel" data-i18n-key="settings_nav_notifications">Notifications</button>
+            <button class="nav-link" id="tabPrivacy" type="button" role="tab" aria-selected="false" aria-controls="privacyPanel" data-target="privacyPanel" data-i18n-key="settings_nav_privacy">Privacy &amp; Security</button>
+            <button class="nav-link" id="tabData" type="button" role="tab" aria-selected="false" aria-controls="dataPanel" data-target="dataPanel" data-i18n-key="settings_nav_data">Data &amp; Privacy</button>
           </nav>
           <div class="nav-support">
-            <h3>Need assistance?</h3>
-            <p>Visit the help center to chat with a care specialist or explore common questions.</p>
-            <a href="#" class="support-link">Go to Help Center</a>
+            <h3 data-i18n-key="settings_support_title">Need assistance?</h3>
+            <p data-i18n-key="settings_support_subtitle">Visit the help center to chat with a care specialist or explore common questions.</p>
+            <a href="#" class="support-link" data-i18n-key="settings_support_link">Go to Help Center</a>
           </div>
         </aside>
 
         <div class="settings-content" role="presentation">
           <section id="notificationsPanel" class="settings-panel active" role="tabpanel" aria-labelledby="tabNotifications" tabindex="0">
             <header class="panel-header">
-              <h2 id="notificationsTitle">Notifications</h2>
-              <p>Choose the ways Ivy keeps you posted about policy updates, important reminders, and special programs.</p>
+              <h2 id="notificationsTitle" data-i18n-key="notifications_panel_title">Notifications</h2>
+              <p data-i18n-key="notifications_panel_subtitle">Choose the ways Ivy keeps you posted about policy updates, important reminders, and special programs.</p>
             </header>
             <div class="preference-list">
               <article class="preference-item">
                 <div class="preference-copy">
-                  <h3>Email notifications</h3>
-                  <p>Receive coverage updates, monthly summaries, and digital statements.</p>
+                  <h3 data-i18n-key="notifications_email_title">Email notifications</h3>
+                  <p data-i18n-key="notifications_email_subtitle">Receive coverage updates, monthly summaries, and digital statements.</p>
                 </div>
                 <label class="toggle" for="notifyEmail">
                   <input type="checkbox" id="notifyEmail" data-storage="notifyEmail" checked>
@@ -100,8 +100,8 @@
               </article>
               <article class="preference-item">
                 <div class="preference-copy">
-                  <h3>Mobile push</h3>
-                  <p>Be alerted instantly when there is new activity or a claim status change.</p>
+                  <h3 data-i18n-key="notifications_push_title">Mobile push</h3>
+                  <p data-i18n-key="notifications_push_subtitle">Be alerted instantly when there is new activity or a claim status change.</p>
                 </div>
                 <label class="toggle" for="notifyPush">
                   <input type="checkbox" id="notifyPush" data-storage="notifyPush" checked>
@@ -110,8 +110,8 @@
               </article>
               <article class="preference-item">
                 <div class="preference-copy">
-                  <h3>Text messages</h3>
-                  <p>Get short reminders about payments and time-sensitive appointments.</p>
+                  <h3 data-i18n-key="notifications_sms_title">Text messages</h3>
+                  <p data-i18n-key="notifications_sms_subtitle">Get short reminders about payments and time-sensitive appointments.</p>
                 </div>
                 <label class="toggle" for="notifySMS">
                   <input type="checkbox" id="notifySMS" data-storage="notifySMS" checked>
@@ -120,8 +120,8 @@
               </article>
               <article class="preference-item">
                 <div class="preference-copy">
-                  <h3>Monthly recap</h3>
-                  <p>Receive a once-a-month digest covering benefits usage and healthy living tips.</p>
+                  <h3 data-i18n-key="notifications_recap_title">Monthly recap</h3>
+                  <p data-i18n-key="notifications_recap_subtitle">Receive a once-a-month digest covering benefits usage and healthy living tips.</p>
                 </div>
                 <label class="toggle" for="notifySummary">
                   <input type="checkbox" id="notifySummary" data-storage="notifySummary">
@@ -130,41 +130,41 @@
               </article>
             </div>
             <div class="panel-actions">
-              <button class="button outline-button" type="button" data-action="resetNotifications">Reset</button>
-              <button class="button solid-button" type="button" id="saveNotifications">Save changes</button>
+              <button class="button outline-button" type="button" data-action="resetNotifications" data-i18n-key="button_reset">Reset</button>
+              <button class="button solid-button" type="button" id="saveNotifications" data-i18n-key="button_save_changes">Save changes</button>
             </div>
           </section>
 
           <section id="privacyPanel" class="settings-panel" role="tabpanel" aria-labelledby="tabPrivacy" tabindex="0">
             <header class="panel-header">
-              <h2 id="privacyTitle">Privacy &amp; Security</h2>
-              <p>Set up secure sign-in options and decide how Ivy protects your account.</p>
+              <h2 id="privacyTitle" data-i18n-key="privacy_panel_title">Privacy &amp; Security</h2>
+              <p data-i18n-key="privacy_panel_subtitle">Set up secure sign-in options and decide how Ivy protects your account.</p>
             </header>
             <div class="security-grid">
               <article class="security-item">
                 <div>
-                  <h3>Password</h3>
-                  <p>Update your password at least every 90 days to keep your details safe.</p>
+                  <h3 data-i18n-key="privacy_password_title">Password</h3>
+                  <p data-i18n-key="privacy_password_subtitle">Update your password at least every 90 days to keep your details safe.</p>
                 </div>
                 <div class="item-actions">
-                  <span class="status-pill neutral">Last changed 54 days ago</span>
-                  <button class="button ghost-button" type="button" data-action="openPasswordModal">Change</button>
+                  <span class="status-pill neutral" data-i18n-key="privacy_password_last_changed">Last changed 54 days ago</span>
+                  <button class="button ghost-button" type="button" data-action="openPasswordModal" data-i18n-key="button_change">Change</button>
                 </div>
               </article>
               <article class="security-item">
                 <div>
-                  <h3>Two-factor authentication</h3>
-                  <p>Use a one-time code whenever you sign in on a new device.</p>
+                  <h3 data-i18n-key="privacy_2fa_title">Two-factor authentication</h3>
+                  <p data-i18n-key="privacy_2fa_subtitle">Use a one-time code whenever you sign in on a new device.</p>
                 </div>
                 <div class="item-actions">
-                  <span class="status-pill" data-twofa-status>Disabled</span>
-                  <button class="button solid-button" type="button" data-action="toggleTwoFA">Enable</button>
+                  <span class="status-pill" data-twofa-status data-i18n-key="privacy_2fa_status_disabled">Disabled</span>
+                  <button class="button solid-button" type="button" data-action="toggleTwoFA" data-i18n-key="button_enable">Enable</button>
                 </div>
               </article>
               <article class="security-item">
                 <div>
-                  <h3>Login alerts</h3>
-                  <p>Get alerted if someone signs in from an unrecognized browser.</p>
+                  <h3 data-i18n-key="privacy_login_alerts_title">Login alerts</h3>
+                  <p data-i18n-key="privacy_login_alerts_subtitle">Get alerted if someone signs in from an unrecognized browser.</p>
                 </div>
                 <label class="toggle" for="loginAlerts">
                   <input type="checkbox" id="loginAlerts" data-storage="loginAlerts" data-auto-save="true" checked>
@@ -176,30 +176,30 @@
 
           <section id="dataPanel" class="settings-panel" role="tabpanel" aria-labelledby="tabData" tabindex="0">
             <header class="panel-header">
-              <h2 id="dataTitle">Data &amp; Privacy</h2>
-              <p>Download the information we store for you or manage requests to remove data.</p>
+              <h2 id="dataTitle" data-i18n-key="data_panel_title">Data &amp; Privacy</h2>
+              <p data-i18n-key="data_panel_subtitle">Download the information we store for you or manage requests to remove data.</p>
             </header>
             <div class="data-grid">
               <article class="data-item">
                 <div>
-                  <h3>Download my data</h3>
-                  <p>Receive a secure link with your claims, documents, and communications history.</p>
+                  <h3 data-i18n-key="data_download_title">Download my data</h3>
+                  <p data-i18n-key="data_download_subtitle">Receive a secure link with your claims, documents, and communications history.</p>
                 </div>
-                <button class="button solid-button" type="button" data-action="downloadData">Send download</button>
+                <button class="button solid-button" type="button" data-action="downloadData" data-i18n-key="button_send_download">Send download</button>
               </article>
               <article class="data-item">
                 <div>
-                  <h3>Export statements</h3>
-                  <p>Request PDF statements for your records and yearly tax filings.</p>
+                  <h3 data-i18n-key="data_export_title">Export statements</h3>
+                  <p data-i18n-key="data_export_subtitle">Request PDF statements for your records and yearly tax filings.</p>
                 </div>
-                <button class="button ghost-button" type="button" data-action="exportStatements">Export</button>
+                <button class="button ghost-button" type="button" data-action="exportStatements" data-i18n-key="button_export">Export</button>
               </article>
               <article class="data-item danger">
                 <div>
-                  <h3>Delete my account</h3>
-                  <p>This permanently removes your information after a 30-day review period.</p>
+                  <h3 data-i18n-key="data_delete_title">Delete my account</h3>
+                  <p data-i18n-key="data_delete_subtitle">This permanently removes your information after a 30-day review period.</p>
                 </div>
-                <button class="button danger-button" type="button" data-action="deleteAccount">Request removal</button>
+                <button class="button danger-button" type="button" data-action="deleteAccount" data-i18n-key="button_request_removal">Request removal</button>
               </article>
             </div>
           </section>
@@ -212,33 +212,34 @@
     <div class="modal-card">
       <header class="modal-header">
         <div>
-          <span class="eyebrow">Security</span>
-          <h2 id="passwordModalTitle">Change password</h2>
-          <p>Choose a unique password that you have not used elsewhere.</p>
+          <span class="eyebrow" data-i18n-key="modal_security_eyebrow">Security</span>
+          <h2 id="passwordModalTitle" data-i18n-key="modal_change_password_title">Change password</h2>
+          <p data-i18n-key="modal_change_password_subtitle">Choose a unique password that you have not used elsewhere.</p>
         </div>
         <button class="modal-close" type="button" data-action="closePasswordModal" aria-label="Close dialog">&times;</button>
       </header>
       <form id="passwordForm" class="modal-form">
         <label class="modal-field" for="currentPassword">
-          <span>Current password</span>
+          <span data-i18n-key="modal_current_password">Current password</span>
           <input type="password" id="currentPassword" name="currentPassword" required autocomplete="current-password">
         </label>
         <label class="modal-field" for="newPassword">
-          <span>New password</span>
+          <span data-i18n-key="modal_new_password">New password</span>
           <input type="password" id="newPassword" name="newPassword" minlength="8" required autocomplete="new-password">
         </label>
         <label class="modal-field" for="confirmPassword">
-          <span>Confirm new password</span>
+          <span data-i18n-key="modal_confirm_password">Confirm new password</span>
           <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" required autocomplete="new-password">
         </label>
-        <p class="password-hint">Use at least 8 characters with a mix of numbers, letters, and symbols.</p>
+        <p class="password-hint" data-i18n-key="modal_password_hint">Use at least 8 characters with a mix of numbers, letters, and symbols.</p>
         <div class="panel-actions">
-          <button class="button outline-button" type="button" data-action="closePasswordModal">Cancel</button>
-          <button class="button solid-button" type="submit">Save password</button>
+          <button class="button outline-button" type="button" data-action="closePasswordModal" data-i18n-key="button_cancel">Cancel</button>
+          <button class="button solid-button" type="submit" data-i18n-key="button_save_password">Save password</button>
         </div>
       </form>
     </div>
   </div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="settings.js"></script>
 </body>
