@@ -168,6 +168,14 @@ button {
   color: rgba(245, 251, 248, 0.7);
 }
 
+.sidebar--enterprise .profile p {
+  color: rgba(245, 251, 248, 0.7);
+}
+
+.sidebar--enterprise .profile h2 {
+  color: #f5fbf8;
+}
+
 .enterprise-menu a {
   color: rgba(245, 251, 248, 0.86);
 }
