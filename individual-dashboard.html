@@ -10,57 +10,75 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard dashboard--enterprise">
-    <aside class="sidebar sidebar--enterprise">
-      <div class="profile">
-        <img src="images/foto_personal(1).jpg" alt="Profile picture">
-        <h2>Maria Thompson</h2>
-        <p data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</p>
+  <div class="dashboard new-dashboard">
+    <aside class="sidebar new-sidebar">
+      <div class="logo-container">
+        <img src="images/logo-white.png" alt="MallowCare Logo" class="sidebar-logo">
       </div>
-      <nav class="menu">
-        <a href="my-profile.html" class="active" data-i18n-key="menu_my_account">My Account</a>
-        <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
-        <a href="settings.html" data-i18n-key="menu_settings">Settings</a>
+      <nav class="menu new-menu">
+        <a href="#" class="active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> <span data-i18n-key="sidebar_my_plan">My Plan</span></a>
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> <span data-i18n-key="sidebar_members">Members</span></a>
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> <span data-i18n-key="sidebar_appointments">Appointments</span></a>
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> <span data-i18n-key="sidebar_messages">Messages</span></a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout" data-i18n-key="logout_button">Log Out</button>
-        <div class="lang">
-          <button data-lang="en" data-i18n-key="lang_english">English</button>
-          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
-        </div>
+        <a href="#" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span data-i18n-key="sidebar_help">Help & Support</span></a>
+        <a href="#" class="menu-item logout" data-i18n-key="logout_button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
       </div>
     </aside>
-    <main class="main-content">
-      <section class="hero-top"></section>
-      <section class="welcome">
-        <h1 data-i18n-key="dashboard_welcome_back">Welcome back, Maria</h1>
-        <div class="status-cards">
-          <div class="card">
-            <h3 data-i18n-key="plan_status_title">Your Plan Status</h3>
-            <p class="active" data-i18n-key="plan_status_value">ACTIVE</p>
+    <main class="main-content new-main-content">
+      <header class="main-header">
+        <h1 data-i18n-key="header_welcome">Welcome back, Maria!</h1>
+        <div class="header-actions">
+          <div class="lang-switcher">
+            <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
           </div>
-          <div class="card">
-            <h3 data-i18n-key="coverage_title">Your Coverage</h3>
-            <p data-i18n-key="coverage_value">Up to $100,000</p>
-          </div>
-          <div class="card">
-            <h3 data-i18n-key="next_payment_title">Next Payment</h3>
-            <p data-i18n-key="next_payment_value">Due Oct 15, 2025</p>
-          </div>
+          <img src="images/foto_personal(1).jpg" alt="Profile picture" class="profile-avatar">
         </div>
-        <div class="actions">
-          <button data-i18n-key="update_profile_button">Update My Profile</button>
-          <button data-i18n-key="manage_plan_button">Manage My Plan</button>
-          <button data-i18n-key="add_family_member_button">Add a Family Member</button>
-          <button data-i18n-key="manage_alerts_button">Manage Alerts</button>
+      </header>
+      <div class="content-grid">
+        <div class="grid-left">
+          <section class="card profile-card">
+            <h2 data-i18n-key="profile_card_title">Complete your profile</h2>
+            <p data-i18n-key="profile_card_subtitle">Finish your profile to get the most out of MallowCare.</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 60%;"></div>
+            </div>
+            <p class="progress-text" data-i18n-key="profile_card_progress">3/5 steps completed</p>
+            <button class="button primary-button" data-i18n-key="profile_card_button">Continue</button>
+          </section>
         </div>
-      </section>
-      <section class="promo">
-        <div class="promo-text">
-          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
-          <p data-i18n-key="promo_text_meta">©2025 MallowCare | Privacy Policy</p>
+        <div class="grid-right">
+          <section class="card appointments-card">
+            <div class="card-header">
+              <h2 data-i18n-key="appointments_card_title">Upcoming appointments</h2>
+              <a href="#" class="view-all" data-i18n-key="appointments_card_view_all">View all</a>
+            </div>
+            <div class="appointment">
+              <div class="time-box">
+                <p data-i18n-key="appointment_1_time">9:30 AM</p>
+              </div>
+              <div class="appointment-details">
+                <h3 data-i18n-key="appointment_1_title">Virtual Consultation</h3>
+                <p data-i18n-key="appointment_1_doctor">Dr. Emily Carter</p>
+              </div>
+              <button class="button secondary-button" data-i18n-key="appointment_button">Join call</button>
+            </div>
+            <div class="appointment">
+              <div class="time-box">
+                <p data-i18n-key="appointment_2_time">11:00 AM</p>
+              </div>
+              <div class="appointment-details">
+                <h3 data-i18n-key="appointment_2_title">Follow-up</h3>
+                <p data-i18n-key="appointment_2_doctor">Dr. Michael Smith</p>
+              </div>
+              <button class="button secondary-button" data-i18n-key="appointment_button">Join call</button>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </main>
   </div>
   <script src="i18n.js"></script>
