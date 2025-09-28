@@ -15,54 +15,55 @@
       <div class="profile">
         <img src="images/foto_personal(1).jpg" alt="Profile picture">
         <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+        <p data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="settings.html">Settings</a>
+        <a href="my-profile.html" class="active" data-i18n-key="menu_my_account">My Account</a>
+        <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
+        <a href="settings.html" data-i18n-key="menu_settings">Settings</a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang">
-          <button>English</button>
-          <button>Español</button>
+          <button data-lang="en" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
       </div>
     </aside>
     <main class="main-content">
       <section class="hero-top"></section>
       <section class="welcome">
-        <h1>Welcome back, Maria</h1>
+        <h1 data-i18n-key="dashboard_welcome_back">Welcome back, Maria</h1>
         <div class="status-cards">
           <div class="card">
-            <h3>Your Plan Status</h3>
-            <p class="active">ACTIVE</p>
+            <h3 data-i18n-key="plan_status_title">Your Plan Status</h3>
+            <p class="active" data-i18n-key="plan_status_value">ACTIVE</p>
           </div>
           <div class="card">
-            <h3>Your Coverage</h3>
-            <p>Up to $100,000</p>
+            <h3 data-i18n-key="coverage_title">Your Coverage</h3>
+            <p data-i18n-key="coverage_value">Up to $100,000</p>
           </div>
           <div class="card">
-            <h3>Next Payment</h3>
-            <p>Due Oct 15, 2025</p>
+            <h3 data-i18n-key="next_payment_title">Next Payment</h3>
+            <p data-i18n-key="next_payment_value">Due Oct 15, 2025</p>
           </div>
         </div>
         <div class="actions">
-          <button>Update My Profile</button>
-          <button>Manage My Plan</button>
-          <button>Add a Family Member</button>
-          <button>Manage Alerts</button>
+          <button data-i18n-key="update_profile_button">Update My Profile</button>
+          <button data-i18n-key="manage_plan_button">Manage My Plan</button>
+          <button data-i18n-key="add_family_member_button">Add a Family Member</button>
+          <button data-i18n-key="manage_alerts_button">Manage Alerts</button>
         </div>
       </section>
       <section class="promo">
         <div class="promo-text">
-          <h2>Human-centered benefits for your team.</h2>
-          <p>&copy;2025 MallowCare | Privacy Policy</p>
+          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
+          <p data-i18n-key="promo_text_meta">©2025 MallowCare | Privacy Policy</p>
         </div>
       </section>
     </main>
   </div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

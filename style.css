@@ -27,6 +27,34 @@ body {
   font-size: 1.25rem;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-switcher button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.lang-switcher button:hover,
+.lang-switcher button.active {
+  background: #fff;
+  color: var(--primary);
+}
+
 .login-button {
   background: #fff;
   color: var(--primary);

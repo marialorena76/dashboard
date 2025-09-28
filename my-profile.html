@@ -13,21 +13,21 @@
   <div class="dashboard profile-dashboard">
     <aside class="sidebar">
       <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Portrait of Maria Thompson">
+        <img src="images/foto_personal(1).jpg" alt="Portrait of Maria Thompson">
         <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+        <p data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</p>
       </div>
       <nav class="menu">
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
+        <a href="my-profile.html" class="active" data-i18n-key="menu_my_account">My Account</a>
+        <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
+        <a href="#" data-i18n-key="menu_help">Help</a>
+        <a href="settings.html" data-i18n-key="menu_settings">Settings</a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang">
-          <button class="active">English</button>
-          <button>Español</button>
+          <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
       </div>
     </aside>
@@ -35,17 +35,17 @@
     <main class="main-content profile-details">
       <header class="content-header">
         <div>
-          <span class="eyebrow">Account Center</span>
-          <h1>My Profile</h1>
+          <span class="eyebrow" data-i18n-key="profile_account_center">Account Center</span>
+          <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
         </div>
-        <p class="member-since">Member since March 2023</p>
+        <p class="member-since" data-i18n-key="profile_member_since">Member since March 2023</p>
       </header>
 
       <section class="info-card personal-card">
         <div class="card-header">
           <div>
-            <h2>Personal Details</h2>
-            <p>Update your contact information so we can reach you without delays.</p>
+            <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
+            <p data-i18n-key="profile_personal_details_subtitle">Update your contact information so we can reach you without delays.</p>
           </div>
           <div class="profile-glyph" aria-hidden="true">
             <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="presentation">
@@ -57,61 +57,61 @@
         <form id="personalForm" class="details-form">
           <div class="form-grid two-column">
             <label class="form-field">
-              <span>First Name</span>
+              <span data-i18n-key="form_first_name">First Name</span>
               <input type="text" name="firstName" value="Maria" autocomplete="given-name" required>
             </label>
             <label class="form-field">
-              <span>Last Name</span>
+              <span data-i18n-key="form_last_name">Last Name</span>
               <input type="text" name="lastName" value="Thompson" autocomplete="family-name" required>
             </label>
             <label class="form-field">
-              <span>Email Address</span>
+              <span data-i18n-key="form_email_address">Email Address</span>
               <input type="email" name="email" value="maria.thompson@email.com" autocomplete="email" required>
             </label>
             <label class="form-field">
-              <span>Phone Number</span>
+              <span data-i18n-key="form_phone_number">Phone Number</span>
               <input type="tel" name="phone" value="+1 (555) 123-4567" autocomplete="tel" required>
             </label>
             <label class="form-field">
-              <span>Date of Birth</span>
+              <span data-i18n-key="form_dob">Date of Birth</span>
               <input type="date" name="dob" value="1988-07-12" autocomplete="bday" required>
             </label>
             <label class="form-field">
-              <span>Member ID</span>
+              <span data-i18n-key="form_member_id">Member ID</span>
               <input type="text" name="memberId" value="MT-482195" autocomplete="off" required>
             </label>
             <label class="form-field">
-              <span>Address Line 1</span>
+              <span data-i18n-key="form_address1">Address Line 1</span>
               <input type="text" name="address1" value="123 Main Street" autocomplete="address-line1" required>
             </label>
             <label class="form-field">
-              <span>Address Line 2</span>
+              <span data-i18n-key="form_address2">Address Line 2</span>
               <input type="text" name="address2" value="Unit 402" autocomplete="address-line2">
             </label>
             <label class="form-field">
-              <span>City</span>
+              <span data-i18n-key="form_city">City</span>
               <input type="text" name="city" value="Miami" autocomplete="address-level2" required>
             </label>
             <label class="form-field">
-              <span>State</span>
+              <span data-i18n-key="form_state">State</span>
               <input type="text" name="state" value="FL" autocomplete="address-level1" required>
             </label>
             <label class="form-field">
-              <span>Postal Code</span>
+              <span data-i18n-key="form_postal_code">Postal Code</span>
               <input type="text" name="postal" value="33130" autocomplete="postal-code" required>
             </label>
             <label class="form-field">
-              <span>Preferred Contact Method</span>
+              <span data-i18n-key="form_contact_method">Preferred Contact Method</span>
               <select name="contactMethod" required>
-                <option value="email" selected>Email</option>
-                <option value="phone">Phone</option>
-                <option value="sms">Text Message</option>
+                <option value="email" selected data-i18n-key="option_email">Email</option>
+                <option value="phone" data-i18n-key="option_phone">Phone</option>
+                <option value="sms" data-i18n-key="option_sms">Text Message</option>
               </select>
             </label>
           </div>
           <div class="form-actions">
-            <button type="button" class="button outline-button" data-action="cancel">Cancel</button>
-            <button type="submit" class="button solid-button">Save Changes</button>
+            <button type="button" class="button outline-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+            <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save Changes</button>
           </div>
         </form>
       </section>
@@ -119,62 +119,62 @@
       <section class="info-card beneficiary-card">
         <div class="card-header">
           <div>
-            <h2>My Beneficiary</h2>
-            <p>Share who should receive your benefits and how to contact them.</p>
+            <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
+            <p data-i18n-key="profile_beneficiary_subtitle">Share who should receive your benefits and how to contact them.</p>
           </div>
         </div>
         <form id="beneficiaryForm" class="details-form">
           <div class="form-grid two-column">
             <label class="form-field">
-              <span>Full Name</span>
+              <span data-i18n-key="form_full_name">Full Name</span>
               <input type="text" name="beneficiaryName" value="Nicole Thompson" required>
             </label>
             <label class="form-field">
-              <span>Relationship</span>
+              <span data-i18n-key="form_relationship">Relationship</span>
               <select name="relationship" required>
-                <option value="spouse">Spouse</option>
-                <option value="child" selected>Child</option>
-                <option value="parent">Parent</option>
-                <option value="sibling">Sibling</option>
-                <option value="other">Other</option>
+                <option value="spouse" data-i18n-key="option_spouse">Spouse</option>
+                <option value="child" selected data-i18n-key="option_child">Child</option>
+                <option value="parent" data-i18n-key="option_parent">Parent</option>
+                <option value="sibling" data-i18n-key="option_sibling">Sibling</option>
+                <option value="other" data-i18n-key="option_other">Other</option>
               </select>
             </label>
             <label class="form-field">
-              <span>Email Address</span>
+              <span data-i18n-key="form_email_address">Email Address</span>
               <input type="email" name="beneficiaryEmail" value="nicole.thompson@email.com" required>
             </label>
             <label class="form-field">
-              <span>Phone Number</span>
+              <span data-i18n-key="form_phone_number">Phone Number</span>
               <input type="tel" name="beneficiaryPhone" value="+1 (555) 987-6543" required>
             </label>
             <label class="form-field">
-              <span>Address Line 1</span>
+              <span data-i18n-key="form_address1">Address Line 1</span>
               <input type="text" name="beneficiaryAddress1" value="123 Biscayne Blvd" required>
             </label>
             <label class="form-field">
-              <span>Address Line 2</span>
+              <span data-i18n-key="form_address2">Address Line 2</span>
               <input type="text" name="beneficiaryAddress2" value="Apartment 11B">
             </label>
             <label class="form-field">
-              <span>City</span>
+              <span data-i18n-key="form_city">City</span>
               <input type="text" name="beneficiaryCity" value="Miami" required>
             </label>
             <label class="form-field">
-              <span>State</span>
+              <span data-i18n-key="form_state">State</span>
               <input type="text" name="beneficiaryState" value="FL" required>
             </label>
             <label class="form-field">
-              <span>Postal Code</span>
+              <span data-i18n-key="form_postal_code">Postal Code</span>
               <input type="text" name="beneficiaryPostal" value="33132" required>
             </label>
             <label class="form-field">
-              <span>Percentage Allocation</span>
+              <span data-i18n-key="form_percentage_allocation">Percentage Allocation</span>
               <input type="number" name="beneficiaryPercentage" value="100" min="0" max="100" required>
             </label>
           </div>
           <div class="form-actions">
-            <button type="button" class="button outline-button" data-action="cancel">Cancel</button>
-            <button type="submit" class="button solid-button">Save Beneficiary</button>
+            <button type="button" class="button outline-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+            <button type="submit" class="button solid-button" data-i18n-key="button_save_beneficiary">Save Beneficiary</button>
           </div>
         </form>
       </section>
@@ -182,127 +182,128 @@
       <section class="info-card documents-card">
         <div class="card-header">
           <div>
-            <h2>Identification Documents</h2>
-            <p>Upload current identification so we can verify your eligibility and beneficiary claims.</p>
+            <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
+            <p data-i18n-key="profile_documents_subtitle">Upload current identification so we can verify your eligibility and beneficiary claims.</p>
           </div>
         </div>
         <form id="documentsForm" class="details-form documents-form">
           <article class="document-item">
             <div class="document-info">
-              <h3>Passport</h3>
-              <p>Upload a clear scan of the picture page.</p>
+              <h3 data-i18n-key="doc_passport">Passport</h3>
+              <p data-i18n-key="doc_passport_subtitle">Upload a clear scan of the picture page.</p>
             </div>
             <div class="document-fields">
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Status</span>
+                  <span data-i18n-key="form_status">Status</span>
                   <select name="passportStatus" data-status-pill="passportStatusPill">
-                    <option value="uploaded" selected>Uploaded</option>
-                    <option value="expiring">Expiring Soon</option>
-                    <option value="pending">Not Submitted</option>
+                    <option value="uploaded" selected data-i18n-key="option_uploaded">Uploaded</option>
+                    <option value="expiring" data-i18n-key="option_expiring">Expiring Soon</option>
+                    <option value="pending" data-i18n-key="option_not_submitted">Not Submitted</option>
                   </select>
                 </label>
                 <label class="form-field">
-                  <span>Expiration Date</span>
+                  <span data-i18n-key="form_expiration_date">Expiration Date</span>
                   <input type="date" name="passportExpiry" value="2026-03-02">
                 </label>
               </div>
               <div class="document-actions">
-                <span class="status-pill status-success" data-status-pill-target="passportStatusPill">Uploaded</span>
+                <span class="status-pill status-success" data-status-pill-target="passportStatusPill" data-i18n-key="option_uploaded">Uploaded</span>
                 <label class="button ghost-button file-upload">
                   <input type="file" name="passportFile" accept="image/*,.pdf" data-file-output="passportFileName" hidden>
-                  <span>Upload / Replace Document</span>
+                  <span data-i18n-key="button_upload_replace">Upload / Replace Document</span>
                 </label>
-                <span class="file-name" data-file-name="passportFileName" data-placeholder="No document uploaded">Passport_Maria.pdf</span>
+                <span class="file-name" data-file-name="passportFileName" data-placeholder-key="placeholder_no_document">Passport_Maria.pdf</span>
               </div>
             </div>
           </article>
           <article class="document-item">
             <div class="document-info">
-              <h3>Driver's License</h3>
-              <p>Ensure the address matches your current residence.</p>
+              <h3 data-i18n-key="doc_drivers_license">Driver's License</h3>
+              <p data-i18n-key="doc_drivers_license_subtitle">Ensure the address matches your current residence.</p>
             </div>
             <div class="document-fields">
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Status</span>
+                  <span data-i18n-key="form_status">Status</span>
                   <select name="licenseStatus" data-status-pill="licenseStatusPill">
-                    <option value="uploaded">Uploaded</option>
-                    <option value="expiring" selected>Expiring Soon</option>
-                    <option value="pending">Not Submitted</option>
+                    <option value="uploaded" data-i18n-key="option_uploaded">Uploaded</option>
+                    <option value="expiring" selected data-i18n-key="option_expiring">Expiring Soon</option>
+                    <option value="pending" data-i18n-key="option_not_submitted">Not Submitted</option>
                   </select>
                 </label>
                 <label class="form-field">
-                  <span>Expiration Date</span>
+                  <span data-i18n-key="form_expiration_date">Expiration Date</span>
                   <input type="date" name="licenseExpiry" value="2025-10-18">
                 </label>
               </div>
               <div class="document-actions">
-                <span class="status-pill status-warning" data-status-pill-target="licenseStatusPill">Expiring Soon</span>
+                <span class="status-pill status-warning" data-status-pill-target="licenseStatusPill" data-i18n-key="option_expiring">Expiring Soon</span>
                 <label class="button ghost-button file-upload">
                   <input type="file" name="licenseFile" accept="image/*,.pdf" data-file-output="licenseFileName" hidden>
-                  <span>Upload / Replace Document</span>
+                  <span data-i18n-key="button_upload_replace">Upload / Replace Document</span>
                 </label>
-                <span class="file-name" data-file-name="licenseFileName" data-placeholder="No document uploaded">DriversLicense_Maria.pdf</span>
+                <span class="file-name" data-file-name="licenseFileName" data-placeholder-key="placeholder_no_document">DriversLicense_Maria.pdf</span>
               </div>
             </div>
           </article>
           <article class="document-item">
             <div class="document-info">
-              <h3>Social Security</h3>
-              <p>Required for beneficiary payouts and tax reporting.</p>
+              <h3 data-i18n-key="doc_ssn">Social Security</h3>
+              <p data-i18n-key="doc_ssn_subtitle">Required for beneficiary payouts and tax reporting.</p>
             </div>
             <div class="document-fields">
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Status</span>
+                  <span data-i18n-key="form_status">Status</span>
                   <select name="ssnStatus" data-status-pill="ssnStatusPill">
-                    <option value="uploaded">Uploaded</option>
-                    <option value="expiring">Expiring Soon</option>
-                    <option value="pending" selected>Not Submitted</option>
+                    <option value="uploaded" data-i18n-key="option_uploaded">Uploaded</option>
+                    <option value="expiring" data-i18n-key="option_expiring">Expiring Soon</option>
+                    <option value="pending" selected data-i18n-key="option_not_submitted">Not Submitted</option>
                   </select>
                 </label>
                 <label class="form-field">
-                  <span>Last Updated</span>
+                  <span data-i18n-key="form_last_updated">Last Updated</span>
                   <input type="date" name="ssnUpdated" value="">
                 </label>
               </div>
               <div class="document-actions">
-                <span class="status-pill status-pending" data-status-pill-target="ssnStatusPill">Not Submitted</span>
+                <span class="status-pill status-pending" data-status-pill-target="ssnStatusPill" data-i18n-key="option_not_submitted">Not Submitted</span>
                 <label class="button ghost-button file-upload">
                   <input type="file" name="ssnFile" accept="image/*,.pdf" data-file-output="ssnFileName" hidden>
-                  <span>Upload Document</span>
+                  <span data-i18n-key="button_upload">Upload Document</span>
                 </label>
-                <span class="file-name" data-file-name="ssnFileName" data-placeholder="No document uploaded">No document uploaded</span>
+                <span class="file-name" data-file-name="ssnFileName" data-placeholder-key="placeholder_no_document" data-i18n-key="placeholder_no_document">No document uploaded</span>
               </div>
             </div>
           </article>
           <div class="form-actions">
-            <button type="button" class="button outline-button" data-action="cancel">Cancel</button>
-            <button type="submit" class="button solid-button">Save Documents</button>
+            <button type="button" class="button outline-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+            <button type="submit" class="button solid-button" data-i18n-key="button_save_documents">Save Documents</button>
           </div>
         </form>
       </section>
 
       <section class="info-card language-card">
         <div class="card-header">
-          <h2>Language Preference</h2>
+          <h2 data-i18n-key="profile_language_title">Language Preference</h2>
         </div>
         <div class="language-body">
           <div>
-            <p>Choose the language for emails, notifications, and support.</p>
+            <p data-i18n-key="profile_language_subtitle">Choose the language for emails, notifications, and support.</p>
             <label class="visually-hidden" for="languageSelect">Language</label>
             <select id="languageSelect" class="language-select">
-              <option value="en" selected>English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
+              <option value="en" selected data-i18n-key="lang_english">English</option>
+              <option value="es" data-i18n-key="lang_spanish">Español</option>
+              <option value="fr" data-i18n-key="lang_french">Français</option>
             </select>
           </div>
-          <button class="button outline-button" id="updateLang">Update Preference</button>
+          <button class="button outline-button" id="updateLang" data-i18n-key="button_update_preference">Update Preference</button>
         </div>
       </section>
     </main>
   </div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="profile.js"></script>
 </body>

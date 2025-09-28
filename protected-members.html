@@ -19,30 +19,30 @@
           <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
           <div class="enterprise-brand__text">
             <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub">Employer Portal</span>
+            <span class="enterprise-brand__sub" data-i18n-key="employer_portal">Employer Portal</span>
           </div>
         </div>
         <nav class="menu enterprise-menu" aria-label="Primary">
-          <a href="business-dashboard.html">Overview</a>
-          <a href="protected-members.html" class="active">Protected Team</a>
-          <a href="business-plans-billing.html">Plans &amp; Billing</a>
-          <a href="#">Support</a>
-          <a href="#">Settings</a>
+          <a href="business-dashboard.html" data-i18n-key="menu_overview">Overview</a>
+          <a href="protected-members.html" class="active" data-i18n-key="members_title">Protected Team</a>
+          <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans &amp; Billing</a>
+          <a href="#" data-i18n-key="menu_support">Support</a>
+          <a href="#" data-i18n-key="menu_settings">Settings</a>
         </nav>
         <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" type="button">Log Out</button>
+          <button class="logout" type="button" data-i18n-key="logout_button">Log Out</button>
           <div class="lang" role="group" aria-label="Language selection">
-            <button type="button" class="active">English</button>
-            <button type="button">Español</button>
+            <button type="button" class="active" data-lang="en" data-i18n-key="lang_english">English</button>
+            <button type="button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
           </div>
         </div>
       </aside>
 
       <main class="main-content main-content--enterprise">
         <header class="page-heading page-heading--enterprise">
-          <p class="breadcrumb">Dashboard • Protected Team</p>
-          <h1>Protected Team</h1>
-          <p class="page-heading__subtitle">
+          <p class="breadcrumb" data-i18n-key="members_breadcrumb">Dashboard • Protected Team</p>
+          <h1 data-i18n-key="members_title">Protected Team</h1>
+          <p class="page-heading__subtitle" data-i18n-key="members_subtitle">
             Keep your employee roster current and confirm coverage details before each payroll run.
           </p>
         </header>
@@ -50,40 +50,40 @@
         <section class="section-card members-table" aria-labelledby="protectedTeamHeading">
           <div class="members-table__header">
             <div>
-              <h2 id="protectedTeamHeading">Who's Protected</h2>
-              <p class="members-table__subtitle">
+              <h2 id="protectedTeamHeading" data-i18n-key="members_table_title">Who's Protected</h2>
+              <p class="members-table__subtitle" data-i18n-key="members_table_subtitle">
                 Add employees to extend coverage, adjust plan access as roles change, and keep invitations up to date.
               </p>
             </div>
             <div class="members-table__actions">
-              <button type="button" class="ghost" id="exportRoster">Export roster</button>
-              <button type="button" class="primary" id="toAdd">+ Add Employee</button>
+              <button type="button" class="ghost" id="exportRoster" data-i18n-key="button_export_roster">Export roster</button>
+              <button type="button" class="primary" id="toAdd" data-i18n-key="button_add_employee">+ Add Employee</button>
             </div>
           </div>
           <div class="members-table__controls">
             <label class="members-table__entries" for="entriesSelect">
-              Show
+              <span data-i18n-key="table_show_entries">Show</span>
               <select id="entriesSelect">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
               </select>
-              entries
+              <span data-i18n-key="table_show_entries" style="display: none;">entries</span>
             </label>
             <label class="members-table__search" for="memberSearch">
-              Search
-              <input type="search" id="memberSearch" placeholder="Search team" />
+              <span data-i18n-key="table_search">Search</span>
+              <input type="search" id="memberSearch" data-i18n-key="table_search_placeholder" placeholder="Search team" />
             </label>
           </div>
           <div class="table-wrapper">
             <table id="membersTable">
               <thead>
                 <tr>
-                  <th scope="col">Employee</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Coverage</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" class="actions-column">Manage</th>
+                  <th scope="col" data-i18n-key="table_header_employee">Employee</th>
+                  <th scope="col" data-i18n-key="table_header_role">Role</th>
+                  <th scope="col" data-i18n-key="table_header_coverage">Coverage</th>
+                  <th scope="col" data-i18n-key="table_header_status">Status</th>
+                  <th scope="col" class="actions-column" data-i18n-key="table_header_manage">Manage</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -97,157 +97,157 @@
 
         <section class="section-card" id="addMemberSection" aria-labelledby="addMemberHeading">
           <div class="section-card__header">
-            <h2 id="addMemberHeading">Add New Employee</h2>
-            <p>Invite your team to the plan and confirm when their coverage should begin.</p>
+            <h2 id="addMemberHeading" data-i18n-key="add_member_title">Add New Employee</h2>
+            <p data-i18n-key="add_member_subtitle">Invite your team to the plan and confirm when their coverage should begin.</p>
           </div>
           <form id="addMemberForm" autocomplete="off">
             <div class="form-row">
               <div class="form-group">
-                <label for="addFirstName">First Name</label>
+                <label for="addFirstName" data-i18n-key="form_first_name">First Name</label>
                 <input type="text" id="addFirstName" name="firstName" required />
               </div>
               <div class="form-group">
-                <label for="addLastName">Last Name</label>
+                <label for="addLastName" data-i18n-key="form_last_name">Last Name</label>
                 <input type="text" id="addLastName" name="lastName" required />
               </div>
               <div class="form-group">
-                <label for="addEmail">Work Email</label>
+                <label for="addEmail" data-i18n-key="form_work_email">Work Email</label>
                 <input type="email" id="addEmail" name="email" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="addRole">Role</label>
+                <label for="addRole" data-i18n-key="table_header_role">Role</label>
                 <input type="text" id="addRole" name="role" placeholder="e.g., Product Manager" required />
               </div>
               <div class="form-group">
-                <label for="addDepartment">Department</label>
+                <label for="addDepartment" data-i18n-key="form_department">Department</label>
                 <input type="text" id="addDepartment" name="department" placeholder="e.g., Product" />
               </div>
               <div class="form-group">
-                <label for="addCoverageStart">Coverage Start</label>
+                <label for="addCoverageStart" data-i18n-key="form_coverage_start">Coverage Start</label>
                 <input type="date" id="addCoverageStart" name="coverageStart" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="addPlanAccess">Plan Access</label>
+                <label for="addPlanAccess" data-i18n-key="form_plan_access">Plan Access</label>
                 <select id="addPlanAccess" name="planAccess">
-                  <option value="Full Coverage">Full Coverage</option>
-                  <option value="Health + Vision">Health + Vision</option>
-                  <option value="Health + Dental">Health + Dental</option>
-                  <option value="Dental Only">Dental Only</option>
+                  <option value="Full Coverage" data-i18n-key="option_full_coverage">Full Coverage</option>
+                  <option value="Health + Vision" data-i18n-key="option_health_vision">Health + Vision</option>
+                  <option value="Health + Dental" data-i18n-key="option_health_dental">Health + Dental</option>
+                  <option value="Dental Only" data-i18n-key="option_dental_only">Dental Only</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="addStatus">Status</label>
+                <label for="addStatus" data-i18n-key="table_header_status">Status</label>
                 <select id="addStatus" name="status">
-                  <option value="Protected">Protected</option>
-                  <option value="Invited">Invited</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Suspended">Suspended</option>
+                  <option value="Protected" data-i18n-key="option_status_protected">Protected</option>
+                  <option value="Invited" data-i18n-key="option_status_invited">Invited</option>
+                  <option value="Pending" data-i18n-key="option_status_pending">Pending</option>
+                  <option value="Suspended" data-i18n-key="option_status_suspended">Suspended</option>
                 </select>
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="cancel" id="cancelAdd">Cancel</button>
-              <button type="submit">Add Employee</button>
+              <button type="button" class="cancel" id="cancelAdd" data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" data-i18n-key="button_add_employee">Add Employee</button>
             </div>
           </form>
         </section>
 
         <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
           <div class="section-card__header">
-            <h2 id="editMemberHeading">Edit Employee</h2>
-            <p>Adjust coverage access or update employee details as roles evolve.</p>
+            <h2 id="editMemberHeading" data-i18n-key="edit_member_title">Edit Employee</h2>
+            <p data-i18n-key="edit_member_subtitle">Adjust coverage access or update employee details as roles evolve.</p>
           </div>
           <form id="editMemberForm" autocomplete="off">
             <div class="form-row">
               <div class="form-group">
-                <label for="editSelect">Select Employee</label>
+                <label for="editSelect" data-i18n-key="form_select_employee">Select Employee</label>
                 <select id="editSelect" name="selectedMember">
-                  <option value="">Select employee</option>
+                  <option value="" data-i18n-key="form_select_employee">Select employee</option>
                 </select>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="editFirstName">First Name</label>
+                <label for="editFirstName" data-i18n-key="form_first_name">First Name</label>
                 <input type="text" id="editFirstName" name="firstName" required />
               </div>
               <div class="form-group">
-                <label for="editLastName">Last Name</label>
+                <label for="editLastName" data-i18n-key="form_last_name">Last Name</label>
                 <input type="text" id="editLastName" name="lastName" required />
               </div>
               <div class="form-group">
-                <label for="editEmail">Work Email</label>
+                <label for="editEmail" data-i18n-key="form_work_email">Work Email</label>
                 <input type="email" id="editEmail" name="email" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="editRole">Role</label>
+                <label for="editRole" data-i18n-key="table_header_role">Role</label>
                 <input type="text" id="editRole" name="role" required />
               </div>
               <div class="form-group">
-                <label for="editDepartment">Department</label>
+                <label for="editDepartment" data-i18n-key="form_department">Department</label>
                 <input type="text" id="editDepartment" name="department" />
               </div>
               <div class="form-group">
-                <label for="editCoverageStart">Coverage Start</label>
+                <label for="editCoverageStart" data-i18n-key="form_coverage_start">Coverage Start</label>
                 <input type="date" id="editCoverageStart" name="coverageStart" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="editPlanAccess">Plan Access</label>
+                <label for="editPlanAccess" data-i18n-key="form_plan_access">Plan Access</label>
                 <select id="editPlanAccess" name="planAccess">
-                  <option value="Full Coverage">Full Coverage</option>
-                  <option value="Health + Vision">Health + Vision</option>
-                  <option value="Health + Dental">Health + Dental</option>
-                  <option value="Dental Only">Dental Only</option>
+                  <option value="Full Coverage" data-i18n-key="option_full_coverage">Full Coverage</option>
+                  <option value="Health + Vision" data-i18n-key="option_health_vision">Health + Vision</option>
+                  <option value="Health + Dental" data-i18n-key="option_health_dental">Health + Dental</option>
+                  <option value="Dental Only" data-i18n-key="option_dental_only">Dental Only</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="editStatus">Status</label>
+                <label for="editStatus" data-i18n-key="table_header_status">Status</label>
                 <select id="editStatus" name="status">
-                  <option value="Protected">Protected</option>
-                  <option value="Invited">Invited</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Suspended">Suspended</option>
+                  <option value="Protected" data-i18n-key="option_status_protected">Protected</option>
+                  <option value="Invited" data-i18n-key="option_status_invited">Invited</option>
+                  <option value="Pending" data-i18n-key="option_status_pending">Pending</option>
+                  <option value="Suspended" data-i18n-key="option_status_suspended">Suspended</option>
                 </select>
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="cancel" id="cancelEdit">Cancel</button>
-              <button type="submit">Save Changes</button>
+              <button type="button" class="cancel" id="cancelEdit" data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" data-i18n-key="button_save_changes">Save Changes</button>
             </div>
           </form>
         </section>
 
         <section class="section-card" id="removeMemberSection" aria-labelledby="removeMemberHeading">
           <div class="section-card__header">
-            <h2 id="removeMemberHeading">Remove Employee</h2>
-            <p>Deactivate coverage for someone who has left the company.</p>
+            <h2 id="removeMemberHeading" data-i18n-key="remove_member_title">Remove Employee</h2>
+            <p data-i18n-key="remove_member_subtitle">Deactivate coverage for someone who has left the company.</p>
           </div>
           <form id="removeMemberForm">
             <div class="form-row">
               <div class="form-group">
-                <label for="removeSelect">Select Employee</label>
+                <label for="removeSelect" data-i18n-key="form_select_employee">Select Employee</label>
                 <select id="removeSelect" name="selectedRemove">
-                  <option value="">Select employee</option>
+                  <option value="" data-i18n-key="form_select_employee">Select employee</option>
                 </select>
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="cancel" id="cancelRemove">Cancel</button>
-              <button type="submit" class="danger">Remove Employee</button>
+              <button type="button" class="cancel" id="cancelRemove" data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" class="danger" data-i18n-key="button_remove_employee">Remove Employee</button>
             </div>
           </form>
         </section>
       </main>
     </div>
-
+    <script src="i18n.js"></script>
     <script src="app.js"></script>
     <script src="members.js"></script>
   </body>
