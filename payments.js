@@ -218,7 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderSummary() {
     const lastFour = extractLastFour(currentMethod.cardNumber);
-    const autopayLabel = currentMethod.autopay === 'active' ? 'Autopay Active' : 'Autopay Paused';
+    const activeAutopayLabel = summaryEls.autopay?.dataset.labelActive || 'Autopay Active';
+    const pausedAutopayLabel = summaryEls.autopay?.dataset.labelPaused || 'Autopay Paused';
+    const autopayLabel = currentMethod.autopay === 'active' ? activeAutopayLabel : pausedAutopayLabel;
     const nextPaymentLabel = currentMethod.nextPayment
       ? `Next payment ${formatDate(currentMethod.nextPayment)}`
       : 'Next payment not scheduled';

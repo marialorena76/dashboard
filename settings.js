@@ -90,15 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const enabled = localStorage.getItem(twoFAKey) === 'true';
 
     if (twoFAStatus) {
-      twoFAStatus.textContent = enabled ? 'Enabled' : 'Disabled';
+      const statusEnabled = twoFAStatus.dataset.enabledLabel || 'Enabled';
+      const statusDisabled = twoFAStatus.dataset.disabledLabel || 'Disabled';
+      twoFAStatus.textContent = enabled ? statusEnabled : statusDisabled;
       twoFAStatus.classList.toggle('success', enabled);
       twoFAStatus.classList.toggle('neutral', !enabled);
     }
 
     if (twoFAButton) {
-      twoFAButton.textContent = enabled ? 'Disable' : 'Enable';
+      const enableLabel = twoFAButton.dataset.labelEnable || 'Enable';
+      const disableLabel = twoFAButton.dataset.labelDisable || 'Disable';
+      twoFAButton.textContent = enabled ? disableLabel : enableLabel;
       twoFAButton.classList.toggle('outline-button', enabled);
       twoFAButton.classList.toggle('solid-button', !enabled);
+      twoFAButton.setAttribute('aria-pressed', enabled ? 'true' : 'false');
     }
   }
 
@@ -113,7 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const enabled = localStorage.getItem(twoFAKey) === 'true';
       localStorage.setItem(twoFAKey, String(!enabled));
       updateTwoFAControls();
-      window.alert(`Two-factor authentication ${!enabled ? 'enabled' : 'disabled'}.`);
+      const message = !enabled
+        ? twoFAButton.dataset.messageEnable || 'Two-factor authentication enabled.'
+        : twoFAButton.dataset.messageDisable || 'Two-factor authentication disabled.';
+      window.alert(message);
     });
   } else if (twoFAStatus) {
     updateTwoFAControls();
