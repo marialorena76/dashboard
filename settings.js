@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const panels = document.querySelectorAll('.settings-panel');
   const navButtons = document.querySelectorAll('.settings-nav .nav-link');
   const toggleInputs = document.querySelectorAll('input[data-storage]');
+  const currentUserType = localStorage.getItem('userType');
 
   panels.forEach(panel => {
     if (!panel.classList.contains('active')) {
@@ -157,7 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         localStorage.removeItem('userType');
         window.alert('Your deletion request has been submitted. A specialist will contact you shortly.');
-        window.location.href = 'index.html';
+        const redirectTarget = currentUserType === 'business'
+          ? 'business-login.html'
+          : 'individual-login.html';
+        window.location.href = redirectTarget;
       }
     });
   }
