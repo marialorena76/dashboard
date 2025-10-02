@@ -10,85 +10,82 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
-        <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+  <div class="dashboard new-dashboard">
+    <aside class="sidebar new-sidebar">
+      <div class="logo-container">
+        <img src="images/logo-white.png" alt="MallowCare Logo" class="sidebar-logo">
       </div>
-      <nav class="menu">
-codex/add-images-and-create-user-dashboard-v85he0
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
-
- codex/add-images-and-create-user-dashboard-vak73b
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-
-        <a href="#" class="active">My Account</a>
-        <a href="#">Payments</a>
- main
-        <a href="#">Help</a>
-        <a href="#">Settings</a>
- main
+      <nav class="menu new-menu">
+        <a href="individual-dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
+        <a href="my-profile.html" class="active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span data-i18n-key="menu_my_account">My Account</span></a>
+        <a href="payments.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <span data-i18n-key="menu_payments">Payments</span></a>
+        <a href="settings.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> <span data-i18n-key="menu_settings">Settings</span></a>
       </nav>
       <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
-        <div class="lang">
-          <button>English</button>
-          <button>Español</button>
-        </div>
+        <a href="#" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span data-i18n-key="sidebar_help">Help & Support</span></a>
+        <a href="#" class="menu-item logout" data-i18n-key="logout_button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
       </div>
     </aside>
-    <main class="main-content">
-      <div class="breadcrumb">Dashboard - My Account - Manage My Plan</div>
-      <h1>Manage My Plan</h1>
+
+    <main class="main-content new-main-content manage-plan">
+      <header class="main-header">
+        <h1 data-i18n-key="manage_plan_title">Manage My Plan</h1>
+        <div class="header-actions">
+          <div class="lang-switcher">
+            <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+          </div>
+          <img src="images/foto_personal(1).jpg" alt="Profile picture" class="profile-avatar">
+        </div>
+      </header>
+
+      <p class="member-since" data-i18n-key="manage_plan_subtitle">Review your active coverage, plan status, and payment schedule.</p>
 
       <section class="section-card plan-overview">
-        <h2>Plan Overview</h2>
+        <h2 data-i18n-key="manage_plan_overview_title">Plan Overview</h2>
+        <p data-i18n-key="manage_plan_overview_subtitle">Stay on top of your current protection details and upcoming payment.</p>
         <div class="plan-row">
-          <span>Your Plan Status</span>
+          <span data-i18n-key="plan_status_title">Your Plan Status</span>
           <span class="status" id="planStatus">ACTIVE</span>
         </div>
         <div class="plan-row">
-          <span>Your Coverage</span>
+          <span data-i18n-key="coverage_title">Your Coverage</span>
           <span id="planCoverage">Up to $100,000</span>
         </div>
         <div class="plan-row">
-          <span>Next Payment</span>
+          <span data-i18n-key="next_payment_title">Next Payment</span>
           <span id="nextPayment">$490.03 due Jan 17, 2025</span>
         </div>
-        <button id="updatePayment">Update Payment Method</button>
+        <button id="updatePayment" class="button primary-button" data-i18n-key="manage_plan_update_payment_button">Update Payment Method</button>
       </section>
 
       <section class="section-card plan-type">
-        <h2>Plan Type</h2>
+        <h2 data-i18n-key="manage_plan_type_title">Plan Type</h2>
         <div class="plan-grid">
           <div class="current-plan">
-            <h3>Current Plan</h3>
+            <h3 data-i18n-key="manage_plan_current_plan_title">Current Plan</h3>
             <div class="plan-row">
               <span id="currentPlan">Individual Plan</span>
-              <button id="expirePlan" class="expire-btn">Expire</button>
+              <button id="expirePlan" class="expire-btn" data-i18n-key="manage_plan_expire_button">Expire Plan</button>
             </div>
           </div>
           <div class="available-upgrades">
-            <h3>Available Upgrades</h3>
+            <h3 data-i18n-key="manage_plan_available_upgrades_title">Available Upgrades</h3>
             <div class="plan-row">
-              <span>Family Plan</span>
-              <button class="upgrade-btn" data-plan="Family Plan">Upgrade</button>
+              <span data-i18n-key="manage_plan_family_plan_name">Family Plan</span>
+              <button class="upgrade-btn" data-plan="Family Plan" data-i18n-key="manage_plan_upgrade_button">Upgrade</button>
             </div>
             <div class="plan-row">
-              <span>Premium Plan</span>
-              <button class="upgrade-btn" data-plan="Premium Plan">Upgrade</button>
+              <span data-i18n-key="manage_plan_premium_plan_name">Premium Plan</span>
+              <button class="upgrade-btn" data-plan="Premium Plan" data-i18n-key="manage_plan_upgrade_button">Upgrade</button>
             </div>
           </div>
         </div>
       </section>
     </main>
   </div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
   <script src="plan.js"></script>
 </body>
 </html>
