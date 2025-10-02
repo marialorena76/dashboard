@@ -10,74 +10,158 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard new-dashboard">
-    <aside class="sidebar new-sidebar">
-      <div class="logo-container">
-        <img src="images/logo-white.png" alt="MallowCare Logo" class="sidebar-logo">
+  <div class="dashboard individual-dashboard">
+    <aside class="user-panel">
+      <div class="user-panel__brand">
+        <img src="images/logo-white.png" alt="MallowCare Logo" class="user-panel__logo">
       </div>
-      <nav class="menu new-menu">
-        <a href="#" class="active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
-        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> <span data-i18n-key="sidebar_my_plan">My Plan</span></a>
-        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> <span data-i18n-key="sidebar_members">Members</span></a>
-        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> <span data-i18n-key="sidebar_appointments">Appointments</span></a>
-        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> <span data-i18n-key="sidebar_messages">Messages</span></a>
-      </nav>
-      <div class="sidebar-bottom">
-        <a href="#" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span data-i18n-key="sidebar_help">Help & Support</span></a>
-        <a href="#" class="menu-item logout" data-i18n-key="logout_button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
+      <div class="user-panel__profile">
+        <div class="user-panel__avatar-wrap">
+          <img src="images/foto_personal(1).jpg" alt="Profile picture" class="user-panel__avatar">
+        </div>
+        <div class="user-panel__identity">
+          <h1 class="user-panel__name">Maria Rodriguez</h1>
+          <p class="user-panel__member" data-i18n-key="profile_member_since">Member since March 2023</p>
+        </div>
+      </div>
+      <div class="user-panel__plan">
+        <div class="user-panel__plan-header">
+          <span class="user-panel__plan-label" data-i18n-key="profile_status_plan_label">Plan</span>
+          <span class="user-panel__plan-status" data-i18n-key="plan_status_value">ACTIVE</span>
+        </div>
+        <h2 class="user-panel__plan-name" data-i18n-key="profile_status_plan_value">Family Protect Plus</h2>
+        <p class="user-panel__plan-meta" data-i18n-key="profile_status_coverage_meta">Medical · Vision · Dental</p>
+      </div>
+      <div class="user-panel__stats">
+        <div class="user-panel__stat">
+          <span class="user-panel__stat-label" data-i18n-key="coverage_title">Your Coverage</span>
+          <span class="user-panel__stat-value" data-i18n-key="coverage_value">Up to $100,000</span>
+        </div>
+        <div class="user-panel__stat">
+          <span class="user-panel__stat-label" data-i18n-key="next_payment_title">Next Payment</span>
+          <span class="user-panel__stat-value" data-i18n-key="next_payment_value">Due Oct 15, 2025</span>
+        </div>
+      </div>
+      <div class="user-panel__actions">
+        <button class="button solid-button" data-i18n-key="manage_plan_button">Manage My Plan</button>
+        <button class="button ghost-button" data-i18n-key="update_profile_button">Update My Profile</button>
+      </div>
+      <div class="user-panel__secondary-actions">
+        <button class="button outline-button" data-i18n-key="add_family_member_button">Add a Family Member</button>
+        <button class="button outline-button" data-i18n-key="manage_alerts_button">Manage Alerts</button>
       </div>
     </aside>
-    <main class="main-content new-main-content">
-      <header class="main-header">
-        <h1 data-i18n-key="header_welcome">Welcome back, Maria!</h1>
-        <div class="header-actions">
-          <div class="lang-switcher">
-            <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
-            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
-          </div>
-          <img src="images/foto_personal(1).jpg" alt="Profile picture" class="profile-avatar">
-        </div>
+    <main class="dashboard-main">
+      <header class="dashboard-main__header">
+        <p class="dashboard-main__eyebrow" data-i18n-key="profile_account_center">Account Center</p>
+        <h2 class="dashboard-main__title" data-i18n-key="dashboard_welcome_back">Welcome back, Maria</h2>
+        <p class="dashboard-main__subtitle" data-i18n-key="profile_overview_subtitle">Review your coverage health, upcoming payments, and quick tasks in one place.</p>
       </header>
-      <div class="content-grid">
-        <div class="grid-left">
-          <section class="card profile-card">
-            <h2 data-i18n-key="profile_card_title">Complete your profile</h2>
-            <p data-i18n-key="profile_card_subtitle">Finish your profile to get the most out of MallowCare.</p>
-            <div class="progress-bar">
-              <div class="progress" style="width: 60%;"></div>
+      <div class="info-grid">
+        <section class="info-card">
+          <div class="info-card__header">
+            <h3 class="info-card__title" data-i18n-key="profile_personal_details_title">Personal Details</h3>
+            <p class="info-card__subtitle" data-i18n-key="profile_personal_details_subtitle">Update your contact information so we can reach you without delays.</p>
+          </div>
+          <dl class="info-list">
+            <div class="info-list__item">
+              <dt data-i18n-key="form_email_address">Email Address</dt>
+              <dd>maria.rodriguez@email.com</dd>
             </div>
-            <p class="progress-text" data-i18n-key="profile_card_progress">3/5 steps completed</p>
-            <button class="button primary-button" data-i18n-key="profile_card_button">Continue</button>
-          </section>
-        </div>
-        <div class="grid-right">
-          <section class="card appointments-card">
-            <div class="card-header">
-              <h2 data-i18n-key="appointments_card_title">Upcoming appointments</h2>
-              <a href="#" class="view-all" data-i18n-key="appointments_card_view_all">View all</a>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_phone_number">Phone Number</dt>
+              <dd>+1 (312) 555-0198</dd>
             </div>
-            <div class="appointment">
-              <div class="time-box">
-                <p data-i18n-key="appointment_1_time">9:30 AM</p>
-              </div>
-              <div class="appointment-details">
-                <h3 data-i18n-key="appointment_1_title">Virtual Consultation</h3>
-                <p data-i18n-key="appointment_1_doctor">Dr. Emily Carter</p>
-              </div>
-              <button class="button secondary-button" data-i18n-key="appointment_button">Join call</button>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_address1">Address Line 1</dt>
+              <dd>4210 Maple Avenue</dd>
             </div>
-            <div class="appointment">
-              <div class="time-box">
-                <p data-i18n-key="appointment_2_time">11:00 AM</p>
-              </div>
-              <div class="appointment-details">
-                <h3 data-i18n-key="appointment_2_title">Follow-up</h3>
-                <p data-i18n-key="appointment_2_doctor">Dr. Michael Smith</p>
-              </div>
-              <button class="button secondary-button" data-i18n-key="appointment_button">Join call</button>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_city">City</dt>
+              <dd>Chicago, IL 60647</dd>
             </div>
-          </section>
-        </div>
+          </dl>
+          <button class="button ghost-button info-card__button" data-i18n-key="update_profile_button">Update My Profile</button>
+        </section>
+        <section class="info-card">
+          <div class="info-card__header">
+            <h3 class="info-card__title" data-i18n-key="profile_beneficiary_title">My Beneficiary</h3>
+            <p class="info-card__subtitle" data-i18n-key="profile_beneficiary_subtitle">Share who should receive your benefits and how to contact them.</p>
+          </div>
+          <dl class="info-list">
+            <div class="info-list__item">
+              <dt data-i18n-key="form_full_name">Full Name</dt>
+              <dd>Andres Rodriguez</dd>
+            </div>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_relationship">Relationship</dt>
+              <dd data-i18n-key="option_spouse">Spouse</dd>
+            </div>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_phone_number">Phone Number</dt>
+              <dd>+1 (312) 555-3421</dd>
+            </div>
+            <div class="info-list__item">
+              <dt data-i18n-key="form_percentage_allocation">Percentage Allocation</dt>
+              <dd>100%</dd>
+            </div>
+          </dl>
+          <button class="button ghost-button info-card__button" data-i18n-key="button_save_beneficiary">Save Beneficiary</button>
+        </section>
+        <section class="info-card info-card--wide">
+          <div class="info-card__header">
+            <h3 class="info-card__title" data-i18n-key="profile_documents_title">Identification Documents</h3>
+            <p class="info-card__subtitle" data-i18n-key="profile_documents_subtitle">Upload current identification so we can verify your eligibility and beneficiary claims.</p>
+          </div>
+          <div class="documents-list">
+            <div class="document-row">
+              <div class="document-row__details">
+                <h4 data-i18n-key="doc_passport">Passport</h4>
+                <p data-i18n-key="doc_passport_subtitle">Upload a clear scan of the picture page.</p>
+              </div>
+              <div class="document-row__meta">
+                <span class="status-pill status-pill--success" data-i18n-key="option_uploaded">Uploaded</span>
+                <span class="document-row__timestamp" data-i18n-key="form_last_updated">Last Updated</span>
+                <time>Apr 02, 2025</time>
+              </div>
+              <button class="button outline-button document-row__action" data-i18n-key="button_upload_replace">Upload / Replace Document</button>
+            </div>
+            <div class="document-row">
+              <div class="document-row__details">
+                <h4 data-i18n-key="doc_drivers_license">Driver's License</h4>
+                <p data-i18n-key="doc_drivers_license_subtitle">Ensure the address matches your current residence.</p>
+              </div>
+              <div class="document-row__meta">
+                <span class="status-pill status-pill--warning" data-i18n-key="option_expiring">Expiring Soon</span>
+                <span class="document-row__timestamp" data-i18n-key="form_expiration_date">Expiration Date</span>
+                <time>Aug 14, 2025</time>
+              </div>
+              <button class="button outline-button document-row__action" data-i18n-key="button_upload_replace">Upload / Replace Document</button>
+            </div>
+            <div class="document-row">
+              <div class="document-row__details">
+                <h4 data-i18n-key="doc_ssn">Social Security</h4>
+                <p data-i18n-key="doc_ssn_subtitle">Required for beneficiary payouts and tax reporting.</p>
+              </div>
+              <div class="document-row__meta">
+                <span class="status-pill status-pill--neutral" data-i18n-key="option_not_submitted">Not Submitted</span>
+                <span class="document-row__timestamp" data-i18n-key="placeholder_no_document">No document uploaded</span>
+              </div>
+              <button class="button outline-button document-row__action" data-i18n-key="button_upload">Upload Document</button>
+            </div>
+          </div>
+        </section>
+        <section class="info-card">
+          <div class="info-card__header">
+            <h3 class="info-card__title" data-i18n-key="profile_language_title">Language Preference</h3>
+            <p class="info-card__subtitle" data-i18n-key="profile_language_description">Your updates and care team messages will arrive in this language.</p>
+          </div>
+          <div class="language-card">
+            <span class="language-card__label" data-i18n-key="profile_language_label">Preferred language</span>
+            <span class="language-card__value" data-i18n-key="lang_english">English</span>
+          </div>
+          <button class="button ghost-button info-card__button" data-i18n-key="button_update_preference">Update Preference</button>
+        </section>
       </div>
     </main>
   </div>
