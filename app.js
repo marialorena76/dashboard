@@ -16,13 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
     '/protected-members.html'
   ];
 
+  const individualLoginPage = 'individual-login.html';
+  const businessLoginPage = 'business-login.html';
+
   const isIndividualPage = individualPages.some(page => pathname.includes(page));
   const isBusinessPage = businessPages.some(page => pathname.includes(page));
   const isProtectedPage = isIndividualPage || isBusinessPage;
 
-  // 1. If on a protected page but no user is logged in, redirect to index.
+  // 1. If on a protected page but no user is logged in, redirect to the correct login.
   if (isProtectedPage && !userType) {
-    window.location.href = 'index.html';
+    if (isIndividualPage) {
+      window.location.href = individualLoginPage;
+    } else if (isBusinessPage) {
+      window.location.href = businessLoginPage;
+    }
     return;
   }
 
@@ -30,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (userType) {
     // Individual user on a business page -> redirect
     if (userType === 'individual' && isBusinessPage) {
-      window.location.href = 'index.html';
+      window.location.href = 'individual-dashboard.html';
       return;
     }
     // Business user on an individual page -> redirect
     if (userType === 'business' && isIndividualPage) {
-      window.location.href = 'index.html';
+      window.location.href = 'business-dashboard.html';
       return;
     }
   }
@@ -44,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const logoutButton = document.querySelector('.logout');
   if (logoutButton) {
     logoutButton.addEventListener('click', () => {
+      const logoutDestination = userType === 'business'
+        ? businessLoginPage
+        : individualLoginPage;
       // Clear all user-related data from localStorage
       const keysToRemove = [];
       for (let i = 0; i < localStorage.length; i++) {
@@ -54,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       keysToRemove.forEach(key => localStorage.removeItem(key));
 
-      window.location.href = 'index.html';
+      window.location.href = logoutDestination;
     });
   }
 });
