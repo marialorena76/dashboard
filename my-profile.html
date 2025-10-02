@@ -13,7 +13,7 @@
   <div class="dashboard new-dashboard">
     <aside class="sidebar new-sidebar">
       <div class="logo-container">
-        <img src="images/logo-white.png" alt="MallowCare Logo" class="sidebar-logo">
+        <img src="images/WB%20Fondo%20blanco%20-%20Color.png" alt="MallowCare Logo" class="sidebar-logo">
       </div>
       <nav class="menu new-menu">
         <a href="individual-dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
@@ -86,230 +86,193 @@
               <p class="member-since" data-i18n-key="profile_member_since">Member since March 2023</p>
             </header>
 
-            <section class="info-card personal-card">
-              <div class="card-header">
-                <div>
+            <section class="profile-panel personal-panel">
+              <div class="panel-header">
+                <div class="panel-glyph" aria-hidden="true">
+                  <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                    <circle cx="48" cy="48" r="47" fill="#f4e2bc" />
+                    <path d="M58.9 28.3c-8.8 0-13 6.1-13 12.5 0 5.8 4.8 11 12.4 11 7.4 0 12.1-5.2 12.1-11.3 0-6.5-4.6-12.2-11.5-12.2zm-24 2.8c-6.8 0-11.4 4.8-11.4 11 0 5.5 3.8 9.4 9.5 11.6l6.9 2.6c8.8 3.3 13.5 7.4 13.5 15 0 7.1-5.5 13.4-15.5 13.4-8.8 0-15.6-5.4-15.6-12.6 0-5 3.5-9.9 9.7-11.8" fill="none" stroke="#163c30" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div class="panel-copy">
                   <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
-                  <p data-i18n-key="profile_personal_details_subtitle">Update your contact information so we can reach you without delays.</p>
+                  <p data-i18n-key="profile_personal_details_subtitle">Keep your details current so we can reach you when it matters most.</p>
                 </div>
               </div>
-              <form id="personalForm" class="details-form" autocomplete="on">
-                <div class="form-grid two-column">
+              <form id="personalForm" class="panel-form" autocomplete="on">
+                <fieldset class="form-group">
+                  <legend>Full Name</legend>
+                  <div class="field-pair">
+                    <label class="form-field">
+                      <span class="sr-only">First Name</span>
+                      <input type="text" name="firstName" value="Maria" autocomplete="given-name" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="sr-only">Last Name</span>
+                      <input type="text" name="lastName" value="Thompson" autocomplete="family-name" required>
+                    </label>
+                  </div>
+                </fieldset>
+                <div class="field-grid">
                   <label class="form-field">
-                    <span data-i18n-key="form_first_name">First Name</span>
-                    <input type="text" name="firstName" value="Maria" autocomplete="given-name" required>
+                    <span>Email address*</span>
+                    <input type="email" name="emailAddress" value="maria@email.com" autocomplete="email" required>
                   </label>
                   <label class="form-field">
-                    <span data-i18n-key="form_last_name">Last Name</span>
-                    <input type="text" name="lastName" value="Thompson" autocomplete="family-name" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_email_address">Email Address</span>
-                    <input type="email" name="emailAddress" value="maria.thompson@email.com" autocomplete="email" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_phone_number">Phone Number</span>
-                    <input type="tel" name="phoneNumber" value="+1 (512) 555-0198" autocomplete="tel" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_dob">Date of Birth</span>
-                    <input type="date" name="dob" value="1990-06-18" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_member_id">Member ID</span>
-                    <input type="text" name="memberId" value="MC-204587" autocomplete="off" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_address1">Address Line 1</span>
-                    <input type="text" name="address1" value="123 Garden Avenue" autocomplete="address-line1" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_address2">Address Line 2</span>
-                    <input type="text" name="address2" value="Unit 5B" autocomplete="address-line2">
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_city">City</span>
-                    <input type="text" name="city" value="Austin" autocomplete="address-level2" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_state">State</span>
-                    <input type="text" name="state" value="TX" autocomplete="address-level1" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_postal_code">Postal Code</span>
-                    <input type="text" name="postalCode" value="78704" autocomplete="postal-code" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_contact_method">Preferred Contact Method</span>
-                    <select name="contactMethod">
-                      <option value="email" data-i18n-key="option_email">Email</option>
-                      <option value="phone" data-i18n-key="option_phone">Phone</option>
-                      <option value="text" data-i18n-key="option_sms">Text message</option>
-                    </select>
+                    <span>Phone</span>
+                    <input type="tel" name="phoneNumber" value="+1 555-123-4567" autocomplete="tel" required>
                   </label>
                 </div>
+                <fieldset class="form-group">
+                  <legend>Address</legend>
+                  <label class="form-field">
+                    <span class="sr-only">Street Address</span>
+                    <input type="text" name="address1" value="123 Main Street" autocomplete="address-line1" required>
+                  </label>
+                  <label class="form-field">
+                    <span class="sr-only">Apartment, suite, etc.</span>
+                    <input type="text" name="address2" placeholder="Address Line 2" autocomplete="address-line2">
+                  </label>
+                  <div class="field-pair">
+                    <label class="form-field">
+                      <span class="sr-only">City</span>
+                      <input type="text" name="city" value="Miami" autocomplete="address-level2" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="sr-only">State</span>
+                      <select name="state" autocomplete="address-level1" required>
+                        <option value="" disabled>State</option>
+                        <option value="FL" selected>Florida</option>
+                        <option value="TX">Texas</option>
+                        <option value="CA">California</option>
+                        <option value="NY">New York</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label class="form-field">
+                    <span class="sr-only">Postal Code</span>
+                    <input type="text" name="postalCode" value="33101" autocomplete="postal-code" required>
+                  </label>
+                </fieldset>
                 <div class="form-actions">
-                  <button type="button" class="button outline-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save Changes</button>
+                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+                  <button type="submit" class="button primary-button" data-i18n-key="button_save_changes">Save Changes</button>
                 </div>
               </form>
             </section>
 
-            <section class="info-card beneficiary-card">
-              <div class="card-header">
-                <div>
+            <section class="profile-panel beneficiary-panel">
+              <div class="panel-header">
+                <div class="panel-copy">
                   <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
-                  <p data-i18n-key="profile_beneficiary_subtitle">Share who should receive your benefits and how to contact them.</p>
+                  <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
                 </div>
               </div>
-              <form id="beneficiaryForm" class="details-form" autocomplete="on">
-                <div class="form-grid two-column">
+              <form id="beneficiaryForm" class="panel-form" autocomplete="on">
+                <fieldset class="form-group">
+                  <legend>Full Name</legend>
+                  <div class="field-pair">
+                    <label class="form-field">
+                      <span class="sr-only">First Name</span>
+                      <input type="text" name="beneficiaryFirstName" value="Maria" autocomplete="given-name" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="sr-only">Last Name</span>
+                      <input type="text" name="beneficiaryLastName" value="Thompson" autocomplete="family-name" required>
+                    </label>
+                  </div>
+                </fieldset>
+                <div class="field-grid">
                   <label class="form-field">
-                    <span data-i18n-key="form_full_name">Full Name</span>
-                    <input type="text" name="beneficiaryName" value="Diego Thompson" autocomplete="name" required>
+                    <span>Email address*</span>
+                    <input type="email" name="beneficiaryEmail" value="maria@email.com" autocomplete="email" required>
                   </label>
                   <label class="form-field">
-                    <span data-i18n-key="form_relationship">Relationship</span>
-                    <input type="text" name="beneficiaryRelationship" value="Brother" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_email_address">Email Address</span>
-                    <input type="email" name="beneficiaryEmail" value="diego.thompson@email.com" autocomplete="email">
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_phone_number">Phone Number</span>
-                    <input type="tel" name="beneficiaryPhone" value="+1 (305) 555-6120" autocomplete="tel">
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_percentage_allocation">Percentage Allocation</span>
-                    <input type="number" name="beneficiaryAllocation" value="100" min="0" max="100" step="1" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_contact_method">Preferred Contact Method</span>
-                    <select name="beneficiaryContact">
-                      <option value="email" data-i18n-key="option_email">Email</option>
-                      <option value="phone" data-i18n-key="option_phone">Phone</option>
-                      <option value="text" data-i18n-key="option_sms">Text message</option>
-                    </select>
+                    <span>Phone</span>
+                    <input type="tel" name="beneficiaryPhone" value="+1 555-123-4567" autocomplete="tel">
                   </label>
                 </div>
+                <fieldset class="form-group">
+                  <legend>Address</legend>
+                  <label class="form-field">
+                    <span class="sr-only">Street Address</span>
+                    <input type="text" name="beneficiaryAddress1" value="123 Main Street" autocomplete="address-line1" required>
+                  </label>
+                  <label class="form-field">
+                    <span class="sr-only">Apartment, suite, etc.</span>
+                    <input type="text" name="beneficiaryAddress2" placeholder="Address Line 2" autocomplete="address-line2">
+                  </label>
+                  <div class="field-pair">
+                    <label class="form-field">
+                      <span class="sr-only">City</span>
+                      <input type="text" name="beneficiaryCity" value="Miami" autocomplete="address-level2" required>
+                    </label>
+                    <label class="form-field">
+                      <span class="sr-only">State</span>
+                      <select name="beneficiaryState" autocomplete="address-level1" required>
+                        <option value="" disabled>State</option>
+                        <option value="FL" selected>Florida</option>
+                        <option value="TX">Texas</option>
+                        <option value="CA">California</option>
+                        <option value="NY">New York</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label class="form-field">
+                    <span class="sr-only">Postal Code</span>
+                    <input type="text" name="beneficiaryPostalCode" value="33101" autocomplete="postal-code">
+                  </label>
+                </fieldset>
                 <div class="form-actions">
-                  <button type="button" class="button ghost-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button solid-button" data-i18n-key="button_save_beneficiary">Save Beneficiary</button>
+                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+                  <button type="submit" class="button primary-button" data-i18n-key="button_save_beneficiary">Save Changes</button>
                 </div>
               </form>
-              <p class="member-since" data-i18n-key="profile_beneficiary_footnote">You can update your beneficiary any time before a claim is processed.</p>
             </section>
 
-            <section class="info-card documents-card">
-              <div class="card-header">
-                <div>
+            <section class="profile-panel documents-panel">
+              <div class="panel-header">
+                <div class="panel-copy">
                   <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
-                  <p data-i18n-key="profile_documents_subtitle">Upload current identification so we can verify your eligibility and beneficiary claims.</p>
+                  <p data-i18n-key="profile_documents_subtitle">Securely upload your ID's to keep your account verified and protected. Only one document is required for verification.</p>
                 </div>
               </div>
-              <form id="documentsForm" class="details-form documents-form">
-                <div class="document-item">
-                  <div class="document-info">
-                    <h3 data-i18n-key="doc_passport">Passport</h3>
-                    <p data-i18n-key="doc_passport_subtitle">Upload a clear scan of the picture page.</p>
-                    <p class="file-name" data-file-name="passportFile" data-i18n-key="placeholder_no_document">No document uploaded</p>
-                  </div>
-                  <div class="document-fields">
-                    <label class="form-field">
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="passportStatus" data-status-pill="passportStatus">
-                        <option value="uploaded" selected data-i18n-key="option_uploaded">Uploaded</option>
-                        <option value="expiring" data-i18n-key="option_expiring">Expiring Soon</option>
-                        <option value="pending" data-i18n-key="option_not_submitted">Not Submitted</option>
-                      </select>
-                    </label>
-                    <label class="file-upload">
-                      <input type="file" name="passportFile" data-file-output="passportFile" accept=".pdf,.jpg,.jpeg,.png" hidden>
-                      <span class="button outline-button" data-i18n-key="button_upload_replace">Upload / Replace Document</span>
-                    </label>
-                  </div>
-                  <div class="document-actions">
-                    <span class="status-pill status-success" data-status-pill-target="passportStatus" data-i18n-key="option_uploaded">Uploaded</span>
-                  </div>
+              <div class="documents-table">
+                <div class="documents-row">
+                  <span class="doc-title" data-i18n-key="doc_passport">Passport</span>
+                  <span class="status-badge status-uploaded">Uploaded</span>
+                  <button type="button" class="button doc-button">Upload/Update Document</button>
                 </div>
-
-                <div class="document-item">
-                  <div class="document-info">
-                    <h3 data-i18n-key="doc_drivers_license">Driver's License</h3>
-                    <p data-i18n-key="doc_drivers_license_subtitle">Ensure the address matches your current residence.</p>
-                    <p class="file-name" data-file-name="licenseFile" data-i18n-key="placeholder_no_document">No document uploaded</p>
-                  </div>
-                  <div class="document-fields">
-                    <label class="form-field">
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="licenseStatus" data-status-pill="licenseStatus">
-                        <option value="uploaded" data-i18n-key="option_uploaded">Uploaded</option>
-                        <option value="expiring" selected data-i18n-key="option_expiring">Expiring Soon</option>
-                        <option value="pending" data-i18n-key="option_not_submitted">Not Submitted</option>
-                      </select>
-                    </label>
-                    <label class="file-upload">
-                      <input type="file" name="licenseFile" data-file-output="licenseFile" accept=".pdf,.jpg,.jpeg,.png" hidden>
-                      <span class="button outline-button" data-i18n-key="button_upload_replace">Upload / Replace Document</span>
-                    </label>
-                  </div>
-                  <div class="document-actions">
-                    <span class="status-pill status-warning" data-status-pill-target="licenseStatus" data-i18n-key="option_expiring">Expiring Soon</span>
-                  </div>
+                <div class="documents-row">
+                  <span class="doc-title" data-i18n-key="doc_drivers_license">Driver's License</span>
+                  <span class="status-badge status-uploaded">Uploaded</span>
+                  <button type="button" class="button doc-button">Upload/Update Document</button>
                 </div>
-
-                <div class="document-item">
-                  <div class="document-info">
-                    <h3 data-i18n-key="doc_ssn">Social Security</h3>
-                    <p data-i18n-key="doc_ssn_subtitle">Required for beneficiary payouts and tax reporting.</p>
-                    <p class="file-name" data-file-name="ssnFile" data-i18n-key="placeholder_no_document">No document uploaded</p>
-                  </div>
-                  <div class="document-fields">
-                    <label class="form-field">
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="ssnStatus" data-status-pill="ssnStatus">
-                        <option value="uploaded" data-i18n-key="option_uploaded">Uploaded</option>
-                        <option value="expiring" data-i18n-key="option_expiring">Expiring Soon</option>
-                        <option value="pending" selected data-i18n-key="option_not_submitted">Not Submitted</option>
-                      </select>
-                    </label>
-                    <label class="file-upload">
-                      <input type="file" name="ssnFile" data-file-output="ssnFile" accept=".pdf,.jpg,.jpeg,.png" hidden>
-                      <span class="button outline-button" data-i18n-key="button_upload">Upload Document</span>
-                    </label>
-                  </div>
-                  <div class="document-actions">
-                    <span class="status-pill status-pending" data-status-pill-target="ssnStatus" data-i18n-key="option_not_submitted">Not Submitted</span>
-                  </div>
+                <div class="documents-row">
+                  <span class="doc-title" data-i18n-key="doc_ssn">Social Security</span>
+                  <span class="status-badge status-uploaded">Uploaded</span>
+                  <button type="button" class="button doc-button">Upload/Update Document</button>
                 </div>
-                <div class="form-actions">
-                  <button type="button" class="button ghost-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button solid-button" data-i18n-key="button_save_documents">Save Documents</button>
-                </div>
-              </form>
+              </div>
             </section>
 
-            <section class="info-card language-card">
-              <div class="card-header">
-                <div>
+            <section class="profile-panel language-panel">
+              <div class="panel-header">
+                <div class="panel-copy">
                   <h2 data-i18n-key="profile_language_title">Language Preference</h2>
-                  <p data-i18n-key="profile_language_subtitle">Choose the language for emails, notifications, and support.</p>
+                  <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
                 </div>
               </div>
-              <div class="language-body">
-                <div>
-                  <p data-i18n-key="profile_language_description">Your updates and care team messages will arrive in this language.</p>
-                  <label class="language-select" for="languageSelect">
-                    <span data-i18n-key="profile_language_label">Preferred language</span>
-                    <select id="languageSelect" name="languageSelect">
-                      <option value="en" data-i18n-key="lang_english">English</option>
-                      <option value="es" data-i18n-key="lang_spanish">Español</option>
-                      <option value="pt" data-i18n-key="lang_portuguese">Português</option>
-                    </select>
-                  </label>
-                </div>
-                <button type="button" class="button solid-button" id="updateLang" data-i18n-key="button_update_preference">Update Preference</button>
+              <div class="language-preference">
+                <label for="languageSelect" class="form-field">
+                  <span>Español</span>
+                  <select id="languageSelect" name="languageSelect">
+                    <option value="es" selected>Español</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                  </select>
+                </label>
+                <button type="button" class="button primary-button" id="updateLang">Update Language</button>
               </div>
             </section>
           </div>
