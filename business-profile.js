@@ -6,8 +6,7 @@ const STATUS_MAP = {
 
 const LANGUAGE_DATA = {
   en: { label: 'English (US)', button: 'English' },
-  es: { label: 'Español (LatAm)', button: 'Español' },
-  pt: { label: 'Português (Brasil)', button: 'Português' }
+  es: { label: 'Español (LatAm)', button: 'Español' }
 };
 
 const USER_TYPE_PREFIX = 'mallow-business-';
