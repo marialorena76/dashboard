@@ -125,9 +125,23 @@ button {
 }
 
 .sidebar--enterprise {
-  background: linear-gradient(180deg, #143d31 0%, #1f4f41 100%);
+  background: var(--color-forest-900);
   color: #f5fbf8;
   box-shadow: inset -1px 0 0 rgba(12, 35, 28, 0.2);
+}
+
+.sidebar-welcome {
+  color: rgba(245, 251, 248, 0.8);
+  padding: 0 1rem;
+  margin: -1rem 0 1rem;
+  border-left: 3px solid rgba(249, 245, 227, 0.3);
+}
+
+.sidebar-footer-text {
+  font-size: 0.8rem;
+  color: rgba(245, 251, 248, 0.7);
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .enterprise-brand {
@@ -408,27 +422,98 @@ button {
   box-shadow: 0 16px 30px rgba(17, 40, 32, 0.18);
 }
 
+/* New Main Card Styles */
+.main-card {
+  background: #fff;
+  border-radius: var(--radius-large);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.main-card__header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.main-card__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-forest-100);
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-item__label {
+  font-weight: 600;
+  color: var(--color-forest-900);
+}
+
+.status-pill--coverage {
+  background: var(--color-gold-200);
+  color: var(--color-forest-900);
+}
+
+.status-pill--payment {
+    background: var(--color-gold-200);
+    color: var(--color-forest-900);
+    font-size: 1rem;
+    padding: .5rem 1rem;
+}
+
+.main-card__actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
 .enterprise-banner {
-  background: linear-gradient(120deg, #1f4f41 0%, #0f3328 100%);
+  background: url('images/white-flowers.jpg') center/cover no-repeat;
   border-radius: var(--radius-large);
   padding: clamp(2.25rem, 4vw, 3.5rem);
   color: #f5fbf8;
   box-shadow: 0 30px 50px rgba(12, 35, 28, 0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .enterprise-banner h2 {
   margin: 0;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--color-forest-900);
 }
 
 .enterprise-banner__content {
   max-width: 520px;
 }
 
-.enterprise-banner__meta {
-  margin: 0.75rem 0 0;
-  color: rgba(245, 251, 248, 0.7);
-  font-size: 0.9rem;
+.enterprise-banner__content p {
+    color: var(--color-forest-900);
+}
+
+.banner-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.banner-nav__arrow {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: var(--color-forest-900);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .page-heading__subtitle {
