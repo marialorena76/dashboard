@@ -38,44 +38,97 @@
       </div>
     </aside>
     <main class="individual-dashboard__main">
-      <section class="individual-overview">
-        <header class="individual-overview__header">
-          <p class="individual-overview__eyebrow">Welcome back</p>
-          <h1 class="individual-overview__title"><span data-user-name>Maria Thompson</span></h1>
-        </header>
-        <dl class="individual-overview__stats">
-          <div class="individual-overview__stat">
-            <dt>Your Plan Status</dt>
-            <dd><span class="status-pill status-pill--success">Active</span></dd>
+      <header class="individual-profile__header">
+        <p class="individual-profile__eyebrow">My Profile</p>
+        <h1 class="individual-profile__title">Stay on top of your account details.</h1>
+        <p class="individual-profile__subtitle">Review and manage your personal information, beneficiaries, identification documents, and language preferences in one place.</p>
+      </header>
+      <div class="individual-profile__grid">
+        <section class="profile-card personal-details">
+          <div class="profile-card__header">
+            <h2 class="profile-card__title">Personal Details</h2>
+            <button class="button outline-button">Edit Details</button>
           </div>
-          <div class="individual-overview__stat">
-            <dt>Your Coverage</dt>
-            <dd>
-              <span class="individual-overview__value">$100,000</span>
-              <span class="individual-overview__caption">Up to $100,000</span>
-            </dd>
+          <div class="personal-details__body">
+            <div class="personal-details__crest" aria-hidden="true">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                <circle cx="60" cy="60" r="58" fill="none" stroke="rgba(212, 177, 94, 0.4)" stroke-width="4" />
+                <path d="M60 26c-16 0-30 14-30 30s12 30 30 30 30 14 30 30" fill="none" stroke="#c09a43" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M60 46c-6 0-12 6-12 12s5 12 12 12 12 6 12 12" fill="none" stroke="#8d6a1d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="personal-details__info">
+              <p class="personal-details__name"><span data-user-name>Maria Thompson</span></p>
+              <ul class="profile-list">
+                <li><span data-user-email>maria.thompson@email.com</span></li>
+                <li><span data-user-phone>+1 (555) 432-9876</span></li>
+                <li><span data-user-address>123 Main Street, Miami, FL</span></li>
+              </ul>
+            </div>
           </div>
-          <div class="individual-overview__stat">
-            <dt>Next Payment</dt>
-            <dd>
-              <span class="individual-overview__value">$489.00</span>
-              <span class="individual-overview__caption">Due Sep 18, 2025</span>
-            </dd>
+        </section>
+        <section class="profile-card beneficiary">
+          <div class="profile-card__header">
+            <h2 class="profile-card__title">My Beneficiary</h2>
+            <p class="profile-card__description">Ensure the people you love receive the benefits of something happening to you.</p>
           </div>
-        </dl>
-        <div class="individual-overview__actions">
-          <button class="button solid-button">Update My Profile</button>
-          <button class="button outline-button">Manage My Plan</button>
-          <button class="button outline-button">Add a Family Member</button>
-          <button class="button outline-button">Manage Alerts</button>
-        </div>
-      </section>
-      <section class="individual-highlight">
-        <div class="individual-highlight__body">
-          <h2 class="individual-highlight__title">Human-centered benefits for your team.</h2>
-          <p class="individual-highlight__subtitle">Offer your employees a reliable mix of medical, dental, vision, and wellness support designed to keep every family thriving.</p>
-        </div>
-      </section>
+          <div class="profile-card__content">
+            <article class="profile-detail">
+              <h3 class="profile-detail__name">Beneficiary Details</h3>
+              <ul class="profile-list">
+                <li class="profile-list__item"><span class="profile-list__label">Name</span> <span class="profile-list__value">Marisa Thompson</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Relationship</span> <span class="profile-list__value">Spouse</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Phone</span> <span class="profile-list__value">+1 (555) 678-3345</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Email</span> <span class="profile-list__value">marisa.thompson@email.com</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="profile-card__actions">
+            <button class="button solid-button">Add Beneficiary</button>
+            <button class="button ghost-button">Edit/Remove Beneficiary</button>
+          </div>
+        </section>
+        <section class="profile-card identification">
+          <div class="profile-card__header">
+            <h2 class="profile-card__title">Identification Documents</h2>
+            <p class="profile-card__description">Keep your personal documents current and securely stored.</p>
+          </div>
+          <div class="profile-card__content">
+            <div class="document-row">
+              <div class="document-row__info">
+                <h3 class="document-row__title">Passport</h3>
+                <p class="document-row__status">Expires 08/19/2028</p>
+              </div>
+              <button class="button outline-button">Upload/Update Document</button>
+            </div>
+            <div class="document-row">
+              <div class="document-row__info">
+                <h3 class="document-row__title">Driver License</h3>
+                <p class="document-row__status document-row__status--missing">No document on file</p>
+              </div>
+              <button class="button outline-button">Upload/Update Document</button>
+            </div>
+            <div class="document-row">
+              <div class="document-row__info">
+                <h3 class="document-row__title">Social Security</h3>
+                <p class="document-row__status">Last updated 02/12/2025</p>
+              </div>
+              <button class="button outline-button">Upload/Update Document</button>
+            </div>
+          </div>
+        </section>
+        <section class="profile-card language">
+          <div class="profile-card__header">
+            <h2 class="profile-card__title">Language Preference</h2>
+          </div>
+          <div class="profile-card__content">
+            <p class="language__current">Current: <strong>English</strong></p>
+          </div>
+          <div class="profile-card__actions">
+            <button class="button ghost-button">Change Language</button>
+          </div>
+        </section>
+      </div>
     </main>
   </div>
   <script src="i18n.js"></script>
