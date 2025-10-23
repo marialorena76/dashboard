@@ -3400,6 +3400,248 @@ body.modal-open {
   gap: 2.75rem;
 }
 
+.individual-profile__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 680px;
+}
+
+.individual-profile__eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.individual-profile__title {
+  margin: 0;
+  font-size: 2.6rem;
+  line-height: 1.2;
+}
+
+.individual-profile__subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.individual-profile__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.25rem;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 32px;
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.profile-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-card__header .button {
+  align-self: flex-start;
+}
+
+.profile-card__title {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--sand-900);
+}
+
+.profile-card__description {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.profile-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.profile-card__actions .button {
+  flex: 1 1 220px;
+  justify-content: center;
+}
+
+.personal-details .profile-card__header {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.personal-details .profile-card__header .button {
+  min-width: 160px;
+}
+
+.personal-details {
+  grid-column: span 6;
+}
+
+.personal-details__body {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.personal-details__crest {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 247, 225, 0.9), rgba(247, 231, 192, 0.65));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 2px rgba(192, 154, 67, 0.25), 0 20px 32px rgba(138, 106, 29, 0.18);
+}
+
+.personal-details__crest svg {
+  width: 78px;
+  height: 78px;
+}
+
+.personal-details__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.personal-details__name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profile-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  color: var(--sand-800);
+}
+
+.profile-list__item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-size: 0.98rem;
+}
+
+.profile-list__label {
+  font-weight: 600;
+  color: var(--sand-900);
+}
+
+.profile-list__value {
+  color: var(--sand-800);
+}
+
+.profile-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-detail__name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sand-900);
+}
+
+.beneficiary {
+  grid-column: span 6;
+}
+
+.identification {
+  grid-column: span 12;
+}
+
+.document-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 24px;
+  background: var(--sand-200);
+  box-shadow: inset 0 0 0 1px rgba(138, 106, 29, 0.12);
+}
+
+.document-row + .document-row {
+  margin-top: 0.75rem;
+}
+
+.document-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.document-row__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.document-row__status {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.document-row__status--missing {
+  color: #c2572b;
+}
+
+.document-row .button {
+  white-space: nowrap;
+}
+
+.language {
+  grid-column: span 4;
+}
+
+.language .profile-card__actions {
+  justify-content: flex-start;
+}
+
+.language__current {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--sand-800);
+}
+
+.language__current strong {
+  font-size: 1.15rem;
+  color: var(--sand-900);
+}
+
 .individual-overview {
   background: #fff;
   border-radius: 32px;
@@ -3550,23 +3792,41 @@ body.modal-open {
   .individual-dashboard__main {
     padding: 3rem 2.25rem 3.5rem;
   }
+
+  .individual-profile__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .personal-details,
+  .beneficiary,
+  .identification,
+  .language {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 900px) {
-  .individual-overview {
-    padding: 2.5rem;
+  .individual-profile__grid {
+    grid-template-columns: 1fr;
   }
 
-  .individual-overview__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .profile-card {
+    padding: 2.25rem;
   }
 
-  .individual-overview__actions {
-    gap: 0.75rem;
+  .profile-card__actions .button {
+    flex: 1 1 100%;
   }
 
-  .individual-highlight {
-    padding: 2.5rem;
+  .personal-details__body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .personal-details__info {
+    align-items: center;
   }
 }
 
@@ -3583,34 +3843,22 @@ body.modal-open {
     font-size: 1.55rem;
   }
 
-  .individual-overview {
-    padding: 2.25rem 2rem;
-    gap: 2rem;
+  .profile-card {
+    padding: 2rem;
+    gap: 1.5rem;
   }
 
-  .individual-overview__title {
-    font-size: 2rem;
+  .profile-card__title {
+    font-size: 1.6rem;
   }
 
-  .individual-overview__stats {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  .profile-card__header {
+    gap: 0.75rem;
   }
 
-  .individual-overview__actions {
-    flex-direction: column;
-  }
-
-  .individual-overview__actions .button {
-    width: 100%;
-  }
-
-  .individual-highlight {
-    padding: 2.25rem;
-  }
-
-  .individual-highlight__title {
-    font-size: 1.8rem;
+  .personal-details__crest {
+    width: 120px;
+    height: 120px;
   }
 }
 
