@@ -10,273 +10,179 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="dashboard new-dashboard">
-    <aside class="sidebar new-sidebar">
-      <div class="logo-container">
-        <img src="images/WB%20Fondo%20blanco%20-%20Color.png" alt="MallowCare Logo" class="sidebar-logo">
+  <div class="account-layout">
+    <aside class="account-sidebar">
+      <div class="sidebar-brand">
+        <img src="images/WB%20Fondo%20blanco%20-%20Color.png" alt="MallowCare logo">
       </div>
-      <nav class="menu new-menu">
-        <a href="individual-dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
-        <a href="my-profile.html" class="active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span data-i18n-key="menu_my_account">My Account</span></a>
-        <a href="payments.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <span data-i18n-key="menu_payments">Payments</span></a>
-        <a href="settings.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> <span data-i18n-key="menu_settings">Settings</span></a>
+      <nav class="account-nav">
+        <a href="my-profile.html" class="account-nav__item active">
+          <span>My Account</span>
+        </a>
+        <a href="payments.html" class="account-nav__item">
+          <span>Payments</span>
+        </a>
+        <a href="#" class="account-nav__item">
+          <span>Help</span>
+        </a>
+        <a href="settings.html" class="account-nav__item">
+          <span>Settings</span>
+        </a>
       </nav>
-      <div class="sidebar-bottom">
-        <a href="#" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span data-i18n-key="sidebar_help">Help & Support</span></a>
-        <a href="#" class="menu-item logout" data-i18n-key="logout_button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
+      <button class="sidebar-logout">Log Out</button>
+      <div class="sidebar-language">
+        <button type="button" class="language-chip active">English</button>
+        <button type="button" class="language-chip">Español</button>
+      </div>
+      <div class="sidebar-links">
+        <a href="#">Terms of Service</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Privacy Policy</a>
       </div>
     </aside>
 
-    <main class="main-content new-main-content">
-      <header class="main-header">
-        <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
-        <div class="header-actions">
-          <div class="lang-switcher">
-            <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
-            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+    <main class="account-content">
+      <header class="account-header">
+        <span class="account-breadcrumb">Dashboard · My Account · My Profile</span>
+        <div class="profile-summary-card">
+          <div class="profile-summary-avatar" aria-hidden="true">MT</div>
+          <div>
+            <p class="profile-summary-name">Maria Thompson</p>
+            <p class="profile-summary-meta">Member ID · IND-432108</p>
+            <p class="profile-summary-meta">Plan · Family Protect Plus</p>
           </div>
-          <img src="images/foto_personal(1).jpg" alt="Profile picture" class="profile-avatar">
         </div>
       </header>
 
-      <div class="profile-main">
-        <div class="profile-wrapper">
-          <section class="profile-summary">
-            <span class="profile-eyebrow" data-i18n-key="profile_overview_eyebrow">Coverage Snapshot</span>
-            <h1 data-i18n-key="profile_overview_title">Stay ready for what matters</h1>
-            <p data-i18n-key="profile_overview_subtitle">Review your coverage health, upcoming payments, and quick tasks in one place.</p>
-            <div class="status-grid">
-              <article class="status-card">
-                <span class="label" data-i18n-key="profile_status_plan_label">Plan</span>
-                <span class="value" data-i18n-key="profile_status_plan_value">Family Protect Plus</span>
-                <span class="status-active" data-i18n-key="plan_status_pill_active">Active</span>
-              </article>
-              <article class="status-card">
-                <span class="label" data-i18n-key="profile_status_coverage_label">Coverage</span>
-                <span class="value" data-i18n-key="profile_status_coverage_value">$120,000 annual max</span>
-                <p class="status-active" data-i18n-key="profile_status_coverage_meta">Medical · Vision · Dental</p>
-              </article>
-              <article class="status-card">
-                <span class="label" data-i18n-key="profile_status_next_payment_label">Next payment</span>
-                <span class="value" data-i18n-key="profile_status_next_payment_value">Sep 15, 2025</span>
-                <p class="status-active" data-i18n-key="profile_status_next_payment_meta">Autopay · Visa ending 4321</p>
-              </article>
-            </div>
-            <div class="action-grid">
-              <a href="#" class="action-button" data-i18n-key="profile_action_download_id">Download ID card</a>
-              <a href="#" class="action-button" data-i18n-key="profile_action_view_benefits">View plan benefits</a>
-              <a href="#" class="action-button" data-i18n-key="profile_action_manage_dependents">Manage dependents</a>
-            </div>
-          </section>
-
-          <section class="benefits-banner" aria-labelledby="benefitsHeading">
-            <div>
-              <h2 id="benefitsHeading" data-i18n-key="profile_benefits_title">Personal guidance when you need it</h2>
-              <p data-i18n-key="profile_benefits_subtitle">Schedule time with a care guide to explore new benefits, add family members, or review claims support.</p>
-              <p class="banner-meta" data-i18n-key="profile_benefits_meta">Available Monday–Friday · 8am–6pm CST</p>
-            </div>
-          </section>
-
-          <div class="profile-details">
-            <header class="content-header">
-              <div>
-                <span class="eyebrow" data-i18n-key="profile_account_center">Account Center</span>
-                <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
-              </div>
-              <p class="member-since" data-i18n-key="profile_member_since">Member since March 2023</p>
-            </header>
-
-            <section class="profile-panel personal-panel">
-              <div class="panel-header">
-                <div class="panel-glyph" aria-hidden="true">
-                  <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
-                    <circle cx="48" cy="48" r="47" fill="#f4e2bc" />
-                    <path d="M58.9 28.3c-8.8 0-13 6.1-13 12.5 0 5.8 4.8 11 12.4 11 7.4 0 12.1-5.2 12.1-11.3 0-6.5-4.6-12.2-11.5-12.2zm-24 2.8c-6.8 0-11.4 4.8-11.4 11 0 5.5 3.8 9.4 9.5 11.6l6.9 2.6c8.8 3.3 13.5 7.4 13.5 15 0 7.1-5.5 13.4-15.5 13.4-8.8 0-15.6-5.4-15.6-12.6 0-5 3.5-9.9 9.7-11.8" fill="none" stroke="#163c30" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <div class="panel-copy">
-                  <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
-                  <p data-i18n-key="profile_personal_details_subtitle">Keep your details current so we can reach you when it matters most.</p>
-                </div>
-              </div>
-              <form id="personalForm" class="panel-form" autocomplete="on">
-                <fieldset class="form-group">
-                  <legend>Full Name</legend>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only">First Name</span>
-                      <input type="text" name="firstName" value="Maria" autocomplete="given-name" required>
-                    </label>
-                    <label class="form-field">
-                      <span class="sr-only">Last Name</span>
-                      <input type="text" name="lastName" value="Thompson" autocomplete="family-name" required>
-                    </label>
-                  </div>
-                </fieldset>
-                <div class="field-grid">
-                  <label class="form-field">
-                    <span>Email address*</span>
-                    <input type="email" name="emailAddress" value="maria@email.com" autocomplete="email" required>
-                  </label>
-                  <label class="form-field">
-                    <span>Phone</span>
-                    <input type="tel" name="phoneNumber" value="+1 555-123-4567" autocomplete="tel" required>
-                  </label>
-                </div>
-                <fieldset class="form-group">
-                  <legend>Address</legend>
-                  <label class="form-field">
-                    <span class="sr-only">Street Address</span>
-                    <input type="text" name="address1" value="123 Main Street" autocomplete="address-line1" required>
-                  </label>
-                  <label class="form-field">
-                    <span class="sr-only">Apartment, suite, etc.</span>
-                    <input type="text" name="address2" placeholder="Address Line 2" autocomplete="address-line2">
-                  </label>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only">City</span>
-                      <input type="text" name="city" value="Miami" autocomplete="address-level2" required>
-                    </label>
-                    <label class="form-field">
-                      <span class="sr-only">State</span>
-                      <select name="state" autocomplete="address-level1" required>
-                        <option value="" disabled>State</option>
-                        <option value="FL" selected>Florida</option>
-                        <option value="TX">Texas</option>
-                        <option value="CA">California</option>
-                        <option value="NY">New York</option>
-                      </select>
-                    </label>
-                  </div>
-                  <label class="form-field">
-                    <span class="sr-only">Postal Code</span>
-                    <input type="text" name="postalCode" value="33101" autocomplete="postal-code" required>
-                  </label>
-                </fieldset>
-                <div class="form-actions">
-                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button primary-button" data-i18n-key="button_save_changes">Save Changes</button>
-                </div>
-              </form>
-            </section>
-
-            <section class="profile-panel beneficiary-panel">
-              <div class="panel-header">
-                <div class="panel-copy">
-                  <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
-                  <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
-                </div>
-              </div>
-              <form id="beneficiaryForm" class="panel-form" autocomplete="on">
-                <fieldset class="form-group">
-                  <legend>Full Name</legend>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only">First Name</span>
-                      <input type="text" name="beneficiaryFirstName" value="Maria" autocomplete="given-name" required>
-                    </label>
-                    <label class="form-field">
-                      <span class="sr-only">Last Name</span>
-                      <input type="text" name="beneficiaryLastName" value="Thompson" autocomplete="family-name" required>
-                    </label>
-                  </div>
-                </fieldset>
-                <div class="field-grid">
-                  <label class="form-field">
-                    <span>Email address*</span>
-                    <input type="email" name="beneficiaryEmail" value="maria@email.com" autocomplete="email" required>
-                  </label>
-                  <label class="form-field">
-                    <span>Phone</span>
-                    <input type="tel" name="beneficiaryPhone" value="+1 555-123-4567" autocomplete="tel">
-                  </label>
-                </div>
-                <fieldset class="form-group">
-                  <legend>Address</legend>
-                  <label class="form-field">
-                    <span class="sr-only">Street Address</span>
-                    <input type="text" name="beneficiaryAddress1" value="123 Main Street" autocomplete="address-line1" required>
-                  </label>
-                  <label class="form-field">
-                    <span class="sr-only">Apartment, suite, etc.</span>
-                    <input type="text" name="beneficiaryAddress2" placeholder="Address Line 2" autocomplete="address-line2">
-                  </label>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only">City</span>
-                      <input type="text" name="beneficiaryCity" value="Miami" autocomplete="address-level2" required>
-                    </label>
-                    <label class="form-field">
-                      <span class="sr-only">State</span>
-                      <select name="beneficiaryState" autocomplete="address-level1" required>
-                        <option value="" disabled>State</option>
-                        <option value="FL" selected>Florida</option>
-                        <option value="TX">Texas</option>
-                        <option value="CA">California</option>
-                        <option value="NY">New York</option>
-                      </select>
-                    </label>
-                  </div>
-                  <label class="form-field">
-                    <span class="sr-only">Postal Code</span>
-                    <input type="text" name="beneficiaryPostalCode" value="33101" autocomplete="postal-code">
-                  </label>
-                </fieldset>
-                <div class="form-actions">
-                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button primary-button" data-i18n-key="button_save_beneficiary">Save Changes</button>
-                </div>
-              </form>
-            </section>
-
-            <section class="profile-panel documents-panel">
-              <div class="panel-header">
-                <div class="panel-copy">
-                  <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
-                  <p data-i18n-key="profile_documents_subtitle">Securely upload your ID's to keep your account verified and protected. Only one document is required for verification.</p>
-                </div>
-              </div>
-              <div class="documents-table">
-                <div class="documents-row">
-                  <span class="doc-title" data-i18n-key="doc_passport">Passport</span>
-                  <span class="status-badge status-uploaded">Uploaded</span>
-                  <button type="button" class="button doc-button">Upload/Update Document</button>
-                </div>
-                <div class="documents-row">
-                  <span class="doc-title" data-i18n-key="doc_drivers_license">Driver's License</span>
-                  <span class="status-badge status-uploaded">Uploaded</span>
-                  <button type="button" class="button doc-button">Upload/Update Document</button>
-                </div>
-                <div class="documents-row">
-                  <span class="doc-title" data-i18n-key="doc_ssn">Social Security</span>
-                  <span class="status-badge status-uploaded">Uploaded</span>
-                  <button type="button" class="button doc-button">Upload/Update Document</button>
-                </div>
-              </div>
-            </section>
-
-            <section class="profile-panel language-panel">
-              <div class="panel-header">
-                <div class="panel-copy">
-                  <h2 data-i18n-key="profile_language_title">Language Preference</h2>
-                  <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
-                </div>
-              </div>
-              <div class="language-preference">
-                <label for="languageSelect" class="form-field">
-                  <span>Español</span>
-                  <select id="languageSelect" name="languageSelect">
-                    <option value="en" selected>English</option>
-                    <option value="es">Español</option>
-                  </select>
-                </label>
-                <button type="button" class="button primary-button" id="updateLang">Update Language</button>
-              </div>
-            </section>
-          </div>
+      <section class="profile-hero">
+        <div>
+          <h1>My Profile</h1>
+          <p>Review and manage the details connected to your MallowCare plan.</p>
         </div>
-      </div>
+        <div class="profile-hero-actions">
+          <button class="button ghost-button">Download Member Card</button>
+          <button class="button solid-button">Update Plan</button>
+        </div>
+      </section>
+
+      <section class="profile-grid">
+        <article class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__header-group">
+              <div class="profile-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                  <circle cx="48" cy="48" r="47" fill="#f5e6c7"></circle>
+                  <path d="M58.9 28.3c-8.8 0-13 6.1-13 12.5 0 5.8 4.8 11 12.4 11 7.4 0 12.1-5.2 12.1-11.3 0-6.5-4.6-12.2-11.5-12.2zm-24 2.8c-6.8 0-11.4 4.8-11.4 11 0 5.5 3.8 9.4 9.5 11.6l6.9 2.6c8.8 3.3 13.5 7.4 13.5 15 0 7.1-5.5 13.4-15.5 13.4-8.8 0-15.6-5.4-15.6-12.6 0-5 3.5-9.9 9.7-11.8" fill="none" stroke="#163c30" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <h2>Personal Details</h2>
+                <p>Keep your contact information up to date so we can reach you quickly.</p>
+              </div>
+            </div>
+            <button class="button solid-button profile-card__action">Edit Details</button>
+          </div>
+          <dl class="profile-details">
+            <div>
+              <dt>Member</dt>
+              <dd>Maria Thompson</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>maria@email.com</dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>+1 (555) 123-4567</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>123 Main Street · Miami, FL 33101</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__header-group">
+              <div>
+                <h2>My Beneficiary</h2>
+                <p>Designate who will receive plan benefits if they are needed.</p>
+              </div>
+            </div>
+            <div class="profile-card__actions">
+              <button class="button ghost-button">Add Beneficiary</button>
+              <button class="button solid-button">Edit / Remove</button>
+            </div>
+          </div>
+          <ul class="beneficiary-list">
+            <li>
+              <span class="beneficiary-name">Morly Thompson</span>
+              <span class="beneficiary-meta">+1 (555) 321-9870 · morly@email.com</span>
+              <span class="beneficiary-meta">123 Main Street · Miami, FL 33101</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__header-group">
+              <div>
+                <h2>Identification Documents</h2>
+                <p>Upload documents to keep your account verified.</p>
+              </div>
+            </div>
+            <div class="document-avatars" aria-hidden="true">
+              <span class="doc-avatar doc-avatar--teal">DM</span>
+              <span class="doc-avatar doc-avatar--purple">JT</span>
+            </div>
+          </div>
+          <div class="document-list">
+            <div class="document-item">
+              <div>
+                <p class="document-title">Passport</p>
+                <span class="status-pill status-pill--success">Uploaded</span>
+              </div>
+              <button class="button ghost-button">Upload / Replace</button>
+            </div>
+            <div class="document-item">
+              <div>
+                <p class="document-title">Driver's License</p>
+                <span class="status-pill status-pill--success">Uploaded</span>
+              </div>
+              <button class="button ghost-button">Upload / Replace</button>
+            </div>
+            <div class="document-item">
+              <div>
+                <p class="document-title">Social Security</p>
+                <span class="status-pill">Pending</span>
+              </div>
+              <button class="button solid-button">Upload Document</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__header-group">
+              <div>
+                <h2>Language Preference</h2>
+                <p>Select the language you prefer for communications.</p>
+              </div>
+            </div>
+          </div>
+          <div class="language-form">
+            <label class="language-select">
+              <span>Preferred Language</span>
+              <select id="languageSelect" name="languageSelect">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </select>
+            </label>
+            <button type="button" class="button solid-button" id="updateLang">Change Language</button>
+          </div>
+        </article>
+      </section>
     </main>
   </div>
   <script src="i18n.js"></script>
