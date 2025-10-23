@@ -3478,6 +3478,7 @@ body.modal-open {
   gap: 1.5rem;
 }
 
+
 .profile-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3539,6 +3540,7 @@ body.modal-open {
 .profile-form__actions .button {
   min-width: 150px;
 }
+
 
 .profile-card__actions {
   display: flex;
@@ -3881,6 +3883,7 @@ body.modal-open {
     padding: 2.25rem;
   }
 
+
   .profile-form {
     grid-template-columns: 1fr;
   }
@@ -3902,6 +3905,12 @@ body.modal-open {
   .profile-card__actions .button {
     flex: 1 1 100%;
   }
+
+
+  .profile-card__actions .button {
+    flex: 1 1 100%;
+  }
+
 
   .personal-details__body {
     grid-template-columns: 1fr;

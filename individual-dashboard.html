@@ -47,6 +47,7 @@
         <section class="profile-card personal-details">
           <div class="profile-card__header">
             <h2 class="profile-card__title">Personal Details</h2>
+
             <button class="button outline-button" type="button" data-personal-edit-trigger>Edit Details</button>
           </div>
           <div class="profile-card__content">
@@ -113,6 +114,26 @@
                 <button class="button solid-button" type="submit">Save Changes</button>
               </div>
             </form>
+
+            <button class="button outline-button">Edit Details</button>
+          </div>
+          <div class="personal-details__body">
+            <div class="personal-details__crest" aria-hidden="true">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                <circle cx="60" cy="60" r="58" fill="none" stroke="rgba(212, 177, 94, 0.4)" stroke-width="4" />
+                <path d="M60 26c-16 0-30 14-30 30s12 30 30 30 30 14 30 30" fill="none" stroke="#c09a43" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M60 46c-6 0-12 6-12 12s5 12 12 12 12 6 12 12" fill="none" stroke="#8d6a1d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="personal-details__info">
+              <p class="personal-details__name"><span data-user-name>Maria Thompson</span></p>
+              <ul class="profile-list">
+                <li><span data-user-email>maria.thompson@email.com</span></li>
+                <li><span data-user-phone>+1 (555) 432-9876</span></li>
+                <li><span data-user-address>123 Main Street, Miami, FL</span></li>
+              </ul>
+            </div>
+
           </div>
         </section>
         <section class="profile-card beneficiary">
@@ -120,6 +141,7 @@
             <h2 class="profile-card__title">My Beneficiary</h2>
             <p class="profile-card__description">Ensure the people you love receive the benefits of something happening to you.</p>
           </div>
+
           <div class="profile-card__content" data-beneficiary-display>
             <article class="profile-detail">
               <h3 class="profile-detail__name">Beneficiary Details</h3>
@@ -194,6 +216,23 @@
               <button class="button solid-button" type="submit">Add Beneficiary</button>
             </div>
           </form>
+
+          <div class="profile-card__content">
+            <article class="profile-detail">
+              <h3 class="profile-detail__name">Beneficiary Details</h3>
+              <ul class="profile-list">
+                <li class="profile-list__item"><span class="profile-list__label">Name</span> <span class="profile-list__value">Marisa Thompson</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Relationship</span> <span class="profile-list__value">Spouse</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Phone</span> <span class="profile-list__value">+1 (555) 678-3345</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Email</span> <span class="profile-list__value">marisa.thompson@email.com</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="profile-card__actions">
+            <button class="button solid-button">Add Beneficiary</button>
+            <button class="button ghost-button">Edit/Remove Beneficiary</button>
+          </div>
+
         </section>
         <section class="profile-card identification">
           <div class="profile-card__header">
