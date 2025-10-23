@@ -1,7 +1,7 @@
 const STATUS_MAP = {
-  uploaded: { label: 'Uploaded', className: 'status-success' },
-  expiring: { label: 'Expiring Soon', className: 'status-warning' },
-  pending: { label: 'Not Submitted', className: 'status-pending' }
+  uploaded: { label: 'UPLOADED', className: 'status--success' },
+  expiring: { label: 'Expiring Soon', className: 'status--warning' },
+  pending: { label: 'PENDING', className: '' }
 };
 
 const USER_TYPE_PREFIX = 'mallow-individual-';
@@ -123,50 +123,24 @@ function setupForm({ id, storageKey, successMessage }) {
 }
 
 function setupStatusPills() {
-  const selects = document.querySelectorAll('select[data-status-pill]');
-  selects.forEach(select => {
-    const pill = document.querySelector(`[data-status-pill-target="${select.dataset.statusPill}"]`);
-    if (!pill) return;
-
-    const applyStatus = value => {
-      const status = STATUS_MAP[value] || STATUS_MAP.pending;
-      pill.textContent = status.label;
-      pill.classList.remove('status-success', 'status-warning', 'status-pending');
-      pill.classList.add(status.className);
-    };
-
-    applyStatus(select.value);
-    select.addEventListener('change', () => applyStatus(select.value));
+  const pills = document.querySelectorAll('[data-status]');
+  pills.forEach(pill => {
+    const statusValue = pill.dataset.status;
+    const status = STATUS_MAP[statusValue] || STATUS_MAP.pending;
+    pill.textContent = status.label;
+    pill.classList.add(status.className);
   });
 }
 
 function setupLanguagePreference() {
-  const languageSelect = document.getElementById('languageSelect');
   const updateLangBtn = document.getElementById('updateLang');
   const languageDisplay = document.querySelector('[data-language-display]');
-  if (!updateLangBtn) {
+  if (!updateLangBtn || !languageDisplay) {
     return;
   }
 
   const storageKey = `${USER_TYPE_PREFIX}language`;
   const savedLang = localStorage.getItem(storageKey);
-
-  if (languageSelect) {
-    if (savedLang) {
-      languageSelect.value = savedLang;
-    }
-
-    updateLangBtn.addEventListener('click', () => {
-      localStorage.setItem(storageKey, languageSelect.value);
-      alert('Language preference updated');
-    });
-    return;
-  }
-
-  if (!languageDisplay) {
-    return;
-  }
-
   const optionMap = parseLanguageOptions(languageDisplay.dataset.options);
   const codes = Object.keys(optionMap);
   let currentLang = savedLang || languageDisplay.dataset.current || codes[0] || 'en';
