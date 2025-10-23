@@ -143,19 +143,73 @@ function setupStatusPills() {
 function setupLanguagePreference() {
   const languageSelect = document.getElementById('languageSelect');
   const updateLangBtn = document.getElementById('updateLang');
-  if (!languageSelect || !updateLangBtn) {
+  const languageDisplay = document.querySelector('[data-language-display]');
+  if (!updateLangBtn) {
     return;
   }
 
-  const savedLang = localStorage.getItem(`${USER_TYPE_PREFIX}language`);
-  if (savedLang) {
-    languageSelect.value = savedLang;
+  const storageKey = `${USER_TYPE_PREFIX}language`;
+  const savedLang = localStorage.getItem(storageKey);
+
+  if (languageSelect) {
+    if (savedLang) {
+      languageSelect.value = savedLang;
+    }
+
+    updateLangBtn.addEventListener('click', () => {
+      localStorage.setItem(storageKey, languageSelect.value);
+      alert('Language preference updated');
+    });
+    return;
   }
 
+  if (!languageDisplay) {
+    return;
+  }
+
+  const optionMap = parseLanguageOptions(languageDisplay.dataset.options);
+  const codes = Object.keys(optionMap);
+  let currentLang = savedLang || languageDisplay.dataset.current || codes[0] || 'en';
+
+  const renderLanguage = () => {
+    const label = optionMap[currentLang] || currentLang;
+    languageDisplay.dataset.current = currentLang;
+    languageDisplay.innerHTML = `<span>Current:</span> ${label}`;
+  };
+
+  if (!optionMap[currentLang] && codes.length) {
+    currentLang = codes[0];
+  }
+
+  renderLanguage();
+
   updateLangBtn.addEventListener('click', () => {
-    localStorage.setItem(`${USER_TYPE_PREFIX}language`, languageSelect.value);
+    if (!codes.length) {
+      alert('Language preference updated');
+      return;
+    }
+
+    const currentIndex = codes.indexOf(currentLang);
+    const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % codes.length : 0;
+    currentLang = codes[nextIndex];
+    renderLanguage();
+    localStorage.setItem(storageKey, currentLang);
     alert('Language preference updated');
   });
+}
+
+function parseLanguageOptions(optionsString) {
+  if (!optionsString) {
+    return { en: 'English', es: 'Español' };
+  }
+
+  return optionsString.split(',').reduce((acc, pair) => {
+    const [value, label] = pair.split(':').map(part => part && part.trim());
+    if (value && label) {
+      acc[value] = label;
+    }
+    return acc;
+  }, {});
 }
 
 function readStoredData(key) {

@@ -10,6 +10,69 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+
+  <div class="profile-layout">
+    <aside class="profile-sidebar">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" aria-hidden="true">MT</div>
+        <div>
+          <p class="sidebar-user__name">Maria Thompson</p>
+          <p class="sidebar-user__meta">Member ID · IND-432108</p>
+          <p class="sidebar-user__meta">Plan · Family Protect Plus</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="my-profile.html" class="sidebar-nav__item active">My Account</a>
+        <a href="payments.html" class="sidebar-nav__item">Payments</a>
+        <a href="#" class="sidebar-nav__item">Help</a>
+        <a href="settings.html" class="sidebar-nav__item">Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-logout">Log Out</button>
+        <div class="sidebar-language">
+          <button type="button" class="language-pill active">English</button>
+          <button type="button" class="language-pill">Español</button>
+        </div>
+        <p class="sidebar-caption">Protected by MallowCare</p>
+      </div>
+    </aside>
+
+    <main class="profile-content">
+      <header class="profile-header">
+        <h1>My Profile</h1>
+      </header>
+
+      <section class="profile-sections">
+        <article class="profile-card profile-card--personal">
+          <div class="profile-card__header">
+            <div class="profile-emblem" aria-hidden="true">
+              <img src="images/Fondo blanco - Color.png" alt="" role="presentation">
+            </div>
+            <div class="profile-card__heading">
+              <h2>Personal Details</h2>
+              <p class="profile-card__sub">Profile information on file with MallowCare.</p>
+            </div>
+            <button class="button button--solid">Edit Details</button>
+          </div>
+          <dl class="profile-details">
+            <div>
+              <dt>Member</dt>
+              <dd>Maria Thompson</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>maria@email.com</dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>+1 (555) 123-4567</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>123 Main Street · Miami, FL 33101</dd>
+            </div>
+          </dl>
+
   <div class="account-layout">
     <aside class="account-sidebar">
       <div class="sidebar-brand">
@@ -175,10 +238,59 @@
               <span class="beneficiary-meta">123 Main Street · Miami, FL 33101</span>
             </li>
           </ul>
+
         </article>
 
         <article class="profile-card">
           <div class="profile-card__header">
+
+            <div class="profile-card__heading">
+              <h2>My Beneficiary</h2>
+              <p class="profile-card__sub">Beneficiary Details</p>
+            </div>
+            <div class="profile-card__actions">
+              <button class="button button--ghost">Add Beneficiary</button>
+              <button class="button button--solid">Edit/Remove Beneficiary</button>
+            </div>
+          </div>
+          <ul class="beneficiary-list">
+            <li>
+              <span class="beneficiary-name">Morly Thompson</span>
+              <span class="beneficiary-meta">+1 (555) 321-9870 · morly@email.com</span>
+              <span class="beneficiary-meta">123 Main Street · Miami, FL 33101</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__heading">
+              <h2>Identification Documents</h2>
+              <p class="profile-card__sub">Upload your documents so your account stays verified.</p>
+            </div>
+          </div>
+          <div class="document-grid">
+            <div class="document-card">
+              <div>
+                <p class="document-title">Passport</p>
+                <span class="status status--success">Uploaded</span>
+              </div>
+              <button class="button button--ghost">Upload/Update Document</button>
+            </div>
+            <div class="document-card">
+              <div>
+                <p class="document-title">Driver's License</p>
+                <span class="status status--success">Uploaded</span>
+              </div>
+              <button class="button button--ghost">Upload/Update Document</button>
+            </div>
+            <div class="document-card">
+              <div>
+                <p class="document-title">Social Security</p>
+                <span class="status">Pending</span>
+              </div>
+              <button class="button button--solid">Upload/Update Document</button>
+
             <div class="profile-card__header-group">
               <div>
                 <h2>Identification Documents</h2>
@@ -225,12 +337,22 @@
                 <span class="status-pill">Pending</span>
               </div>
               <button class="button solid-button">Upload Document</button>
+
             </div>
           </div>
         </article>
 
         <article class="profile-card">
           <div class="profile-card__header">
+
+            <div class="profile-card__heading">
+              <h2>Language Preference</h2>
+              <p class="profile-card__sub">Choose the language used for notifications.</p>
+            </div>
+          </div>
+          <div class="language-section">
+            <p class="language-current" data-language-display data-options="en:English,es:Español" data-current="en" aria-live="polite"><span>Current:</span> English</p>
+            <button type="button" class="button button--solid" id="updateLang">Change Language</button>
 
             <div class="profile-card__header-group">
               <div>
@@ -253,6 +375,7 @@
               </select>
             </label>
             <button type="button" class="button solid-button" id="updateLang">Change Language</button>
+
           </div>
         </article>
       </section>
