@@ -3788,6 +3788,7 @@ body.modal-open {
 }
 
 .profile-grid {
+codex/add-my-account-feature-as-mocked-dkg7vw
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
@@ -3803,10 +3804,26 @@ body.modal-open {
   border: 1px solid rgba(22, 60, 48, 0.08);
   box-shadow: none;
   width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.25rem;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  box-shadow: 0 28px 46px rgba(22, 60, 48, 0.12);
+
 }
 
 .profile-card__header {
   display: flex;
+
   align-items: center;
   gap: 1.5rem;
   flex-wrap: wrap;
@@ -3820,6 +3837,10 @@ body.modal-open {
   gap: 1.25rem;
   flex: 1 1 auto;
   min-width: 0;
+
+  align-items: flex-start;
+  gap: 1.5rem;
+
 }
 
 .profile-card__icon {
@@ -3850,6 +3871,7 @@ body.modal-open {
   margin-left: auto;
   display: flex;
   gap: 0.75rem;
+
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -3859,6 +3881,14 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+
   margin: 0;
 }
 
@@ -4018,12 +4048,17 @@ body.modal-open {
 
 @media (max-width: 640px) {
   .profile-grid {
+
     gap: 1.25rem;
+
+    grid-template-columns: 1fr;
+
   }
 
   .account-sidebar {
     padding: 2rem;
   }
+
 
   .profile-card {
     padding: 1.5rem;
@@ -4038,4 +4073,6 @@ body.modal-open {
     flex-direction: column;
     align-items: stretch;
   }
+
+
 }

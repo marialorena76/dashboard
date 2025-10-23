@@ -100,10 +100,63 @@
               <dd>123 Main Street · Miami, FL 33101</dd>
             </div>
           </dl>
+
+            <div class="profile-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                <circle cx="48" cy="48" r="47" fill="#f5e6c7"></circle>
+                <path d="M58.9 28.3c-8.8 0-13 6.1-13 12.5 0 5.8 4.8 11 12.4 11 7.4 0 12.1-5.2 12.1-11.3 0-6.5-4.6-12.2-11.5-12.2zm-24 2.8c-6.8 0-11.4 4.8-11.4 11 0 5.5 3.8 9.4 9.5 11.6l6.9 2.6c8.8 3.3 13.5 7.4 13.5 15 0 7.1-5.5 13.4-15.5 13.4-8.8 0-15.6-5.4-15.6-12.6 0-5 3.5-9.9 9.7-11.8" fill="none" stroke="#163c30" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <h2>Personal Details</h2>
+              <p>Keep your contact information up to date so we can reach you quickly.</p>
+            </div>
+            <button class="button solid-button profile-card__action">Edit Details</button>
+          </div>
+          <dl class="profile-details">
+            <div>
+              <dt>Member</dt>
+              <dd>Maria Thompson</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd>maria@email.com</dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>+1 (555) 123-4567</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>123 Main Street · Miami, FL 33101</dd>
+            </div>
+          </dl>
         </article>
 
         <article class="profile-card">
           <div class="profile-card__header">
+            <div>
+              <h2>My Beneficiary</h2>
+              <p>Designate who will receive plan benefits if they are needed.</p>
+            </div>
+            <div class="profile-card__actions">
+              <button class="button ghost-button">Add Beneficiary</button>
+              <button class="button solid-button">Edit / Remove</button>
+            </div>
+          </div>
+          <ul class="beneficiary-list">
+            <li>
+              <span class="beneficiary-name">Morly Thompson</span>
+              <span class="beneficiary-meta">+1 (555) 321-9870 · morly@email.com</span>
+              <span class="beneficiary-meta">123 Main Street · Miami, FL 33101</span>
+            </li>
+          </ul>
+
+        </article>
+
+        <article class="profile-card">
+          <div class="profile-card__header">
+
             <div class="profile-card__header-group">
               <div>
                 <h2>My Beneficiary</h2>
@@ -140,6 +193,20 @@
           <div class="document-list">
             <div class="document-item">
               <div>
+
+            <div>
+              <h2>Identification Documents</h2>
+              <p>Upload documents to keep your account verified.</p>
+            </div>
+            <div class="document-avatars" aria-hidden="true">
+              <span class="doc-avatar doc-avatar--teal">DM</span>
+              <span class="doc-avatar doc-avatar--purple">JT</span>
+            </div>
+          </div>
+          <div class="document-list">
+            <div class="document-item">
+              <div>
+
                 <p class="document-title">Passport</p>
                 <span class="status-pill status-pill--success">Uploaded</span>
               </div>
@@ -164,11 +231,17 @@
 
         <article class="profile-card">
           <div class="profile-card__header">
+
             <div class="profile-card__header-group">
               <div>
                 <h2>Language Preference</h2>
                 <p>Select the language you prefer for communications.</p>
               </div>
+
+            <div>
+              <h2>Language Preference</h2>
+              <p>Select the language you prefer for communications.</p>
+
             </div>
           </div>
           <div class="language-form">
