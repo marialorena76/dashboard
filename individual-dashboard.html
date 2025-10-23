@@ -47,6 +47,74 @@
         <section class="profile-card personal-details">
           <div class="profile-card__header">
             <h2 class="profile-card__title">Personal Details</h2>
+
+            <button class="button outline-button" type="button" data-personal-edit-trigger>Edit Details</button>
+          </div>
+          <div class="profile-card__content">
+            <div class="personal-details__body" data-personal-display>
+              <div class="personal-details__crest" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                  <circle cx="60" cy="60" r="58" fill="none" stroke="rgba(212, 177, 94, 0.4)" stroke-width="4" />
+                  <path d="M60 26c-16 0-30 14-30 30s12 30 30 30 30 14 30 30" fill="none" stroke="#c09a43" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M60 46c-6 0-12 6-12 12s5 12 12 12 12 6 12 12" fill="none" stroke="#8d6a1d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="personal-details__info">
+                <p class="personal-details__name"><span data-user-name>Maria Thompson</span></p>
+                <ul class="profile-list">
+                  <li><span data-user-email>maria.thompson@email.com</span></li>
+                  <li><span data-user-phone>+1 (555) 432-9876</span></li>
+                  <li><span data-user-address>123 Main Street, Miami, FL</span></li>
+                </ul>
+              </div>
+            </div>
+            <form class="profile-form personal-details__form is-hidden" data-personal-form>
+              <div class="profile-form__field">
+                <label for="personal-full-name">Full Name</label>
+                <input id="personal-full-name" name="personal-full-name" type="text" value="Maria Thompson" autocomplete="name">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-preferred-name">Preferred Name</label>
+                <input id="personal-preferred-name" name="personal-preferred-name" type="text" value="Maria" autocomplete="nickname">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-email">Email</label>
+                <input id="personal-email" name="personal-email" type="email" value="maria.thompson@email.com" autocomplete="email">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-phone">Phone Number</label>
+                <input id="personal-phone" name="personal-phone" type="tel" value="+1 (555) 432-9876" autocomplete="tel">
+              </div>
+              <div class="profile-form__field profile-form__field--full">
+                <label for="personal-address-1">Address Line 1</label>
+                <input id="personal-address-1" name="personal-address-1" type="text" value="123 Main Street" autocomplete="address-line1">
+              </div>
+              <div class="profile-form__field profile-form__field--full">
+                <label for="personal-address-2">Address Line 2</label>
+                <input id="personal-address-2" name="personal-address-2" type="text" placeholder="Apartment, suite, etc." autocomplete="address-line2">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-city">City</label>
+                <input id="personal-city" name="personal-city" type="text" value="Miami" autocomplete="address-level2">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-state">State</label>
+                <input id="personal-state" name="personal-state" type="text" value="FL" autocomplete="address-level1">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-zip">ZIP</label>
+                <input id="personal-zip" name="personal-zip" type="text" value="33101" autocomplete="postal-code">
+              </div>
+              <div class="profile-form__field">
+                <label for="personal-country">Country</label>
+                <input id="personal-country" name="personal-country" type="text" value="United States" autocomplete="country">
+              </div>
+              <div class="profile-form__actions">
+                <button class="button ghost-button" type="button" data-personal-cancel>Cancel</button>
+                <button class="button solid-button" type="submit">Save Changes</button>
+              </div>
+            </form>
+
             <button class="button outline-button">Edit Details</button>
           </div>
           <div class="personal-details__body">
@@ -65,6 +133,7 @@
                 <li><span data-user-address>123 Main Street, Miami, FL</span></li>
               </ul>
             </div>
+
           </div>
         </section>
         <section class="profile-card beneficiary">
@@ -72,6 +141,82 @@
             <h2 class="profile-card__title">My Beneficiary</h2>
             <p class="profile-card__description">Ensure the people you love receive the benefits of something happening to you.</p>
           </div>
+
+          <div class="profile-card__content" data-beneficiary-display>
+            <article class="profile-detail">
+              <h3 class="profile-detail__name">Beneficiary Details</h3>
+              <ul class="profile-list">
+                <li class="profile-list__item"><span class="profile-list__label">Name</span> <span class="profile-list__value" data-beneficiary-name>Marisa Thompson</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Relationship</span> <span class="profile-list__value" data-beneficiary-relationship>Spouse</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Phone</span> <span class="profile-list__value" data-beneficiary-phone>+1 (555) 678-3345</span></li>
+                <li class="profile-list__item"><span class="profile-list__label">Email</span> <span class="profile-list__value" data-beneficiary-email>marisa.thompson@email.com</span></li>
+              </ul>
+            </article>
+          </div>
+          <div class="profile-card__actions" data-beneficiary-actions>
+            <button class="button solid-button" type="button" data-beneficiary-add-trigger>Add Beneficiary</button>
+            <button class="button ghost-button" type="button" data-beneficiary-edit-trigger>Edit Beneficiary</button>
+          </div>
+          <form class="profile-form beneficiary__form is-hidden" data-beneficiary-edit-form>
+            <div class="profile-form__field">
+              <label for="beneficiary-edit-name">Full Name</label>
+              <input id="beneficiary-edit-name" name="beneficiary-edit-name" type="text" value="Marisa Thompson" autocomplete="name">
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-edit-relationship">Relationship</label>
+              <select id="beneficiary-edit-relationship" name="beneficiary-edit-relationship">
+                <option>Spouse</option>
+                <option>Child</option>
+                <option>Parent</option>
+                <option>Sibling</option>
+                <option>Friend</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-edit-phone">Phone Number</label>
+              <input id="beneficiary-edit-phone" name="beneficiary-edit-phone" type="tel" value="+1 (555) 678-3345" autocomplete="tel">
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-edit-email">Email</label>
+              <input id="beneficiary-edit-email" name="beneficiary-edit-email" type="email" value="marisa.thompson@email.com" autocomplete="email">
+            </div>
+            <div class="profile-form__actions">
+              <button class="button ghost-button" type="button" data-beneficiary-cancel>Edit Later</button>
+              <button class="button solid-button" type="submit">Save Changes</button>
+            </div>
+          </form>
+          <form class="profile-form beneficiary__form is-hidden" data-beneficiary-add-form>
+            <div class="profile-form__field">
+              <label for="beneficiary-add-name">Full Name</label>
+              <input id="beneficiary-add-name" name="beneficiary-add-name" type="text" placeholder="Enter full name" autocomplete="name">
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-add-relationship">Relationship</label>
+              <select id="beneficiary-add-relationship" name="beneficiary-add-relationship">
+                <option value="" selected disabled>Select</option>
+                <option>Spouse</option>
+                <option>Child</option>
+                <option>Parent</option>
+                <option>Sibling</option>
+                <option>Friend</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-add-phone">Phone Number</label>
+              <input id="beneficiary-add-phone" name="beneficiary-add-phone" type="tel" placeholder="Enter phone number" autocomplete="tel">
+            </div>
+            <div class="profile-form__field">
+              <label for="beneficiary-add-email">Email</label>
+              <input id="beneficiary-add-email" name="beneficiary-add-email" type="email" placeholder="Enter email" autocomplete="email">
+            </div>
+            <div class="profile-form__actions">
+              <button class="button ghost-button" type="button" data-beneficiary-cancel>Cancel</button>
+              <button class="button solid-button" type="submit">Add Beneficiary</button>
+            </div>
+          </form>
+
           <div class="profile-card__content">
             <article class="profile-detail">
               <h3 class="profile-detail__name">Beneficiary Details</h3>
@@ -87,6 +232,7 @@
             <button class="button solid-button">Add Beneficiary</button>
             <button class="button ghost-button">Edit/Remove Beneficiary</button>
           </div>
+
         </section>
         <section class="profile-card identification">
           <div class="profile-card__header">
