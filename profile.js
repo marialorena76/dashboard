@@ -1,7 +1,7 @@
 const STATUS_MAP = {
-  uploaded: { label: 'UPLOADED', className: 'status--success' },
-  expiring: { label: 'Expiring Soon', className: 'status--warning' },
-  pending: { label: 'PENDING', className: '' }
+  uploaded: { label: 'Uploaded', className: 'status-success' },
+  expiring: { label: 'Expiring Soon', className: 'status-warning' },
+  pending: { label: 'Not Submitted', className: 'status-pending' }
 };
 
 const USER_TYPE_PREFIX = 'mallow-individual-';
@@ -123,67 +123,39 @@ function setupForm({ id, storageKey, successMessage }) {
 }
 
 function setupStatusPills() {
-  const pills = document.querySelectorAll('[data-status]');
-  pills.forEach(pill => {
-    const statusValue = pill.dataset.status;
-    const status = STATUS_MAP[statusValue] || STATUS_MAP.pending;
-    pill.textContent = status.label;
-    pill.classList.add(status.className);
+  const selects = document.querySelectorAll('select[data-status-pill]');
+  selects.forEach(select => {
+    const pill = document.querySelector(`[data-status-pill-target="${select.dataset.statusPill}"]`);
+    if (!pill) return;
+
+    const applyStatus = value => {
+      const status = STATUS_MAP[value] || STATUS_MAP.pending;
+      pill.textContent = status.label;
+      pill.classList.remove('status-success', 'status-warning', 'status-pending');
+      pill.classList.add(status.className);
+    };
+
+    applyStatus(select.value);
+    select.addEventListener('change', () => applyStatus(select.value));
   });
 }
 
 function setupLanguagePreference() {
+  const languageSelect = document.getElementById('languageSelect');
   const updateLangBtn = document.getElementById('updateLang');
-  const languageDisplay = document.querySelector('[data-language-display]');
-  if (!updateLangBtn || !languageDisplay) {
+  if (!languageSelect || !updateLangBtn) {
     return;
   }
 
-  const storageKey = `${USER_TYPE_PREFIX}language`;
-  const savedLang = localStorage.getItem(storageKey);
-  const optionMap = parseLanguageOptions(languageDisplay.dataset.options);
-  const codes = Object.keys(optionMap);
-  let currentLang = savedLang || languageDisplay.dataset.current || codes[0] || 'en';
-
-  const renderLanguage = () => {
-    const label = optionMap[currentLang] || currentLang;
-    languageDisplay.dataset.current = currentLang;
-    languageDisplay.innerHTML = `<span>Current:</span> ${label}`;
-  };
-
-  if (!optionMap[currentLang] && codes.length) {
-    currentLang = codes[0];
+  const savedLang = localStorage.getItem(`${USER_TYPE_PREFIX}language`);
+  if (savedLang) {
+    languageSelect.value = savedLang;
   }
-
-  renderLanguage();
 
   updateLangBtn.addEventListener('click', () => {
-    if (!codes.length) {
-      alert('Language preference updated');
-      return;
-    }
-
-    const currentIndex = codes.indexOf(currentLang);
-    const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % codes.length : 0;
-    currentLang = codes[nextIndex];
-    renderLanguage();
-    localStorage.setItem(storageKey, currentLang);
+    localStorage.setItem(`${USER_TYPE_PREFIX}language`, languageSelect.value);
     alert('Language preference updated');
   });
-}
-
-function parseLanguageOptions(optionsString) {
-  if (!optionsString) {
-    return { en: 'English', es: 'Español' };
-  }
-
-  return optionsString.split(',').reduce((acc, pair) => {
-    const [value, label] = pair.split(':').map(part => part && part.trim());
-    if (value && label) {
-      acc[value] = label;
-    }
-    return acc;
-  }, {});
 }
 
 function readStoredData(key) {
