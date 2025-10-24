@@ -183,14 +183,30 @@
           return;
         }
 
-        let destino = '/free/index.html';
-        switch (me.plan){
-          case 'personal':  destino = '/personal/index.html'; break;
-          case 'business':  destino = '/business/index.html'; break;
-          case 'familiar':  destino = '/familiar/index.html'; break;
-        }
-        showAlert('¡Ingreso correcto! Redirigiendo…', 'ok');
-        setTimeout(()=>{ window.location.href = destino; }, 600);
+// Redirección según el plan del usuario
+let destino = '/';
+switch ((me.plan || '').toLowerCase()) {
+  case 'personal':
+  case 'familiar':
+    destino = '/individual-dashboard.html';
+    break;
+
+  case 'bussines':
+  case 'business': // por si el backend devuelve esta variante
+  case 'corporate':
+    destino = '/business-dashboard.html';
+    break;
+
+  default:
+    // si el plan no existe o no se detecta
+    showAlert('No encontramos un plan activo. Revisá tu cuenta o suscripción.', 'error');
+    setTimeout(() => { window.location.href = 'https://memoracare.org/planes/'; }, 1000);
+    return;
+}
+
+showAlert('¡Ingreso correcto! Redirigiendo…', 'ok');
+setTimeout(() => { window.location.href = destino; }, 600);
+
 
       }catch(err){
         console.error(err);
