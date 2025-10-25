@@ -10,121 +10,6 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 
-<script>
-(function(){
-  const API_BASE = 'https://memoracare.org/wp-json';
-
-  // Utilidades
-  const $ = (sel, ctx=document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-
-  function titleCaseEmail(email){
-    if(!email) return 'Usuario';
-    const base = email.split('@')[0].replace(/[._-]+/g,' ');
-    return base.split(' ').map(w=>w? w[0].toUpperCase()+w.slice(1) : '').join(' ');
-  }
-  function formatDateISO(iso){
-    if(!iso) return '-';
-    const d = new Date(iso);
-    if(isNaN(d)) return '-';
-    return d.toLocaleDateString('es-AR',{day:'2-digit',month:'short',year:'numeric'}).replace('.', '');
-  }
-
-  // Mapeos de plan/estado a textos del dashboard
-  function planToUI(me){
-    const plan = (me?.plan||'').toLowerCase();
-    if (plan === 'bussines' || plan === 'business' || plan === 'corporate') {
-      return { badge: 'Miembro empresarial', planName: 'Corporate', redirect: '/business-dashboard.html' };
-    }
-    if (plan === 'familiar' || plan === 'personal' || plan === 'individual') {
-      return { badge: 'Miembro individual', planName: 'Individual / Familiar', redirect: '/individual-dashboard.html' };
-    }
-    return { badge: 'Sin membresía', planName: '—', redirect: '/' };
-  }
-  function statusToUI(status){
-    const s = (status||'').toLowerCase();
-    if (s === 'active' || s === 'wc-active') return { label: 'Activo', classSuccess: true };
-    if (s === 'on-hold' || s === 'pending') return { label: 'En pausa', classSuccess: false };
-    if (s === 'cancelled' || s === 'expired') return { label: 'Inactivo', classSuccess: false };
-    return { label: 'Desconocido', classSuccess: false };
-  }
-
-  async function hydrate(){
-    const token = sessionStorage.getItem('memora_token');
-    if (!token) {
-      // sin sesión → volver al login
-      window.location.href = '/login.html';
-      return;
-    }
-
-    // Intentamos leer del cache guardado por el login para mostrar algo rápido
-    let me = null;
-    try { me = JSON.parse(sessionStorage.getItem('memora_user') || 'null'); } catch(_){}
-
-    // Refrescamos desde el backend para asegurar estado al día
-    try{
-      const r = await fetch(`${API_BASE}/memora/v1/me`, { headers:{ Authorization: 'Bearer '+token }});
-      if (r.ok) { me = await r.json(); sessionStorage.setItem('memora_user', JSON.stringify(me)); }
-      else if (!me) { throw new Error('No autenticado'); }
-    }catch(e){
-      console.warn('No se pudo refrescar /me:', e);
-      if (!me) { window.location.href = '/login.html'; return; }
-    }
-
-    // Nombre a mostrar
-    const displayName = me.display || me.name || titleCaseEmail(me.email);
-    $$('[data-user-name]').forEach(el => el.textContent = displayName);
-
-    // Avatar (si en el futuro lo guardás en user meta)
-    $$('[data-user-avatar]').forEach(el => {
-      // Si algún día tienes me.avatar, ponelo acá:
-      // if (me.avatar) el.src = me.avatar;
-    });
-
-    // Plan y estado
-    const planUI = planToUI(me);
-    const statusUI = statusToUI(me.status);
-
-    // Sidebar: “Miembro individual/empresarial”
-    const eyebrow = $('.individual-dashboard__profile-eyebrow');
-    if (eyebrow) eyebrow.textContent = planUI.badge;
-
-    // Tarjeta de plan: nombre y estado
-    const planNameEl = $('.individual-dashboard__plan-name');
-    if (planNameEl) planNameEl.textContent = planUI.planName;
-
-    const planStatusEl = $('.individual-dashboard__plan-status');
-    if (planStatusEl) planStatusEl.textContent = statusUI.label;
-
-    // Métricas de estado (badge verde o no)
-    const metricStatus = $('.metric-card .metric-card__value');
-    if (metricStatus && statusUI.classSuccess) {
-      metricStatus.classList.add('metric-card__value--success');
-      metricStatus.textContent = 'Activo';
-    } else if (metricStatus) {
-      metricStatus.classList.remove('metric-card__value--success');
-      metricStatus.textContent = statusUI.label;
-    }
-
-    // Próximo pago / vencimiento (si tu endpoint expone expires_at)
-    const nextPayEls = $$('.individual-dashboard .metric-card:nth-child(3) .metric-card__value, .individual-dashboard__plan-list dd:nth-of-type(2)');
-    nextPayEls.forEach(el => el.textContent = formatDateISO(me.expires_at));
-
-    // Logout
-    const logoutBtn = $('.logout');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        sessionStorage.removeItem('memora_token');
-        sessionStorage.removeItem('memora_user');
-        window.location.href = '/login.html';
-      });
-    }
-  }
-
-  hydrate();
-})();
-</script>
-
 <body>
   <div class="individual-dashboard">
     <aside class="individual-dashboard__sidebar">
@@ -313,8 +198,104 @@
   </div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
+
+  ...
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+
+<!-- 💡 Pega ESTE script acá, inmediatamente antes de </body> -->
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  console.log('[Memora] script cargó'); // debug
+  const API_BASE = 'https://memoracare.org/wp-json';
+  const $  = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+
+  function titleCaseEmail(email){
+    if(!email) return 'Usuario';
+    const base = email.split('@')[0].replace(/[._-]+/g,' ');
+    return base.split(' ').map(w=> w? w[0].toUpperCase()+w.slice(1) : '').join(' ');
+  }
+  function formatDateISO(iso){
+    if(!iso) return '-';
+    const d = new Date(iso);
+    return isNaN(d) ? '-' : d.toLocaleDateString('es-AR',{day:'2-digit',month:'short',year:'numeric'}).replace('.', '');
+  }
+  function planUI(plan){
+    const p = (plan||'').toLowerCase();
+    if (p==='bussines'||p==='business'||p==='corporate') return {badge:'Miembro empresarial', plan:'Corporate', dest:'/business-dashboard.html'};
+    if (p==='personal'||p==='individual'||p==='familiar') return {badge:'Miembro individual', plan:'Individual / Familiar', dest:'/individual-dashboard.html'};
+    return {badge:'Sin membresía', plan:'—', dest:'/'};
+  }
+  function statusUI(s){
+    const x = (s||'').toLowerCase();
+    if (x==='active'||x==='wc-active') return {label:'Activo', ok:true};
+    if (x==='on-hold'||x==='pending') return {label:'En pausa', ok:false};
+    if (x==='cancelled'||x==='expired') return {label:'Inactivo', ok:false};
+    return {label:'Desconocido', ok:false};
+  }
+
+  const token = sessionStorage.getItem('memora_token');
+  if(!token){ console.warn('[Memora] no hay token, voy a login'); location.href='/login.html'; return; }
+
+  let me = null;
+  try { me = JSON.parse(sessionStorage.getItem('memora_user')||'null'); } catch(_){}
+  try {
+    const r = await fetch(`${API_BASE}/memora/v1/me`, { headers:{ Authorization: 'Bearer '+token }});
+    console.log('[Memora] /me status =', r.status);
+    if(r.ok){ me = await r.json(); sessionStorage.setItem('memora_user', JSON.stringify(me)); }
+    else if (!me) { throw new Error('No autenticado'); }
+  } catch(e){
+    console.warn('[Memora] no pude traer /me', e);
+    if(!me){ location.href='/login.html'; return; }
+  }
+
+  console.log('[Memora] me =', me); // ▶️ deberías ver email/plan/status
+
+  const displayName = me.display || me.name || titleCaseEmail(me.email);
+
+  // Pintar nombre (targets típicos + data-user-name)
+  const nameTargets = ['[data-user-name]','.individual-dashboard__profile-name','.profile-name','#user-name','.user-name'];
+  let painted = false;
+  for(const sel of nameTargets){ $$(sel).forEach(el=>{ el.textContent = displayName; painted = true; }); }
+  if(!painted){
+    // Reemplazo de texto hardcodeado "Maria Thompson"
+    $$('h1,h2,h3,.title,.name,.profile,.header,p,span,div').forEach(el=>{
+      if(el.childElementCount===0 && (el.textContent||'').trim().toLowerCase()==='maria thompson'){
+        el.textContent = displayName; painted = true;
+      }
+    });
+  }
+
+  // Plan/estado
+  const p = planUI(me.plan);
+  const s = statusUI(me.status);
+  const eyebrow = $('.individual-dashboard__profile-eyebrow');
+  if(eyebrow) eyebrow.textContent = p.badge;
+  const planNameEl = $('.individual-dashboard__plan-name');
+  if(planNameEl) planNameEl.textContent = p.plan;
+  const planStatusEl = $('.individual-dashboard__plan-status');
+  if(planStatusEl) planStatusEl.textContent = s.label;
+
+  const metricStatus = $('.metric-card .metric-card__value');
+  if(metricStatus){
+    metricStatus.textContent = s.label;
+    metricStatus.classList.toggle('metric-card__value--success', !!s.ok);
+  }
+
+  const nextPayEls = $$('.individual-dashboard .metric-card:nth-child(3) .metric-card__value, .individual-dashboard__plan-list dd:nth-of-type(2)');
+  nextPayEls.forEach(el => el.textContent = formatDateISO(me.expires_at));
+
+  const logoutBtn = document.querySelector('.logout');
+  if (logoutBtn) logoutBtn.addEventListener('click', ()=>{
+    sessionStorage.removeItem('memora_token');
+    sessionStorage.removeItem('memora_user');
+    location.href='/login.html';
+  });
+});
+</script>
+
 </body>
 </html>
 
-<script src="i18n.js"></script>
-<script src="app.js"></script>
+
