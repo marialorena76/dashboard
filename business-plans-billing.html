@@ -1,52 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Plans &amp; Billing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard business-dashboard">
-      <aside class="sidebar sidebar--business" aria-label="Workspace navigation">
-        <div class="company-summary">
-          <div class="company-avatar" aria-hidden="true">LB</div>
-          <h1>LegacyBridge</h1>
-          <p class="company-plan" data-i18n-key="billing_sidebar_plan_details">Enterprise Shield · 62 seats</p>
-          <p class="company-renewal" data-i18n-key="billing_sidebar_renewal_in">Renewal in 120 days</p>
-        </div>
-        <nav class="menu menu--business" aria-label="Primary">
-          <p class="menu-label" data-i18n-key="billing_sidebar_workspace">Workspace</p>
-          <a href="business-dashboard.html" data-i18n-key="menu_overview">Overview</a>
-          <a href="business-profile.html" data-i18n-key="business_profile_title">Business Profile</a>
-          <a href="#" data-i18n-key="billing_sidebar_team_access">Team Access</a>
-          <a href="#" data-i18n-key="billing_sidebar_verification">Verification</a>
-          <a href="business-plans-billing.html" class="active" data-i18n-key="billing_sidebar_billing">Plans &amp; Billing</a>
-          <a href="#" data-i18n-key="menu_support">Support</a>
-        </nav>
-        <div class="sidebar-bottom sidebar-bottom--business">
-          <div class="support-card">
-            <p data-i18n-key="billing_sidebar_support_prompt">Need a hand with onboarding?</p>
-            <button class="business-button business-button--ghost" type="button" data-i18n-key="billing_sidebar_contact_support">
-              Contact Support
-            </button>
-          </div>
-          <button class="logout logout--business" type="button" data-i18n-key="billing_sidebar_sign_out">Sign Out</button>
-        </div>
-      </aside>
 
-      <main class="business-main business-main--billing">
-        <div class="breadcrumb" data-i18n-key="billing_breadcrumb">Dashboard • Plans &amp; Billing</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Plans &amp; Billing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard business-dashboard">
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__text">
+          <span class="enterprise-brand__label">LegacyBridge</span>
+        </div>
+      </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <nav class="menu enterprise-menu">
+        <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="#" data-i18n-key="menu_support">Support</a>
+        <a href="#" data-i18n-key="menu_settings">Settings ></a>
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+    </aside>
+
+    <main class="business-main">
+      <div class="billing-main">
+        <div class="billing-wrapper">
+          <div class="billing-details">
+            <header class="content-header">
+              <h1>
+                <span data-i18n-key="billing_eyebrow">Company</span>
+                <span data-i18n-key="billing_eyebrow"><strong>Plan & Billing</strong></span>
+              </h1>
+            </header>
+
+            <section class="section-card plan-overview">
+              <h2 data-i18n-key="billing_plan_overview_title">Plan Overview</h2>
+              <div class="main-card__metrics">
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+                  <span class="status-pill status-pill--active" data-i18n-key="option_active">ACTIVE</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="billing_annual_coverage">Your Coverage</span>
+                  <span class="status-pill status-pill--coverage" data-i18n-key="tbilling_annual_coverage_detail">UP TO
+                    $15,000</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="billing_next_renewal">Next Payment</span>
+                  <span class="status-pill status-pill--payment" data-i18n-key="billing_next_renewal_detail">$49.99 DUE SEP 15,
+                    2025</span>
+                </div>
+              </div>
+              <button id="updatePayment" class="button primary-button"
+                data-i18n-key="button_update_payment_method">Update Payment Method</button>
+            </section>
+
+            <section class="section-card plan-type">
+              <h2 data-i18n-key="manage_plan_type_title">Plan Type</h2>
+              <div class="main-card__plan-type">
+                <div class="plan-type-item">
+                  <span class="plan-type-item__label" data-i18n-key="manage_plan_current_plan_title">Current Plan</span>
+                  <span class="status-pill">PERSONAL</span>
+                </div>
+                <div class="plan-type-item">
+                  <span class="plan-type-item__label" data-i18n-key="manage_plan_available_upgrades_title">Available
+                    Upgrades</span>
+                  <span class="status-pill" data-i18n-key="manage_plan_family_plan_name">FAMILY PLAN</span>
+                </div>
+              </div>
+              <button id="updatePayment" class="button primary-button"
+                data-i18n-key="manage_plan_update_payment_button">Explore Upgrades</button>
+            </section>
+
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- <main class="business-main business-main--billing">
         <header class="business-header">
           <div>
             <h2 class="business-eyebrow" data-i18n-key="billing_eyebrow">Company Plans &amp; Billing</h2>
-            <h1 data-i18n-key="billing_title">Plans &amp; Billing</h1>
+            <h1 data-i18n-key="billing_eyebrow">Plans &amp; Billing</h1>
             <p class="business-subtitle" data-i18n-key="billing_subtitle">
               Review active coverage, manage payment preferences, and download invoices for
               compliance records in one place.
@@ -322,10 +373,11 @@
             </form>
           </div>
         </section>
-      </main>
-    </div>
-    <script src="i18n.js"></script>
+      </main> -->
+  </div>
+  <script src="i18n.js"></script>
     <script src="app.js"></script>
     <script src="business-billing.js"></script>
-  </body>
+</body>
+
 </html>

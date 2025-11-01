@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
   <div class="dashboard dashboard--enterprise">
     <aside class="sidebar sidebar--enterprise">
@@ -16,40 +18,29 @@
         <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
         <div class="enterprise-brand__text">
           <span class="enterprise-brand__label">LegacyBridge</span>
-          <span class="enterprise-brand__sub" data-i18n-key="employer_portal">Employer Portal</span>
         </div>
       </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
       <nav class="menu enterprise-menu">
-        <a href="business-dashboard.html" data-i18n-key="menu_overview">Overview</a>
-        <a href="protected-members.html" data-i18n-key="menu_members">Members</a>
-        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans &amp; Billing</a>
-        <a href="business-profile.html" class="active" data-i18n-key="business_profile_title">Business Profile</a>
+        <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
         <a href="#" data-i18n-key="menu_support">Support</a>
-        <a href="#" data-i18n-key="menu_settings">Settings</a>
+        <a href="#" data-i18n-key="menu_settings">Settings ></a>
       </nav>
       <div class="sidebar-bottom enterprise-sidebar-bottom">
         <button class="logout" data-i18n-key="logout_button">Log Out</button>
-        <div class="lang">
-          <button class="active" data-lang="en" data-i18n-key="lang_english">English</button>
-          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
       </div>
     </aside>
 
     <main class="business-main" data-view="overview">
-      <div class="breadcrumb" data-i18n-key="business_profile_breadcrumb">Overview · Business Profile</div>
       <header class="business-header">
         <div>
-          <h2 class="business-eyebrow" data-i18n-key="business_profile_eyebrow">Business Workspace</h2>
-          <h1 data-i18n-key="business_profile_title">Business Profile</h1>
-          <p class="business-subtitle" data-i18n-key="business_profile_subtitle">Keep your company contact details, verification records, and language preferences current so employees have uninterrupted coverage.</p>
-          <div class="business-header__meta">
-            <span class="business-badge" data-i18n-key="business_profile_last_updated">Last updated 2 days ago</span>
-            <span class="business-badge business-badge--success" data-i18n-key="business_profile_status_verified">Status: Verified</span>
-          </div>
-        </div>
-        <div class="business-header__actions">
-          <button id="businessViewToggle" class="business-button business-button--primary" type="button" data-i18n-key="button_edit_details">Edit details</button>
+          <h1 data-i18n-key="business_profile_title">Business <strong>Profile</strong></h1>
         </div>
       </header>
 
@@ -60,111 +51,84 @@
             <div class="business-card__header">
               <div>
                 <h3 data-i18n-key="contact_info_title">Contact Information</h3>
-                <p data-i18n-key="contact_info_subtitle">Primary company details used for communications, billing, and compliance notifications.</p>
+                <p data-i18n-key="contact_info_subtitle">Keep your company details up to date so we can support you
+                  better.</p>
               </div>
-              <button class="business-button business-button--ghost" type="button" data-i18n-key="button_download_summary">Download summary</button>
             </div>
-            <dl class="info-grid">
-              <div class="info-item">
-                <dt data-i18n-key="form_company_name">Company name</dt>
-                <dd>Spacebridge Studio LLC</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_primary_contact">Primary contact</dt>
-                <dd>Ana Velásquez</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_work_email">Work email</dt>
-                <dd>ana.velasquez@spacebridge.co</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_work_phone">Work phone</dt>
-                <dd>+1 (305) 555-9823</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_headquarters">Headquarters</dt>
-                <dd>8290 NW 27th Street, Suite 400 · Doral, FL 33122</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_tax_id">Tax ID (EIN)</dt>
-                <dd>65-9182034</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_employees_covered">Employees covered</dt>
-                <dd>48 active · 12 pending invitations</dd>
-              </div>
-              <div class="info-item">
-                <dt data-i18n-key="form_billing_cadence">Billing cadence</dt>
-                <dd>Monthly on the 15th</dd>
-              </div>
-            </dl>
-            <footer class="business-card__footer">
-              <p data-i18n-key="contact_info_footer" data-i18n-opt-email="<a href='mailto:support@mallowcare.com'>support@mallowcare.com</a>">Need to make updates? Switch to edit mode or email support@mallowcare.com.</p>
-            </footer>
+            <div class="contact-info">
+              <div>LegacyBridge</div>
+              <div>María Thompson</div>
+              <div>LegacyBridge@email.com</div>
+              <div>+1 555-123-4567</div>
+              <div>123 Main Street, Miami, FL</div>
+            </div>
+
+            <div class="business-header__actions">
+              <button id="businessViewToggle" class="business-button business-button--primary" type="button"
+                data-i18n-key="button_edit_details">Edit details</button>
+            </div>
           </article>
 
           <article class="business-card business-card--full">
             <div class="business-card__header">
               <div>
                 <h3 data-i18n-key="verification_docs_title">Verification Documents</h3>
-                <p data-i18n-key="verification_docs_subtitle">Keep required documents current to maintain uninterrupted employee benefits.</p>
+                <p data-i18n-key="verification_docs_subtitle">Upload and keep important records in one place. (Only one
+                  document is required for verification)</p>
               </div>
-              <button class="business-button business-button--ghost" type="button" data-i18n-key="button_manage_documents">Manage documents</button>
             </div>
-            <ul class="document-list" aria-label="Verification documents">
-              <li class="document-item">
-                <div class="document-item__details">
-                  <h4 data-i18n-key="doc_articles_incorporation">Articles of Incorporation</h4>
-                  <p data-i18n-key="doc_uploaded_on">Uploaded Feb 12, 2025</p>
-                </div>
-                <span class="status-pill status-success" data-i18n-key="status_approved">Approved</span>
-                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_view">View</button>
-              </li>
-              <li class="document-item">
-                <div class="document-item__details">
-                  <h4 data-i18n-key="doc_w9">IRS Form W-9</h4>
-                  <p data-i18n-key="doc_uploaded_on_w9">Uploaded Jan 28, 2025</p>
-                </div>
-                <span class="status-pill status-warning" data-i18n-key="status_in_review">In Review</span>
-                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_view">View</button>
-              </li>
-              <li class="document-item">
-                <div class="document-item__details">
-                  <h4 data-i18n-key="doc_beneficiary_policy">Beneficiary Policy</h4>
-                  <p data-i18n-key="doc_requested_on">Requested Mar 04, 2025</p>
-                </div>
-                <span class="status-pill status-pending" data-i18n-key="status_requested">Requested</span>
-                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_upload">Upload</button>
-              </li>
-              <li class="document-item">
-                <div class="document-item__details">
-                  <h4 data-i18n-key="doc_state_registration">State Registration</h4>
-                  <p data-i18n-key="doc_uploaded_on_state">Uploaded Nov 20, 2024</p>
-                </div>
-                <span class="status-pill status-success" data-i18n-key="status_approved">Approved</span>
-                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_view">View</button>
-              </li>
-            </ul>
+            <div class="documents-table business-documents">
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_drivers_license">Business Registration Certificate</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_ssn">Tax Identification Number (TIN) / VAT Certificate</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_passport">Operating License</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_drivers_license">Proof of Address</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_ssn">Authorized Signatory ID</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+              <div class="documents-row">
+                <span class="doc-title" data-i18n-key="doc_passport">Insurance or Compliance Certificates</span>
+                <span class="status-badge status-uploaded">Uploaded</span>
+                <button type="button" class="button doc-button">Upload/Update Document</button>
+              </div>
+            </div>
           </article>
 
           <article class="business-card business-card--full">
             <div class="business-card__header">
               <div>
                 <h3 data-i18n-key="language_preference_title">Language Preference</h3>
-                <p data-i18n-key="language_preference_subtitle">Control how plan updates and onboarding resources appear for your team.</p>
+                <p data-i18n-key="language_preference_subtitle">Choose the language you’re most comfortable with.</p>
               </div>
             </div>
-            <p class="language-selected"><strong data-i18n-key="primary_language_label">Primary language:</strong> <span data-language-display>English (US)</span></p>
             <div class="language-options" role="group" aria-label="Language preference">
-              <button class="business-chip is-selected" type="button" data-language-option="en" data-i18n-key="lang_english">English</button>
-              <button class="business-chip" type="button" data-language-option="es" data-i18n-key="lang_spanish">Español</button>
+              <p class="language-selected"><strong data-i18n-key="primary_language_label">Current language:</strong> <span
+                data-language-display>English </span></p>
+              <button class="business-button" type="button" data-language-option="en"
+                data-i18n-key="lang_english">Change Lenguage</button>
             </div>
-            <p class="business-card__footnote" data-i18n-key="language_preference_footnote">Team notifications and billing reminders will use this language.</p>
           </article>
         </div>
       </section>
 
-      <section class="business-panel" data-business-panel="edit" aria-labelledby="edit-heading">
+      <!-- <section class="business-panel" data-business-panel="edit" aria-labelledby="edit-heading">
         <h2 id="edit-heading" class="sr-only" data-i18n-key="edit_details_title">Edit details</h2>
         <div class="business-grid">
           <article class="business-card business-card--full">
@@ -172,13 +136,15 @@
               <div class="business-card__header">
                 <div>
                   <h3 data-i18n-key="contact_info_title">Contact Information</h3>
-                  <p data-i18n-key="contact_info_subtitle">Update core business details so your benefits never miss an important update.</p>
+                  <p data-i18n-key="contact_info_subtitle">Update core business details so your benefits never miss an
+                    important update.</p>
                 </div>
               </div>
               <div class="form-grid">
                 <label class="form-field">
                   <span data-i18n-key="form_company_name">Company name</span>
-                  <input type="text" name="companyName" value="Spacebridge Studio LLC" autocomplete="organization" required>
+                  <input type="text" name="companyName" value="Spacebridge Studio LLC" autocomplete="organization"
+                    required>
                 </label>
                 <label class="form-field">
                   <span data-i18n-key="form_primary_contact">Primary contact</span>
@@ -186,7 +152,8 @@
                 </label>
                 <label class="form-field">
                   <span data-i18n-key="form_work_email">Work email</span>
-                  <input type="email" name="workEmail" value="ana.velasquez@spacebridge.co" autocomplete="email" required>
+                  <input type="email" name="workEmail" value="ana.velasquez@spacebridge.co" autocomplete="email"
+                    required>
                 </label>
                 <label class="form-field">
                   <span data-i18n-key="form_work_phone">Work phone</span>
@@ -230,8 +197,10 @@
                 </label>
               </div>
               <div class="form-actions">
-                <button class="business-button business-button--ghost" type="button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                <button class="business-button business-button--primary" type="submit" data-i18n-key="button_save_changes">Save changes</button>
+                <button class="business-button business-button--ghost" type="button" data-action="cancel"
+                  data-i18n-key="button_cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit"
+                  data-i18n-key="button_save_changes">Save changes</button>
               </div>
             </form>
           </article>
@@ -241,9 +210,11 @@
               <div class="business-card__header">
                 <div>
                   <h3 data-i18n-key="verification_docs_title">Verification Documents</h3>
-                  <p data-i18n-key="verification_docs_subtitle">Upload refreshed documentation or update review statuses from your compliance workspace.</p>
+                  <p data-i18n-key="verification_docs_subtitle">Upload refreshed documentation or update review statuses
+                    from your compliance workspace.</p>
                 </div>
-                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_add_document">Add document</button>
+                <button class="business-button business-button--ghost" type="button"
+                  data-i18n-key="button_add_document">Add document</button>
               </div>
               <div class="document-editor">
                 <div class="document-editor__row">
@@ -260,10 +231,12 @@
                         <option value="requested" data-i18n-key="status_requested">Requested</option>
                       </select>
                     </label>
-                    <span class="status-pill status-success" data-status-pill-target="docArticles" data-i18n-key="status_approved">Approved</span>
+                    <span class="status-pill status-success" data-status-pill-target="docArticles"
+                      data-i18n-key="status_approved">Approved</span>
                   </div>
                   <div class="document-editor__actions">
-                    <button class="business-button business-button--ghost" type="button" data-i18n-key="button_upload_new">Upload new</button>
+                    <button class="business-button business-button--ghost" type="button"
+                      data-i18n-key="button_upload_new">Upload new</button>
                   </div>
                 </div>
                 <div class="document-editor__row">
@@ -280,10 +253,12 @@
                         <option value="requested" data-i18n-key="status_requested">Requested</option>
                       </select>
                     </label>
-                    <span class="status-pill status-warning" data-status-pill-target="docW9" data-i18n-key="status_in_review">In Review</span>
+                    <span class="status-pill status-warning" data-status-pill-target="docW9"
+                      data-i18n-key="status_in_review">In Review</span>
                   </div>
                   <div class="document-editor__actions">
-                    <button class="business-button business-button--ghost" type="button" data-i18n-key="button_upload_new">Upload new</button>
+                    <button class="business-button business-button--ghost" type="button"
+                      data-i18n-key="button_upload_new">Upload new</button>
                   </div>
                 </div>
                 <div class="document-editor__row">
@@ -300,16 +275,20 @@
                         <option value="requested" selected data-i18n-key="status_requested">Requested</option>
                       </select>
                     </label>
-                    <span class="status-pill status-pending" data-status-pill-target="docPolicy" data-i18n-key="status_requested">Requested</span>
+                    <span class="status-pill status-pending" data-status-pill-target="docPolicy"
+                      data-i18n-key="status_requested">Requested</span>
                   </div>
                   <div class="document-editor__actions">
-                    <button class="business-button business-button--primary" type="button" data-i18n-key="button_request_upload">Request upload</button>
+                    <button class="business-button business-button--primary" type="button"
+                      data-i18n-key="button_request_upload">Request upload</button>
                   </div>
                 </div>
               </div>
               <div class="form-actions">
-                <button class="business-button business-button--ghost" type="button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                <button class="business-button business-button--primary" type="submit" data-i18n-key="button_save_updates">Save updates</button>
+                <button class="business-button business-button--ghost" type="button" data-action="cancel"
+                  data-i18n-key="button_cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit"
+                  data-i18n-key="button_save_updates">Save updates</button>
               </div>
             </form>
           </article>
@@ -319,7 +298,8 @@
               <div class="business-card__header">
                 <div>
                   <h3 data-i18n-key="language_preference_title">Language Preference</h3>
-                  <p data-i18n-key="language_preference_subtitle">Select the default language for notifications and onboarding.</p>
+                  <p data-i18n-key="language_preference_subtitle">Select the default language for notifications and
+                    onboarding.</p>
                 </div>
               </div>
               <div class="form-grid single-column">
@@ -332,21 +312,25 @@
                 </label>
                 <label class="form-field">
                   <span data-i18n-key="form_internal_notes">Internal notes</span>
-                  <textarea name="languageNotes" rows="3" data-i18n-key="form_internal_notes_placeholder" placeholder="Share context for our onboarding team"></textarea>
+                  <textarea name="languageNotes" rows="3" data-i18n-key="form_internal_notes_placeholder"
+                    placeholder="Share context for our onboarding team"></textarea>
                 </label>
               </div>
               <div class="form-actions">
-                <button class="business-button business-button--ghost" type="button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
-                <button class="business-button business-button--primary" type="submit" data-i18n-key="button_update_preference">Update preference</button>
+                <button class="business-button business-button--ghost" type="button" data-action="cancel"
+                  data-i18n-key="button_cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit"
+                  data-i18n-key="button_update_preference">Update preference</button>
               </div>
             </form>
           </article>
         </div>
-      </section>
+      </section> -->
     </main>
   </div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="business-profile.js"></script>
 </body>
+
 </html>

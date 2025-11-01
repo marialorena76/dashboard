@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,103 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
   <div class="dashboard new-dashboard">
-    <aside class="sidebar new-sidebar">
-      <div class="logo-container">
-        <img src="images/logo-white.png" alt="MallowCare Logo" class="sidebar-logo">
+    <aside class="sidebar individual-dashboard__sidebar">
+      <div class="individual-dashboard__profile-card">
+        <div class="individual-dashboard__profile-avatar">
+          <img src="images/avatar-default.svg" alt="Avatar del usuario"
+            class="individual-dashboard__profile-avatar-image" data-user-avatar>
+        </div>
+        <h2 class="individual-dashboard__profile-name"><span data-user-name>Maria Thompson</span></h2>
+
       </div>
-      <nav class="menu new-menu">
-        <a href="individual-dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> <span data-i18n-key="sidebar_dashboard">Dashboard</span></a>
-        <a href="my-profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span data-i18n-key="menu_my_account">My Account</span></a>
-        <a href="payments.html" class="active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <span data-i18n-key="menu_payments">Payments</span></a>
-        <a href="settings.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> <span data-i18n-key="menu_settings">Settings</span></a>
+      <p class="gray-text">Welcome to your Dashboard</p>
+      <nav class="individual-dashboard__menu">
+        <a href="my-profile.html">My Account ></a>
+        <a href="payments.html">Payments</a>
+        <a href="#">Help</a>
+        <a href="settings.html">Settings ></a>
       </nav>
-      <div class="sidebar-bottom">
-        <a href="#" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> <span data-i18n-key="sidebar_help">Help & Support</span></a>
-        <a href="#" class="menu-item logout" data-i18n-key="logout_button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
+      <div class="sidebar-bottom individual-dashboard__sidebar-footer">
+        <button class="logout">Log Out</button>
+        <div class="lang-switcher">
+          <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="gray-text">©2025 MemoraCare | Privacy Policy</p>
       </div>
     </aside>
     <main class="main-content new-main-content payments">
-      <header class="main-header">
-        <h1 data-i18n-key="payments_title">My Payments</h1>
+      <div class="payment-main">
+        <div class="payment-wrapper">
+          <div class="payment-details">
+            <header class="content-header main-card__header">
+              <h1>
+                <span data-i18n-key="payments_title">My</span>
+                <span data-i18n-key="payments_title"><strong>Payments</strong></span>
+              </h1>
+            </header>
+
+            <section class="section-card payment-summary" id="currentPaymentCard">
+              <div class="payment-summary__details">
+                <h2 data-i18n-key="payments_current_method_title">Current Payment Method</h2>
+                <p class="payment-summary" data-summary="method">Visa •••• 4321</p>
+                <p class="payment-summary" data-summary="meta">Expires: 03/27</p>
+                <p class="payment-summary" data-summary="method">Default Method: Yes</p>
+                <div class="payments-buttons">
+                  <button type="button" id="openEdit" class="button primary-button"
+                    data-i18n-key="payments_edit_method_button">Update Payment Method</button>
+                  <button type="button" id="openAdd" class="button primary-button"
+                    data-i18n-key="payments_add_method_button">Add New Payment Method</button>
+                </div>
+                <div class="next_payment">
+                  <div class="payment-summary__next" data-summary="next">Next Payment Due: $49.99 on Sep 15, 2025</div>
+                  <div class="payment-summary__next" data-summary="next">Status: Scheduled</div>
+                </div>
+                <!-- <div class="payment-summary__status">
+          </div> -->
+                <!-- <p class="payment-summary__address" data-summary="address">123 Garden Avenue, Austin, TX 78704</p> -->
+                <div class="payments-buttons">
+                  <button type="button" class="button primary-button" data-i18n-key="payments_edit_method_button">View
+                    Invoice</button>
+                  <button type="button" class="button primary-button" data-i18n-key="payments_edit_method_button">Manage
+                    Alerts</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="section-card payment-history">
+              <div class="payment-history__header">
+                <div>
+                  <h2 id="paymentHistoryHeading" data-i18n-key="payments_history_title">Payment History</h2>
+                </div>
+                <label class="payment-history__search" for="paymentSearch">
+                  <span class="sr-only" data-i18n-key="payments_search_placeholder">Search payments</span>
+                  <input type="search" id="paymentSearch" data-i18n-key="payments_search_placeholder"
+                    placeholder="Search payments">
+                </label>
+              </div>
+              <div class="table-wrapper" role="region" aria-labelledby="paymentHistoryHeading">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col" data-i18n-key="table_header_date">Date</th>
+                      <th scope="col" data-i18n-key="table_header_amount">Amount</th>
+                      <th scope="col" data-i18n-key="table_header_status">Status</th>
+                      <th scope="col" data-i18n-key="table_header_receipt">Receipt</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+      <!-- <header class="main-header">
         <div class="header-actions">
           <div class="lang-switcher">
             <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
@@ -36,41 +114,20 @@
           </div>
           <img src="images/foto_personal(1).jpg" alt="Profile picture" class="profile-avatar">
         </div>
-      </header>
+      </header> -->
 
-      <p class="member-since" data-i18n-key="payments_subtitle">Review your active card, update billing details, or add a new payment method in just a few steps.</p>
+      <!-- <p class="member-since" data-i18n-key="payments_subtitle">Review your active card, update billing details, or add
+        a new payment method in just a few steps.</p> -->
 
-      <div class="page-feedback" data-feedback role="status" aria-live="polite" hidden></div>
+      <!-- <div class="page-feedback" data-feedback role="status" aria-live="polite" hidden></div> -->
 
-      <section class="section-card payment-summary" id="currentPaymentCard">
-        <div class="payment-summary__details">
-          <h2 data-i18n-key="payments_current_method_title">Current Payment Method</h2>
-          <p class="payment-summary__method" data-summary="method">Visa •••• 4321</p>
-          <p class="payment-summary__meta" data-summary="meta">Maria Thompson · Exp 09/27</p>
-          <div class="payment-summary__status">
-            <span
-              class="status-pill status-pill--success"
-              data-summary="autopay"
-              data-label-active="Autopay Active"
-              data-label-paused="Autopay Paused"
-              data-i18n-key="payments_autopay_active"
-            >Autopay Active</span>
-            <span class="payment-summary__next" data-summary="next">Next payment Sep 15, 2025</span>
-          </div>
-          <p class="payment-summary__address" data-summary="address">123 Garden Avenue, Austin, TX 78704</p>
-        </div>
-        <div class="payment-summary__actions">
-          <button type="button" id="openEdit" class="button primary-button" data-i18n-key="payments_edit_method_button">Edit Payment Method</button>
-          <button type="button" id="openAdd" class="button secondary-button" data-i18n-key="payments_add_method_button">Add Payment Method</button>
-        </div>
-      </section>
 
-      <section class="payment-forms" id="paymentForms" hidden aria-live="polite">
+      <!-- LA SECCION QUE ESTA A CONTINUACION ES A LA QUE SE DEBE DERIVAR CUANDO SE SELECCIONE ALGUN BOTON DE LOS QUE ESTAN AL PRINCIPIO -->
+      <!-- <section class="payment-forms" id="paymentForms" hidden aria-live="polite">
         <div class="payment-forms__grid">
           <form id="editPaymentForm" class="section-card payment-form-card" autocomplete="on">
             <div class="payment-form-card__header">
               <h2 data-i18n-key="payments_edit_form_title">Edit Current Payment Method</h2>
-              <p data-i18n-key="payments_edit_form_subtitle">Update the billing details that appear on your monthly invoices.</p>
             </div>
             <div class="form-grid two-column">
               <label class="form-field">
@@ -79,15 +136,18 @@
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_cardholder_name">Cardholder Name</span>
-                <input type="text" id="editCardholder" name="cardholder" value="Maria Thompson" autocomplete="cc-name" required>
+                <input type="text" id="editCardholder" name="cardholder" value="Maria Thompson" autocomplete="cc-name"
+                  required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_card_number">Card Number</span>
-                <input type="text" id="editCard" name="cardNumber" value="4242 4242 4242 4321" inputmode="numeric" autocomplete="cc-number" required>
+                <input type="text" id="editCard" name="cardNumber" value="4242 4242 4242 4321" inputmode="numeric"
+                  autocomplete="cc-number" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_expiry_date">Expiration Date</span>
-                <input type="text" id="editExp" name="expiry" value="09/27" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" required>
+                <input type="text" id="editExp" name="expiry" value="09/27" placeholder="MM/YY" inputmode="numeric"
+                  autocomplete="cc-exp" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_autopay_status">Autopay Status</span>
@@ -103,18 +163,22 @@
             </div>
             <label class="form-field">
               <span data-i18n-key="payments_form_billing_address">Billing Address</span>
-              <textarea id="editAddress" name="billingAddress" rows="3" required>123 Garden Avenue, Austin, TX 78704</textarea>
+              <textarea id="editAddress" name="billingAddress" rows="3"
+                required>123 Garden Avenue, Austin, TX 78704</textarea>
             </label>
             <div class="form-actions">
-              <button type="button" class="button outline-button" data-close-forms data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save Changes</button>
+              <button type="button" class="button outline-button" data-close-forms
+                data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save
+                Changes</button>
             </div>
           </form>
 
           <form id="addPaymentForm" class="section-card payment-form-card" autocomplete="on">
             <div class="payment-form-card__header">
               <h2 data-i18n-key="payments_add_form_title">Add New Payment Method</h2>
-              <p data-i18n-key="payments_add_form_subtitle">Store an additional card on file and switch to it when you are ready.</p>
+              <p data-i18n-key="payments_add_form_subtitle">Store an additional card on file and switch to it when you
+                are ready.</p>
             </div>
             <div class="form-grid two-column">
               <label class="form-field">
@@ -131,7 +195,8 @@
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_expiry_date">Expiration Date</span>
-                <input type="text" id="addExp" name="expiry" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" required>
+                <input type="text" id="addExp" name="expiry" placeholder="MM/YY" inputmode="numeric"
+                  autocomplete="cc-exp" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_autopay_status">Autopay Status</span>
@@ -147,45 +212,23 @@
             </div>
             <label class="form-field">
               <span data-i18n-key="payments_form_billing_address">Billing Address</span>
-              <textarea id="addAddress" name="billingAddress" rows="3" placeholder="123 Garden Avenue, Austin, TX 78704" required></textarea>
+              <textarea id="addAddress" name="billingAddress" rows="3" placeholder="123 Garden Avenue, Austin, TX 78704"
+                required></textarea>
             </label>
             <div class="form-actions">
-              <button type="button" class="button outline-button" data-close-forms data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save Changes</button>
+              <button type="button" class="button outline-button" data-close-forms
+                data-i18n-key="button_cancel">Cancel</button>
+              <button type="submit" class="button solid-button" data-i18n-key="button_save_changes">Save
+                Changes</button>
             </div>
           </form>
         </div>
-      </section>
-
-      <section class="section-card payment-history">
-        <div class="payment-history__header">
-          <div>
-            <h2 id="paymentHistoryHeading" data-i18n-key="payments_history_title">Payment History</h2>
-            <p data-i18n-key="payments_history_subtitle">Track recent charges, their status, and download receipts.</p>
-          </div>
-          <label class="payment-history__search" for="paymentSearch">
-            <span class="sr-only" data-i18n-key="payments_search_placeholder">Search payments</span>
-            <input type="search" id="paymentSearch" data-i18n-key="payments_search_placeholder" placeholder="Search payments">
-          </label>
-        </div>
-        <div class="table-wrapper" role="region" aria-labelledby="paymentHistoryHeading">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col" data-i18n-key="table_header_date">Date</th>
-                <th scope="col" data-i18n-key="table_header_amount">Amount</th>
-                <th scope="col" data-i18n-key="table_header_status">Status</th>
-                <th scope="col" data-i18n-key="table_header_receipt">Receipt</th>
-              </tr>
-            </thead>
-            <tbody id="historyBody"></tbody>
-          </table>
-        </div>
-      </section>
+      </section> -->
     </main>
   </div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="payments.js"></script>
 </body>
+
 </html>

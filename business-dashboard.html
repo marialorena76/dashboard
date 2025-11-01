@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Business Overview</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard dashboard--enterprise">
-      <aside class="sidebar sidebar--enterprise">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Business Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard dashboard--enterprise">
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__text">
+          <span class="enterprise-brand__label">LegacyBridge</span>
+        </div>
+      </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <nav class="menu enterprise-menu">
+        <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="#" data-i18n-key="menu_support">Support</a>
+        <a href="#" data-i18n-key="menu_settings">Settings ></a>
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+    </aside>
+    <main class="main-content main-content--enterprise">
+      <div class="main-card">
+        <header class="main-card__header">
+          <h1>
+            <span data-i18n-key="business_dashboard_welcome">Welcome back,</span>
+            <span class="page-heading__highlight"><strong>Legacy Bridge</strong></span>
+          </h1>
+        </header>
+        <div class="main-card__metrics">
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+            <span class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
+            <span class="status-pill status-pill--coverage" data-i18n-key="total_coverage_pill">UP TO $15,000</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
+            <span class="status-pill status-pill--payment" data-i18n-key="next_payment_pill">$49.99 DUE SEP 15,
+              2025</span>
           </div>
         </div>
-        <p class="sidebar-welcome" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
-        <nav class="menu enterprise-menu">
-          <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
-          <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
-          <a href="#" data-i18n-key="menu_support">Support</a>
-          <a href="#" data-i18n-key="menu_settings">Settings ></a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" data-i18n-key="logout_button">Log Out</button>
-          <div class="lang">
-            <button class="active" data-lang="en" data-i18n-key="lang_english">English</button>
-            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
-          </div>
-          <p class="sidebar-footer-text">©2025 MemaraCare | Privacy Policy</p>
+        <div class="main-card__actions">
+          <button class="enterprise-action" data-i18n-key="add_employee_button">Add Employee</button>
+          <button class="enterprise-action" data-i18n-key="view_coverage_button">View Coverage</button>
+          <button class="enterprise-action" data-i18n-key="update_payment_button">Update Payment</button>
+          <button class="enterprise-action" data-i18n-key="manage_alerts_button">Manage Alerts</button>
         </div>
-      </aside>
-      <main class="main-content main-content--enterprise">
-        <div class="main-card">
-          <header class="main-card__header">
-            <h1>
-              <span data-i18n-key="business_dashboard_welcome">Welcome back,</span>
-              <span class="page-heading__highlight">LegacyBridge</span>
-            </h1>
-          </header>
-          <div class="main-card__metrics">
-            <div class="metric-item">
-              <span class="metric-item__label" data-i18n-key="plan_status_label">Plan Status</span>
-              <span class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-item__label" data-i18n-key="total_coverage_label">Total Coverage</span>
-              <span class="status-pill status-pill--coverage" data-i18n-key="total_coverage_pill">UP TO $15,000</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
-              <span class="status-pill status-pill--payment" data-i18n-key="next_payment_pill">$49.99 DUE SEP 15, 2025</span>
-            </div>
-          </div>
-          <div class="main-card__actions">
-            <button class="enterprise-action" data-i18n-key="add_employee_button">Add Employee</button>
-            <button class="enterprise-action" data-i18n-key="view_coverage_button">View Coverage</button>
-            <button class="enterprise-action" data-i18n-key="update_payment_button">Update Payment</button>
-            <button class="enterprise-action" data-i18n-key="manage_alerts_button">Manage Alerts</button>
-          </div>
+      </div>
+      <section class="enterprise-banner">
+        <div class="enterprise-banner__content">
+          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
+          <p data-i18n-key="promo_text_meta">Offer your employees reliable and affordable funeral protection. A
+            practical solution to enhance your company's benefit offering and support your team when they need it most.
+          </p>
         </div>
-        <section class="enterprise-banner">
-          <div class="enterprise-banner__content">
-            <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
-            <p data-i18n-key="promo_text_meta">Offer your employees reliable and affordable funeral protection. A practical solution to enhance your company's benefit offering and support your team when they need it most.</p>
-          </div>
-          <div class="banner-nav">
-            <button class="banner-nav__arrow">←</button>
-            <button class="banner-nav__arrow">→</button>
-          </div>
-        </section>
-      </main>
-    </div>
-    <script src="i18n.js"></script>
+        <div class="banner-nav">
+          <button class="banner-nav__arrow">←</button>
+          <button class="banner-nav__arrow">→</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="i18n.js"></script>
     <script src="app.js"></script>
-  </body>
+</body>
+
 </html>

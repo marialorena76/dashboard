@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,188 +12,73 @@
 </head>
 
 <body>
-  <div class="individual-dashboard">
-    <aside class="individual-dashboard__sidebar">
-      <div class="individual-dashboard__brand">
-        <img src="images/imagen blanca.png" alt="Wellbeing logo" class="individual-dashboard__logo">
-      </div>
+  <div class="dashboard new-dashboard individual-dashboard">
+    <aside class="sidebar individual-dashboard__sidebar">
       <div class="individual-dashboard__profile-card">
         <div class="individual-dashboard__profile-avatar">
-          <img src="images/avatar-default.svg" alt="Avatar del usuario" class="individual-dashboard__profile-avatar-image" data-user-avatar>
+          <img src="images/avatar-default.svg" alt="Avatar del usuario"
+            class="individual-dashboard__profile-avatar-image" data-user-avatar>
         </div>
-        <div class="individual-dashboard__profile-text">
-          <p class="individual-dashboard__profile-eyebrow">Miembro individual</p>
-          <h2 class="individual-dashboard__profile-name"><span data-user-name>Maria Thompson</span></h2>
-          <p class="individual-dashboard__profile-meta">Miembro desde marzo 2023</p>
-        </div>
+        <h2 class="individual-dashboard__profile-name"><span data-user-name>Maria Thompson</span></h2>
+
       </div>
-      <div class="individual-dashboard__plan-card">
-        <header class="individual-dashboard__plan-header">
-          <span class="individual-dashboard__plan-label">Plan actual</span>
-          <span class="individual-dashboard__plan-status">Activo</span>
-        </header>
-        <h3 class="individual-dashboard__plan-name">Family Protect Plus</h3>
-        <p class="individual-dashboard__plan-meta">Salud • Visión • Dental</p>
-        <dl class="individual-dashboard__plan-list">
-          <div>
-            <dt>Cobertura</dt>
-            <dd>Hasta $100,000</dd>
-          </div>
-          <div>
-            <dt>Próximo pago</dt>
-            <dd>15 Oct 2025</dd>
-          </div>
-        </dl>
-        <button class="button ghost-button">Ver detalles</button>
-      </div>
+      <p class="gray-text">Welcome to your Dashboard</p>
       <nav class="individual-dashboard__menu">
-        <a class="active" href="individual-dashboard.html">Inicio</a>
-        <a href="my-profile.html">Mi perfil</a>
-        <a href="manage-my-plan.html">Mi plan</a>
-        <a href="payments.html">Pagos</a>
-        <a href="settings.html">Ajustes</a>
+        <a href="my-profile.html">My Account ></a>
+        <a href="payments.html">Payments</a>
+        <a href="#">Help</a>
+        <a href="settings.html">Settings ></a>
       </nav>
-      <div class="individual-dashboard__sidebar-footer">
-        <button class="button outline-button logout">Cerrar sesión</button>
+      <div class="sidebar-bottom individual-dashboard__sidebar-footer">
+        <button class="logout">Log Out</button>
+        <div class="lang-switcher">
+          <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="gray-text">©2025 MemoraCare | Privacy Policy</p>
       </div>
     </aside>
-    <main class="individual-dashboard__main">
-      <header class="individual-hero">
-        <div class="individual-hero__info">
-          <div class="individual-hero__avatar">
-            <img src="images/avatar-default.svg" alt="Avatar del usuario" class="individual-hero__avatar-image" data-user-avatar>
+    <main class="main-content individual-dashboard__main">
+      <div class="main-card">
+        <header class="main-card__header">
+          <h1>
+            <span data-i18n-key="business_dashboard_welcome">Welcome back,</span>
+            <span><strong>Maria</strong></span>
+          </h1>
+        </header>
+        <div class="main-card__metrics">
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+            <span class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
           </div>
-          <div class="individual-hero__copy">
-            <p class="individual-hero__eyebrow">Bienvenida de nuevo</p>
-            <h1 class="individual-hero__title"><span data-user-name>Maria Thompson</span></h1>
-            <p class="individual-hero__subtitle">Tu plan Family Protect Plus está activo y cubre atención médica, visión y dental para toda tu familia.</p>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
+            <span class="status-pill status-pill--coverage" data-i18n-key="total_coverage_pill">UP TO $15,000</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
+            <span class="status-pill status-pill--payment" data-i18n-key="next_payment_pill">$49.99 DUE SEP 15,
+              2025</span>
           </div>
         </div>
-        <div class="individual-hero__actions">
-          <button class="button solid-button">Gestionar mi plan</button>
-          <button class="button ghost-button">Actualizar mis datos</button>
+        <div class="main-card__actions">
+          <button class="individuals-action" data-i18n-key="add_employee_button">Update My Profile</button>
+          <button class="individuals-action" data-i18n-key="view_coverage_button">Manage My Plan</button>
+          <button class="individuals-action" data-i18n-key="update_payment_button">Add A Family Member</button>
+          <button class="individuals-action" data-i18n-key="manage_alerts_button">Manage Alerts</button>
         </div>
-      </header>
-      <section class="individual-metrics">
-        <article class="metric-card">
-          <span class="metric-card__label">Estado del plan</span>
-          <span class="metric-card__value metric-card__value--success">Activo</span>
-          <p class="metric-card__meta">Renovado el 18 de abril de 2025</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__label">Cobertura disponible</span>
-          <span class="metric-card__value">$100,000</span>
-          <p class="metric-card__meta">Incluye servicios de salud, visión y dental</p>
-        </article>
-        <article class="metric-card">
-          <span class="metric-card__label">Próximo pago</span>
-          <span class="metric-card__value">15 Oct 2025</span>
-          <p class="metric-card__meta">Cargo automático programado</p>
-        </article>
-      </section>
-      <section class="individual-content">
-        <article class="panel">
-          <header class="panel__header">
-            <h2 class="panel__title">Tareas rápidas</h2>
-            <p class="panel__subtitle">Completa estas acciones sugeridas para mantener tu plan al día.</p>
-          </header>
-          <ul class="tasks-list">
-            <li class="tasks-list__item">
-              <span class="tasks-list__badge">1</span>
-              <div class="tasks-list__content">
-                <h3>Agregar beneficiario secundario</h3>
-                <p>Agrega un contacto alternativo para acelerar cualquier reclamo.</p>
-              </div>
-              <button class="button outline-button">Agregar</button>
-            </li>
-            <li class="tasks-list__item">
-              <span class="tasks-list__badge">2</span>
-              <div class="tasks-list__content">
-                <h3>Subir comprobante de residencia</h3>
-                <p>Verifica que tu dirección esté actualizada para recibir correspondencia.</p>
-              </div>
-              <button class="button outline-button">Subir</button>
-            </li>
-            <li class="tasks-list__item">
-              <span class="tasks-list__badge">3</span>
-              <div class="tasks-list__content">
-                <h3>Configurar alertas de pago</h3>
-                <p>Recibe recordatorios por correo o SMS antes de cada vencimiento.</p>
-              </div>
-              <button class="button outline-button">Configurar</button>
-            </li>
-          </ul>
-        </article>
-        <article class="panel">
-          <header class="panel__header">
-            <h2 class="panel__title">Beneficiarios</h2>
-            <p class="panel__subtitle">Gestiona quién recibirá tu cobertura si la necesitas.</p>
-          </header>
-          <div class="beneficiary-card">
-            <h3 class="beneficiary-card__name">Andrés Rodriguez</h3>
-            <p class="beneficiary-card__relation">Cónyuge • 100% asignado</p>
-            <p class="beneficiary-card__contact">+1 (312) 555-3421 • andres.rodriguez@email.com</p>
-            <div class="beneficiary-card__actions">
-              <button class="button ghost-button">Actualizar datos</button>
-              <button class="button outline-button">Cambiar porcentaje</button>
-            </div>
-          </div>
-        </article>
-        <article class="panel panel--documents">
-          <header class="panel__header">
-            <h2 class="panel__title">Documentos de identidad</h2>
-            <p class="panel__subtitle">Tu verificación está casi completa, solo falta un documento.</p>
-          </header>
-          <ul class="documents-status">
-            <li class="documents-status__item">
-              <div class="documents-status__info">
-                <h3>Pasaporte</h3>
-                <p>Subido el 2 de abril de 2025</p>
-              </div>
-              <span class="status-pill status-pill--success">Aprobado</span>
-              <button class="button ghost-button">Reemplazar</button>
-            </li>
-            <li class="documents-status__item">
-              <div class="documents-status__info">
-                <h3>Licencia de conducir</h3>
-                <p>Vence el 14 de agosto de 2025</p>
-              </div>
-              <span class="status-pill status-pill--warning">Por vencer</span>
-              <button class="button ghost-button">Actualizar</button>
-            </li>
-            <li class="documents-status__item">
-              <div class="documents-status__info">
-                <h3>Tarjeta de seguro social</h3>
-                <p>No se ha cargado ningún archivo</p>
-              </div>
-              <span class="status-pill status-pill--neutral">Pendiente</span>
-              <button class="button ghost-button">Subir</button>
-            </li>
-          </ul>
-        </article>
-        <article class="panel panel--wide">
-          <header class="panel__header">
-            <h2 class="panel__title">Soporte y próximos pasos</h2>
-            <p class="panel__subtitle">Tu equipo de cuidado está disponible para ayudarte cuando lo necesites.</p>
-          </header>
-          <div class="support-grid">
-            <div class="support-grid__item">
-              <h3>Agenda una llamada</h3>
-              <p>Coordina una reunión virtual con un especialista de bienestar familiar.</p>
-              <button class="button solid-button">Reservar</button>
-            </div>
-            <div class="support-grid__item">
-              <h3>Mensajes seguros</h3>
-              <p>Revisa la bandeja de entrada para responder a tu enfermera de cabecera.</p>
-              <button class="button outline-button">Ir a mensajes</button>
-            </div>
-            <div class="support-grid__item">
-              <h3>Centro de ayuda</h3>
-              <p>Encuentra guías y preguntas frecuentes sobre coberturas y reembolsos.</p>
-              <button class="button ghost-button">Ver artículos</button>
-            </div>
-          </div>
-        </article>
+      </div>
+      <section class="individual-banner">
+        <div class="individual-banner__content">
+          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
+          <p data-i18n-key="promo_text_meta">Offer your employees reliable and affordable funeral protection. A
+            practical solution to enhance your company's benefit offering and support your team when they need it most.
+          </p>
+        </div>
+        <div class="banner-nav">
+          <button class="banner-nav__arrow">←</button>
+          <button class="banner-nav__arrow">→</button>
+        </div>
       </section>
     </main>
   </div>
@@ -201,9 +87,10 @@
 
   ...
 <script src="i18n.js"></script>
-<script src="app.js"></script>
+<script src="app.js"></script> 
 
-<!-- 💡 Pega ESTE script acá, inmediatamente antes de </body> -->
+💡 Pega ESTE script acá, inmediatamente antes de </body> 
+
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('[Memora] script cargó'); // debug

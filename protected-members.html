@@ -14,50 +14,47 @@
   </head>
   <body>
     <div class="dashboard dashboard--enterprise">
-      <aside class="sidebar sidebar--enterprise" aria-label="Employer navigation">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub" data-i18n-key="employer_portal">Employer Portal</span>
-          </div>
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__text">
+          <span class="enterprise-brand__label">LegacyBridge</span>
         </div>
-        <nav class="menu enterprise-menu" aria-label="Primary">
-          <a href="business-dashboard.html" data-i18n-key="menu_overview">Overview</a>
-          <a href="protected-members.html" class="active" data-i18n-key="members_title">Protected Team</a>
-          <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans &amp; Billing</a>
-          <a href="#" data-i18n-key="menu_support">Support</a>
-          <a href="#" data-i18n-key="menu_settings">Settings</a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" type="button" data-i18n-key="logout_button">Log Out</button>
-          <div class="lang" role="group" aria-label="Language selection">
-            <button type="button" class="active" data-lang="en" data-i18n-key="lang_english">English</button>
-            <button type="button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
-          </div>
+      </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <nav class="menu enterprise-menu">
+        <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="#" data-i18n-key="menu_support">Support</a>
+        <a href="#" data-i18n-key="menu_settings">Settings ></a>
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
-      </aside>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+    </aside>
 
       <main class="main-content main-content--enterprise">
-        <header class="page-heading page-heading--enterprise">
-          <p class="breadcrumb" data-i18n-key="members_breadcrumb">Dashboard • Protected Team</p>
-          <h1 data-i18n-key="members_title">Protected Team</h1>
-          <p class="page-heading__subtitle" data-i18n-key="members_subtitle">
-            Keep your employee roster current and confirm coverage details before each payroll run.
-          </p>
+        <header class="business-header">
+          <div>
+            <h1 data-i18n-key="members_title">Protected <Strong>Team</Strong></h1>
+          </div>
         </header>
 
         <section class="section-card members-table" aria-labelledby="protectedTeamHeading">
           <div class="members-table__header">
             <div>
-              <h2 id="protectedTeamHeading" data-i18n-key="members_table_title">Who's Protected</h2>
+              <h2 id="protectedTeamHeading" data-i18n-key="members_table_title">Protected Employees</h2>
               <p class="members-table__subtitle" data-i18n-key="members_table_subtitle">
-                Add employees to extend coverage, adjust plan access as roles change, and keep invitations up to date.
+                Add or update employee details and manage who is included in your company’s plan.
               </p>
             </div>
             <div class="members-table__actions">
-              <button type="button" class="ghost" id="exportRoster" data-i18n-key="button_export_roster">Export roster</button>
-              <button type="button" class="primary" id="toAdd" data-i18n-key="button_add_employee">+ Add Employee</button>
+              <button type="button" class="business-button business-button--primary" id="toAdd" data-i18n-key="button_add_employee">+ Add Member</button>
             </div>
           </div>
           <div class="members-table__controls">
@@ -71,8 +68,8 @@
               <span data-i18n-key="table_show_entries" style="display: none;">entries</span>
             </label>
             <label class="members-table__search" for="memberSearch">
-              <span data-i18n-key="table_search">Search</span>
-              <input type="search" id="memberSearch" data-i18n-key="table_search_placeholder" placeholder="Search team" />
+              <!-- <span data-i18n-key="table_search">Search</span> -->
+              <input type="search" id="memberSearch" data-i18n-key="table_search_placeholder" placeholder="Search" />
             </label>
           </div>
           <div class="table-wrapper">
@@ -151,12 +148,12 @@
             </div>
             <div class="form-actions">
               <button type="button" class="cancel" id="cancelAdd" data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" data-i18n-key="button_add_employee">Add Employee</button>
+              <button type="submit" data-i18n-key="button_add_employee">Add Member</button>
             </div>
           </form>
         </section>
 
-        <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
+        <!-- <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
           <div class="section-card__header">
             <h2 id="editMemberHeading" data-i18n-key="edit_member_title">Edit Employee</h2>
             <p data-i18n-key="edit_member_subtitle">Adjust coverage access or update employee details as roles evolve.</p>
@@ -244,7 +241,7 @@
               <button type="submit" class="danger" data-i18n-key="button_remove_employee">Remove Employee</button>
             </div>
           </form>
-        </section>
+        </section> -->
       </main>
     </div>
     <script src="i18n.js"></script>
