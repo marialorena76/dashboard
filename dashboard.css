@@ -3680,7 +3680,8 @@ body.modal-open {
   /* padding: 20px; */
   border-radius: 12px;
   width: fit-content;
-  gap: 20px
+  gap: 20px;
+  padding: 5px;
 }
 .individual-dashboard__profile-avatar{
   width: 80px;
