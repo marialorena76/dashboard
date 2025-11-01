@@ -622,7 +622,7 @@ button {
   font-weight: 500;
   color: black;
   font-size: 1.313rem;
-  min-width: 160px
+  min-width: 200px
 }
 
 .plan-type-item__label {
@@ -2747,7 +2747,7 @@ body.modal-open {
 
 .documents-row .doc-title {
   font-weight: 600;
-  min-width: 150px;
+  min-width: 200px;
 }
 .business-documents .doc-title{
   min-width: 400px;
