@@ -24,10 +24,17 @@
       </div>
       <p class="gray-text" data-i18n-key="sidebar_dashboard">Welcome to your Dashboard</p>
       <nav class="individual-dashboard__menu">
-        <a href="my-profile.html" data-i18n-key="menu_my_account">My Account ></a>
+        <div class="menu-item has-submenu">
+          <a href="#" class="submenu-toggle" data-i18n-key="menu_my_account">My Account ▾</a>
+          <ul class="submenu">
+            <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
+            <li><a href="protected-members.html" data-i18n-key="menu_protected_members">Protected Members</a></li>
+            <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
+          </ul>
+        </div>
         <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html" data-i18n-key="settings_title">Settings ></a>
+        <a href="help.html" data-i18n-key="menu_help">Help</a>
+        <a href="settings.html" data-i18n-key="menu_settings">Settings ></a>
       </nav>
       <div class="sidebar-bottom individual-dashboard__sidebar-footer">
         <button class="logout" data-i18n-key="logout_button">Log Out</button>
