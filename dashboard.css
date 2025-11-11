@@ -3711,6 +3711,30 @@ body.modal-open {
   /* font-size: 1.5rem; */
 }
 
+.individual-dashboard__menu .menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.individual-dashboard__menu .has-submenu .submenu {
+  display: none;
+  margin-left: 1rem;
+  list-style: none;
+  padding: 0.25rem 0 0;
+}
+
+.individual-dashboard__menu .has-submenu:hover .submenu,
+.individual-dashboard__menu .has-submenu:focus-within .submenu {
+  display: block;
+}
+
+.individual-dashboard__menu .submenu li a {
+  display: block;
+  font-size: 0.9rem;
+  color: inherit;
+  padding: 0.25rem 0.75rem;
+}
+
 /* .individual-dashboard__menu a.active,
 .individual-dashboard__menu a:hover {
   background: rgba(253, 249, 237, 0.22);
