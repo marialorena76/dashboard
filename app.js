@@ -7,13 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     '/my-profile.html',
     '/payments.html',
     '/settings.html',
-    '/protected-members.html'
+    '/protected-members.html' // añadida
   ];
 
   const businessPages = [
     '/business-dashboard.html',
     '/business-profile.html',
     '/business-plans-billing.html'
+    // eliminado '/protected-members.html'
   ];
 
   const individualLoginPage = 'individual-login.html';
