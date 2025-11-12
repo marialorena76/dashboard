@@ -1,27 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   const userType = localStorage.getItem('userType');
   const pathname = window.location.pathname;
+  const pageName = pathname.split('/').pop(); // extrae sólo el nombre del archivo
 
   const individualPages = [
     '/individual-dashboard.html',
     '/my-profile.html',
     '/payments.html',
     '/settings.html',
-    '/protected-members.html' // añadida
+    '/protected-members.html' // la ruta de Protected Members
   ];
 
   const businessPages = [
     '/business-dashboard.html',
     '/business-profile.html',
     '/business-plans-billing.html'
-    // eliminado '/protected-members.html'
+    // no incluyas '/protected-members.html' aquí
   ];
 
   const individualLoginPage = 'individual-login.html';
   const businessLoginPage = 'business-login.html';
 
-  const isIndividualPage = individualPages.some(page => pathname.includes(page));
-  const isBusinessPage = businessPages.some(page => pathname.includes(page));
+  const isIndividualPage = individualPages.some(page => page.replace('/', '') === pageName);
+  const isBusinessPage = businessPages.some(page => page.replace('/', '') === pageName);
   const isProtectedPage = isIndividualPage || isBusinessPage;
 
   // 1. If on a protected page but no user is logged in, redirect to the correct login.
