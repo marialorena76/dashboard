@@ -3716,25 +3716,6 @@ body.modal-open {
   flex-direction: column;
 }
 
-.individual-dashboard__menu .has-submenu .submenu {
-  display: none;
-  margin-left: 1rem;
-  list-style: none;
-  padding: 0.25rem 0 0;
-}
-
-.individual-dashboard__menu .has-submenu:hover .submenu,
-.individual-dashboard__menu .has-submenu:focus-within .submenu {
-  display: block;
-}
-
-.individual-dashboard__menu .submenu li a {
-  display: block;
-  font-size: 0.9rem;
-  color: inherit;
-  padding: 0.25rem 0.75rem;
-}
-
 /* .individual-dashboard__menu a.active,
 .individual-dashboard__menu a:hover {
   background: rgba(253, 249, 237, 0.22);
@@ -5226,4 +5207,48 @@ codex/add-my-account-feature-as-mocked-dkg7vw
     align-items: stretch;
   }
 
+}
+
+/* Submenu styles for individual dashboard */
+.individual-dashboard__menu .has-submenu > .submenu-toggle {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Insert a downward arrow after the My Account label */
+.individual-dashboard__menu .submenu-toggle::after {
+  content: '\25BC';
+  font-size: 0.75em;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow when submenu is open */
+.individual-dashboard__menu .has-submenu.open .submenu-toggle::after {
+  transform: rotate(180deg);
+}
+
+/* Hide submenu by default */
+.individual-dashboard__menu .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+  display: none;
+}
+
+/* Show submenu when parent has .open */
+.individual-dashboard__menu .has-submenu.open .submenu {
+  display: block;
+}
+
+/* Optional: style submenu links */
+.individual-dashboard__menu .submenu li a {
+  display: block;
+  color: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+  text-decoration: none;
 }
