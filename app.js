@@ -6,14 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     '/individual-dashboard.html',
     '/my-profile.html',
     '/payments.html',
-    '/settings.html'
+    '/settings.html',
+    '/protected-members.html'
   ];
 
   const businessPages = [
     '/business-dashboard.html',
     '/business-profile.html',
-    '/business-plans-billing.html',
-    '/protected-members.html'
+    '/business-plans-billing.html'
   ];
 
   const individualLoginPage = 'individual-login.html';
@@ -67,6 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = logoutDestination;
     });
   }
+
+  // Enable submenu toggle for My Account
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', event => {
+      event.preventDefault();
+      const parent = toggle.closest('.has-submenu');
+      parent?.classList.toggle('open');
+    });
+  });
 
   // Individual dashboard profile interactions
   const personalEditTrigger = document.querySelector('[data-personal-edit-trigger]');
