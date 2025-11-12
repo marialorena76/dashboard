@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', event => {
       event.preventDefault();
       const parent = toggle.closest('.has-submenu');
-      parent?.classList.toggle('open');
+      parent.classList.toggle('open');
     });
   });
 
