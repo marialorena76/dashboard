@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPlanEl = document.getElementById('currentPlan');
   const expireBtn = document.getElementById('expirePlan');
   const upgradeBtns = document.querySelectorAll('.upgrade-btn');
-  const updatePaymentBtn = document.getElementById('updatePayment');
+  const updatePaymentMethodBtn = document.getElementById('updatePaymentMethod');
+  const exploreUpgradesBtn = document.getElementById('exploreUpgrades');
 
   const defaults = {
     status: 'ACTIVE',
@@ -52,7 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  updatePaymentBtn.addEventListener('click', () => {
-    window.location.href = 'payments.html';
-  });
+  if (updatePaymentMethodBtn) {
+    updatePaymentMethodBtn.addEventListener('click', () => {
+      window.location.href = 'payments.html';
+    });
+  }
+
+  if (exploreUpgradesBtn) {
+    exploreUpgradesBtn.addEventListener('click', () => {
+      alert('Explore upgrade options');
+    });
+  }
 });
