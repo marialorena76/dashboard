@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     '/my-profile.html',
     '/payments.html',
     '/settings.html',
-    '/protected-members.html' // la ruta de Protected Members
+    '/protected-members-individual.html'
   ];
 
   const businessPages = [
     '/business-dashboard.html',
     '/business-profile.html',
     '/business-plans-billing.html'
-    // no incluyas '/protected-members.html' aquí
   ];
 
   const individualLoginPage = 'individual-login.html';

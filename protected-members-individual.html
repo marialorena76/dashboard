@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Protected Members</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard new-dashboard individual-dashboard">
+      <aside class="sidebar individual-dashboard__sidebar">
+        <div class="individual-dashboard__profile-card">
+          <div class="individual-dashboard__profile-avatar">
+            <img
+              src="images/avatar-default.svg"
+              alt="Avatar del usuario"
+              class="individual-dashboard__profile-avatar-image"
+              data-user-avatar
+            />
+          </div>
+          <h2 class="individual-dashboard__profile-name">
+            <span data-user-name>Maria Thompson</span>
+          </h2>
+        </div>
+        <p class="gray-text" data-i18n-key="sidebar_dashboard">
+          Welcome to your Dashboard
+        </p>
+        <nav class="individual-dashboard__menu">
+          <div class="menu-item has-submenu">
+            <button type="button" class="submenu-toggle" data-i18n-key="menu_my_account">
+              <span>My Account</span>
+              <span class="submenu-arrow"></span>
+            </button>
+            <ul class="submenu">
+              <li>
+                <a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a>
+              </li>
+              <li>
+                <a href="protected-members-individual.html" data-i18n-key="menu_protected_members">Protected Members</a>
+              </li>
+              <li>
+                <a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a>
+              </li>
+            </ul>
+          </div>
+          <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
+          <a href="help.html" data-i18n-key="menu_help">Help</a>
+          <a href="settings.html" data-i18n-key="menu_settings">Settings ></a>
+        </nav>
+        <div class="sidebar-bottom individual-dashboard__sidebar-footer">
+          <button class="logout" data-i18n-key="logout_button">Log Out</button>
+          <div class="lang-switcher">
+            <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
+            <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
+          </div>
+          <p class="gray-text" data-i18n-key="sidebar_dashboard">©2025 MemoraCare | Privacy Policy</p>
+        </div>
+      </aside>
+      <main class="main-content new-main-content">
+        <div class="protected-members">
+          <header class="content-header">
+            <div>
+              <h1>
+                <span data-i18n-key="individual_protected_members_heading_prefix">Protected</span>
+                <strong data-i18n-key="individual_protected_members_heading_highlight">Members</strong>
+              </h1>
+              <p data-i18n-key="individual_protected_members_heading_subtitle">
+                Keep your loved ones protected and up to date under your plan.
+              </p>
+            </div>
+          </header>
+
+          <section class="main-card members-table" aria-labelledby="protectedFamilyHeading">
+            <div class="members-table__header">
+              <div>
+                <h2 id="protectedFamilyHeading" data-i18n-key="individual_protected_members_table_title">
+                  Who’s Protected
+                </h2>
+                <p class="members-table__subtitle" data-i18n-key="individual_protected_members_table_subtitle">
+                  Review the family members linked to your plan and manage their details.
+                </p>
+              </div>
+              <div class="members-table__actions">
+                <button type="button" class="button primary-button" id="toAdd" data-i18n-key="button_add_family_member">
+                  + Add Member
+                </button>
+              </div>
+            </div>
+            <div class="members-table__controls">
+              <label class="members-table__entries" for="entriesSelect">
+                <span data-i18n-key="table_show_entries">Show</span>
+                <select id="entriesSelect">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                </select>
+                <span data-i18n-key="table_show_entries" style="display: none">entries</span>
+              </label>
+              <label class="members-table__search" for="memberSearch">
+                <input
+                  type="search"
+                  id="memberSearch"
+                  data-i18n-key="table_search_placeholder"
+                  placeholder="Search"
+                />
+              </label>
+            </div>
+            <div class="table-wrapper">
+              <table id="membersTable">
+                <thead>
+                  <tr>
+                    <th scope="col" data-i18n-key="form_full_name">Full Name</th>
+                    <th scope="col" data-i18n-key="form_relationship">Relationship</th>
+                    <th scope="col" data-i18n-key="form_status">Status</th>
+                    <th scope="col" class="actions-column" data-i18n-key="table_header_manage">Manage</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="members-table__footer">
+              <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+              <nav class="members-table__pagination" id="membersPagination" aria-label="Protected members pagination"></nav>
+            </div>
+          </section>
+
+          <section class="main-card" id="addMemberSection" aria-labelledby="addMemberHeading">
+            <div class="main-card__header">
+              <h2 id="addMemberHeading" data-i18n-key="individual_protected_members_add_title">Add New Family Member</h2>
+              <p data-i18n-key="individual_protected_members_add_subtitle">
+                Invite a loved one to be covered by your plan and keep their information current.
+              </p>
+            </div>
+            <form id="addMemberForm" class="panel-form" autocomplete="off">
+              <div class="form-grid">
+                <label class="form-field" for="addFullName">
+                  <span data-i18n-key="form_full_name">Full Name</span>
+                  <input type="text" id="addFullName" name="fullName" required />
+                </label>
+                <label class="form-field" for="addRelationship">
+                  <span data-i18n-key="form_relationship">Relationship</span>
+                  <input type="text" id="addRelationship" name="relationship" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="addEmail">
+                  <span data-i18n-key="form_email_address">Email Address</span>
+                  <input type="email" id="addEmail" name="email" required />
+                </label>
+                <label class="form-field" for="addDob">
+                  <span data-i18n-key="form_dob">Date of Birth</span>
+                  <input type="date" id="addDob" name="dateOfBirth" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="addAddress">
+                  <span data-i18n-key="form_address1">Address Line 1</span>
+                  <input type="text" id="addAddress" name="address" required />
+                </label>
+                <label class="form-field" for="addPhone">
+                  <span data-i18n-key="form_phone_number">Phone Number</span>
+                  <input type="tel" id="addPhone" name="phone" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="button cancel-button" id="cancelAdd" data-i18n-key="button_cancel">Cancel</button>
+                <button type="submit" class="button primary-button" data-i18n-key="button_save_member">Save Member</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
