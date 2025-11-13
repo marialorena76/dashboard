@@ -3695,26 +3695,55 @@ body.modal-open {
   font-family: "Poppins", sans-serif;
 }
 
-.individual-dashboard__menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+/* Oculta las viñetas y ajusta la separación del submenú */
+.individual-dashboard__menu .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none; /* oculto inicialmente */
 }
 
-.individual-dashboard__menu a {
-  padding: 0.95rem 1.2rem;
-  /* border-radius: 18px; */
-  color: #19213D;
-  font-weight: 600;
-  /* letter-spacing: 0.01em; */
-  transition: background 0.2s ease, color 0.2s ease;
-  /* font-size: 1.5rem; */
+.individual-dashboard__menu .submenu li {
+  list-style: none;
+  margin: 0.25rem 0;
+  padding-left: 1rem;
 }
 
-.individual-dashboard__menu .menu-item {
+/* El botón de My Account luce como texto con flecha */
+.individual-dashboard__menu .submenu-toggle {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
 }
+
+/* Flechita dibujada con bordes */
+.submenu-arrow {
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(45deg); /* flecha hacia abajo */
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+/* Rotación y visualización al abrir */
+.has-submenu.open .submenu-arrow {
+  transform: rotate(-135deg); /* flecha hacia arriba */
+}
+
+.has-submenu.open .submenu {
+  display: block; /* muestra el submenú cuando está abierto */
+}
+
 
 /* .individual-dashboard__menu a.active,
 .individual-dashboard__menu a:hover {
