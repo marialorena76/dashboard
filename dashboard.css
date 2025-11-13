@@ -5209,7 +5209,20 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 }
 
-/* Submenu styles for individual dashboard */
+/* Hide bullets and indent submenu items */
+.individual-dashboard__menu .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none; /* hidden by default */
+}
+
+.individual-dashboard__menu .submenu li {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+}
+
+/* Style the toggle button as a flex container */
 .individual-dashboard__menu .submenu-toggle {
   display: flex;
   justify-content: space-between;
@@ -5222,41 +5235,23 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   cursor: pointer;
 }
 
-.individual-dashboard__menu .submenu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: none;
-}
-
-.individual-dashboard__menu .submenu li {
-  padding-left: 1rem;
-  margin: 0.25rem 0;
-}
-
+/* Draw a chevron for the arrow */
 .submenu-arrow {
   border: solid currentColor;
   border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
+  padding: 4px;
+  transform: rotate(45deg); /* arrow pointing down */
   transition: transform 0.3s ease;
   margin-left: 0.5rem;
 }
 
+/* Rotate the arrow when the submenu is open */
 .has-submenu.open .submenu-arrow {
-  transform: rotate(-135deg);
+  transform: rotate(-135deg); /* arrow pointing up */
 }
 
+/* Show the submenu when the parent has .open */
 .has-submenu.open .submenu {
   display: block;
-}
-
-/* Optional: style submenu links */
-.individual-dashboard__menu .submenu li a {
-  display: block;
-  color: inherit;
-  font-size: 0.9rem;
-  padding: 0.35rem 0;
-  text-decoration: none;
 }
