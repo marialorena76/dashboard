@@ -262,7 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancelAddButton = document.getElementById('cancelAdd');
 
   if (addMemberButton && addMemberSection) {
-    // Reveal the form and scroll to it when clicking “+ Add Member”
     addMemberButton.addEventListener('click', () => {
       addMemberSection.classList.remove('is-hidden');
       addMemberSection.scrollIntoView({ behavior: 'smooth' });
@@ -270,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (cancelAddButton && addMemberSection) {
-    // Hide the form when clicking “Cancel”
     cancelAddButton.addEventListener('click', () => {
       addMemberSection.classList.add('is-hidden');
     });
