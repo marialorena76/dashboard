@@ -174,6 +174,47 @@
               </div>
             </form>
           </section>
+          <section class="main-card is-hidden" id="editMemberSection" aria-labelledby="editMemberHeading" style="margin-top: 2rem;">
+            <div class="main-card__header">
+              <h2 id="editMemberHeading">Edit Family Member</h2>
+            </div>
+            <form id="editMemberForm" class="panel-form" autocomplete="off">
+              <div class="form-grid">
+                <label class="form-field" for="editFullName">
+                  <span>Full Name</span>
+                  <input type="text" id="editFullName" name="fullName" required />
+                </label>
+                <label class="form-field" for="editRelationship">
+                  <span>Relationship</span>
+                  <input type="text" id="editRelationship" name="relationship" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="editEmail">
+                  <span>Email Address</span>
+                  <input type="email" id="editEmail" name="email" required />
+                </label>
+                <label class="form-field" for="editDob">
+                  <span>Date of Birth</span>
+                  <input type="date" id="editDob" name="dateOfBirth" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="editAddress">
+                  <span>Address Line 1</span>
+                  <input type="text" id="editAddress" name="address" required />
+                </label>
+                <label class="form-field" for="editPhone">
+                  <span>Phone Number</span>
+                  <input type="tel" id="editPhone" name="phone" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="button cancel-button" id="cancelEdit">Cancel</button>
+                <button type="submit" class="button primary-button">Save Changes</button>
+              </div>
+            </form>
+          </section>
         </div>
       </main>
     </div>
@@ -195,6 +236,104 @@
         if (cancelAddButton && addMemberSection) {
           cancelAddButton.addEventListener('click', function () {
             addMemberSection.classList.add('is-hidden');
+          });
+        }
+      });
+    </script>
+    <script>
+      // Sample data for individual protected members
+      const membersData = [
+        { fullName: 'Daniel Thompson', relationship: 'Spouse', status: 'PROTECTED' },
+        { fullName: 'Anna Thompson', relationship: 'Child', status: 'PROTECTED' },
+        { fullName: 'Jose Herrera', relationship: 'Parent', status: 'PROTECTED' },
+        { fullName: 'Robert Smith', relationship: 'Cousin', status: 'PROTECTED' }
+      ];
+
+      // Render the members table with edit buttons
+      function renderMembersTable() {
+        const tableBody = document.querySelector('#membersTable tbody');
+        if (!tableBody) return;
+        tableBody.innerHTML = '';
+        membersData.forEach((member, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${member.fullName}</td>
+            <td>${member.relationship}</td>
+            <td><span class="status-chip status-chip--protected">${member.status}</span></td>
+            <td class="actions-column">
+              <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${member.fullName}">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-2.88-2.88a1.5 1.5 0 0 0-2.12 0L3 15v5z"></path>
+                  <path d="M13.5 6.5l4 4"></path>
+                </svg>
+              </button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        });
+      }
+
+      renderMembersTable();
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const tableBody = document.querySelector('#membersTable tbody');
+        const editSection = document.getElementById('editMemberSection');
+        const addSection = document.getElementById('addMemberSection');
+        const editForm = document.getElementById('editMemberForm');
+        const cancelEditButton = document.getElementById('cancelEdit');
+        let editingIndex = null;
+
+        // Populate the edit form fields from the selected member
+        function populateEditForm(index) {
+          const member = membersData[index];
+          if (!member) return;
+          editForm.elements.fullName.value = member.fullName || '';
+          editForm.elements.relationship.value = member.relationship || '';
+          editForm.elements.email.value = member.email || '';
+          editForm.elements.dateOfBirth.value = member.dateOfBirth || '';
+          editForm.elements.address.value = member.address || '';
+          editForm.elements.phone.value = member.phone || '';
+        }
+
+        // Show edit form on pencil click
+        if (tableBody) {
+          tableBody.addEventListener('click', function (event) {
+            const button = event.target.closest('.action-edit');
+            if (!button) return;
+            editingIndex = Number(button.dataset.index);
+            populateEditForm(editingIndex);
+            editSection.classList.remove('is-hidden');
+            if (addSection) addSection.classList.add('is-hidden');
+            editSection.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        // Hide edit form when cancel is clicked
+        if (cancelEditButton) {
+          cancelEditButton.addEventListener('click', function () {
+            editSection.classList.add('is-hidden');
+            editingIndex = null;
+          });
+        }
+
+        // Save changes to the member and update the table
+        if (editForm) {
+          editForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (editingIndex === null) return;
+            const formData = new FormData(editForm);
+            membersData[editingIndex] = {
+              fullName: formData.get('fullName') || '',
+              relationship: formData.get('relationship') || '',
+              email: formData.get('email') || '',
+              dateOfBirth: formData.get('dateOfBirth') || '',
+              address: formData.get('address') || '',
+              phone: formData.get('phone') || '',
+              status: membersData[editingIndex].status
+            };
+            renderMembersTable();
+            editSection.classList.add('is-hidden');
+            editingIndex = null;
           });
         }
       });
