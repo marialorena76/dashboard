@@ -5209,49 +5209,51 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 }
 
-/* Hide bullets and indent submenu items */
+/* Submenu for My Account – hide bullets and tidy spacing */
 .individual-dashboard__menu .submenu {
-  list-style: none;
+  list-style: none;      /* remove bullets */
   margin: 0;
   padding: 0;
-  display: none; /* hidden by default */
+  display: none;         /* hidden by default */
 }
 
 .individual-dashboard__menu .submenu li {
+  list-style: none;      /* ensure no bullets on li elements */
   margin: 0.25rem 0;
-  padding-left: 1rem;
+  padding-left: 1rem;    /* indent subitems */
 }
 
-/* Style the toggle button as a flex container */
+/* Style the toggle button so it looks like plain text with an arrow */
 .individual-dashboard__menu .submenu-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: none;
-  border: none;
+  background-color: transparent; /* remove gray background */
+  border: none;                  /* remove border */
   padding: 0;
   font: inherit;
   cursor: pointer;
+  appearance: none;              /* reset native button styles */
+  outline: none;
 }
 
-/* Draw a chevron for the arrow */
+/* Draw the arrow icon */
 .submenu-arrow {
   border: solid currentColor;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;
-  transform: rotate(45deg); /* arrow pointing down */
+  transform: rotate(45deg);      /* arrow down by default */
   transition: transform 0.3s ease;
   margin-left: 0.5rem;
 }
 
-/* Rotate the arrow when the submenu is open */
+/* When the submenu is open, rotate the arrow and show the list */
 .has-submenu.open .submenu-arrow {
-  transform: rotate(-135deg); /* arrow pointing up */
+  transform: rotate(-135deg);    /* arrow pointing up */
 }
 
-/* Show the submenu when the parent has .open */
 .has-submenu.open .submenu {
-  display: block;
+  display: block;                /* reveal submenu items */
 }
