@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const businessPages = [
     '/business-dashboard.html',
     '/business-profile.html',
-    '/business-plans-billing.html'
+    '/business-plans-billing.html',
+    '/employees-covered.html'
   ];
 
   const individualLoginPage = 'individual-login.html';

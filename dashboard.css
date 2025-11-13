@@ -219,6 +219,71 @@ button {
   color: #f9f5e3;
 }
 
+.enterprise-menu .menu-item {
+  width: 100%;
+}
+
+.enterprise-menu .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+.enterprise-menu .submenu li {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+}
+
+.enterprise-menu .submenu a {
+  display: block;
+  padding: 0.5rem 0;
+  color: rgba(245, 251, 248, 0.75);
+  font-weight: 500;
+}
+
+.enterprise-menu .submenu a.active {
+  color: #f9f5e3;
+}
+
+.enterprise-menu .submenu-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: rgba(245, 251, 248, 0.86);
+  cursor: pointer;
+  text-align: left;
+}
+
+.enterprise-menu .submenu-toggle:hover,
+.enterprise-menu .submenu-toggle:focus {
+  background: rgba(22, 60, 48, 0.12);
+  outline: none;
+}
+
+.enterprise-menu .submenu-arrow {
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.has-submenu.open .submenu-arrow {
+  transform: rotate(-135deg);
+}
+
+.has-submenu.open .submenu {
+  display: block;
+}
+
 
 .lang-buttons {
   display: flex;
