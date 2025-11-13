@@ -174,3 +174,43 @@ function getFileOutput(form, input) {
   if (!target) return null;
   return form.querySelector(`[data-file-name="${target}"]`);
 }
+
+// Enable file upload for documents
+document.addEventListener('DOMContentLoaded', () => {
+  const docButtons = document.querySelectorAll('.doc-button');
+  docButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.dataset.target;
+      const fileInput = document.getElementById(targetId);
+      if (fileInput) fileInput.click();
+    });
+  });
+
+  const docInputs = document.querySelectorAll('#documentsForm input[type="file"]');
+  docInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      if (input.files.length) {
+        // Display file name
+        const fileName = input.files[0].name;
+        const outputSpan = document.querySelector(`[data-file-name="${input.dataset.fileOutput}"]`);
+        if (outputSpan) outputSpan.textContent = fileName;
+        // Update status badge to "Uploaded"
+        const row = input.closest('.documents-row');
+        const statusBadge = row.querySelector('.status-badge');
+        if (statusBadge) {
+          statusBadge.textContent = 'Uploaded';
+          statusBadge.classList.remove('status-pending');
+          statusBadge.classList.add('status-success');
+        }
+        // OPTIONAL: Upload to backend via fetch
+        // const formData = new FormData();
+        // formData.append('document', input.files[0]);
+        // formData.append('type', input.name);
+        // fetch('/api/upload-document', { method: 'POST', body: formData })
+        //   .then(response => response.json())
+        //   .then(data => console.log('Upload success:', data))
+        //   .catch(err => console.error('Upload error:', err));
+      }
+    });
+  });
+});
