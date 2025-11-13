@@ -179,5 +179,25 @@
     </div>
     <script src="i18n.js"></script>
     <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const addMemberButton = document.getElementById('toAdd');
+        const addMemberSection = document.getElementById('addMemberSection');
+        const cancelAddButton = document.getElementById('cancelAdd');
+
+        if (addMemberButton && addMemberSection) {
+          addMemberButton.addEventListener('click', function () {
+            addMemberSection.classList.remove('is-hidden');
+            addMemberSection.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        if (cancelAddButton && addMemberSection) {
+          cancelAddButton.addEventListener('click', function () {
+            addMemberSection.classList.add('is-hidden');
+          });
+        }
+      });
+    </script>
   </body>
 </html>
