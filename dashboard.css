@@ -5357,3 +5357,117 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 .has-submenu.open .submenu {
   display: block;                /* reveal submenu items */
 }
+
+/* ===== Sidebar estilo "Maria Thompson" ===== */
+
+.sidebar.individual-dashboard__sidebar {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1f2933;
+}
+
+/* Avatar + nombre arriba */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 24px 16px;
+}
+
+.sidebar-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.sidebar-name {
+  font-size: 20px;     /* tamaño como la captura */
+  font-weight: 600;
+}
+
+/* Línea + "Welcome to your Dashboard" */
+.sidebar-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 24px 24px;
+}
+
+.sidebar-welcome__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-welcome__text {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Contenedor del menú */
+.sidebar-nav {
+  padding: 0 24px 32px;
+}
+
+/* "My Account" con flechita */
+.sidebar-section__title {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.sidebar-section__arrow::before {
+  content: "▾";
+  font-size: 14px;
+}
+
+/* Lista sin bullets y más prolija */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.sidebar-menu li + li {
+  margin-top: 4px;
+}
+
+.sidebar-menu a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #1f2933;
+}
+
+/* Links sueltos: Payments / Help / Settings */
+.sidebar-link {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #1f2933;
+  margin-bottom: 12px;
+}
+
+/* Settings con flechita a la derecha */
+.sidebar-link--primary {
+  position: relative;
+  padding-right: 18px;
+}
+
+.sidebar-link--primary::after {
+  content: "›";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 16px;
+}
