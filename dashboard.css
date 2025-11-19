@@ -5471,3 +5471,143 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   top: 0;
   font-size: 16px;
 }
+
+/* === Modern Individual Sidebar (Maria Thompson style) === */
+.modern-individual-sidebar {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #111827;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  border-right: 1px solid #e2e8f0;
+}
+
+.modern-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 28px 18px;
+}
+
+.modern-sidebar__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #e0ecff 0%, #c7d5ff 45%, #9fb5ff 100%);
+  box-shadow: 0 10px 30px rgba(44, 93, 255, 0.18);
+  border: 2px solid #f8fafc;
+}
+
+.modern-sidebar__identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modern-sidebar__name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.modern-sidebar__welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 28px 28px;
+  color: #6b7280;
+}
+
+.modern-sidebar__line {
+  flex: 1;
+  height: 1px;
+  background: #d7dce3;
+  border-radius: 999px;
+}
+
+.modern-sidebar__welcome-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.modern-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 28px 32px;
+}
+
+.modern-sidebar__section-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  padding: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: default;
+}
+
+.modern-sidebar__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.modern-sidebar__chevron--down::before {
+  content: '▾';
+}
+
+.modern-sidebar__chevron--right::before {
+  content: '▸';
+}
+
+.modern-sidebar__menu {
+  list-style: none;
+  margin: 0;
+  padding: 2px 0 6px;
+  display: grid;
+  gap: 6px;
+}
+
+.modern-sidebar__menu-item a {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.modern-sidebar__menu-item a:hover {
+  color: #2563eb;
+}
+
+.modern-sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.modern-sidebar__link:hover {
+  color: #2563eb;
+}
+
+.modern-sidebar__link--cta {
+  justify-content: space-between;
+}
