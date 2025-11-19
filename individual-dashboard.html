@@ -13,40 +13,40 @@
 
 <body>
   <div class="dashboard new-dashboard individual-dashboard">
-  <aside class="sidebar individual-dashboard__sidebar">
-    <!-- Avatar + Nombre -->
-    <div class="sidebar-header">
-      <div class="sidebar-avatar">
-        <!-- si después querés meter una imagen, va acá -->
+  <aside class="sidebar individual-dashboard__sidebar modern-individual-sidebar">
+    <div class="modern-sidebar__header">
+      <div class="modern-sidebar__avatar" aria-hidden="true"></div>
+      <div class="modern-sidebar__identity">
+        <div class="modern-sidebar__name" id="sidebarUserName">Cathi Web</div>
       </div>
-      <div class="sidebar-name" id="sidebarUserName">Cathi Web</div>
     </div>
 
-  <!-- Línea + subtítulo -->
-    <div class="sidebar-welcome">
-      <span class="sidebar-welcome__line"></span>
-      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
-      <span class="sidebar-welcome__line"></span>
+    <div class="modern-sidebar__welcome" aria-hidden="true">
+      <span class="modern-sidebar__line"></span>
+      <span class="modern-sidebar__welcome-text">Welcome to your Dashboard</span>
+      <span class="modern-sidebar__line"></span>
     </div>
 
-  <!-- Menú -->
-    <nav class="sidebar-nav">
-      <div class="sidebar-section">
-        <button class="sidebar-section__title" type="button">
-          My Account
-          <span class="sidebar-section__arrow"></span>
+    <nav class="modern-sidebar__nav" aria-label="Sidebar">
+      <div class="modern-sidebar__section">
+        <button class="modern-sidebar__section-title" type="button">
+          <span>My Account</span>
+          <span class="modern-sidebar__chevron modern-sidebar__chevron--down" aria-hidden="true"></span>
         </button>
 
-        <ul class="sidebar-menu">
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">Protected Members</a></li>
-          <li><a href="#">Manage My Plan</a></li>
+        <ul class="modern-sidebar__menu">
+          <li class="modern-sidebar__menu-item"><a href="#">My Profile</a></li>
+          <li class="modern-sidebar__menu-item"><a href="#">Protected Members</a></li>
+          <li class="modern-sidebar__menu-item"><a href="#">Manage My Plan</a></li>
         </ul>
       </div>
 
-      <a class="sidebar-link" href="#">Payments</a>
-      <a class="sidebar-link" href="#">Help</a>
-      <a class="sidebar-link sidebar-link--primary" href="#">Settings</a>
+      <a class="modern-sidebar__link" href="#">Payments</a>
+      <a class="modern-sidebar__link" href="#">Help</a>
+      <a class="modern-sidebar__link modern-sidebar__link--cta" href="#">
+        <span>Settings</span>
+        <span class="modern-sidebar__chevron modern-sidebar__chevron--right" aria-hidden="true"></span>
+      </a>
     </nav>
   </aside>
 
