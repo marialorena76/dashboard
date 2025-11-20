@@ -3925,9 +3925,18 @@ body.modal-open {
   transition: max-height 0.25s ease, opacity 0.2s ease;
 
 
+  margin: 0.35rem 0 0.35rem;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+
+
   margin: 0.35rem 0 0.15rem;
   padding: 0;
   display: none;
+
 
 
 }
@@ -3943,11 +3952,13 @@ body.modal-open {
   display: block;
 
 
+
   margin: 0.3rem 0;
   padding-left: 0.35rem;
 }
 
 .individual-dashboard__menu .submenu a {
+
 
   color: #0f402e;
   font-weight: 600;
@@ -3990,7 +4001,12 @@ body.modal-open {
   max-height: 300px;
   opacity: 1;
 
+
+  max-height: 300px;
+  opacity: 1;
+
   display: block;
+
 
 }
 
@@ -5492,12 +5508,15 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 .individual-dashboard__menu .submenu {
   list-style: none;
 
+
+
   margin: 0.35rem 0 0.35rem;
   padding: 0;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.25s ease, opacity 0.2s ease;
+
 
 
   margin: 0.35rem 0 0.35rem;
@@ -5511,10 +5530,12 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   padding: 0;
   display: none;
 
+
 }
 
 .individual-dashboard__menu .submenu li {
   list-style: none;
+
 
 
   margin: 0.35rem 0;
@@ -5525,11 +5546,13 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   display: block;
 
 
+
   margin: 0.3rem 0;
   padding-left: 0.35rem;
 }
 
 .individual-dashboard__menu .submenu a {
+
 
   color: #0f402e;
   font-weight: 600;
@@ -5537,6 +5560,10 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 }
 
 /* Style the toggle button so it looks like plain text with an arrow */
+.individual-dashboard__menu .has-submenu {
+  width: 100%;
+}
+
 .individual-dashboard__menu .submenu-toggle {
   display: flex;
   justify-content: space-between;
@@ -5547,8 +5574,16 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   border: none;
 
   padding: 0.75rem 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f402e;
+  text-align: left;
+
+
+  padding: 0.75rem 0.35rem;
 
   padding: 0;
+
 
   font: inherit;
   cursor: pointer;
@@ -5576,7 +5611,12 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   max-height: 300px;
   opacity: 1;
 
+
+  max-height: 300px;
+  opacity: 1;
+
   display: block;
+
 
 
 }
