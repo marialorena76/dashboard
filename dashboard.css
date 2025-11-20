@@ -3916,18 +3916,36 @@ body.modal-open {
 /* Oculta las viñetas y ajusta la separación del submenú */
 .individual-dashboard__menu .submenu {
   list-style: none;
+
+  margin: 0.35rem 0 0.35rem;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+
   margin: 0.35rem 0 0.15rem;
   padding: 0;
   display: none;
+
 }
 
 .individual-dashboard__menu .submenu li {
   list-style: none;
+
+  margin: 0.35rem 0;
+  padding-left: 0.5rem;
+}
+
+.individual-dashboard__menu .submenu a {
+  display: block;
+
   margin: 0.3rem 0;
   padding-left: 0.35rem;
 }
 
 .individual-dashboard__menu .submenu a {
+
   color: #0f402e;
   font-weight: 600;
   text-decoration: none;
@@ -3961,7 +3979,12 @@ body.modal-open {
 
 /* Mostrar el submenú cuando está abierto */
 .has-submenu.open .submenu {
+
+  max-height: 300px;
+  opacity: 1;
+
   display: block;
+
 }
 
 
@@ -5461,6 +5484,14 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 /* Submenu for My Account – hide bullets and tidy spacing */
 .individual-dashboard__menu .submenu {
   list-style: none;
+
+  margin: 0.35rem 0 0.35rem;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+
   margin: 0.35rem 0 0.15rem;
   padding: 0;
   display: none;
@@ -5468,11 +5499,20 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 .individual-dashboard__menu .submenu li {
   list-style: none;
+
+  margin: 0.35rem 0;
+  padding-left: 0.5rem;
+}
+
+.individual-dashboard__menu .submenu a {
+  display: block;
+
   margin: 0.3rem 0;
   padding-left: 0.35rem;
 }
 
 .individual-dashboard__menu .submenu a {
+
   color: #0f402e;
   font-weight: 600;
   text-decoration: none;
@@ -5506,7 +5546,12 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 /* When the submenu is open, show the list */
 .has-submenu.open .submenu {
+
+  max-height: 300px;
+  opacity: 1;
+
   display: block;
+
 }
 
 /* ===== Sidebar estilo "Maria Thompson" ===== */
