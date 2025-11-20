@@ -3916,15 +3916,25 @@ body.modal-open {
 /* Oculta las viñetas y ajusta la separación del submenú */
 .individual-dashboard__menu .submenu {
   list-style: none;
-  margin: 0;
+  margin: 0.35rem 0 0.35rem;
   padding: 0;
-  display: none; /* oculto inicialmente */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
 }
 
 .individual-dashboard__menu .submenu li {
   list-style: none;
-  margin: 0.25rem 0;
-  padding-left: 1rem;
+  margin: 0.35rem 0;
+  padding-left: 0.5rem;
+}
+
+.individual-dashboard__menu .submenu a {
+  display: block;
+  color: #0f402e;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 /* El botón de My Account luce como texto con flecha */
@@ -3932,10 +3942,11 @@ body.modal-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   width: 100%;
   background-color: transparent;
   border: none;
-  padding: 0;
+  padding: 0.75rem 0.35rem;
   font: inherit;
   cursor: pointer;
   appearance: none;
@@ -3948,18 +3959,14 @@ body.modal-open {
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;
-  transform: rotate(45deg); /* flecha hacia abajo */
-  transition: transform 0.3s ease;
-  margin-left: 0.5rem;
+  transform: rotate(45deg);
+  margin-left: 0.25rem;
 }
 
-/* Rotación y visualización al abrir */
-.has-submenu.open .submenu-arrow {
-  transform: rotate(-135deg); /* flecha hacia arriba */
-}
-
+/* Mostrar el submenú cuando está abierto */
 .has-submenu.open .submenu {
-  display: block; /* muestra el submenú cuando está abierto */
+  max-height: 300px;
+  opacity: 1;
 }
 
 
@@ -5458,30 +5465,49 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 /* Submenu for My Account – hide bullets and tidy spacing */
 .individual-dashboard__menu .submenu {
-  list-style: none;      /* remove bullets */
-  margin: 0;
+  list-style: none;
+  margin: 0.35rem 0 0.35rem;
   padding: 0;
-  display: none;         /* hidden by default */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
 }
 
 .individual-dashboard__menu .submenu li {
-  list-style: none;      /* ensure no bullets on li elements */
-  margin: 0.25rem 0;
-  padding-left: 1rem;    /* indent subitems */
+  list-style: none;
+  margin: 0.35rem 0;
+  padding-left: 0.5rem;
+}
+
+.individual-dashboard__menu .submenu a {
+  display: block;
+  color: #0f402e;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 /* Style the toggle button so it looks like plain text with an arrow */
+.individual-dashboard__menu .has-submenu {
+  width: 100%;
+}
+
 .individual-dashboard__menu .submenu-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   width: 100%;
-  background-color: transparent; /* remove gray background */
-  border: none;                  /* remove border */
-  padding: 0;
+  background-color: transparent;
+  border: none;
+  padding: 0.75rem 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f402e;
+  text-align: left;
   font: inherit;
   cursor: pointer;
-  appearance: none;              /* reset native button styles */
+  appearance: none;
   outline: none;
 }
 
@@ -5491,18 +5517,14 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;
-  transform: rotate(45deg);      /* arrow down by default */
-  transition: transform 0.3s ease;
-  margin-left: 0.5rem;
+  transform: rotate(45deg);
+  margin-left: 0.25rem;
 }
 
-/* When the submenu is open, rotate the arrow and show the list */
-.has-submenu.open .submenu-arrow {
-  transform: rotate(-135deg);    /* arrow pointing up */
-}
-
+/* When the submenu is open, show the list */
 .has-submenu.open .submenu {
-  display: block;                /* reveal submenu items */
+  max-height: 300px;
+  opacity: 1;
 }
 
 /* ===== Sidebar estilo "Maria Thompson" ===== */
@@ -5757,4 +5779,35 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 .modern-sidebar__link--cta {
   justify-content: space-between;
+}
+
+/* Scoped alignment for Individual Dashboard sidebar: make "My Account" act like other menu links */
+.individual-dashboard__sidebar .sidebar-section__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2933;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.individual-dashboard__sidebar .sidebar-section__arrow {
+  margin-left: auto;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.individual-dashboard__sidebar .sidebar-section__arrow::before {
+  content: "›";
+}
+
+.individual-dashboard__sidebar .sidebar-menu {
+  display: none;
 }
