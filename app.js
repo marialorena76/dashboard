@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', event => {
       event.preventDefault();
       const parent = toggle.closest('.has-submenu');
-      parent.classList.toggle('open');
+      const isOpen = parent.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
 

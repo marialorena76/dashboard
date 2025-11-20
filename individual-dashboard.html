@@ -19,7 +19,17 @@
       <p class="individual-dashboard__welcome">Welcome to your Dashboard</p>
 
       <nav class="individual-dashboard__menu" aria-label="Sidebar">
-        <a class="individual-dashboard__link" href="my-profile.html">My Account <span aria-hidden="true">›</span></a>
+        <div class="individual-dashboard__link has-submenu">
+          <button class="submenu-toggle" type="button" aria-expanded="false">
+            My Account
+            <span class="submenu-arrow" aria-hidden="true"></span>
+          </button>
+          <ul class="submenu" aria-label="My Account submenu">
+            <li><a class="individual-dashboard__link" href="my-profile.html">My Profile</a></li>
+            <li><a class="individual-dashboard__link" href="protected-members-individual.html">Protected Members</a></li>
+            <li><a class="individual-dashboard__link" href="manage-my-plan.html">Manage My Plan</a></li>
+          </ul>
+        </div>
         <a class="individual-dashboard__link" href="payments.html">Payments <span aria-hidden="true">›</span></a>
         <a class="individual-dashboard__link" href="help.html">Help <span aria-hidden="true">›</span></a>
         <a class="individual-dashboard__link" href="settings.html">Settings <span aria-hidden="true">›</span></a>
