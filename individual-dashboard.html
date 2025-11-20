@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="individual-dashboard minimal-dashboard">
-    <aside class="individual-dashboard__sidebar updated-panel">
+  <div class="individual-dashboard">
+    <aside class="sidebar individual-dashboard__sidebar updated-panel">
       <div class="individual-dashboard__icon" aria-hidden="true"></div>
       <div class="individual-dashboard__profile-card">
         <div class="individual-dashboard__profile-name" id="sidebarUserName">Maria Thompson</div>
@@ -19,7 +19,17 @@
       <p class="individual-dashboard__welcome">Welcome to your Dashboard</p>
 
       <nav class="individual-dashboard__menu" aria-label="Sidebar">
-        <a class="individual-dashboard__link" href="my-profile.html">My Account <span aria-hidden="true">›</span></a>
+        <div class="individual-dashboard__link has-submenu open">
+          <button class="submenu-toggle individual-dashboard__link" type="button" aria-expanded="true">
+            My Account
+            <span class="submenu-arrow" aria-hidden="true"></span>
+          </button>
+          <ul class="submenu" aria-label="My Account submenu">
+            <li><a class="individual-dashboard__link" href="my-profile.html">My Profile</a></li>
+            <li><a class="individual-dashboard__link" href="protected-members-individual.html">Protected Members</a></li>
+            <li><a class="individual-dashboard__link" href="manage-my-plan.html">Manage My Plan</a></li>
+          </ul>
+        </div>
         <a class="individual-dashboard__link" href="payments.html">Payments <span aria-hidden="true">›</span></a>
         <a class="individual-dashboard__link" href="help.html">Help <span aria-hidden="true">›</span></a>
         <a class="individual-dashboard__link" href="settings.html">Settings <span aria-hidden="true">›</span></a>
@@ -34,6 +44,45 @@
         <p class="individual-sidebar__legal">©2025 MemoraCare | Privacy Policy</p>
       </div>
     </aside>
+
+    <main class="main-content individual-dashboard__main">
+      <div class="main-card">
+        <header class="main-card__header">
+          <h1>Welcome back, <strong class="page-heading__highlight" data-user-name>Maria</strong></h1>
+        </header>
+        <div class="main-card__metrics">
+          <div class="metric-item">
+            <span class="metric-item__label">Your Plan Status</span>
+            <span class="status-pill status-pill--active">ACTIVE</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label">Your Coverage</span>
+            <span class="status-pill status-pill--coverage">UP TO $15,000</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label">Next Payment</span>
+            <span class="status-pill status-pill--payment">$48.99 DUE SEP 12, 2025</span>
+          </div>
+        </div>
+        <div class="main-card__actions">
+          <button class="individuals-action">Update My Profile</button>
+          <button class="individuals-action">Manage My Plan</button>
+          <button class="individuals-action">Add a Family Member</button>
+          <button class="individuals-action">Manage Alerts</button>
+        </div>
+      </div>
+
+      <section class="individual-banner">
+        <div class="individual-banner__content">
+          <h2>Human-centered benefits for your team.</h2>
+          <p>Offer your employees reliable and affordable funeral protection. A practical solution to enhance your company's benefit offering and support your team when they need it most.</p>
+        </div>
+        <div class="banner-nav">
+          <button class="banner-nav__arrow" aria-label="Previous">←</button>
+          <button class="banner-nav__arrow" aria-label="Next">→</button>
+        </div>
+      </section>
+    </main>
   </div>
 
   <script src="i18n.js"></script>
