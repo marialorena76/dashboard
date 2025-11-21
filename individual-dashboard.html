@@ -31,11 +31,27 @@
 
   <!-- Menú -->
 
-    <nav class="sidebar-nav">
-      <a class="sidebar-link sidebar-link--primary" href="#">My Account</a>
-      <a class="sidebar-link" href="#">Payments</a>
-      <a class="sidebar-link" href="#">Help</a>
-      <a class="sidebar-link sidebar-link--primary" href="#">Settings</a>
+    <nav class="sidebar-nav individual-dashboard__menu">
+
+    <!-- Mi Account con submenú (como la maqueta) -->
+      <div class="has-submenu open">
+        <button class="submenu-toggle" type="button">
+          <span>My Account</span>
+          <span class="submenu-arrow"></span>
+        </button>
+
+        <ul class="submenu">
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Protected Members</a></li>
+          <li><a href="#">Manage My Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- Items independientes -->
+      <a href="#" class="sidebar-link">Payments</a>
+      <a href="#" class="sidebar-link">Help</a>
+      <a href="#" class="sidebar-link sidebar-link--primary">Settings</a>
+
     </nav>
 
   </aside>
