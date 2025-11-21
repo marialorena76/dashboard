@@ -5500,3 +5500,64 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   text-decoration: none;
   color: #163c30; /* mismo verde oscuro que el resto */
 }
+
+/* === Sidebar Footer — Dashboard Individual === */
+
+.individual-dashboard__sidebar .sidebar-footer {
+  margin-top: 2.5rem;
+  padding: 0 1.5rem 2rem;
+  text-align: center;
+}
+
+.individual-dashboard__sidebar .sidebar-logout {
+  width: 100%;
+  background: #18472f;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+
+.individual-dashboard__sidebar .sidebar-languages {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.individual-dashboard__sidebar .lang-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: none;
+  background: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.individual-dashboard__sidebar .lang-btn.active {
+  background: #235f48;
+  color: #ffffff;
+}
+
+.individual-dashboard__sidebar .sidebar-footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.individual-dashboard__sidebar .footer-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.individual-dashboard__sidebar .footer-text {
+  white-space: nowrap;
+}
