@@ -5471,3 +5471,32 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   top: 0;
   font-size: 16px;
 }
+
+/* === TIPOGRAFÍA SIDEBAR INDIVIDUAL === */
+
+/* Fuente base del menú lateral */
+.individual-dashboard__sidebar .sidebar-nav,
+.individual-dashboard__sidebar .individual-dashboard__menu {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Título "My Account / Mi cuenta" */
+.individual-dashboard__menu .submenu-toggle span:first-child {
+  font-size: 1.2rem;      /* similar al diseño */
+  font-weight: 600;       /* bold suave */
+}
+
+/* Items del submenú (My Profile, Protected Members, etc.) */
+.individual-dashboard__menu .submenu a {
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* Links principales: Payments, Help, Settings */
+.individual-dashboard__sidebar .sidebar-link {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #163c30; /* mismo verde oscuro que el resto */
+}
