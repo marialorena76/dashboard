@@ -5613,3 +5613,220 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 .individual-dashboard__sidebar .footer-text {
   white-space: nowrap;
 }
+
+/* === RESETEO COMPLETO DE ESTILOS VIEJOS PARA QUE NO ROMPAN EL SIDEBAR NUEVO === */
+
+.individual-dashboard .sidebar,
+.individual-dashboard .sidebar * {
+  all: unset;
+  display: revert;
+  box-sizing: border-box;
+}
+
+/* Vuelve a aplicar tu layout flex original */
+.dashboard.new-dashboard.individual-dashboard {
+  display: flex;
+}
+
+/* === SIDEBAR NUEVO (versión definitiva, aislada) === */
+
+.individual-dashboard__sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background: linear-gradient(#d4ad47, #b58f30);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.individual-dashboard__sidebar .sidebar-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.individual-dashboard__sidebar .sidebar-avatar {
+  width: 75px;
+  height: 75px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+}
+
+.individual-dashboard__sidebar .sidebar-name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Separador */
+.individual-dashboard__sidebar .sidebar-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 1.5rem 0 2rem;
+}
+
+.individual-dashboard__sidebar .sidebar-welcome__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.individual-dashboard__sidebar .sidebar-welcome__text {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+
+/* === MENÚ === */
+.individual-dashboard__menu .submenu-toggle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.individual-dashboard__menu .submenu a {
+  display: block;
+  padding: 6px 0 6px 12px;
+  font-size: 1rem;
+  color: #163c30;
+}
+
+.individual-dashboard__sidebar .sidebar-link {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #163c30;
+  text-decoration: none;
+}
+
+.individual-dashboard__sidebar .sidebar-link--primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* === FOOTER === */
+.individual-dashboard__sidebar .sidebar-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.individual-dashboard__sidebar .sidebar-logout {
+  width: 100%;
+  background: #18472f;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+
+.individual-dashboard__sidebar .sidebar-languages {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.individual-dashboard__sidebar .lang-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: none;
+  background: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.individual-dashboard__sidebar .lang-btn.active {
+  background: #F6E5BF;
+}
+
+.individual-dashboard__sidebar .sidebar-footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.individual-dashboard__sidebar .footer-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+}
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-image {
+  width: 120px;      /* Ajustar según diseño */
+  height: auto;
+}
+
+.business-layout,
+.business-main-columns,
+.two-columns {
+    display: block !important;
+}
+/* === FIX LAYOUT BUSINESS PROFILE === */
+
+/* Que cada card aparezca una debajo de la otra */
+.business-main,
+.business-profile,
+.business-profile__content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+}
+
+/* Cada card ocupa todo el ancho */
+.business-main .main-card,
+.business-profile .main-card {
+    width: 100% !important;
+}
+
+/* Evita que cualquier contenedor las fuerce a dos columnas */
+.business-layout,
+.business-main-columns,
+.profile-columns,
+.two-columns {
+    display: block !important;
+}
+
+/* Alineación del header de la sección "Verification Documents" */
+.verification-documents-header,
+.verification-card-header,
+.verification-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px !important;
+}
+
+/* Botón Add/Upload de Documents */
+.add-document,
+.upload-document,
+.update-document {
+    position: static !important;
+    border-radius: 999px;
+    padding: 0.45rem 1.2rem;
+    font-size: 0.9rem;
+    background: #0d3f30;
+    color: white;
+}
+
