@@ -15,9 +15,9 @@
   <div class="dashboard dashboard--enterprise">
     <aside class="sidebar sidebar--enterprise">
       <div class="enterprise-brand">
-        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__icon" aria-hidden="true" id="businessInitials">LB</div>
         <div class="enterprise-brand__text">
-          <span class="enterprise-brand__label">LegacyBridge</span>
+          <span class="enterprise-brand__label" id="businessNameLabel">LegacyBridge</span>
         </div>
       </div>
       <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
@@ -47,11 +47,14 @@
     </aside>
     <main class="main-content main-content--enterprise">
       <div class="main-card">
-        <header class="main-card__header">
-          <h1>
-            <span data-i18n-key="business_dashboard_welcome">Welcome back, <strong>Legacy Bridge</strong></span>
-          </h1>
-        </header>
+       <header class="main-card__header">
+        <h1>
+          <span data-i18n-key="business_dashboard_welcome">
+            Welcome back, <strong id="businessWelcomeName">Legacy Bridge</strong>
+          </span>
+        </h1>
+       </header>
+
         <div class="main-card__metrics">
           <div class="metric-item">
             <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>

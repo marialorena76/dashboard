@@ -275,3 +275,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Ajusta estas keys a lo que ya uses en el individual
+  const firstName = localStorage.getItem("user_first_name") || "";
+  const lastName  = localStorage.getItem("user_last_name") || "";
+
+  if (!firstName && !lastName) return; // si no hay datos, no hacemos nada
+
+  const fullName = `${firstName} ${lastName}`.trim();
+
+  // Sidebar: nombre de la empresa/usuario
+  const nameLabel = document.getElementById("businessNameLabel");
+  if (nameLabel && fullName) {
+    nameLabel.textContent = fullName;
+  }
+
+  // Título: Welcome back, <strong>Nombre Apellido</strong>
+  const welcomeName = document.getElementById("businessWelcomeName");
+  if (welcomeName && fullName) {
+    welcomeName.textContent = fullName;
+  }
+
+  // Iniciales en el círculo (LB -> primeras letras de nombre y apellido)
+  const initialsEl = document.getElementById("businessInitials");
+  if (initialsEl && fullName) {
+    const parts = fullName.split(/\s+/);
+    const initials =
+      (parts[0]?.[0] || "").toUpperCase() +
+      (parts[1]?.[0] || "").toUpperCase();
+    initialsEl.textContent = initials || "LB";
+  }
+});
