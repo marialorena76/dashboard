@@ -340,6 +340,31 @@
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="business-profile.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const overviewPanel = document.querySelector('[data-business-panel="overview"]');
+      const editPanel = document.querySelector('[data-business-panel="edit"]');
+      const editBtn = document.getElementById("businessViewToggle");
+      const cancelBtns = document.querySelectorAll(
+        '[data-business-panel="edit"] [data-action="cancel"]'
+      );
+
+      if (!overviewPanel || !editPanel || !editBtn) return;
+
+      function showEdit() {
+        overviewPanel.classList.remove("is-active");
+        editPanel.classList.add("is-active");
+      }
+
+      function showOverview() {
+        editPanel.classList.remove("is-active");
+        overviewPanel.classList.add("is-active");
+      }
+
+      editBtn.addEventListener("click", showEdit);
+      cancelBtns.forEach((btn) => btn.addEventListener("click", showOverview));
+    });
+  </script>
 </body>
 
 </html>
