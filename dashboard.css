@@ -5561,3 +5561,55 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 .individual-dashboard__sidebar .footer-text {
   white-space: nowrap;
 }
+
+/* === BOTONES IDIOMA CORREGIDOS (ESTILO MAQUETA) === */
+
+.individual-dashboard__sidebar .sidebar-languages {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.individual-dashboard__sidebar .lang-btn {
+  flex: 1;
+  background: #ffffff;
+  color: #163c30;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;           /* redondeado como en la maqueta */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.individual-dashboard__sidebar .lang-btn.active {
+  background: #F6E5BF !important;   /* color crema */
+  color: #163c30 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+
+/* === FOOTER COPYRIGHT — MÁS CHICO Y CENTRADO === */
+
+.individual-dashboard__sidebar .sidebar-footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.70rem;             /* texto más chico */
+  opacity: 0.7;
+  margin-top: 0.75rem;
+}
+
+.individual-dashboard__sidebar .footer-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.individual-dashboard__sidebar .footer-text {
+  white-space: nowrap;
+}
