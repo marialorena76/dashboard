@@ -277,30 +277,40 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Ajusta estas keys a lo que ya uses en el individual
+  // Datos base (como en individual)
   const firstName = localStorage.getItem("user_first_name") || "";
   const lastName  = localStorage.getItem("user_last_name") || "";
+  const fullName  = `${firstName} ${lastName}`.trim();
 
-  if (!firstName && !lastName) return; // si no hay datos, no hacemos nada
+  // Intentamos primero con nombre de empresa traído desde WooCommerce
+  const businessNameFromStorage =
+    localStorage.getItem("business_name") ||
+    localStorage.getItem("user_business_name") ||
+    localStorage.getItem("user_company") ||
+    localStorage.getItem("billing_company") ||
+    "";
 
-  const fullName = `${firstName} ${lastName}`.trim();
+  // Si no hay empresa, usamos el nombre completo
+  const displayName = (businessNameFromStorage || fullName).trim();
+
+  if (!displayName) return; // si no hay nada, no hacemos nada
 
   // Sidebar: nombre de la empresa/usuario
   const nameLabel = document.getElementById("businessNameLabel");
-  if (nameLabel && fullName) {
-    nameLabel.textContent = fullName;
+  if (nameLabel) {
+    nameLabel.textContent = displayName;
   }
 
-  // Título: Welcome back, <strong>Nombre Apellido</strong>
+  // Título: Welcome back, <strong>Nombre</strong>
   const welcomeName = document.getElementById("businessWelcomeName");
-  if (welcomeName && fullName) {
-    welcomeName.textContent = fullName;
+  if (welcomeName) {
+    welcomeName.textContent = displayName;
   }
 
-  // Iniciales en el círculo (LB -> primeras letras de nombre y apellido)
+  // Iniciales en el círculo (primeras letras de las primeras 2 palabras)
   const initialsEl = document.getElementById("businessInitials");
-  if (initialsEl && fullName) {
-    const parts = fullName.split(/\s+/);
+  if (initialsEl) {
+    const parts = displayName.split(/\s+/);
     const initials =
       (parts[0]?.[0] || "").toUpperCase() +
       (parts[1]?.[0] || "").toUpperCase();
