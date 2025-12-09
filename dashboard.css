@@ -5830,3 +5830,27 @@ codex/add-my-account-feature-as-mocked-dkg7vw
     color: white;
 }
 
+.table-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.table-action {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #0b362d;
+  color: #fff;
+}
+
+.table-action.danger {
+  background: #f5d2d2;
+  color: #000;
+}
+
+.table-action.action-beneficiary {
+  background: #555;
+}
+

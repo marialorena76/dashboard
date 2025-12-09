@@ -296,16 +296,22 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>
           <span class="status-chip ${statusClass}">${statusText}</span>
         </td>
-        <td class="actions-column">
+       <td class="actions-column">
           <div class="table-actions">
             <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${fullName}">
               ${EDIT_ICON}
             </button>
+
             <button type="button" class="table-action action-delete danger" data-index="${index}" aria-label="Remove ${fullName}">
               ${DELETE_ICON}
             </button>
+
+            <button type="button" class="table-action action-beneficiary" data-index="${index}">
+              ${member.hasBeneficiary ? "Edit Beneficiary" : "Add Beneficiary"}
+            </button>
           </div>
-        </td>
+       </td>
+
       `;
       tableBody.appendChild(row);
     });
@@ -545,5 +551,10 @@ document.addEventListener('DOMContentLoaded', () => {
         removeSection.scrollIntoView({ behavior: 'smooth' });
       }
     }
+    if (actionButton.classList.contains('action-beneficiary')) {
+  // Aquí eventualmente abrís un modal o formulario
+  alert("Aquí abrís modal o sección de Beneficiary para el empleado #" + idx);
+    }
+
   });
 });
