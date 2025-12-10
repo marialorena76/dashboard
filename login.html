@@ -144,11 +144,19 @@
     const spinner = document.getElementById('spinner');
     const btnText = document.getElementById('btnText');
 
-    function showAlert(msg, type='error'){
-      alertBox.className = 'alert show ' + (type==='ok' ? 'ok' : 'error');
-      alertBox.textContent = msg;
-    }
-    function clearAlert(){ alertBox.className='alert'; alertBox.textContent=''; }
+function showAlert(msg, type = 'error') {
+  alertBox.className = 'alert show ' + (type === 'ok' ? 'ok' : 'error');
+
+  // Si viene HTML desde WordPress (como <strong>Error</strong>...), lo mostramos como HTML.
+  // Si querés, después podemos filtrar etiquetas permitidas.
+  alertBox.innerHTML = msg;
+}
+
+function clearAlert() {
+  alertBox.className = 'alert';
+  alertBox.innerHTML = '';
+}
+
 
     async function loginMemora(e){
       e.preventDefault();

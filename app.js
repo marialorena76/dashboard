@@ -317,3 +317,61 @@ document.addEventListener("DOMContentLoaded", function () {
     initialsEl.textContent = initials || "LB";
   }
 });
+document.addEventListener("DOMContentLoaded", function () {
+  // Solo ejecutar en el dashboard de empresa
+  const planStatusEl = document.getElementById("planStatusPill");
+  const totalCoverageEl = document.getElementById("totalCoveragePill");
+  const nextPaymentEl = document.getElementById("nextPaymentPill");
+
+  if (!planStatusEl || !totalCoverageEl || !nextPaymentEl) {
+    return; // no estamos en esa pantalla
+  }
+
+  fetch("/wp-json/memora/v1/business-plan", {
+    credentials: "include", // importante para enviar la cookie de sesión de WP
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      // 1) Plan Status
+      if (data.plan_status && planStatusEl) {
+        const map = {
+          active: "ACTIVE",
+          "on-hold": "ON HOLD",
+          cancelled: "CANCELLED",
+          expired: "EXPIRED",
+          inactive: "INACTIVE",
+        };
+        const label = map[data.plan_status] || data.plan_status.toUpperCase();
+        planStatusEl.textContent = label;
+      }
+
+      // 2) Total Coverage = empleados usados / límite de suscripción
+      if (totalCoverageEl) {
+        const used = data.employees_used ?? 0;
+        const limit = data.employee_limit ?? 0;
+
+        if (limit > 0) {
+          totalCoverageEl.textContent = `${used} / ${limit} employees`;
+        } else {
+          totalCoverageEl.textContent = `${used} employees`;
+        }
+      }
+
+      // 3) Next Payment
+      if (nextPaymentEl) {
+        if (data.next_payment) {
+          const d = new Date(data.next_payment.replace(" ", "T"));
+          const options = { year: "numeric", month: "short", day: "2-digit" };
+          const formatted = d
+            .toLocaleDateString("en-US", options)
+            .toUpperCase(); // tipo JAN 10, 2026
+          nextPaymentEl.textContent = formatted;
+        } else {
+          nextPaymentEl.textContent = "—";
+        }
+      }
+    })
+    .catch((err) => {
+      console.error("Error al cargar business-plan:", err);
+    });
+});
