@@ -5939,8 +5939,8 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 .manage-beneficiary {
   border-radius: 999px;
   padding: 0.5rem 1.3rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 500;
   border: none;
   cursor: pointer;
 }
@@ -6014,7 +6014,7 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 /* Botones Add Beneficiary / Edit Employee */
 #membersTable td.actions-column button {
-  font-size: 12px;          /* texto más chico */
+  font-size: 8px;          /* texto más chico */
   padding: 6px 12px;        /* menos alto/ancho */
   border-radius: 999px;     /* pastilla */
   white-space: nowrap;      /* evita que se corte “Beneficiary” en dos líneas */
@@ -6023,7 +6023,7 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 /* ===== Formulario Add Employee's Beneficiary ===== */
 
 #addBeneficiarySection {
-  max-width: 900px;               /* más angosto, como el de Add Employee */
+  max-width: 700px;               /* más angosto, como el de Add Employee */
   margin: 40px auto 32px auto;    /* centrado en la columna */
   padding: 24px 32px;
   background-color: #fffdf5;      /* mismo tono crema */
