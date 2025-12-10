@@ -5999,3 +5999,40 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   opacity: 0.9;
   transform: translateY(-1px);
 }
+
+/* ===== Employees Covered – botones de la columna MANAGE ===== */
+
+#membersTable td.actions-column {
+  text-align: right;
+}
+
+/* Contenedor de los dos botones */
+#membersTable td.actions-column .table-actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* Botones Add Beneficiary / Edit Employee */
+#membersTable td.actions-column button {
+  font-size: 12px;          /* texto más chico */
+  padding: 6px 12px;        /* menos alto/ancho */
+  border-radius: 999px;     /* pastilla */
+  white-space: nowrap;      /* evita que se corte “Beneficiary” en dos líneas */
+  min-width: 110px;         /* para que los dos queden parecidos */
+}
+/* ===== Formulario Add Employee's Beneficiary ===== */
+
+#addBeneficiarySection {
+  max-width: 900px;               /* más angosto, como el de Add Employee */
+  margin: 40px auto 32px auto;    /* centrado en la columna */
+  padding: 24px 32px;
+  background-color: #fffdf5;      /* mismo tono crema */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Título un poquito más chico para que no grite tanto */
+#addBeneficiarySection h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
