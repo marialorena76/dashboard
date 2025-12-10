@@ -374,4 +374,68 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((err) => {
       console.error("Error al cargar business-plan:", err);
     });
+
+  const form = document.getElementById("businessProfileForm");
+  if (!form) return; // no estamos en esa sección
+
+  const fields = {
+    company_name:      form.querySelector("[name='company_name']"),
+    primary_contact:   form.querySelector("[name='primary_contact']"), // si lo querés editable más adelante
+    work_email:        form.querySelector("[name='work_email']"),
+    work_phone:        form.querySelector("[name='work_phone']"),
+    hq_street:         form.querySelector("[name='hq_street']"),
+    suite_or_unit:     form.querySelector("[name='suite_or_unit']"),
+    city:              form.querySelector("[name='city']"),
+    state:             form.querySelector("[name='state']"),
+    postal_code:       form.querySelector("[name='postal_code']"),
+    tax_id:            form.querySelector("[name='tax_id']"),
+    employees_covered: form.querySelector("[name='employees_covered']"),
+    billing_cadence:   form.querySelector("[name='billing_cadence']"),
+  };
+
+  // 1) Cargar datos desde la API
+  fetch("/wp-json/memora/v1/business-profile", { credentials: "include" })
+    .then(res => res.json())
+    .then(data => {
+      Object.entries(fields).forEach(([key, input]) => {
+        if (!input || data[key] === undefined) return;
+        input.value = data[key];
+      });
+    })
+    .catch(err => {
+      console.error("Error cargando business-profile:", err);
+    });
+
+  // 2) Guardar cambios
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const payload = {};
+    Object.entries(fields).forEach(([key, input]) => {
+      if (!input) return;
+      payload[key] = input.value;
+    });
+
+    fetch("/wp-json/memora/v1/business-profile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(payload),
+    })
+      .then(res => res.json())
+      .then(resp => {
+        if (resp && resp.success) {
+          alert("Business profile updated successfully.");
+        } else {
+          console.warn("Respuesta inesperada:", resp);
+          alert("There was a problem saving your changes.");
+        }
+      })
+      .catch(err => {
+        console.error("Error guardando business-profile:", err);
+        alert("There was a problem saving your changes.");
+      });
+  });
+});
+
 });
