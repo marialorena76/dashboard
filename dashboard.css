@@ -6014,7 +6014,7 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 /* Botones Add Beneficiary / Edit Employee */
 #membersTable td.actions-column button {
-  font-size: 8px;          /* texto más chico */
+  font-size: 6px;          /* texto más chico */
   padding: 6px 12px;        /* menos alto/ancho */
   border-radius: 999px;     /* pastilla */
   white-space: nowrap;      /* evita que se corte “Beneficiary” en dos líneas */
@@ -6033,6 +6033,6 @@ codex/add-my-account-feature-as-mocked-dkg7vw
 
 /* Título un poquito más chico para que no grite tanto */
 #addBeneficiarySection h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 16px;
 }
