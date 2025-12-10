@@ -436,6 +436,18 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("There was a problem saving your changes.");
       });
   });
+document.addEventListener("DOMContentLoaded", () => {
+  const addEmployeeCta = document.querySelector(
+    ".enterprise-action[data-i18n-key='add_employee_button']"
+  );
+
+  if (addEmployeeCta) {
+    addEmployeeCta.addEventListener("click", () => {
+      window.location.href = "employees-covered.html#addMemberSection";
+    });
+  }
 });
 
 });
+
+

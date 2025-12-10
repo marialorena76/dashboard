@@ -313,6 +313,145 @@
         </section>
       </main>
     </div>
+    <!-- ADD EMPLOYEE'S BENEFICIARY -->
+<section
+  class="section-card add-beneficiary"
+  id="addBeneficiarySection"
+  aria-labelledby="addBeneficiaryHeading"
+>
+  <div class="add-member__header">
+    <h2 id="addBeneficiaryHeading">Add Employee’s Beneficiary</h2>
+    <p class="add-member__subtitle">
+      Link a beneficiary to one of your covered employees.
+    </p>
+  </div>
+
+  <form id="beneficiaryForm" class="add-member__form">
+    <div class="add-member__grid">
+      <!-- Full Name -->
+      <div class="form-field form-field--full">
+        <label for="benefFirstName">Full Name</label>
+        <div class="form-field__row">
+          <input
+            type="text"
+            id="benefFirstName"
+            name="benefFirstName"
+            placeholder="First name"
+            required
+          />
+          <input
+            type="text"
+            id="benefLastName"
+            name="benefLastName"
+            placeholder="Last name"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Employee ID (opcional / texto) -->
+      <div class="form-field">
+        <label for="benefEmployeeId">Employee ID</label>
+        <input
+          type="text"
+          id="benefEmployeeId"
+          name="benefEmployeeId"
+          placeholder="e.g. 8375930"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <label for="benefEmail">Email</label>
+        <input
+          type="email"
+          id="benefEmail"
+          name="benefEmail"
+          placeholder="john@email.com"
+        />
+      </div>
+
+      <!-- Enrollment Date -->
+      <div class="form-field">
+        <label for="benefEnrollmentDate">Enrollment Date</label>
+        <input
+          type="date"
+          id="benefEnrollmentDate"
+          name="benefEnrollmentDate"
+        />
+      </div>
+
+      <!-- Address -->
+      <div class="form-field form-field--full">
+        <label for="benefAddress1">Address</label>
+        <input
+          type="text"
+          id="benefAddress1"
+          name="benefAddress1"
+          placeholder="123 Main Street"
+        />
+      </div>
+
+      <div class="form-field form-field--full">
+        <label class="sr-only" for="benefAddress2">Address Line 2</label>
+        <input
+          type="text"
+          id="benefAddress2"
+          name="benefAddress2"
+          placeholder="Address Line 2"
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="benefCity">City</label>
+        <input
+          type="text"
+          id="benefCity"
+          name="benefCity"
+          placeholder="Miami"
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="benefState">State</label>
+        <select id="benefState" name="benefState">
+          <option value="">Select</option>
+          <option value="FL">Florida</option>
+          <option value="CA">California</option>
+          <option value="NY">New York</option>
+          <!-- etc -->
+        </select>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-field form-field--full">
+        <label for="benefPhone">Phone</label>
+        <input
+          type="tel"
+          id="benefPhone"
+          name="benefPhone"
+          placeholder="+1 555-123-4567"
+        />
+      </div>
+    </div>
+
+    <div class="add-member__actions">
+      <button
+        type="button"
+        id="cancelBeneficiary"
+        class="secondary-button"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="primary-button"
+      >
+        Add Member
+      </button>
+    </div>
+  </form>
+</section>
 
     <script src="i18n.js"></script>
     <script src="app.js"></script>

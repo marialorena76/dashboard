@@ -327,51 +327,58 @@ document.addEventListener('DOMContentLoaded', () => {
           ? 'Invited'
           : 'Pending';
 
-      row.innerHTML = `
-        <td>
-          <div class="employee-cell">
-            <div class="avatar avatar--small">
-              <span class="avatar__initials">
-                ${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}
-              </span>
-            </div>
-            <div class="employee-cell__info">
-              <div class="employee-cell__name">${fullName}</div>
-              <div class="employee-cell__email">${email || ''}</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="role-cell">
-            <div class="role-cell__title">${role || 'Not assigned'}</div>
-            <div class="role-cell__department">${department || ''}</div>
-          </div>
-        </td>
-        <td>
-          <div class="coverage-cell">
-            <div class="coverage-cell__plan">${planAccess || 'Not assigned'}</div>
-            <div class="coverage-cell__date">Coverage start ${date}</div>
-          </div>
-        </td>
-        <td>
-          <span class="status-chip ${statusClass}">${statusText}</span>
-        </td>
-        <td class="actions-column">
-          <div class="table-actions">
-            <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${fullName}">
-              ${EDIT_ICON}
-            </button>
+row.innerHTML = `
+  <td>
+    <div class="employee-cell">
+      <div class="avatar avatar--small">
+        <span class="avatar__initials">
+          ${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}
+        </span>
+      </div>
+      <div class="employee-cell__info">
+        <div class="employee-cell__name">${fullName}</div>
+        <div class="employee-cell__email">${email || ''}</div>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="role-cell">
+      <div class="role-cell__title">${role || 'Not assigned'}</div>
+      <div class="role-cell__department">${department || ''}</div>
+    </div>
+  </td>
+  <td>
+    <div class="coverage-cell">
+      <div class="coverage-cell__plan">${planAccess || 'Not assigned'}</div>
+      <div class="coverage-cell__date">Coverage start ${date}</div>
+    </div>
+  </td>
+  <td>
+    <span class="status-chip ${statusClass}">${statusText}</span>
+  </td>
+  <td class="actions-column">
+    <div class="table-actions">
+      <!-- Botón verde: Add / Edit Beneficiary -->
+      <button
+        type="button"
+        class="table-action manage-beneficiary manage-beneficiary--primary action-beneficiary"
+        data-index="${index}"
+      >
+        ${member.hasBeneficiary ? 'Edit Beneficiary' : 'Add Beneficiary'}
+      </button>
 
-            <button type="button" class="table-action action-delete" data-index="${index}" aria-label="Remove ${fullName}">
-              ${DELETE_ICON}
-            </button>
+      <!-- Botón gris: Edit Employee (como en el diseño) -->
+      <button
+        type="button"
+        class="table-action manage-beneficiary manage-beneficiary--secondary action-edit"
+        data-index="${index}"
+      >
+        Edit Employee
+      </button>
+    </div>
+  </td>
+`;
 
-            <button type="button" class="table-action action-beneficiary" data-index="${index}">
-              ${member.hasBeneficiary ? 'Edit Beneficiary' : 'Add Beneficiary'}
-            </button>
-          </div>
-        </td>
-      `;
 
       tableBody.appendChild(row);
     });
@@ -614,7 +621,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (actionButton.classList.contains('action-beneficiary')) {
-      alert('Aquí abrís modal o sección de Beneficiary para el empleado #' + idx);
+      const benefSection = document.getElementById('addBeneficiarySection');
+      const benefForm = document.getElementById('beneficiaryForm');
+
+      if (benefForm) {
+        // rellenamos algunos datos básicos
+        benefForm.elements.benefFirstName.value = member.firstName || '';
+        benefForm.elements.benefLastName.value = member.lastName || '';
+        benefForm.elements.benefEmail.value = member.email || '';
+        benefForm.elements.benefEmployeeId.value = String(idx + 1);
+        benefForm.elements.benefEnrollmentDate.value = member.coverageStart || '';
+      }
+
+      if (benefSection) {
+        benefSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+
   });
 });
