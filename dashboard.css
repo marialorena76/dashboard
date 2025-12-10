@@ -5954,3 +5954,6 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   background: #f3ebe8; /* cremina */
   color: #222;
 }
+#addBeneficiarySection {
+  display: none;
+}

@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const employeeSection = document.getElementById("addMemberSection");
+    const beneficiarySection = document.getElementById("addBeneficiarySection");
+    const beneficiaryForm = document.getElementById("beneficiaryForm");
+    const cancelBeneficiaryBtn = document.getElementById("cancelBeneficiary");
+
+    if (employeeSection && beneficiarySection) {
+        function showEmployeeForm() {
+            employeeSection.style.display = "";
+            beneficiarySection.style.display = "none";
+            employeeSection.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function showBeneficiaryForm() {
+            employeeSection.style.display = "none";
+            beneficiarySection.style.display = "";
+            beneficiarySection.scrollIntoView({ behavior: "smooth" });
+        }
+
+        window.showEmployeeForm = showEmployeeForm;
+        window.showBeneficiaryForm = showBeneficiaryForm;
+
+        if (cancelBeneficiaryBtn) {
+            cancelBeneficiaryBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                beneficiaryForm.reset();
+                showEmployeeForm();
+            });
+        }
+    }
   const tableBody = document.querySelector('#membersTable tbody');
   if (!tableBody) return;
 
@@ -620,23 +649,30 @@ row.innerHTML = `
       }
     }
 
-    if (actionButton.classList.contains('action-beneficiary')) {
-      const benefSection = document.getElementById('addBeneficiarySection');
-      const benefForm = document.getElementById('beneficiaryForm');
+    if (actionButton.classList.contains("action-beneficiary")) {
+      const idx = parseInt(actionButton.getAttribute("data-index"), 10);
+      const member = members[idx]; // o el array que uses realmente
 
-      if (benefForm) {
+      const benefSection = document.getElementById("addBeneficiarySection");
+      const benefForm = document.getElementById("beneficiaryForm");
+
+      if (benefForm && member) {
         // rellenamos algunos datos básicos
-        benefForm.elements.benefFirstName.value = member.firstName || '';
-        benefForm.elements.benefLastName.value = member.lastName || '';
-        benefForm.elements.benefEmail.value = member.email || '';
+        benefForm.elements.benefFirstName.value = member.firstName || "";
+        benefForm.elements.benefLastName.value = member.lastName || "";
+        benefForm.elements.benefEmail.value = member.email || "";
         benefForm.elements.benefEmployeeId.value = String(idx + 1);
-        benefForm.elements.benefEnrollmentDate.value = member.coverageStart || '';
+        benefForm.elements.benefEnrollmentDate.value =
+          member.coverageStart || "";
       }
 
-      if (benefSection) {
-        benefSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+  if (typeof window.showBeneficiaryForm === "function") {
+    window.showBeneficiaryForm();
+  } else if (benefSection) {
+    benefSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
 
   });
 });
