@@ -3,249 +3,238 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Protected Team</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
+    <title>Protected Team</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="dashboard dashboard--enterprise">
-    <aside class="sidebar sidebar--enterprise">
-      <div class="enterprise-brand">
-        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-        <div class="enterprise-brand__text">
-          <span class="enterprise-brand__label">LegacyBridge</span>
-        </div>
-      </div>
-      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
-      <nav class="menu enterprise-menu">
-        <a class="active" href="business-dashboard.html" data-i18n-key="menu_overview">Overview ></a>
-        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
-        <a href="#" data-i18n-key="menu_support">Support</a>
-        <a href="#" data-i18n-key="menu_settings">Settings ></a>
-      </nav>
-      <div class="sidebar-bottom enterprise-sidebar-bottom">
-        <button class="logout" data-i18n-key="logout_button">Log Out</button>
-        <div class="lang-buttons">
-          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
-          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
-        </div>
-        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
-      </div>
-    </aside>
+    <main class="main-content">
+      <h1 class="page-title">Protected <span class="highlight">Team</span></h1>
 
-      <main class="main-content main-content--enterprise">
-        <header class="business-header">
-          <div>
-            <h1 data-i18n-key="members_title">Protected <Strong>Team</Strong></h1>
-          </div>
-        </header>
+      <!-- Protected Employees Table -->
+      <section class="section-card">
+        <div class="section-card__header">
+          <h2>Protected Employees</h2>
+          <button class="primary-button add-member-btn">+ Add Member</button>
+        </div>
 
-        <section class="section-card members-table" aria-labelledby="protectedTeamHeading">
-          <div class="members-table__header">
-            <div>
-              <h2 id="protectedTeamHeading" data-i18n-key="members_table_title">Protected Employees</h2>
-              <p class="members-table__subtitle" data-i18n-key="members_table_subtitle">
-                Add or update employee details and manage who is included in your company’s plan.
-              </p>
+        <table class="members-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Role</th>
+              <th>Coverage</th>
+              <th>Status</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody id="membersTableBody">
+            <!-- Filled dynamically by members.js -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Add NEW EMPLOYEE -->
+      <section
+        class="section-card add-member"
+        id="addMemberSection"
+        aria-labelledby="addNewEmployeeHeading"
+      >
+        <div class="add-member__header">
+          <h2 id="addNewEmployeeHeading">Add New Employee</h2>
+          <p class="add-member__subtitle">
+            Add or update employee details and include them in your company’s
+            plan.
+          </p>
+        </div>
+
+        <form id="employeeForm" class="add-member__form">
+          <div class="add-member__grid">
+            <div class="form-field form-field--full">
+              <label>Full Name</label>
+              <div class="form-field__row">
+                <input type="text" id="empFirstName" placeholder="First name" />
+                <input type="text" id="empLastName" placeholder="Last name" />
+              </div>
             </div>
-            <div class="members-table__actions">
-              <button type="button" class="business-button business-button--primary" id="toAdd" data-i18n-key="button_add_employee">+ Add Member</button>
+
+            <div class="form-field form-field--full">
+              <label>Work Email</label>
+              <input type="email" id="empEmail" placeholder="name@company.com" />
             </div>
-          </div>
-          <div class="members-table__controls">
-            <label class="members-table__entries" for="entriesSelect">
-              <span data-i18n-key="table_show_entries">Show</span>
-              <select id="entriesSelect">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
+
+            <div class="form-field form-field--full">
+              <label>Role / Title</label>
+              <input type="text" id="empRole" placeholder="e.g. Manager" />
+            </div>
+
+            <div class="form-field form-field--full">
+              <label>Department</label>
+              <input
+                type="text"
+                id="empDepartment"
+                placeholder="e.g. People Operations"
+              />
+            </div>
+
+            <div class="form-field">
+              <label>Coverage start date</label>
+              <input type="date" id="empCoverageStart" />
+            </div>
+
+            <div class="form-field">
+              <label>Coverage type</label>
+              <select id="empCoverageType">
+                <option value="Full Coverage">Full Coverage</option>
+                <option value="Health + Vision">Health + Vision</option>
+                <option value="Health + Dental">Health + Dental</option>
+                <option value="Dental Only">Dental Only</option>
               </select>
-              <span data-i18n-key="table_show_entries" style="display: none;">entries</span>
-            </label>
-            <label class="members-table__search" for="memberSearch">
-              <!-- <span data-i18n-key="table_search">Search</span> -->
-              <input type="search" id="memberSearch" data-i18n-key="table_search_placeholder" placeholder="Search" />
-            </label>
-          </div>
-          <div class="table-wrapper">
-            <table id="membersTable">
-              <thead>
-                <tr>
-                  <th scope="col" data-i18n-key="table_header_employee">Employee</th>
-                  <th scope="col" data-i18n-key="table_header_role">Role</th>
-                  <th scope="col" data-i18n-key="table_header_coverage">Coverage</th>
-                  <th scope="col" data-i18n-key="table_header_status">Status</th>
-                  <th scope="col" class="actions-column" data-i18n-key="table_header_manage">Manage</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div class="members-table__footer">
-            <p class="members-table__count" id="membersCount">Showing 0 entries</p>
-            <nav class="members-table__pagination" id="membersPagination" aria-label="Protected team pagination"></nav>
-          </div>
-        </section>
+            </div>
 
-        <section class="section-card" id="addMemberSection" aria-labelledby="addMemberHeading">
-          <div class="section-card__header">
-            <h2 id="addMemberHeading" data-i18n-key="add_member_title">Add New Employee</h2>
-            <p data-i18n-key="add_member_subtitle">Invite your team to the plan and confirm when their coverage should begin.</p>
+            <div class="form-field">
+              <label>Status</label>
+              <select id="empStatus">
+                <option value="Protected">Protected</option>
+                <option value="Invited">Invited</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
           </div>
-          <form id="addMemberForm" autocomplete="off">
+
+          <div class="add-member__actions">
+            <button type="button" class="secondary-button">Cancel</button>
+            <button type="submit" class="primary-button">Add Member</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ADD BENEFICIARY -->
+        <section
+          class="section-card add-beneficiary"
+          id="addBeneficiarySection"
+          aria-labelledby="addBeneficiaryHeading"
+        >
+          <div class="section-card__header">
+            <h2 id="addBeneficiaryHeading">Add Employee’s Beneficiary</h2>
+            <p>Link a beneficiary to one of your covered employees.</p>
+          </div>
+
+          <form id="beneficiaryForm" autocomplete="off">
             <div class="form-row">
-              <div class="form-group">
-                <label for="addFirstName" data-i18n-key="form_first_name">First Name</label>
-                <input type="text" id="addFirstName" name="firstName" required />
+              <div class="form-group form-group--full">
+                <label for="benefFirstName">Full Name</label>
+                <div class="form-row form-row--inline">
+                  <input
+                    type="text"
+                    id="benefFirstName"
+                    name="benefFirstName"
+                    placeholder="First name"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="benefLastName"
+                    name="benefLastName"
+                    placeholder="Last name"
+                    required
+                  />
+                </div>
               </div>
+
               <div class="form-group">
-                <label for="addLastName" data-i18n-key="form_last_name">Last Name</label>
-                <input type="text" id="addLastName" name="lastName" required />
+                <label for="benefEmployeeId">Employee ID</label>
+                <input
+                  type="text"
+                  id="benefEmployeeId"
+                  name="benefEmployeeId"
+                  placeholder="e.g. 8375930"
+                />
               </div>
+
               <div class="form-group">
-                <label for="addEmail" data-i18n-key="form_work_email">Work Email</label>
-                <input type="email" id="addEmail" name="email" required />
+                <label for="benefEmail">Email</label>
+                <input
+                  type="email"
+                  id="benefEmail"
+                  name="benefEmail"
+                  placeholder="john@email.com"
+                />
               </div>
-            </div>
-            <div class="form-row">
+
               <div class="form-group">
-                <label for="addRole" data-i18n-key="table_header_role">Role</label>
-                <input type="text" id="addRole" name="role" placeholder="e.g., Product Manager" required />
+                <label for="benefEnrollmentDate">Enrollment Date</label>
+                <input
+                  type="date"
+                  id="benefEnrollmentDate"
+                  name="benefEnrollmentDate"
+                />
               </div>
-              <div class="form-group">
-                <label for="addDepartment" data-i18n-key="form_department">Department</label>
-                <input type="text" id="addDepartment" name="department" placeholder="e.g., Product" />
+
+              <div class="form-group form-group--full">
+                <label for="benefAddress1">Address</label>
+                <input
+                  type="text"
+                  id="benefAddress1"
+                  name="benefAddress1"
+                  placeholder="123 Main Street"
+                />
               </div>
-              <div class="form-group">
-                <label for="addCoverageStart" data-i18n-key="form_coverage_start">Coverage Start</label>
-                <input type="date" id="addCoverageStart" name="coverageStart" />
+
+              <div class="form-group form-group--full">
+                <input
+                  type="text"
+                  id="benefAddress2"
+                  name="benefAddress2"
+                  placeholder="Address Line 2"
+                />
               </div>
-            </div>
-            <div class="form-row">
+
               <div class="form-group">
-                <label for="addPlanAccess" data-i18n-key="form_plan_access">Plan Access</label>
-                <select id="addPlanAccess" name="planAccess">
-                  <option value="Full Coverage" data-i18n-key="option_full_coverage">Full Coverage</option>
-                  <option value="Health + Vision" data-i18n-key="option_health_vision">Health + Vision</option>
-                  <option value="Health + Dental" data-i18n-key="option_health_dental">Health + Dental</option>
-                  <option value="Dental Only" data-i18n-key="option_dental_only">Dental Only</option>
+                <label for="benefCity">City</label>
+                <input
+                  type="text"
+                  id="benefCity"
+                  name="benefCity"
+                  placeholder="Miami"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="benefState">State</label>
+                <select id="benefState" name="benefState">
+                  <option value="">Select</option>
+                  <option value="FL">Florida</option>
+                  <option value="CA">California</option>
+                  <option value="NY">New York</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="addStatus" data-i18n-key="table_header_status">Status</label>
-                <select id="addStatus" name="status">
-                  <option value="Protected" data-i18n-key="option_status_protected">Protected</option>
-                  <option value="Invited" data-i18n-key="option_status_invited">Invited</option>
-                  <option value="Pending" data-i18n-key="option_status_pending">Pending</option>
-                  <option value="Suspended" data-i18n-key="option_status_suspended">Suspended</option>
-                </select>
+
+              <div class="form-group form-group--full">
+                <label for="benefPhone">Phone</label>
+                <input
+                  type="tel"
+                  id="benefPhone"
+                  name="benefPhone"
+                  placeholder="+1 555-123-4567"
+                />
               </div>
             </div>
+
             <div class="form-actions">
-              <button type="button" class="cancel" id="cancelAdd" data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" data-i18n-key="button_add_employee">Add Member</button>
+              <button
+                type="button"
+                id="cancelBeneficiary"
+                class="cancel"
+              >
+                Cancel
+              </button>
+              <button type="submit">Add Member</button>
             </div>
           </form>
         </section>
 
-        <!-- <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
-          <div class="section-card__header">
-            <h2 id="editMemberHeading" data-i18n-key="edit_member_title">Edit Employee</h2>
-            <p data-i18n-key="edit_member_subtitle">Adjust coverage access or update employee details as roles evolve.</p>
-          </div>
-          <form id="editMemberForm" autocomplete="off">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editSelect" data-i18n-key="form_select_employee">Select Employee</label>
-                <select id="editSelect" name="selectedMember">
-                  <option value="" data-i18n-key="form_select_employee">Select employee</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editFirstName" data-i18n-key="form_first_name">First Name</label>
-                <input type="text" id="editFirstName" name="firstName" required />
-              </div>
-              <div class="form-group">
-                <label for="editLastName" data-i18n-key="form_last_name">Last Name</label>
-                <input type="text" id="editLastName" name="lastName" required />
-              </div>
-              <div class="form-group">
-                <label for="editEmail" data-i18n-key="form_work_email">Work Email</label>
-                <input type="email" id="editEmail" name="email" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editRole" data-i18n-key="table_header_role">Role</label>
-                <input type="text" id="editRole" name="role" required />
-              </div>
-              <div class="form-group">
-                <label for="editDepartment" data-i18n-key="form_department">Department</label>
-                <input type="text" id="editDepartment" name="department" />
-              </div>
-              <div class="form-group">
-                <label for="editCoverageStart" data-i18n-key="form_coverage_start">Coverage Start</label>
-                <input type="date" id="editCoverageStart" name="coverageStart" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editPlanAccess" data-i18n-key="form_plan_access">Plan Access</label>
-                <select id="editPlanAccess" name="planAccess">
-                  <option value="Full Coverage" data-i18n-key="option_full_coverage">Full Coverage</option>
-                  <option value="Health + Vision" data-i18n-key="option_health_vision">Health + Vision</option>
-                  <option value="Health + Dental" data-i18n-key="option_health_dental">Health + Dental</option>
-                  <option value="Dental Only" data-i18n-key="option_dental_only">Dental Only</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="editStatus" data-i18n-key="table_header_status">Status</label>
-                <select id="editStatus" name="status">
-                  <option value="Protected" data-i18n-key="option_status_protected">Protected</option>
-                  <option value="Invited" data-i18n-key="option_status_invited">Invited</option>
-                  <option value="Pending" data-i18n-key="option_status_pending">Pending</option>
-                  <option value="Suspended" data-i18n-key="option_status_suspended">Suspended</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="cancel" id="cancelEdit" data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" data-i18n-key="button_save_changes">Save Changes</button>
-            </div>
-          </form>
-        </section>
 
-        <section class="section-card" id="removeMemberSection" aria-labelledby="removeMemberHeading">
-          <div class="section-card__header">
-            <h2 id="removeMemberHeading" data-i18n-key="remove_member_title">Remove Employee</h2>
-            <p data-i18n-key="remove_member_subtitle">Deactivate coverage for someone who has left the company.</p>
-          </div>
-          <form id="removeMemberForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="removeSelect" data-i18n-key="form_select_employee">Select Employee</label>
-                <select id="removeSelect" name="selectedRemove">
-                  <option value="" data-i18n-key="form_select_employee">Select employee</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="cancel" id="cancelRemove" data-i18n-key="button_cancel">Cancel</button>
-              <button type="submit" class="danger" data-i18n-key="button_remove_employee">Remove Employee</button>
-            </div>
-          </form>
-        </section> -->
-      </main>
-    </div>
-    <script src="i18n.js"></script>
-    <script src="app.js"></script>
     <script src="members.js"></script>
   </body>
 </html>

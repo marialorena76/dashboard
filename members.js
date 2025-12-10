@@ -385,27 +385,26 @@ row.innerHTML = `
   <td>
     <span class="status-chip ${statusClass}">${statusText}</span>
   </td>
-  <td class="actions-column">
-    <div class="table-actions">
-      <!-- Botón verde: Add / Edit Beneficiary -->
-      <button
-        type="button"
-        class="table-action manage-beneficiary manage-beneficiary--primary action-beneficiary"
-        data-index="${index}"
-      >
-        ${member.hasBeneficiary ? 'Edit Beneficiary' : 'Add Beneficiary'}
-      </button>
+        <td class="actions-column">
+          <div class="table-actions">
+            <button
+              type="button"
+              class="manage-beneficiary manage-beneficiary--primary table-action action-beneficiary"
+              data-index="${index}"
+            >
+              Add Beneficiary
+            </button>
+            <button
+              type="button"
+              class="manage-beneficiary manage-beneficiary--secondary table-action action-edit"
+              data-index="${index}"
+              aria-label="Edit ${fullName}"
+            >
+              Edit Employee
+            </button>
+          </div>
+        </td>
 
-      <!-- Botón gris: Edit Employee (como en el diseño) -->
-      <button
-        type="button"
-        class="table-action manage-beneficiary manage-beneficiary--secondary action-edit"
-        data-index="${index}"
-      >
-        Edit Employee
-      </button>
-    </div>
-  </td>
 `;
 
 
@@ -676,3 +675,42 @@ row.innerHTML = `
 
   });
 });
+// --- Toggle entre formulario de empleado y de beneficiario ---
+document.addEventListener('DOMContentLoaded', () => {
+  const addSection = document.getElementById('addMemberSection');
+  const beneficiarySection = document.getElementById('addBeneficiarySection');
+  const cancelBeneficiaryBtn = document.getElementById('cancelBeneficiary');
+
+  if (!addSection || !beneficiarySection) return;
+
+  function showEmployeeForm() {
+    addSection.style.display = '';
+    beneficiarySection.style.display = 'none';
+    addSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function showBeneficiaryForm() {
+    addSection.style.display = 'none';
+    beneficiarySection.style.display = '';
+    beneficiarySection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Click en cualquier botón "Add Beneficiary" de la tabla
+  document.addEventListener('click', event => {
+    const btn = event.target.closest('.action-beneficiary');
+    if (!btn) return;
+
+    const idx = btn.dataset.index;
+    // Si más adelante querés prellenar con datos del empleado, acá buscamos ese member
+    showBeneficiaryForm();
+  });
+
+  // Botón "Cancel" del formulario de beneficiario
+  if (cancelBeneficiaryBtn) {
+    cancelBeneficiaryBtn.addEventListener('click', e => {
+      e.preventDefault();
+      showEmployeeForm();
+    });
+  }
+});
+
