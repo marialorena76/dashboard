@@ -728,5 +728,34 @@ document.addEventListener("DOMContentLoaded", () => {
       showEmployeeForm();
     });
   }
-});
+  const table = document.getElementById("membersTable");
+  if (!table) return;
+
+  table.addEventListener("click", (e) => {
+    const btnBenef = e.target.closest(".action-beneficiary");
+    const btnEdit  = e.target.closest(".action-edit");
+
+    // ✅ Add Beneficiary
+    if (btnBenef) {
+      const idx = btnBenef.dataset.index;
+
+      // Si querés prefillear, lo hacemos acá (opcional)
+      // Ej: const member = members[idx];
+
+      if (window.memoraShowBeneficiaryForm) window.memoraShowBeneficiaryForm();
+      document.getElementById("addBeneficiarySection")
+        ?.scrollIntoView({ behavior: "smooth" });
+
+      return;
+    }
+
+    // ✅ Edit Employee
+    if (btnEdit) {
+      const idx = btnEdit.dataset.index;
+      console.log("Edit employee index:", idx);
+      // acá tu lógica real de editar (modal, prefill, etc.)
+      return;
+    }
+  });
+
 
