@@ -675,13 +675,16 @@ row.innerHTML = `
 
   });
 });
-// --- Toggle entre Add Employee y Add Beneficiary (ESTABLE y sin parpadeos) ---
+// ================================
+// TOGGLE Add Employee / Beneficiary
+// ================================
 document.addEventListener("DOMContentLoaded", () => {
   const employeeSection = document.getElementById("addMemberSection");
   const beneficiarySection = document.getElementById("addBeneficiarySection");
   const cancelBeneficiaryBtn = document.getElementById("cancelBeneficiary");
+  const tableBody = document.querySelector('#membersTable tbody');
 
-  if (!employeeSection || !beneficiarySection) return;
+  if (!employeeSection || !beneficiarySection || !tableBody) return;
 
   function showEmployeeForm() {
     employeeSection.style.display = "block";
@@ -693,10 +696,45 @@ document.addEventListener("DOMContentLoaded", () => {
     beneficiarySection.style.display = "block";
   }
 
-  // ✅ Estado inicial SIEMPRE: mostrar employee, ocultar beneficiary
+  // Estado inicial
   showEmployeeForm();
 
-  // Cancel vuelve a employee
+  // Click en botones de la tabla
+  tableBody.addEventListener("click", (event) => {
+    const btnBeneficiary = event.target.closest(".action-beneficiary");
+    const btnEdit = event.target.closest(".action-edit");
+
+    if (btnBeneficiary) {
+      const idx = parseInt(btnBeneficiary.dataset.index, 10);
+
+      // Prefill Beneficiary
+      const members = filterMembers(getMembersWithIndex());
+      const member = members.find(m => m.index === idx);
+
+      if (member) {
+        document.getElementById("benefFirstName").value = member.firstName || "";
+        document.getElementById("benefLastName").value = member.lastName || "";
+        document.getElementById("benefEmail").value = member.email || "";
+        document.getElementById("benefEmployeeId").value = String(idx + 1);
+        document.getElementById("benefEnrollmentDate").value =
+          member.coverageStart || "";
+      }
+
+      showBeneficiaryForm();
+      beneficiarySection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    if (btnEdit) {
+      const idx = parseInt(btnEdit.dataset.index, 10);
+      if (editSelect) {
+        editSelect.value = idx;
+        editSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        editSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+
+  // Cancel Beneficiary
   if (cancelBeneficiaryBtn) {
     cancelBeneficiaryBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -704,58 +742,4 @@ document.addEventListener("DOMContentLoaded", () => {
       employeeSection.scrollIntoView({ behavior: "smooth" });
     });
   }
-
-  // Exponer si querés llamarlo desde otros handlers
-  window.memoraShowEmployeeForm = showEmployeeForm;
-  window.memoraShowBeneficiaryForm = showBeneficiaryForm;
 });
-
-
-  // Click en cualquier botón "Add Beneficiary" de la tabla
-  document.addEventListener('click', event => {
-    const btn = event.target.closest('.action-beneficiary');
-    if (!btn) return;
-
-    const idx = btn.dataset.index;
-    // Si más adelante querés prellenar con datos del empleado, acá buscamos ese member
-    showBeneficiaryForm();
-  });
-
-  // Botón "Cancel" del formulario de beneficiario
-  if (cancelBeneficiaryBtn) {
-    cancelBeneficiaryBtn.addEventListener('click', e => {
-      e.preventDefault();
-      showEmployeeForm();
-    });
-  }
-  const table = document.getElementById("membersTable");
-  if (!table) return;
-
-  table.addEventListener("click", (e) => {
-    const btnBenef = e.target.closest(".action-beneficiary");
-    const btnEdit  = e.target.closest(".action-edit");
-
-    // ✅ Add Beneficiary
-    if (btnBenef) {
-      const idx = btnBenef.dataset.index;
-
-      // Si querés prefillear, lo hacemos acá (opcional)
-      // Ej: const member = members[idx];
-
-      if (window.memoraShowBeneficiaryForm) window.memoraShowBeneficiaryForm();
-      document.getElementById("addBeneficiarySection")
-        ?.scrollIntoView({ behavior: "smooth" });
-
-      return;
-    }
-
-    // ✅ Edit Employee
-    if (btnEdit) {
-      const idx = btnEdit.dataset.index;
-      console.log("Edit employee index:", idx);
-      // acá tu lógica real de editar (modal, prefill, etc.)
-      return;
-    }
-  });
-
-
