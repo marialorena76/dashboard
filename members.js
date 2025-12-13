@@ -675,25 +675,41 @@ row.innerHTML = `
 
   });
 });
-// --- Toggle entre formulario de empleado y de beneficiario ---
-document.addEventListener('DOMContentLoaded', () => {
-  const addSection = document.getElementById('addMemberSection');
-  const beneficiarySection = document.getElementById('addBeneficiarySection');
-  const cancelBeneficiaryBtn = document.getElementById('cancelBeneficiary');
+// --- Toggle entre Add Employee y Add Beneficiary (ESTABLE y sin parpadeos) ---
+document.addEventListener("DOMContentLoaded", () => {
+  const employeeSection = document.getElementById("addMemberSection");
+  const beneficiarySection = document.getElementById("addBeneficiarySection");
+  const cancelBeneficiaryBtn = document.getElementById("cancelBeneficiary");
 
-  if (!addSection || !beneficiarySection) return;
+  if (!employeeSection || !beneficiarySection) return;
 
   function showEmployeeForm() {
-    addSection.style.display = '';
-    beneficiarySection.style.display = 'none';
-    addSection.scrollIntoView({ behavior: 'smooth' });
+    employeeSection.style.display = "block";
+    beneficiarySection.style.display = "none";
   }
 
   function showBeneficiaryForm() {
-    addSection.style.display = 'none';
-    beneficiarySection.style.display = '';
-    beneficiarySection.scrollIntoView({ behavior: 'smooth' });
+    employeeSection.style.display = "none";
+    beneficiarySection.style.display = "block";
   }
+
+  // ✅ Estado inicial SIEMPRE: mostrar employee, ocultar beneficiary
+  showEmployeeForm();
+
+  // Cancel vuelve a employee
+  if (cancelBeneficiaryBtn) {
+    cancelBeneficiaryBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showEmployeeForm();
+      employeeSection.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Exponer si querés llamarlo desde otros handlers
+  window.memoraShowEmployeeForm = showEmployeeForm;
+  window.memoraShowBeneficiaryForm = showBeneficiaryForm;
+});
+
 
   // Click en cualquier botón "Add Beneficiary" de la tabla
   document.addEventListener('click', event => {
