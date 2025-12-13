@@ -4673,6 +4673,7 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   gap: 1.85rem;
+}
 
 .language-chip {
   border: none;
@@ -4681,7 +4682,7 @@ body.modal-open {
   font-weight: 600;
   background: rgba(255, 255, 255, 0.28);
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .language-chip.active,
@@ -4780,7 +4781,6 @@ body.modal-open {
 }
 
 .profile-grid {
-codex/add-my-account-feature-as-mocked-dkg7vw
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
@@ -6012,21 +6012,22 @@ codex/add-my-account-feature-as-mocked-dkg7vw
   gap: 8px;
 }
 
+
 /* Botones Add Beneficiary / Edit Employee */
 #membersTable td.actions-column button {
-  font-size: 6px;          /* texto más chico */
-  padding: 6px 12px;        /* menos alto/ancho */
-  border-radius: 999px;     /* pastilla */
-  white-space: nowrap;      /* evita que se corte “Beneficiary” en dos líneas */
-  min-width: 110px;         /* para que los dos queden parecidos */
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  min-width: 110px;
 }
 /* ===== Formulario Add Employee's Beneficiary ===== */
 
 #addBeneficiarySection {
-  max-width: 700px;               /* más angosto, como el de Add Employee */
-  margin: 40px auto 32px auto;    /* centrado en la columna */
+  max-width: 700px;
+  margin: 40px auto 32px auto;
   padding: 24px 32px;
-  background-color: #fffdf5;      /* mismo tono crema */
+  background-color: #fffdf5;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
