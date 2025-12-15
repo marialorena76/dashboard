@@ -743,3 +743,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+document.addEventListener("click", function (e) {
+
+  // 👉 ADD BENEFICIARY
+  const beneficiaryBtn = e.target.closest(".action-beneficiary");
+  if (beneficiaryBtn) {
+    const index = beneficiaryBtn.dataset.index;
+    openBeneficiaryForm(index);
+    return;
+  }
+
+  // 👉 EDIT EMPLOYEE
+  const editBtn = e.target.closest(".action-edit");
+  if (editBtn) {
+    const index = editBtn.dataset.index;
+    openEmployeeForm(index);
+    return;
+  }
+
+});
+function openBeneficiaryForm(index) {
+  const employee = employees[index];
+  if (!employee) return;
+
+  // ocultar employee
+  document.getElementById("addMemberSection").style.display = "none";
+
+  // mostrar beneficiary
+  const beneficiarySection = document.getElementById("addBeneficiarySection");
+  beneficiarySection.style.display = "block";
+
+  // precargar datos
+  document.getElementById("beneficiaryFirstName").value = employee.firstName || "";
+  document.getElementById("beneficiaryLastName").value = employee.lastName || "";
+  document.getElementById("beneficiaryEmployeeId").value = employee.id || "";
+  document.getElementById("beneficiaryEmail").value = employee.email || "";
+}
+function openEmployeeForm(index) {
+  const employee = employees[index];
+  if (!employee) return;
+
+  document.getElementById("addBeneficiarySection").style.display = "none";
+  document.getElementById("addMemberSection").style.display = "block";
+
+  // (si después querés precargar datos, se hace acá)
+}
+
