@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.showEmployeeForm = showEmployeeForm;
         window.showBeneficiaryForm = showBeneficiaryForm;
 
+        showEmployeeForm();
+
         if (cancelBeneficiaryBtn) {
             cancelBeneficiaryBtn.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -676,40 +678,3 @@ row.innerHTML = `
   });
 });
 
-document.addEventListener("click", function (e) {
-
-  if (e.target.classList.contains("action-beneficiary")) {
-    const index = e.target.dataset.index;
-    showBeneficiaryForm(index);
-  }
-
-  if (e.target.classList.contains("action-edit")) {
-    const index = e.target.dataset.index;
-    showEmployeeForm(index);
-  }
-
-});
-
-function showBeneficiaryForm(index) {
-  const employeeSection = document.getElementById("addMemberSection");
-  const beneficiarySection = document.getElementById("addBeneficiarySection");
-
-  if (!employeeSection || !beneficiarySection) return;
-
-  employeeSection.style.display = "none";
-  beneficiarySection.style.display = "block";
-
-  console.log("Add beneficiary for employee index:", index);
-}
-
-function showEmployeeForm(index) {
-  const employeeSection = document.getElementById("addMemberSection");
-  const beneficiarySection = document.getElementById("addBeneficiarySection");
-
-  if (!employeeSection || !beneficiarySection) return;
-
-  beneficiarySection.style.display = "none";
-  employeeSection.style.display = "block";
-
-  console.log("Edit employee index:", index);
-}
