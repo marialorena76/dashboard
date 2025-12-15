@@ -675,117 +675,41 @@ row.innerHTML = `
 
   });
 });
-// ================================
-// TOGGLE Add Employee / Beneficiary
-// ================================
-document.addEventListener("DOMContentLoaded", () => {
-  const employeeSection = document.getElementById("addMemberSection");
-  const beneficiarySection = document.getElementById("addBeneficiarySection");
-  const cancelBeneficiaryBtn = document.getElementById("cancelBeneficiary");
-  const tableBody = document.querySelector('#membersTable tbody');
 
-  if (!employeeSection || !beneficiarySection || !tableBody) return;
-
-  function showEmployeeForm() {
-    employeeSection.style.display = "block";
-    beneficiarySection.style.display = "none";
-  }
-
-  function showBeneficiaryForm() {
-    employeeSection.style.display = "none";
-    beneficiarySection.style.display = "block";
-  }
-
-  // Estado inicial
-  showEmployeeForm();
-
-  // Click en botones de la tabla
-  tableBody.addEventListener("click", (event) => {
-    const btnBeneficiary = event.target.closest(".action-beneficiary");
-    const btnEdit = event.target.closest(".action-edit");
-
-    if (btnBeneficiary) {
-      const idx = parseInt(btnBeneficiary.dataset.index, 10);
-
-      // Prefill Beneficiary
-      const members = filterMembers(getMembersWithIndex());
-      const member = members.find(m => m.index === idx);
-
-      if (member) {
-        document.getElementById("benefFirstName").value = member.firstName || "";
-        document.getElementById("benefLastName").value = member.lastName || "";
-        document.getElementById("benefEmail").value = member.email || "";
-        document.getElementById("benefEmployeeId").value = String(idx + 1);
-        document.getElementById("benefEnrollmentDate").value =
-          member.coverageStart || "";
-      }
-
-      showBeneficiaryForm();
-      beneficiarySection.scrollIntoView({ behavior: "smooth" });
-    }
-
-    if (btnEdit) {
-      const idx = parseInt(btnEdit.dataset.index, 10);
-      if (editSelect) {
-        editSelect.value = idx;
-        editSelect.dispatchEvent(new Event("change", { bubbles: true }));
-        editSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  });
-
-  // Cancel Beneficiary
-  if (cancelBeneficiaryBtn) {
-    cancelBeneficiaryBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      showEmployeeForm();
-      employeeSection.scrollIntoView({ behavior: "smooth" });
-    });
-  }
-});
 document.addEventListener("click", function (e) {
 
-  // 👉 ADD BENEFICIARY
-  const beneficiaryBtn = e.target.closest(".action-beneficiary");
-  if (beneficiaryBtn) {
-    const index = beneficiaryBtn.dataset.index;
-    openBeneficiaryForm(index);
-    return;
+  if (e.target.classList.contains("action-beneficiary")) {
+    const index = e.target.dataset.index;
+    showBeneficiaryForm(index);
   }
 
-  // 👉 EDIT EMPLOYEE
-  const editBtn = e.target.closest(".action-edit");
-  if (editBtn) {
-    const index = editBtn.dataset.index;
-    openEmployeeForm(index);
-    return;
+  if (e.target.classList.contains("action-edit")) {
+    const index = e.target.dataset.index;
+    showEmployeeForm(index);
   }
 
 });
-function openBeneficiaryForm(index) {
-  const employee = employees[index];
-  if (!employee) return;
 
-  // ocultar employee
-  document.getElementById("addMemberSection").style.display = "none";
-
-  // mostrar beneficiary
+function showBeneficiaryForm(index) {
+  const employeeSection = document.getElementById("addMemberSection");
   const beneficiarySection = document.getElementById("addBeneficiarySection");
+
+  if (!employeeSection || !beneficiarySection) return;
+
+  employeeSection.style.display = "none";
   beneficiarySection.style.display = "block";
 
-  // precargar datos
-  document.getElementById("beneficiaryFirstName").value = employee.firstName || "";
-  document.getElementById("beneficiaryLastName").value = employee.lastName || "";
-  document.getElementById("beneficiaryEmployeeId").value = employee.id || "";
-  document.getElementById("beneficiaryEmail").value = employee.email || "";
-}
-function openEmployeeForm(index) {
-  const employee = employees[index];
-  if (!employee) return;
-
-  document.getElementById("addBeneficiarySection").style.display = "none";
-  document.getElementById("addMemberSection").style.display = "block";
-
-  // (si después querés precargar datos, se hace acá)
+  console.log("Add beneficiary for employee index:", index);
 }
 
+function showEmployeeForm(index) {
+  const employeeSection = document.getElementById("addMemberSection");
+  const beneficiarySection = document.getElementById("addBeneficiarySection");
+
+  if (!employeeSection || !beneficiarySection) return;
+
+  beneficiarySection.style.display = "none";
+  employeeSection.style.display = "block";
+
+  console.log("Edit employee index:", index);
+}
