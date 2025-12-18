@@ -678,3 +678,23 @@ row.innerHTML = `
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof DASH_USER === 'undefined') return;
+
+  const labelEl = document.getElementById('businessNameLabel');
+  const initialsEl = document.getElementById('businessInitials');
+
+  const name = (DASH_USER.displayName || DASH_USER.email || 'User').trim();
+
+  if (labelEl) labelEl.textContent = name;
+
+  if (initialsEl) {
+    const initials = name
+      .split(/\s+/)
+      .slice(0, 2)
+      .map(w => (w[0] ? w[0].toUpperCase() : ''))
+      .join('') || 'U';
+
+    initialsEl.textContent = initials;
+  }
+});
