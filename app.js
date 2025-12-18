@@ -316,41 +316,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-  // Intentamos primero con nombre de empresa traído desde WooCommerce
-  const businessNameFromStorage =
-    localStorage.getItem("business_name") ||
-    localStorage.getItem("user_business_name") ||
-    localStorage.getItem("user_company") ||
-    localStorage.getItem("billing_company") ||
-    "";
 
-  // Si no hay empresa, usamos el nombre completo
-  const displayName = (businessNameFromStorage || fullName).trim();
-
-  if (!displayName) return; // si no hay nada, no hacemos nada
-
-  // Sidebar: nombre de la empresa/usuario
-  const nameLabel = document.getElementById("businessNameLabel");
-  if (nameLabel) {
-    nameLabel.textContent = displayName;
-  }
-
-  // Título: Welcome back, <strong>Nombre</strong>
-  const welcomeName = document.getElementById("businessWelcomeName");
-  if (welcomeName) {
-    welcomeName.textContent = displayName;
-  }
-
-  // Iniciales en el círculo (primeras letras de las primeras 2 palabras)
-  const initialsEl = document.getElementById("businessInitials");
-  if (initialsEl) {
-    const parts = displayName.split(/\s+/);
-    const initials =
-      (parts[0]?.[0] || "").toUpperCase() +
-      (parts[1]?.[0] || "").toUpperCase();
-    initialsEl.textContent = initials || "LB";
-  }
-//});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Solo ejecutar en el dashboard de empresa
@@ -415,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((err) => {
       console.error("Error al cargar business-plan:", err);
 });
-
+document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("businessProfileForm");
   if (!form) return; // no estamos en esa sección
 
@@ -435,18 +401,22 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // 1) Cargar datos desde la API
-  fetch("/wp-json/memora/v1/business-profile", { credentials: "include" })
-    .then(res => res.json())
-    .then(data => {
-      Object.entries(fields).forEach(([key, input]) => {
-        if (!input || data[key] === undefined) return;
-        input.value = data[key];
-      });
-    })
-    .catch(err => {
-      console.error("Error cargando business-profile:", err);
-    });
-
+fetch("/wp-json/memora/v1/business-profile", {
+  credentials: "include",
+})
+.then(async (res) => {
+  if (!res.ok) {
+    throw new Error("HTTP " + res.status);
+  }
+  return res.json();
+})
+.then((data) => {
+  console.log("Business profile:", data);
+})
+.catch((err) => {
+  console.error("Error cargando business-profile:", err);
+});
+  
   // 2) Guardar cambios
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -477,6 +447,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("There was a problem saving your changes.");
       });
   });
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const addEmployeeCta = document.querySelector(
     ".enterprise-action[data-i18n-key='add_employee_button']"
