@@ -276,11 +276,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Datos base (como en individual)
-  const firstName = localStorage.getItem("user_first_name") || "";
-  const lastName  = localStorage.getItem("user_last_name") || "";
-  const fullName  = `${firstName} ${lastName}`.trim();
+document.addEventListener("DOMContentLoaded", async () => {
+  const nameLabel = document.getElementById("businessNameLabel");
+  const welcomeName = document.getElementById("businessWelcomeName");
+  const initialsEl = document.getElementById("businessInitials");
+
+  // Si en esta pantalla no existen esos elementos, no hacemos nada
+  if (!nameLabel && !welcomeName && !initialsEl) return;
+
+  try {
+    const res = await fetch("/wp-json/memora/v1/business-profile", {
+      credentials: "include",
+    });
+
+    if (!res.ok) {
+      console.warn("business-profile fetch failed:", res.status);
+      return;
+    }
+
+    const data = await res.json();
+
+    const company = (data.company_name || "").trim();
+    const contact = (data.primary_contact || "").trim();
+
+    // Prioridad: Empresa > Contacto > fallback
+    const displayName = company || contact || "User";
+
+    if (nameLabel) nameLabel.textContent = displayName;
+    if (welcomeName) welcomeName.textContent = contact || displayName;
+
+    if (initialsEl) {
+      const parts = displayName.split(/\s+/).filter(Boolean);
+      const initials =
+        (parts[0]?.[0] || "").toUpperCase() + (parts[1]?.[0] || "").toUpperCase();
+      initialsEl.textContent = initials || "U";
+    }
+  } catch (err) {
+    console.error("Error loading business name:", err);
+  }
+});
 
   // Intentamos primero con nombre de empresa traído desde WooCommerce
   const businessNameFromStorage =
@@ -316,7 +350,8 @@ document.addEventListener("DOMContentLoaded", function () {
       (parts[1]?.[0] || "").toUpperCase();
     initialsEl.textContent = initials || "LB";
   }
-});
+//});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Solo ejecutar en el dashboard de empresa
   const planStatusEl = document.getElementById("planStatusPill");
