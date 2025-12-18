@@ -365,7 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/wp-json/memora/v1/business-plan", {
     credentials: "include", // importante para enviar la cookie de sesión de WP
   })
-    .then((res) => res.json())
+    .then(async (res) => {
+       if (!res.ok) {
+       throw new Error("HTTP " + res.status);
+    }
+  return res.json();
+})
+
     .then((data) => {
       // 1) Plan Status
       if (data.plan_status && planStatusEl) {
@@ -408,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((err) => {
       console.error("Error al cargar business-plan:", err);
-    });
+});
 
   const form = document.getElementById("businessProfileForm");
   if (!form) return; // no estamos en esa sección
