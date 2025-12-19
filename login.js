@@ -27,16 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const tokenData = await tokenResponse.json();
       const token = tokenData.token;
 
-      if (!token) {
+      if (!tokenData.token) {
         throw new Error('Token not found in response');
       }
 
-      localStorage.setItem('jwt_token', token);
+      sessionStorage.setItem('memora_token', tokenData.token);
+
+      const user = {
+        email: tokenData.user_email,
+        name: tokenData.user_nicename,
+        display: tokenData.user_display_name,
+      };
+
+      sessionStorage.setItem('memora_user', JSON.stringify(user));
 
       // Step 2: Determine user type
       const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${tokenData.token}`,
         },
       });
 
