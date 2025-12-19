@@ -126,13 +126,14 @@
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script>
-  const API_USER_ME = 'https://memoracare.org/wp-json/wp/v2/users/me';
+  const API_USER_ME = '/wp-json/wp/v2/users/me';
 
   function loadCurrentUser() {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('memora_token');
 
     if (!token) {
-        console.warn('No token found');
+        console.warn('No token found, redirecting to login');
+        window.location.href = 'individual-login.html';
         return;
     }
 
@@ -162,7 +163,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('[Memora] script cargó'); // debug
-  const API_BASE = 'https://memoracare.org/wp-json';
+  const API_BASE = '/wp-json';
   const $  = (s, c=document) => c.querySelector(s);
   const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
 
@@ -191,7 +192,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const token = sessionStorage.getItem('memora_token');
-  if(!token){ console.warn('[Memora] no hay token, voy a login'); location.href='/login.html'; return; }
+  if(!token){ console.warn('[Memora] no hay token, voy a login'); location.href='/individual-login.html'; return; }
 
   let me = null;
   try { me = JSON.parse(sessionStorage.getItem('memora_user')||'null'); } catch(_){}
@@ -202,7 +203,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     else if (!me) { throw new Error('No autenticado'); }
   } catch(e){
     console.warn('[Memora] no pude traer /me', e);
-    if(!me){ location.href='/login.html'; return; }
+    if(!me){ location.href='/individual-login.html'; return; }
   }
 
   console.log('[Memora] me =', me); // ▶️ deberías ver email/plan/status
@@ -245,7 +246,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (logoutBtn) logoutBtn.addEventListener('click', ()=>{
     sessionStorage.removeItem('memora_token');
     sessionStorage.removeItem('memora_user');
-    location.href='/login.html';
+    location.href='/individual-login.html';
   });
 });
 </script>
