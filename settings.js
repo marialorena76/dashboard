@@ -1,12 +1,17 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const settingsRoot = document.querySelector('[data-settings-prefix]');
   const storagePrefix = settingsRoot?.dataset.settingsPrefix ?? 'ivy-settings-';
+
+const STORAGE_PREFIX = 'mallow-individual-';
+
 
   const buildStorageKey = input => `${storagePrefix}${input.dataset.storage}`;
 
   const panels = document.querySelectorAll('.settings-panel');
   const navButtons = document.querySelectorAll('.settings-nav .nav-link');
   const toggleInputs = document.querySelectorAll('input[data-storage]');
+  const currentUserType = localStorage.getItem('userType');
 
   panels.forEach(panel => {
     if (!panel.classList.contains('active')) {
@@ -89,15 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const enabled = localStorage.getItem(twoFAKey) === 'true';
 
     if (twoFAStatus) {
-      twoFAStatus.textContent = enabled ? 'Enabled' : 'Disabled';
+      const statusEnabled = twoFAStatus.dataset.enabledLabel || 'Enabled';
+      const statusDisabled = twoFAStatus.dataset.disabledLabel || 'Disabled';
+      twoFAStatus.textContent = enabled ? statusEnabled : statusDisabled;
       twoFAStatus.classList.toggle('success', enabled);
       twoFAStatus.classList.toggle('neutral', !enabled);
     }
 
     if (twoFAButton) {
-      twoFAButton.textContent = enabled ? 'Disable' : 'Enable';
+      const enableLabel = twoFAButton.dataset.labelEnable || 'Enable';
+      const disableLabel = twoFAButton.dataset.labelDisable || 'Disable';
+      twoFAButton.textContent = enabled ? disableLabel : enableLabel;
       twoFAButton.classList.toggle('outline-button', enabled);
       twoFAButton.classList.toggle('solid-button', !enabled);
+      twoFAButton.setAttribute('aria-pressed', enabled ? 'true' : 'false');
     }
   }
 
@@ -112,7 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const enabled = localStorage.getItem(twoFAKey) === 'true';
       localStorage.setItem(twoFAKey, String(!enabled));
       updateTwoFAControls();
-      window.alert(`Two-factor authentication ${!enabled ? 'enabled' : 'disabled'}.`);
+      const message = !enabled
+        ? twoFAButton.dataset.messageEnable || 'Two-factor authentication enabled.'
+        : twoFAButton.dataset.messageDisable || 'Two-factor authentication disabled.';
+      window.alert(message);
     });
   } else if (twoFAStatus) {
     updateTwoFAControls();
@@ -140,8 +153,18 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
       if (confirmed) {
-        localStorage.clear();
+        // Clear only the data for this user type
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith(STORAGE_PREFIX)) {
+            localStorage.removeItem(key);
+          }
+        });
+        localStorage.removeItem('userType');
         window.alert('Your deletion request has been submitted. A specialist will contact you shortly.');
+        const redirectTarget = currentUserType === 'business'
+          ? 'business-login.html'
+          : 'individual-login.html';
+        window.location.href = redirectTarget;
       }
     });
   }

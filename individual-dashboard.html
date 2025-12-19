@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,72 +10,248 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
-        <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
-      </div>
-      <nav class="menu">
-codex/add-images-and-create-user-dashboard-v85he0
-        <a href="my-profile.html">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
+  <div class="dashboard new-dashboard individual-dashboard">
+  <aside class="sidebar individual-dashboard__sidebar">
+    <!-- Avatar + Nombre -->
+    <div class="sidebar-header">
+      <div class="sidebar-avatar"></div>
+        <!-- si después querés meter una imagen, va acá -->
+      <div class="sidebar-name" id="sidebarUserName"></div>
+    </div>
 
- codex/add-images-and-create-user-dashboard-vak73b
-        <a href="my-profile.html">My Account</a>
-        <a href="payments.html">Payments</a>
+  <!-- Línea + subtítulo -->
+    <div class="sidebar-welcome">
+      <span class="sidebar-welcome__line"></span>
+      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+      <span class="sidebar-welcome__line"></span>
+    </div>
 
-        <a href="#">My Account</a>
-        <a href="#">Payments</a>
- main
-        <a href="#">Help</a>
-        <a href="#">Settings</a>
- main
-      </nav>
-      <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
-        <div class="lang">
-          <button>English</button>
-          <button>Español</button>
+
+  <!-- Menú -->
+
+    <nav class="sidebar-nav individual-dashboard__menu">
+
+      <!-- My Account con submenú -->
+      <div class="has-submenu open">
+        <button class="submenu-toggle" type="button">
+          <span>My Account</span>
+          <span class="submenu-arrow"></span>
+        </button>
+
+        <ul class="submenu">
+          <li><a href="my-profile.html">My Profile</a></li>
+          <li><a href="protected-members-individual.html">Protected Members</a></li>
+          <li><a href="manage-my-plan.html">Manage My Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- Links principales -->
+      <a href="payments.html" class="sidebar-link">Payments</a>
+      <a href="help.html" class="sidebar-link">Help</a>
+      <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+
+      <!-- Botón Log Out -->
+   <button class="sidebar-logout logout" data-i18n-key="logout_button">
+      Log Out
+   </button>
+  
+
+      <!-- Idiomas -->
+     <div class="sidebar-languages">
+        <button class="lang-btn active">English</button>
+        <button class="lang-btn">Español</button>
+     </div>
+
+      <!-- Línea + Copyright -->
+      <div class="sidebar-footer-legal">
+        <span class="footer-line"></span>
+        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+        <span class="footer-line"></span>
+      </div>
+
+    </div>
+
+  </aside>
+
+    <main class="main-content individual-dashboard__main">
+      <div class="main-card">
+        <header class="main-card__header">
+          <h1>
+            <span>Welcome back, </span>
+            <span id="userName"><strong></strong></span>
+          </h1>
+        </header>
+        <div class="main-card__metrics">
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+            <span class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
+            <span class="status-pill status-pill--coverage" data-i18n-key="total_coverage_pill">UP TO $15,000</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
+            <span class="status-pill status-pill--payment" data-i18n-key="next_payment_pill">$49.99 DUE SEP 15,
+              2025</span>
+          </div>
+        </div>
+        <div class="main-card__actions">
+          <a href="my-profile.html" class="individuals-action" data-i18n-key="update_profile_button">Update My Profile</a>
+          <a href="manage-my-plan.html" class="individuals-action" data-i18n-key="manage_plan_button">Manage My Plan</a>
+          <a href="payments.html" class="individuals-action" data-i18n-key="update_payment_button">Update payment</a>
+          <a href="settings.html" class="individuals-action" data-i18n-key="manage_alerts_button">Manage Alerts</a>
         </div>
       </div>
-    </aside>
-    <main class="main-content">
-      <section class="hero-top"></section>
-      <section class="welcome">
-        <h1>Welcome back, Maria</h1>
-        <div class="status-cards">
-          <div class="card">
-            <h3>Your Plan Status</h3>
-            <p class="active">ACTIVE</p>
-          </div>
-          <div class="card">
-            <h3>Your Coverage</h3>
-            <p>Up to $100,000</p>
-          </div>
-          <div class="card">
-            <h3>Next Payment</h3>
-            <p>Due Oct 15, 2025</p>
-          </div>
+      <section class="individual-banner">
+        <div class="individual-banner__content">
+          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
+          <p>Offer your employees reliable and affordable funeral protection. A
+            practical solution to enhance your company's benefit offering and support your team when they need it most.
+          </p>
         </div>
-        <div class="actions">
-          <button>Update My Profile</button>
-          <button>Manage My Plan</button>
-          <button>Add a Family Member</button>
-          <button>Manage Alerts</button>
-        </div>
-      </section>
-      <section class="promo">
-        <div class="promo-text">
-          <h2>Human-centered benefits for your team.</h2>
-          <p>&copy;2025 MallowCare | Privacy Policy</p>
+        <div class="banner-nav">
+          <button class="banner-nav__arrow">←</button>
+          <button class="banner-nav__arrow">→</button>
         </div>
       </section>
     </main>
   </div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+  <script>
+  const API_USER_ME = '/wp-json/wp/v2/users/me';
+
+  function loadCurrentUser() {
+    const token = sessionStorage.getItem('memora_token');
+
+    if (!token) {
+        console.warn('No token found, redirecting to login');
+        window.location.href = 'individual-login.html';
+        return;
+    }
+
+    fetch(API_USER_ME, {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('Error: ' + res.status);
+        return res.json();
+    })
+    .then(user => {
+        // display_name viene en "name"
+        const fullName = user.name || '';
+
+        const nameEl = document.querySelector('#userName');
+        if (nameEl) nameEl.textContent = fullName;
+    })
+    .catch(err => console.error(err));
+  }
+
+  document.addEventListener('DOMContentLoaded', loadCurrentUser);
+  </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  console.log('[Memora] script cargó'); // debug
+  const API_BASE = '/wp-json';
+  const $  = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+
+  function titleCaseEmail(email){
+    if(!email) return 'Usuario';
+    const base = email.split('@')[0].replace(/[._-]+/g,' ');
+    return base.split(' ').map(w=> w? w[0].toUpperCase()+w.slice(1) : '').join(' ');
+  }
+  function formatDateISO(iso){
+    if(!iso) return '-';
+    const d = new Date(iso);
+    return isNaN(d) ? '-' : d.toLocaleDateString('es-AR',{day:'2-digit',month:'short',year:'numeric'}).replace('.', '');
+  }
+  function planUI(plan){
+    const p = (plan||'').toLowerCase();
+    if (p==='bussines'||p==='business'||p==='corporate') return {badge:'Miembro empresarial', plan:'Corporate', dest:'/business-dashboard.html'};
+    if (p==='personal'||p==='individual'||p==='familiar') return {badge:'Miembro individual', plan:'Individual / Familiar', dest:'/individual-dashboard.html'};
+    return {badge:'Sin membresía', plan:'—', dest:'/'};
+  }
+  function statusUI(s){
+    const x = (s||'').toLowerCase();
+    if (x==='active'||x==='wc-active') return {label:'Activo', ok:true};
+    if (x==='on-hold'||x==='pending') return {label:'En pausa', ok:false};
+    if (x==='cancelled'||x==='expired') return {label:'Inactivo', ok:false};
+    return {label:'Desconocido', ok:false};
+  }
+
+  const token = sessionStorage.getItem('memora_token');
+  if(!token){ console.warn('[Memora] no hay token, voy a login'); location.href='/individual-login.html'; return; }
+
+  let me = null;
+  try { me = JSON.parse(sessionStorage.getItem('memora_user')||'null'); } catch(_){}
+  try {
+    const r = await fetch(`${API_BASE}/memora/v1/me`, { headers:{ Authorization: 'Bearer '+token }});
+    console.log('[Memora] /me status =', r.status);
+    if(r.ok){ me = await r.json(); sessionStorage.setItem('memora_user', JSON.stringify(me)); }
+    else if (!me) { throw new Error('No autenticado'); }
+  } catch(e){
+    console.warn('[Memora] no pude traer /me', e);
+    if(!me){ location.href='/individual-login.html'; return; }
+  }
+
+  console.log('[Memora] me =', me); // ▶️ deberías ver email/plan/status
+
+  const displayName = me.display || me.name || titleCaseEmail(me.email);
+
+  // Pintar nombre (targets típicos + data-user-name)
+  const nameTargets = ['[data-user-name]','.individual-dashboard__profile-name','.profile-name','#user-name','.user-name'];
+  let painted = false;
+  for(const sel of nameTargets){ $$(sel).forEach(el=>{ el.textContent = displayName; painted = true; }); }
+  if(!painted){
+    // Reemplazo de texto hardcodeado "Maria Thompson"
+    $$('h1,h2,h3,.title,.name,.profile,.header,p,span,div').forEach(el=>{
+      if(el.childElementCount===0 && (el.textContent||'').trim().toLowerCase()==='maria thompson'){
+        el.textContent = displayName; painted = true;
+      }
+    });
+  }
+
+  // Plan/estado
+  const p = planUI(me.plan);
+  const s = statusUI(me.status);
+  const eyebrow = $('.individual-dashboard__profile-eyebrow');
+  if(eyebrow) eyebrow.textContent = p.badge;
+  const planNameEl = $('.individual-dashboard__plan-name');
+  if(planNameEl) planNameEl.textContent = p.plan;
+  const planStatusEl = $('.individual-dashboard__plan-status');
+  if(planStatusEl) planStatusEl.textContent = s.label;
+
+  const metricStatus = $('.metric-card .metric-card__value');
+  if(metricStatus){
+    metricStatus.textContent = s.label;
+    metricStatus.classList.toggle('metric-card__value--success', !!s.ok);
+  }
+
+  const nextPayEls = $$('.individual-dashboard .metric-card:nth-child(3) .metric-card__value, .individual-dashboard__plan-list dd:nth-of-type(2)');
+  nextPayEls.forEach(el => el.textContent = formatDateISO(me.expires_at));
+
+  const logoutBtn = document.querySelector('.logout');
+  if (logoutBtn) logoutBtn.addEventListener('click', ()=>{
+    sessionStorage.removeItem('memora_token');
+    sessionStorage.removeItem('memora_user');
+    location.href='/individual-login.html';
+  });
+});
+</script>
+
 </body>
 </html>
+
+

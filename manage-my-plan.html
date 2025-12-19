@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,86 +10,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Profile picture">
-        <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
+    <div class="dashboard new-dashboard individual-dashboard">
+    <aside class="sidebar individual-dashboard__sidebar">
+      <!-- Avatar + Nombre -->
+      <div class="sidebar-header">
+        <div class="sidebar-avatar"></div>
+        <div class="sidebar-name" id="sidebarUserName"></div>
       </div>
-      <nav class="menu">
-codex/add-images-and-create-user-dashboard-v85he0
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
-        <a href="#">Help</a>
-        <a href="settings.html">Settings</a>
 
- codex/add-images-and-create-user-dashboard-vak73b
-        <a href="my-profile.html" class="active">My Account</a>
-        <a href="payments.html">Payments</a>
+      <!-- Línea + subtítulo -->
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
+      </div>
 
-        <a href="#" class="active">My Account</a>
-        <a href="#">Payments</a>
- main
-        <a href="#">Help</a>
-        <a href="#">Settings</a>
- main
+      <!-- Menú -->
+      <nav class="sidebar-nav individual-dashboard__menu">
+        <!-- My Account con submenú -->
+        <div class="has-submenu open">
+          <button class="submenu-toggle" type="button">
+            <span>My Account</span>
+            <span class="submenu-arrow"></span>
+          </button>
+
+          <ul class="submenu">
+            <li><a href="my-profile.html">My Profile</a></li>
+            <li><a href="protected-members-individual.html">Protected Members</a></li>
+            <li><a href="manage-my-plan.html">Manage My Plan</a></li>
+          </ul>
+        </div>
+
+        <!-- Links principales -->
+        <a href="payments.html" class="sidebar-link">Payments</a>
+        <a href="help.html" class="sidebar-link">Help</a>
+        <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
       </nav>
-      <div class="sidebar-bottom">
-        <button class="logout">Log Out</button>
-        <div class="lang">
-          <button>English</button>
-          <button>Español</button>
+
+      <!-- Footer del sidebar -->
+      <div class="sidebar-footer">
+           <button class="sidebar-logout logout" data-i18n-key="logout_button">
+             Log Out
+           </button>
+
+        <div class="sidebar-languages">
+          <button class="lang-btn active">English</button>
+          <button class="lang-btn">Español</button>
+        </div>
+
+        <div class="sidebar-footer-legal">
+          <span class="footer-line"></span>
+          <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+          <span class="footer-line"></span>
         </div>
       </div>
     </aside>
-    <main class="main-content">
-      <div class="breadcrumb">Dashboard - My Account - Manage My Plan</div>
-      <h1>Manage My Plan</h1>
 
-      <section class="section-card plan-overview">
-        <h2>Plan Overview</h2>
-        <div class="plan-row">
-          <span>Your Plan Status</span>
-          <span class="status" id="planStatus">ACTIVE</span>
-        </div>
-        <div class="plan-row">
-          <span>Your Coverage</span>
-          <span id="planCoverage">Up to $100,000</span>
-        </div>
-        <div class="plan-row">
-          <span>Next Payment</span>
-          <span id="nextPayment">$490.03 due Jan 17, 2025</span>
-        </div>
-        <button id="updatePayment">Update Payment Method</button>
-      </section>
+    <main class="main-content  new-main-content">
+      <div class="manage-main">
+        <div class="manage-wrapper">
+          <div class="manage-details">
+            <header class="content-header">
+              <h1>
+                <span data-i18n-key="manage_plan_title">Manage <strong>My Plan</strong></span>
+              </h1>
+            </header>
 
-      <section class="section-card plan-type">
-        <h2>Plan Type</h2>
-        <div class="plan-grid">
-          <div class="current-plan">
-            <h3>Current Plan</h3>
-            <div class="plan-row">
-              <span id="currentPlan">Individual Plan</span>
-              <button id="expirePlan" class="expire-btn">Expire</button>
-            </div>
-          </div>
-          <div class="available-upgrades">
-            <h3>Available Upgrades</h3>
-            <div class="plan-row">
-              <span>Family Plan</span>
-              <button class="upgrade-btn" data-plan="Family Plan">Upgrade</button>
-            </div>
-            <div class="plan-row">
-              <span>Premium Plan</span>
-              <button class="upgrade-btn" data-plan="Premium Plan">Upgrade</button>
-            </div>
+            <section class="section-card plan-overview">
+              <h2 data-i18n-key="manage_plan_overview_title">Plan Overview</h2>
+              <div class="main-card__metrics">
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+                  <span class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
+                  <span class="status-pill status-pill--coverage" data-i18n-key="total_coverage_pill">UP TO
+                    $15,000</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
+                  <span class="status-pill status-pill--payment" data-i18n-key="next_payment_pill">$49.99 DUE SEP 15,
+                    2025</span>
+                </div>
+              </div>
+              <a href="payments.html" id="updatePaymentMethod" class="button primary-button"
+                data-i18n-key="manage_plan_update_payment_button">Update Payment Method</a>
+            </section>
+
+            <section class="section-card plan-type">
+              <h2 data-i18n-key="manage_plan_type_title">Plan Type</h2>
+              <div class="main-card__plan-type">
+                <div class="plan-type-item">
+                  <span class="plan-type-item__label" data-i18n-key="manage_plan_current_plan_title">Current Plan</span>
+                  <span class="status-pill">PERSONAL</span>
+                </div>
+                <div class="plan-type-item">
+                  <span class="plan-type-item__label" data-i18n-key="manage_plan_available_upgrades_title">Available Upgrades</span>
+                  <span class="status-pill" data-i18n-key="manage_plan_family_plan_name">FAMILY PLAN</span>
+                </div>
+              </div>
+              <button id="exploreUpgrades" class="button primary-button"
+                data-i18n-key="manage_plan_update_payment_button">Explore Upgrades</button>
+            </section>
+
+
           </div>
         </div>
-      </section>
+      </div>
     </main>
   </div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
   <script src="plan.js"></script>
 </body>
+
 </html>

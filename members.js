@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const employeeSection = document.getElementById("addMemberSection");
+    const beneficiarySection = document.getElementById("addBeneficiarySection");
+    const beneficiaryForm = document.getElementById("beneficiaryForm");
+    const cancelBeneficiaryBtn = document.getElementById("cancelBeneficiary");
+
+    if (employeeSection && beneficiarySection) {
+        function showEmployeeForm() {
+            employeeSection.style.display = "";
+            beneficiarySection.style.display = "none";
+            employeeSection.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function showBeneficiaryForm() {
+            employeeSection.style.display = "none";
+            beneficiarySection.style.display = "";
+            beneficiarySection.scrollIntoView({ behavior: "smooth" });
+        }
+
+        window.showEmployeeForm = showEmployeeForm;
+        window.showBeneficiaryForm = showBeneficiaryForm;
+
+        showEmployeeForm();
+
+        if (cancelBeneficiaryBtn) {
+            cancelBeneficiaryBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                beneficiaryForm.reset();
+                showEmployeeForm();
+            });
+        }
+    }
   const tableBody = document.querySelector('#membersTable tbody');
   if (!tableBody) return;
 
@@ -28,6 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const STORAGE_KEY = 'businessMembers';
   let currentPage = 1;
 
+  // --- MemoraCare API Backend (WordPress REST) ---
+  let employees = [];
+
+  // GET employees from WP
+  async function apiFetchEmployees() {
+    const res = await fetch('/wp-json/memora/v1/employees', {
+      credentials: 'include'
+    });
+    if (!res.ok) throw new Error('Error fetching employees');
+    return await res.json();
+  }
+
+  // CREATE employee
+  async function apiCreateEmployee(employee) {
+    const res = await fetch('/wp-json/memora/v1/employees', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(employee)
+    });
+    if (!res.ok) throw new Error('Error creating employee');
+    return await res.json(); // { id: 123 }
+  }
+
+  // DELETE employee
+  async function apiDeleteEmployee(id) {
+    const res = await fetch(`/wp-json/memora/v1/employees/${id}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    });
+    if (!res.ok) throw new Error('Error deleting employee');
+    return await res.json();
+  }
+
   const dateFormatter = new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
@@ -35,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const EDIT_ICON =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-2.88-2.88a1.5 1.5 0 0 0-2.12 0L3 15v5z"></path><path d="M13.5 6.5l4 4"></path></svg>';
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4.586a1 1 0 0 0 .707-.293l9.414-9.414a2 2 0 0 0 0-2.828l-1.172-1.172a2 2 0 0 0-2.828 0L5.293 15.707A1 1 0 0 0 5 16.414V20zM17 6l1 1-1.5 1.5-1-1L17 6zM7 17.5l7.793-7.793 1 1L8 18.5H7v-1z"></path></svg>';
   const DELETE_ICON =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 7l1-2h4l1 2"></path><path d="M6 7l1 12a1 1 0 0 0 1 .9h8a1 1 0 0 0 1-.9L18 7"></path></svg>';
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3a1 1 0 0 0-.894.553L7.382 5H4a1 1 0 0 0 0 2h1l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12h1a1 1 0 0 0 0-2h-3.382l-.724-1.447A1 1 0 0 0 15 3H9zm1.618 2L11 4h2l.382 1H10.618zM9 9a1 1 0 0 1 1.006.894L10.5 17a1 1 0 0 1-1.993.112L8 10a1 1 0 0 1 1-1zm6 0a1 1 0 0 1 1 1l-.5 7a1 1 0 1 1-1.994-.112L14 10a1 1 0 0 1 1-1z"></path></svg>';
 
   const defaultMembers = [
     {
@@ -56,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       email: 'jordan.lee@legacybridge.com',
       role: 'Product Manager',
       department: 'Product',
-      coverageStart: '2024-03-01',
+      coverageStart: '2024-02-29',
       planAccess: 'Health + Vision',
       status: 'Protected'
     },
@@ -66,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
       email: 'priya.shah@legacybridge.com',
       role: 'Finance Director',
       department: 'Finance',
-      coverageStart: '2022-09-12',
+      coverageStart: '2022-09-11',
       planAccess: 'Full Coverage',
       status: 'Protected'
     },
@@ -105,6 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Render desde API: toma empleados de WP, los adapta y actualiza la UI
+  function renderEmployeesFromWP(apiEmployees = []) {
+    try {
+      const members = apiEmployees.map(normalizeMember);
+      saveMembers(members); // seguimos usando localStorage para el resto del código
+      currentPage = 1;
+      renderTable();
+      updateSelects(members);
+    } catch (error) {
+      console.error('Error rendering employees from API', error);
+    }
+  }
+
   function loadMembers() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
@@ -136,73 +214,64 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getMembersWithIndex() {
-    return loadMembers().map((member, index) => ({ member, index }));
+    return loadMembers().map((member, index) => ({ ...member, index }));
   }
 
-  function formatDate(value) {
-    if (!value) return '';
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) {
-      return value;
+  function filterMembers(members) {
+    const searchTerm = (searchInput?.value || '').trim().toLowerCase();
+    if (!searchTerm) {
+      return members;
     }
-    return dateFormatter.format(date);
-  }
 
-  function getStatusClass(status) {
-    const normalized = (status || '').toLowerCase();
-    if (normalized === 'invited') return 'status-chip--invited';
-    if (normalized === 'pending') return 'status-chip--pending';
-    if (normalized === 'suspended') return 'status-chip--suspended';
-    return 'status-chip--protected';
-  }
+    return members.filter(member => {
+      const fullName = `${member.firstName} ${member.lastName}`.toLowerCase();
+      const email = (member.email || '').toLowerCase();
+      const role = (member.role || '').toLowerCase();
+      const department = (member.department || '').toLowerCase();
+      const coverage = (member.planAccess || '').toLowerCase();
 
-  function filterMembers(collection) {
-    const query = (searchInput?.value || '').trim().toLowerCase();
-    if (!query) return collection;
-    return collection.filter(({ member }) => {
-      const haystack = [
-        member.firstName,
-        member.lastName,
-        member.email,
-        member.role,
-        member.department,
-        member.planAccess,
-        member.status
-      ]
-        .join(' ')
-        .toLowerCase();
-      return haystack.includes(query);
+      return (
+        fullName.includes(searchTerm) ||
+        email.includes(searchTerm) ||
+        role.includes(searchTerm) ||
+        department.includes(searchTerm) ||
+        coverage.includes(searchTerm)
+      );
     });
+  }
+
+  function createButton(label, page, { disabled = false, active = false, ariaLabel } = {}) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = label;
+    button.disabled = disabled;
+    button.className = [
+      'pagination-button',
+      active ? 'is-active' : '',
+      disabled ? 'is-disabled' : ''
+    ]
+      .filter(Boolean)
+      .join(' ');
+    button.setAttribute('aria-label', ariaLabel || label);
+    button.addEventListener('click', () => {
+      if (currentPage !== page && !disabled) {
+        currentPage = page;
+        renderTable();
+      }
+    });
+    return button;
   }
 
   function renderPagination(totalPages) {
     if (!pagination) return;
     pagination.innerHTML = '';
+
     if (totalPages <= 1) {
+      pagination.style.display = 'none';
       return;
     }
 
-    const createButton = (label, targetPage, { disabled = false, active = false, ariaLabel } = {}) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = label;
-      if (ariaLabel) {
-        button.setAttribute('aria-label', ariaLabel);
-      }
-      if (disabled) {
-        button.disabled = true;
-      } else {
-        button.addEventListener('click', () => {
-          currentPage = targetPage;
-          renderTable();
-        });
-      }
-      if (active) {
-        button.classList.add('is-active');
-        button.setAttribute('aria-current', 'page');
-      }
-      return button;
-    };
+    pagination.style.display = 'flex';
 
     pagination.appendChild(
       createButton('‹', Math.max(1, currentPage - 1), {
@@ -239,84 +308,116 @@ document.addEventListener('DOMContentLoaded', () => {
       const emptyRow = document.createElement('tr');
       const emptyCell = document.createElement('td');
       emptyCell.colSpan = 5;
-      emptyCell.className = 'members-table__empty';
-
-      if (membersCollection.length === 0) {
-        emptyCell.textContent = 'No team members yet.';
-        if (countLabel) {
-          countLabel.textContent = 'No team members yet.';
-        }
-      } else {
-        const query = (searchInput?.value || '').trim();
-        emptyCell.textContent = query
-          ? `No matches found for “${query}”.`
-          : 'No members match your search.';
-        if (countLabel) {
-          countLabel.textContent = emptyCell.textContent;
-        }
-      }
-
+      emptyCell.textContent = 'No employees found';
+      emptyCell.classList.add('empty-state');
       emptyRow.appendChild(emptyCell);
       tableBody.appendChild(emptyRow);
-      renderPagination(0);
+
+      countLabel.textContent = 'Showing 0 employees';
+      renderPagination(1);
       return;
     }
 
-    const totalPages = Math.max(1, Math.ceil(totalFiltered / pageSize));
-    if (currentPage > totalPages) {
-      currentPage = totalPages;
-    }
-
     const startIndex = (currentPage - 1) * pageSize;
-    const pageMembers = filteredMembers.slice(startIndex, startIndex + pageSize);
+    const pageMembers = filteredMembers.slice(
+      startIndex,
+      startIndex + pageSize
+    );
 
     tableBody.innerHTML = '';
-    pageMembers.forEach(({ member, index }) => {
-      const row = document.createElement('tr');
-      const fullName = `${member.firstName} ${member.lastName}`.trim() || '—';
-      const coverageStart = formatDate(member.coverageStart);
-      const coveragePrimary = coverageStart ? `Coverage start ${coverageStart}` : member.planAccess || '—';
-      const coverageSecondary = coverageStart ? member.planAccess : '';
-      const statusText = member.status || 'Protected';
-      const statusClass = getStatusClass(statusText);
 
-      row.innerHTML = `
-        <td>
-          <div class="member-name">${fullName}</div>
-          <div class="member-meta">${member.email || ''}</div>
-        </td>
-        <td>
-          <div class="member-name">${member.role || '—'}</div>
-          <div class="member-meta">${member.department || ''}</div>
-        </td>
-        <td>
-          <div class="member-name">${coveragePrimary}</div>
-          <div class="member-meta">${coverageSecondary}</div>
-        </td>
-        <td>
-          <span class="status-chip ${statusClass}">${statusText}</span>
-        </td>
+    pageMembers.forEach(member => {
+      const {
+        index,
+        firstName,
+        lastName,
+        email,
+        role,
+        department,
+        coverageStart,
+        planAccess,
+        status
+      } = member;
+
+      const row = document.createElement('tr');
+
+      const fullName = `${firstName} ${lastName}`.trim() || `Employee ${index + 1}`;
+      const date = coverageStart ? dateFormatter.format(new Date(coverageStart)) : 'Not set';
+
+      const statusClass =
+        status === 'Protected'
+          ? 'status-protected'
+          : status === 'Invited'
+          ? 'status-invited'
+          : 'status-pending';
+
+      const statusText =
+        status === 'Protected'
+          ? 'Protected'
+          : status === 'Invited'
+          ? 'Invited'
+          : 'Pending';
+
+row.innerHTML = `
+  <td>
+    <div class="employee-cell">
+      <div class="avatar avatar--small">
+        <span class="avatar__initials">
+          ${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}
+        </span>
+      </div>
+      <div class="employee-cell__info">
+        <div class="employee-cell__name">${fullName}</div>
+        <div class="employee-cell__email">${email || ''}</div>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="role-cell">
+      <div class="role-cell__title">${role || 'Not assigned'}</div>
+      <div class="role-cell__department">${department || ''}</div>
+    </div>
+  </td>
+  <td>
+    <div class="coverage-cell">
+      <div class="coverage-cell__plan">${planAccess || 'Not assigned'}</div>
+      <div class="coverage-cell__date">Coverage start ${date}</div>
+    </div>
+  </td>
+  <td>
+    <span class="status-chip ${statusClass}">${statusText}</span>
+  </td>
         <td class="actions-column">
           <div class="table-actions">
-            <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${fullName}">
-              ${EDIT_ICON}
+            <button
+              type="button"
+              class="manage-beneficiary manage-beneficiary--primary table-action action-beneficiary"
+              data-index="${index}"
+            >
+              Add Beneficiary
             </button>
-            <button type="button" class="table-action action-delete danger" data-index="${index}" aria-label="Remove ${fullName}">
-              ${DELETE_ICON}
+            <button
+              type="button"
+              class="manage-beneficiary manage-beneficiary--secondary table-action action-edit"
+              data-index="${index}"
+              aria-label="Edit ${fullName}"
+            >
+              Edit Employee
             </button>
           </div>
         </td>
-      `;
+
+`;
+
+
       tableBody.appendChild(row);
     });
 
-    const rangeStart = startIndex + 1;
-    const rangeEnd = startIndex + pageMembers.length;
-    const labelSuffix = totalFiltered === 1 ? 'team member' : 'team members';
-    if (countLabel) {
-      countLabel.textContent = `Showing ${rangeStart}-${rangeEnd} of ${totalFiltered} ${labelSuffix}`;
-    }
+    const firstIndex = startIndex + 1;
+    const lastIndex = Math.min(startIndex + pageSize, totalFiltered);
+    countLabel.textContent = `Showing ${firstIndex}-${lastIndex} of ${totalFiltered} employees`;
 
+    const totalPages = Math.ceil(totalFiltered / pageSize);
     renderPagination(totalPages);
   }
 
@@ -339,24 +440,6 @@ document.addEventListener('DOMContentLoaded', () => {
         select.value = '';
       }
     });
-  }
-
-  function populateEditForm(index) {
-    if (!editForm) return;
-    const members = loadMembers();
-    const member = members[index];
-    if (!member) {
-      editForm.reset();
-      return;
-    }
-    editForm.elements.firstName.value = member.firstName;
-    editForm.elements.lastName.value = member.lastName;
-    editForm.elements.email.value = member.email;
-    editForm.elements.role.value = member.role;
-    editForm.elements.department.value = member.department;
-    editForm.elements.coverageStart.value = member.coverageStart;
-    editForm.elements.planAccess.value = member.planAccess;
-    editForm.elements.status.value = member.status;
   }
 
   function exportRoster() {
@@ -387,13 +470,28 @@ document.addEventListener('DOMContentLoaded', () => {
     URL.revokeObjectURL(url);
   }
 
-  seedMembers();
-  renderTable();
-  updateSelects();
+  // Carga inicial de empleados desde la API de WordPress
+  async function loadEmployeesFromWP() {
+    try {
+      const apiEmployees = await apiFetchEmployees();
+      employees = apiEmployees;
+      renderEmployeesFromWP(apiEmployees);
+    } catch (error) {
+      console.error('Error loading employees from API, fallback to default storage', error);
+      // Fallback: si falla la API usamos el flujo anterior basado en localStorage
+      seedMembers();
+      renderTable();
+      updateSelects();
+    }
+  }
+
+  // INICIALIZACIÓN
+  loadEmployeesFromWP();
 
   if (toAddBtn && addSection) {
     toAddBtn.addEventListener('click', () => {
       addSection.scrollIntoView({ behavior: 'smooth' });
+      addForm?.elements.firstName?.focus();
     });
   }
 
@@ -416,9 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (addForm) {
-    addForm.addEventListener('submit', event => {
+    addForm.addEventListener('submit', async event => {
       event.preventDefault();
-      const members = loadMembers();
       const member = normalizeMember({
         firstName: addForm.elements.firstName.value,
         lastName: addForm.elements.lastName.value,
@@ -429,12 +526,15 @@ document.addEventListener('DOMContentLoaded', () => {
         planAccess: addForm.elements.planAccess.value,
         status: addForm.elements.status.value
       });
-      members.push(member);
-      saveMembers(members);
-      addForm.reset();
-      currentPage = 1;
-      renderTable();
-      updateSelects(members);
+
+      try {
+        await apiCreateEmployee(member);
+        addForm.reset();
+        await loadEmployeesFromWP(); // recarga todo desde la API
+      } catch (error) {
+        console.error('Error creating employee', error);
+        alert('No se pudo crear el empleado. Intentalo de nuevo.');
+      }
     });
   }
 
@@ -444,26 +544,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (editSelect && editForm) {
-    editSelect.addEventListener('change', () => {
-      const idx = editSelect.value;
-      if (idx === '') {
-        editForm.reset();
-        return;
-      }
-      populateEditForm(Number(idx));
-    });
-  }
-
-  if (editForm) {
+  if (editForm && editSelect) {
     editForm.addEventListener('submit', event => {
       event.preventDefault();
-      const idx = Number(editSelect.value);
-      if (Number.isNaN(idx)) {
-        return;
-      }
       const members = loadMembers();
-      if (!members[idx]) {
+      const idx = Number(editSelect?.value || -1);
+      if (idx < 0 || idx >= members.length) {
         return;
       }
       members[idx] = normalizeMember({
@@ -494,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (removeForm && removeSelect) {
-    removeForm.addEventListener('submit', event => {
+    removeForm.addEventListener('submit', async event => {
       event.preventDefault();
       const idx = Number(removeSelect.value);
       if (Number.isNaN(idx)) {
@@ -504,13 +590,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (idx < 0 || idx >= members.length) {
         return;
       }
-      members.splice(idx, 1);
-      saveMembers(members);
-      currentPage = 1;
-      renderTable();
-      updateSelects(members);
-      removeForm.reset();
-      removeSelect.value = '';
+
+      try {
+        const apiEmployees = await apiFetchEmployees();
+        const employeeToDelete = apiEmployees[idx];
+        if (!employeeToDelete || !employeeToDelete.id) {
+          throw new Error('Empleado no encontrado en API');
+        }
+
+        await apiDeleteEmployee(employeeToDelete.id);
+        await loadEmployeesFromWP();
+        removeForm.reset();
+        removeSelect.value = '';
+      } catch (error) {
+        console.error('Error deleting employee', error);
+        alert('No se pudo eliminar el empleado. Intentalo de nuevo.');
+      }
     });
   }
 
@@ -524,13 +619,22 @@ document.addEventListener('DOMContentLoaded', () => {
   tableBody.addEventListener('click', event => {
     const actionButton = event.target.closest('.table-action');
     if (!actionButton) return;
-    const idx = actionButton.dataset.index;
-    if (idx === undefined) return;
+
+    const row = actionButton.closest('tr');
+    const index = row ? row.rowIndex - 1 : -1;
+    if (index < 0) return;
+
+    const members = filterMembers(getMembersWithIndex());
+    const member = members[index];
+    if (!member) return;
+
+    const fullIndex = member.index;
+    const idx = fullIndex;
 
     if (actionButton.classList.contains('action-edit')) {
       if (editSelect) {
         editSelect.value = idx;
-        editSelect.dispatchEvent(new Event('change'));
+        editSelect.dispatchEvent(new Event('change', { bubbles: true }));
       }
       if (editSection) {
         editSection.scrollIntoView({ behavior: 'smooth' });
@@ -545,5 +649,52 @@ document.addEventListener('DOMContentLoaded', () => {
         removeSection.scrollIntoView({ behavior: 'smooth' });
       }
     }
+
+    if (actionButton.classList.contains("action-beneficiary")) {
+      const idx = parseInt(actionButton.getAttribute("data-index"), 10);
+      const member = members[idx]; // o el array que uses realmente
+
+      const benefSection = document.getElementById("addBeneficiarySection");
+      const benefForm = document.getElementById("beneficiaryForm");
+
+      if (benefForm && member) {
+        // rellenamos algunos datos básicos
+        benefForm.elements.benefFirstName.value = member.firstName || "";
+        benefForm.elements.benefLastName.value = member.lastName || "";
+        benefForm.elements.benefEmail.value = member.email || "";
+        benefForm.elements.benefEmployeeId.value = String(idx + 1);
+        benefForm.elements.benefEnrollmentDate.value =
+          member.coverageStart || "";
+      }
+
+  if (typeof window.showBeneficiaryForm === "function") {
+    window.showBeneficiaryForm();
+  } else if (benefSection) {
+    benefSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof DASH_USER === 'undefined') return;
+
+  const labelEl = document.getElementById('businessNameLabel');
+  const initialsEl = document.getElementById('businessInitials');
+
+  const name = (DASH_USER.displayName || DASH_USER.email || 'User').trim();
+
+  if (labelEl) labelEl.textContent = name;
+
+  if (initialsEl) {
+    const initials = name
+      .split(/\s+/)
+      .slice(0, 2)
+      .map(w => (w[0] ? w[0].toUpperCase() : ''))
+      .join('') || 'U';
+
+    initialsEl.textContent = initials;
+  }
 });

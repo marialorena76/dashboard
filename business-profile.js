@@ -6,9 +6,10 @@ const STATUS_MAP = {
 
 const LANGUAGE_DATA = {
   en: { label: 'English (US)', button: 'English' },
-  es: { label: 'Español (LatAm)', button: 'Español' },
-  pt: { label: 'Português (Brasil)', button: 'Português' }
+  es: { label: 'Español (LatAm)', button: 'Español' }
 };
+
+const USER_TYPE_PREFIX = 'mallow-business-';
 
 document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('.business-main');
@@ -74,16 +75,42 @@ function setupStatusPills() {
 function setupForms(setView) {
   const forms = document.querySelectorAll('.business-form');
   forms.forEach(form => {
+    const storageKey = `${USER_TYPE_PREFIX}${form.id}`;
+    const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
+    let savedData = readStoredData(storageKey);
+
+    inputs.forEach(input => {
+      if (Object.prototype.hasOwnProperty.call(savedData, input.name)) {
+        input.value = savedData[input.name];
+      }
+      input.defaultValue = input.value;
+    });
+
     const cancelButton = form.querySelector('[data-action="cancel"]');
     if (cancelButton) {
       cancelButton.addEventListener('click', () => {
         form.reset();
+        inputs.forEach(input => {
+            input.value = input.defaultValue;
+        });
         setView('overview');
       });
     }
 
     form.addEventListener('submit', event => {
       event.preventDefault();
+      const updated = {};
+      inputs.forEach(input => {
+        updated[input.name] = input.value;
+        input.defaultValue = input.value;
+      });
+
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(updated));
+      } catch (error) {
+        console.error('Unable to persist form data', error);
+      }
+
       if (form.id === 'businessLanguageForm') {
         const select = form.querySelector('select[name="preferredLanguage"]');
         if (select) {
@@ -99,6 +126,19 @@ function setupForms(setView) {
 function setupLanguageControls() {
   const languageButtons = document.querySelectorAll('[data-language-option]');
   const languageSelect = document.getElementById('languageSelect');
+  const storageKey = `${USER_TYPE_PREFIX}language`;
+  let savedLang = localStorage.getItem(storageKey);
+
+  if (languageSelect) {
+      if(savedLang) {
+        languageSelect.value = savedLang;
+      }
+      languageSelect.addEventListener('change', () => {
+        savedLang = languageSelect.value;
+        localStorage.setItem(storageKey, savedLang);
+        updateLanguageDisplay(savedLang);
+      });
+  }
 
   languageButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -106,6 +146,8 @@ function setupLanguageControls() {
       if (!value) {
         return;
       }
+      savedLang = value;
+      localStorage.setItem(storageKey, savedLang);
       updateLanguageDisplay(value);
       if (languageSelect) {
         languageSelect.value = value;
@@ -113,9 +155,7 @@ function setupLanguageControls() {
     });
   });
 
-  if (languageSelect) {
-    updateLanguageDisplay(languageSelect.value);
-  }
+  updateLanguageDisplay(savedLang || 'en');
 }
 
 function updateLanguageDisplay(code) {
@@ -136,4 +176,15 @@ function updateLanguageDisplay(code) {
       button.setAttribute('aria-pressed', 'false');
     }
   });
+}
+
+function readStoredData(key) {
+    if (!key) return {};
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : {};
+    } catch (error) {
+      console.warn('Unable to parse stored data for', key, error);
+      return {};
+    }
 }

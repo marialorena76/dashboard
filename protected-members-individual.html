@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Protected Members</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+  <div class="dashboard new-dashboard individual-dashboard">
+  <aside class="sidebar individual-dashboard__sidebar">
+    <!-- Avatar + Nombre -->
+    <div class="sidebar-header">
+      <div class="sidebar-avatar"></div>
+        <!-- si después querés meter una imagen, va acá -->
+      <div class="sidebar-name" id="sidebarUserName"></div>
+    </div>
+
+  <!-- Línea + subtítulo -->
+    <div class="sidebar-welcome">
+      <span class="sidebar-welcome__line"></span>
+      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+      <span class="sidebar-welcome__line"></span>
+    </div>
+
+
+  <!-- Menú -->
+
+    <nav class="sidebar-nav individual-dashboard__menu">
+
+      <!-- My Account con submenú -->
+      <div class="has-submenu open">
+        <button class="submenu-toggle" type="button">
+          <span>My Account</span>
+          <span class="submenu-arrow"></span>
+        </button>
+
+        <ul class="submenu">
+          <li><a href="my-profile.html">My Profile</a></li>
+          <li><a href="protected-members-individual.html">Protected Members</a></li>
+          <li><a href="manage-my-plan.html">Manage My Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- Links principales -->
+      <a href="payments.html" class="sidebar-link">Payments</a>
+      <a href="help.html" class="sidebar-link">Help</a>
+      <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
+
+    </nav>
+    
+    <div class="sidebar-footer">
+   <button class="sidebar-logout logout" data-i18n-key="logout_button">
+      Log Out
+   </button>
+      <!-- Botón Log Out -->
+     
+
+      <!-- Idiomas -->
+     <div class="sidebar-languages">
+        <button class="lang-btn active">English</button>
+        <button class="lang-btn">Español</button>
+     </div>
+
+      <!-- Línea + Copyright -->
+      <div class="sidebar-footer-legal">
+        <span class="footer-line"></span>
+        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+        <span class="footer-line"></span>
+      </div>
+
+    </div>
+
+  </aside>
+
+      <main class="main-content new-main-content">
+        <div class="protected-members">
+          <header class="content-header">
+            <div>
+              <h1>
+                <span data-i18n-key="individual_protected_members_heading_prefix">Protected</span>
+                <strong data-i18n-key="individual_protected_members_heading_highlight">Members</strong>
+              </h1>
+              <p data-i18n-key="individual_protected_members_heading_subtitle">
+                Keep your loved ones protected and up to date under your plan.
+              </p>
+            </div>
+          </header>
+
+          <section class="main-card members-table" aria-labelledby="protectedFamilyHeading">
+            <div class="members-table__header">
+              <div>
+                <h2 id="protectedFamilyHeading" data-i18n-key="individual_protected_members_table_title">
+                  Who’s Protected
+                </h2>
+                <p class="members-table__subtitle" data-i18n-key="individual_protected_members_table_subtitle">
+                  Review the family members linked to your plan and manage their details.
+                </p>
+              </div>
+              <div class="members-table__actions">
+                <button type="button" class="button primary-button" id="toAdd" data-i18n-key="button_add_family_member">
+                  + Add Member
+                </button>
+              </div>
+            </div>
+            <div class="members-table__controls">
+              <label class="members-table__entries" for="entriesSelect">
+                <span data-i18n-key="table_show_entries">Show</span>
+                <select id="entriesSelect">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                </select>
+                <span data-i18n-key="table_show_entries" style="display: none">entries</span>
+              </label>
+              <label class="members-table__search" for="memberSearch">
+                <input
+                  type="search"
+                  id="memberSearch"
+                  data-i18n-key="table_search_placeholder"
+                  placeholder="Search"
+                />
+              </label>
+            </div>
+            <div class="table-wrapper">
+              <table id="membersTable">
+                <thead>
+                  <tr>
+                    <th scope="col" data-i18n-key="form_full_name">Full Name</th>
+                    <th scope="col" data-i18n-key="form_relationship">Relationship</th>
+                    <th scope="col" data-i18n-key="form_status">Status</th>
+                    <th scope="col" class="actions-column" data-i18n-key="table_header_manage">Manage</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="members-table__footer">
+              <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+              <nav class="members-table__pagination" id="membersPagination" aria-label="Protected members pagination"></nav>
+            </div>
+          </section>
+
+          <section class="main-card is-hidden" id="addMemberSection" aria-labelledby="addMemberHeading">
+            <div class="main-card__header">
+              <h2 id="addMemberHeading" data-i18n-key="individual_protected_members_add_title">Add New Family Member</h2>
+              <p data-i18n-key="individual_protected_members_add_subtitle">
+                Invite a loved one to be covered by your plan and keep their information current.
+              </p>
+            </div>
+            <form id="addMemberForm" class="panel-form" autocomplete="off">
+              <div class="form-grid">
+                <label class="form-field" for="addFullName">
+                  <span data-i18n-key="form_full_name">Full Name</span>
+                  <input type="text" id="addFullName" name="fullName" required />
+                </label>
+                <label class="form-field" for="addRelationship">
+                  <span data-i18n-key="form_relationship">Relationship</span>
+                  <input type="text" id="addRelationship" name="relationship" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="addEmail">
+                  <span data-i18n-key="form_email_address">Email Address</span>
+                  <input type="email" id="addEmail" name="email" required />
+                </label>
+                <label class="form-field" for="addDob">
+                  <span data-i18n-key="form_dob">Date of Birth</span>
+                  <input type="date" id="addDob" name="dateOfBirth" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="addAddress">
+                  <span data-i18n-key="form_address1">Address Line 1</span>
+                  <input type="text" id="addAddress" name="address" required />
+                </label>
+                <label class="form-field" for="addPhone">
+                  <span data-i18n-key="form_phone_number">Phone Number</span>
+                  <input type="tel" id="addPhone" name="phone" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="button cancel-button" id="cancelAdd" data-i18n-key="button_cancel">Cancel</button>
+                <button type="submit" class="button primary-button" data-i18n-key="button_save_member">Save Member</button>
+              </div>
+            </form>
+          </section>
+          <section class="main-card is-hidden" id="editMemberSection" aria-labelledby="editMemberHeading" style="margin-top: 2rem;">
+            <div class="main-card__header">
+              <h2 id="editMemberHeading">Edit Family Member</h2>
+            </div>
+            <form id="editMemberForm" class="panel-form" autocomplete="off">
+              <div class="form-grid">
+                <label class="form-field" for="editFullName">
+                  <span>Full Name</span>
+                  <input type="text" id="editFullName" name="fullName" required />
+                </label>
+                <label class="form-field" for="editRelationship">
+                  <span>Relationship</span>
+                  <input type="text" id="editRelationship" name="relationship" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="editEmail">
+                  <span>Email Address</span>
+                  <input type="email" id="editEmail" name="email" required />
+                </label>
+                <label class="form-field" for="editDob">
+                  <span>Date of Birth</span>
+                  <input type="date" id="editDob" name="dateOfBirth" required />
+                </label>
+              </div>
+              <div class="form-grid">
+                <label class="form-field" for="editAddress">
+                  <span>Address Line 1</span>
+                  <input type="text" id="editAddress" name="address" required />
+                </label>
+                <label class="form-field" for="editPhone">
+                  <span>Phone Number</span>
+                  <input type="tel" id="editPhone" name="phone" required />
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="button cancel-button" id="cancelEdit">Cancel</button>
+                <button type="submit" class="button primary-button">Save Changes</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const addMemberButton = document.getElementById('toAdd');
+        const addMemberSection = document.getElementById('addMemberSection');
+        const cancelAddButton = document.getElementById('cancelAdd');
+
+        if (addMemberButton && addMemberSection) {
+          addMemberButton.addEventListener('click', function () {
+            addMemberSection.classList.remove('is-hidden');
+            addMemberSection.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        if (cancelAddButton && addMemberSection) {
+          cancelAddButton.addEventListener('click', function () {
+            addMemberSection.classList.add('is-hidden');
+          });
+        }
+      });
+    </script>
+    <script>
+      // Sample data for individual protected members
+      const membersData = [
+        { fullName: 'Daniel Thompson', relationship: 'Spouse', status: 'PROTECTED' },
+        { fullName: 'Anna Thompson', relationship: 'Child', status: 'PROTECTED' },
+        { fullName: 'Jose Herrera', relationship: 'Parent', status: 'PROTECTED' },
+        { fullName: 'Robert Smith', relationship: 'Cousin', status: 'PROTECTED' }
+      ];
+
+      // Render the members table with edit buttons
+      function renderMembersTable() {
+        const tableBody = document.querySelector('#membersTable tbody');
+        if (!tableBody) return;
+        tableBody.innerHTML = '';
+        membersData.forEach((member, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${member.fullName}</td>
+            <td>${member.relationship}</td>
+            <td><span class="status-chip status-chip--protected">${member.status}</span></td>
+            <td class="actions-column">
+              <button type="button" class="table-action action-edit" data-index="${index}" aria-label="Edit ${member.fullName}">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-2.88-2.88a1.5 1.5 0 0 0-2.12 0L3 15v5z"></path>
+                  <path d="M13.5 6.5l4 4"></path>
+                </svg>
+              </button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        });
+      }
+
+      renderMembersTable();
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const tableBody = document.querySelector('#membersTable tbody');
+        const editSection = document.getElementById('editMemberSection');
+        const addSection = document.getElementById('addMemberSection');
+        const editForm = document.getElementById('editMemberForm');
+        const cancelEditButton = document.getElementById('cancelEdit');
+        let editingIndex = null;
+
+        // Populate the edit form fields from the selected member
+        function populateEditForm(index) {
+          const member = membersData[index];
+          if (!member) return;
+          editForm.elements.fullName.value = member.fullName || '';
+          editForm.elements.relationship.value = member.relationship || '';
+          editForm.elements.email.value = member.email || '';
+          editForm.elements.dateOfBirth.value = member.dateOfBirth || '';
+          editForm.elements.address.value = member.address || '';
+          editForm.elements.phone.value = member.phone || '';
+        }
+
+        // Show edit form on pencil click
+        if (tableBody) {
+          tableBody.addEventListener('click', function (event) {
+            const button = event.target.closest('.action-edit');
+            if (!button) return;
+            editingIndex = Number(button.dataset.index);
+            populateEditForm(editingIndex);
+            editSection.classList.remove('is-hidden');
+            if (addSection) addSection.classList.add('is-hidden');
+            editSection.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+
+        // Hide edit form when cancel is clicked
+        if (cancelEditButton) {
+          cancelEditButton.addEventListener('click', function () {
+            editSection.classList.add('is-hidden');
+            editingIndex = null;
+          });
+        }
+
+        // Save changes to the member and update the table
+        if (editForm) {
+          editForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (editingIndex === null) return;
+            const formData = new FormData(editForm);
+            membersData[editingIndex] = {
+              fullName: formData.get('fullName') || '',
+              relationship: formData.get('relationship') || '',
+              email: formData.get('email') || '',
+              dateOfBirth: formData.get('dateOfBirth') || '',
+              address: formData.get('address') || '',
+              phone: formData.get('phone') || '',
+              status: membersData[editingIndex].status
+            };
+            renderMembersTable();
+            editSection.classList.add('is-hidden');
+            editingIndex = null;
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

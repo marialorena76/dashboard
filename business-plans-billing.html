@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Plans &amp; Billing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard business-dashboard">
-      <aside class="sidebar sidebar--business" aria-label="Workspace navigation">
-        <div class="company-summary">
-          <div class="company-avatar" aria-hidden="true">LB</div>
-          <h1>LegacyBridge</h1>
-          <p class="company-plan">Enterprise Shield · 62 seats</p>
-          <p class="company-renewal">Renewal in 120 days</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Plans &amp; Billing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard business-dashboard">
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__text">
+          <span class="enterprise-brand__label">LegacyBridge</span>
         </div>
+
         <nav class="menu menu--business" aria-label="Primary">
           <p class="menu-label">Workspace</p>
           <a href="business-dashboard.html">Overview</a>
@@ -36,24 +35,96 @@
             <button class="business-button business-button--ghost" type="button">
               Contact Support
             </button>
-          </div>
-          <button class="logout logout--business" type="button">Sign Out</button>
-        </div>
-      </aside>
 
-      <main class="business-main business-main--billing">
-        <div class="breadcrumb">Dashboard • Plans &amp; Billing</div>
+      </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <nav class="menu enterprise-menu">
+        <div class="menu-item has-submenu">
+          <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
+            <span>Overview</span>
+            <span class="submenu-arrow"></span>
+          </button>
+          <ul class="submenu">
+            <li><a href="business-profile.html" data-i18n-key="menu_company_profile">Company Profile</a></li>
+            <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
+          </ul>
+        </div>
+        <a class="active" href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="business-support.html" data-i18n-key="menu_support">Support</a>
+        <a href="business-settings.html" data-i18n-key="menu_settings">Settings&nbsp;></a>
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+    </aside>
+
+    <main class="business-main">
+      <div class="billing-main">
+        <div class="billing-wrapper">
+          <div class="billing-details">
+            <header class="content-header">
+              <h1>
+                <span data-i18n-key="billing_eyebrow">Company <strong>Plan & Billing</strong></span>
+              </h1>
+            </header>
+
+            <section class="section-card plan-overview">
+              <h2 data-i18n-key="billing_plan_overview_title">Plan Overview</h2>
+              <div class="main-card__metrics">
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+                  <span class="status-pill status-pill--active" data-i18n-key="option_active">ACTIVE</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="billing_annual_coverage">Your Coverage</span>
+                  <span class="status-pill status-pill--coverage" data-i18n-key="tbilling_annual_coverage_detail">UP TO
+                    $15,000</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-item__label" data-i18n-key="billing_next_renewal">Next Payment</span>
+                  <span class="status-pill status-pill--payment" data-i18n-key="billing_next_renewal_detail">$49.99 DUE SEP 15,
+                    2025</span>
+                </div>
+              </div>
+              <button id="updatePayment" class="button primary-button"
+                data-i18n-key="button_update_payment_method">Update Payment Method</button>
+            </section>
+
+            <section class="section-card plan-type">
+              <h2 data-i18n-key="manage_plan_type_title">Plan Type</h2>
+              <div class="main-card__plan-type">
+                <div class="plan-type-item">
+                  <span class="plan-type-item__label" data-i18n-key="manage_plan_current_plan_title">Current Plan</span>
+                  <span class="status-pill">PERSONAL</span>
+                </div>
+              </div>
+              <button id="updatePayment" class="button primary-button">Explore Upgrades</button>
+            </section>
+
+
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- <main class="business-main business-main--billing">
         <header class="business-header">
           <div>
-            <h2 class="business-eyebrow">Company Plans &amp; Billing</h2>
-            <h1>Plans &amp; Billing</h1>
-            <p class="business-subtitle">
+            <h2 class="business-eyebrow" data-i18n-key="billing_eyebrow">Company Plans &amp; Billing</h2>
+            <h1 data-i18n-key="billing_eyebrow">Plans &amp; Billing</h1>
+            <p class="business-subtitle" data-i18n-key="billing_subtitle">
               Review active coverage, manage payment preferences, and download invoices for
               compliance records in one place.
             </p>
             <div class="business-header__meta">
-              <span class="business-badge">Coverage renewed Apr 18, 2025</span>
-              <span class="business-badge business-badge--success" data-autopay-pill>
+              <span class="business-badge" data-i18n-key="coverage_renewed">Coverage renewed Apr 18, 2025</span>
+              <span class="business-badge business-badge--success" data-autopay-pill data-i18n-key="billing_autopay_enabled">
                 Autopay Enabled
               </span>
             </div>
@@ -63,10 +134,11 @@
               class="business-button business-button--primary"
               type="button"
               data-open-forms="edit"
+              data-i18n-key="button_update_payment_method"
             >
               Update payment method
             </button>
-            <button class="business-button business-button--ghost" type="button">Download invoice CSV</button>
+            <button class="business-button business-button--ghost" type="button" data-i18n-key="button_download_csv">Download invoice CSV</button>
           </div>
         </header>
 
@@ -83,67 +155,67 @@
             <article class="business-card billing-card billing-card--plan">
               <div class="business-card__header">
                 <div>
-                  <h3>Plan Overview</h3>
-                  <p>Snapshot of your company coverage and renewal cadence.</p>
+                  <h3 data-i18n-key="billing_plan_overview_title">Plan Overview</h3>
+                  <p data-i18n-key="billing_plan_overview_subtitle">Snapshot of your company coverage and renewal cadence.</p>
                 </div>
-                <span class="status-pill status-pill--success" data-plan-status>Active</span>
+                <span class="status-pill status-pill--success" data-plan-status data-i18n-key="option_active">Active</span>
               </div>
               <dl class="info-grid">
                 <div class="info-item">
-                  <dt>Plan name</dt>
+                  <dt data-i18n-key="billing_plan_name">Plan name</dt>
                   <dd data-plan-name>Enterprise Shield</dd>
                 </div>
                 <div class="info-item">
-                  <dt>Employees covered</dt>
+                  <dt data-i18n-key="form_employees_covered">Employees covered</dt>
                   <dd data-plan-employees>62 active · 4 pending invites</dd>
                 </div>
                 <div class="info-item">
-                  <dt>Annual coverage</dt>
-                  <dd data-plan-coverage>$250,000 across medical &amp; wellness</dd>
+                  <dt data-i18n-key="billing_annual_coverage">Annual coverage</dt>
+                  <dd data-plan-coverage data-i18n-key="billing_annual_coverage_detail">$250,000 across medical &amp; wellness</dd>
                 </div>
                 <div class="info-item">
-                  <dt>Next renewal</dt>
-                  <dd data-plan-renewal>Apr 18, 2026 · Auto-renew</dd>
+                  <dt data-i18n-key="billing_next_renewal">Next renewal</dt>
+                  <dd data-plan-renewal data-i18n-key="billing_next_renewal_detail">Apr 18, 2026 · Auto-renew</dd>
                 </div>
               </dl>
               <div class="billing-plan__actions">
-                <button class="business-button business-button--ghost" type="button">View plan documents</button>
-                <button class="business-button business-button--ghost" type="button">Share coverage summary</button>
+                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_view_plan_docs">View plan documents</button>
+                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_share_coverage">Share coverage summary</button>
               </div>
             </article>
 
             <article class="business-card billing-card billing-card--payment" id="billingSummaryCard">
               <div class="business-card__header">
                 <div>
-                  <h3>Billing Details</h3>
-                  <p>Primary payment method, billing cadence, and autopay settings.</p>
+                  <h3 data-i18n-key="billing_details_title">Billing Details</h3>
+                  <p data-i18n-key="billing_details_subtitle">Primary payment method, billing cadence, and autopay settings.</p>
                 </div>
-                <button class="business-button business-button--ghost" type="button" data-open-forms="edit">
+                <button class="business-button business-button--ghost" type="button" data-open-forms="edit" data-i18n-key="button_manage">
                   Manage
                 </button>
               </div>
               <div class="billing-summary">
                 <div class="billing-summary__method">
-                  <h4>Primary payment method</h4>
+                  <h4 data-i18n-key="billing_primary_method">Primary payment method</h4>
                   <p class="billing-summary__value" data-summary-method>Corporate Visa •••• 4321</p>
                   <p class="billing-summary__meta" data-summary-meta>LegacyBridge Benefits · Exp 11/27</p>
                 </div>
                 <div class="billing-summary__meta">
-                  <p><strong>Next invoice:</strong> <span data-summary-next>May 15, 2025 · $4,820.00</span></p>
-                  <p><strong>Billing address:</strong> <span data-summary-address>4100 Market Street, Suite 1200 · Denver, CO 80205</span></p>
+                  <p><strong data-i18n-key="billing_next_invoice">Next invoice:</strong> <span data-summary-next>May 15, 2025 · $4,820.00</span></p>
+                  <p><strong data-i18n-key="billing_address_label">Billing address:</strong> <span data-summary-address>4100 Market Street, Suite 1200 · Denver, CO 80205</span></p>
                   <div class="billing-autopay">
-                    <span class="business-badge business-badge--success" data-autopay-pill>Autopay Enabled</span>
-                    <button class="business-button business-button--ghost" type="button" data-toggle-autopay>
+                    <span class="business-badge business-badge--success" data-autopay-pill data-i18n-key="billing_autopay_enabled">Autopay Enabled</span>
+                    <button class="business-button business-button--ghost" type="button" data-toggle-autopay data-i18n-key="button_pause_autopay">
                       Pause autopay
                     </button>
                   </div>
                 </div>
               </div>
               <div class="billing-summary__actions">
-                <button class="business-button business-button--primary" type="button" data-open-forms="edit">
+                <button class="business-button business-button--primary" type="button" data-open-forms="edit" data-i18n-key="button_update_payment_method">
                   Update payment method
                 </button>
-                <button class="business-button business-button--ghost" type="button" data-open-forms="add">
+                <button class="business-button business-button--ghost" type="button" data-open-forms="add" data-i18n-key="button_add_backup_method">
                   Add backup method
                 </button>
               </div>
@@ -152,10 +224,10 @@
             <article class="business-card billing-card billing-card--contacts">
               <div class="business-card__header">
                 <div>
-                  <h3>Billing Contacts</h3>
-                  <p>People copied on invoices, reminders, and renewal notices.</p>
+                  <h3 data-i18n-key="billing_contacts_title">Billing Contacts</h3>
+                  <p data-i18n-key="billing_contacts_subtitle">People copied on invoices, reminders, and renewal notices.</p>
                 </div>
-                <button class="business-button business-button--ghost" type="button">Manage contacts</button>
+                <button class="business-button business-button--ghost" type="button" data-i18n-key="button_manage_contacts">Manage contacts</button>
               </div>
               <ul class="billing-contact-list" aria-label="Billing contacts">
                 <li class="billing-contact">
@@ -163,24 +235,24 @@
                     <h4>Ana Velásquez</h4>
                     <p>Finance Lead · ana.velasquez@legacybridge.co</p>
                   </div>
-                  <span class="business-badge">Primary</span>
+                  <span class="business-badge" data-i18n-key="billing_contact_primary">Primary</span>
                 </li>
                 <li class="billing-contact">
                   <div>
                     <h4>Jordan Patel</h4>
                     <p>Controller · jordan.patel@legacybridge.co</p>
                   </div>
-                  <span class="business-badge business-badge--muted">CC</span>
+                  <span class="business-badge business-badge--muted" data-i18n-key="billing_contact_cc">CC</span>
                 </li>
                 <li class="billing-contact">
                   <div>
                     <h4>Samira Rhodes</h4>
                     <p>HR Operations · samira.rhodes@legacybridge.co</p>
                   </div>
-                  <span class="business-badge business-badge--muted">CC</span>
+                  <span class="business-badge business-badge--muted" data-i18n-key="billing_contact_cc">CC</span>
                 </li>
               </ul>
-              <p class="business-card__footnote">
+              <p class="business-card__footnote" data-i18n-key="billing_contacts_footnote">
                 Keep at least one billing contact updated to ensure renewal reminders are never missed.
               </p>
             </article>
@@ -189,23 +261,23 @@
           <section class="business-card billing-history" aria-labelledby="billing-history-heading">
             <div class="billing-history__header">
               <div>
-                <h3 id="billing-history-heading">Billing History</h3>
-                <p>Track recent invoices, payment status, and download receipts.</p>
+                <h3 id="billing-history-heading" data-i18n-key="billing_history_title">Billing History</h3>
+                <p data-i18n-key="billing_history_subtitle">Track recent invoices, payment status, and download receipts.</p>
               </div>
               <label class="billing-history__search" for="billingHistorySearch">
-                <span class="sr-only">Search invoices</span>
-                <input type="search" id="billingHistorySearch" placeholder="Search invoices" />
+                <span class="sr-only" data-i18n-key="billing_search_invoices">Search invoices</span>
+                <input type="search" id="billingHistorySearch" data-i18n-key="billing_search_invoices" placeholder="Search invoices" />
               </label>
             </div>
             <div class="table-wrapper">
               <table>
                 <thead>
                   <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Invoice</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Receipt</th>
+                    <th scope="col" data-i18n-key="table_header_date">Date</th>
+                    <th scope="col" data-i18n-key="table_header_invoice">Invoice</th>
+                    <th scope="col" data-i18n-key="table_header_amount">Amount</th>
+                    <th scope="col" data-i18n-key="table_header_status">Status</th>
+                    <th scope="col" data-i18n-key="table_header_receipt">Receipt</th>
                   </tr>
                 </thead>
                 <tbody id="billingHistoryBody"></tbody>
@@ -216,8 +288,8 @@
 
         <section class="billing-forms" id="billingForms" hidden aria-label="Manage payment methods">
           <div class="billing-forms__intro">
-            <h2>Manage Payment Methods</h2>
-            <p>
+            <h2 data-i18n-key="billing_forms_title">Manage Payment Methods</h2>
+            <p data-i18n-key="billing_forms_subtitle">
               Update the active card on file or add a backup method for manual payments. Changes apply to
               all future invoices.
             </p>
@@ -226,103 +298,106 @@
             <form class="billing-form business-form business-card" id="editBillingForm" data-form="edit">
               <div class="business-card__header">
                 <div>
-                  <h3>Edit primary payment method</h3>
-                  <p>Adjust billing details that appear on monthly invoices.</p>
+                  <h3 data-i18n-key="billing_edit_primary_title">Edit primary payment method</h3>
+                  <p data-i18n-key="billing_edit_primary_subtitle">Adjust billing details that appear on monthly invoices.</p>
                 </div>
               </div>
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Payment method name</span>
+                  <span data-i18n-key="payments_form_method_name">Payment method name</span>
                   <input type="text" name="method" id="editMethod" required />
                 </label>
                 <label class="form-field">
-                  <span>Cardholder or account name</span>
+                  <span data-i18n-key="payments_form_cardholder_name">Cardholder or account name</span>
                   <input type="text" name="cardholder" id="editCardholder" required />
                 </label>
                 <label class="form-field">
-                  <span>Card number</span>
+                  <span data-i18n-key="payments_form_card_number">Card number</span>
                   <input type="text" name="cardNumber" id="editCard" inputmode="numeric" autocomplete="cc-number" required />
                 </label>
                 <label class="form-field">
-                  <span>Expiration (MM/YY)</span>
+                  <span data-i18n-key="payments_form_expiry_date">Expiration (MM/YY)</span>
                   <input type="text" name="expiry" id="editExpiry" placeholder="MM/YY" autocomplete="cc-exp" required />
                 </label>
                 <label class="form-field">
-                  <span>Autopay status</span>
+                  <span data-i18n-key="payments_form_autopay_status">Autopay status</span>
                   <select name="autopay" id="editAutopay">
-                    <option value="enabled">Enabled</option>
-                    <option value="paused">Paused</option>
+                    <option value="enabled" data-i18n-key="billing_autopay_enabled">Enabled</option>
+                    <option value="paused" data-i18n-key="option_paused">Paused</option>
                   </select>
                 </label>
                 <label class="form-field">
-                  <span>Next invoice date</span>
+                  <span data-i18n-key="payments_form_next_payment_date">Next invoice date</span>
                   <input type="date" name="nextPayment" id="editNextPayment" required />
                 </label>
                 <label class="form-field">
-                  <span>Invoice amount</span>
+                  <span data-i18n-key="billing_form_invoice_amount">Invoice amount</span>
                   <input type="number" name="invoiceAmount" id="editAmount" min="0" step="0.01" required />
                 </label>
                 <label class="form-field">
-                  <span>Billing address</span>
+                  <span data-i18n-key="payments_form_billing_address">Billing address</span>
                   <input type="text" name="billingAddress" id="editAddress" required />
                 </label>
               </div>
               <div class="billing-form__actions">
-                <button class="business-button business-button--ghost" type="button" data-close-forms>Cancel</button>
-                <button class="business-button business-button--primary" type="submit">Save changes</button>
+                <button class="business-button business-button--ghost" type="button" data-close-forms data-i18n-key="button_cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit" data-i18n-key="button_save_changes">Save changes</button>
               </div>
             </form>
 
             <form class="billing-form business-form business-card" id="addBillingForm" data-form="add">
               <div class="business-card__header">
                 <div>
-                  <h3>Add backup payment method</h3>
-                  <p>Store an additional method for manual or emergency payments.</p>
+                  <h3 data-i18n-key="billing_add_backup_title">Add backup payment method</h3>
+                  <p data-i18n-key="billing_add_backup_subtitle">Store an additional method for manual or emergency payments.</p>
                 </div>
               </div>
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Payment method name</span>
+                  <span data-i18n-key="payments_form_method_name">Payment method name</span>
                   <input type="text" name="method" id="addMethod" placeholder="Corporate Amex, ACH" required />
                 </label>
                 <label class="form-field">
-                  <span>Account owner</span>
+                  <span data-i18n-key="billing_form_account_owner">Account owner</span>
                   <input type="text" name="cardholder" id="addCardholder" required />
                 </label>
                 <label class="form-field">
-                  <span>Account number</span>
+                  <span data-i18n-key="billing_form_account_number">Account number</span>
                   <input type="text" name="cardNumber" id="addAccountNumber" inputmode="numeric" required />
                 </label>
                 <label class="form-field">
-                  <span>Expiration or routing</span>
+                  <span data-i18n-key="billing_form_expiry_routing">Expiration or routing</span>
                   <input type="text" name="expiry" id="addExpiry" placeholder="MM/YY or Routing" />
                 </label>
                 <label class="form-field">
-                  <span>Preferred usage</span>
+                  <span data-i18n-key="billing_form_preferred_usage">Preferred usage</span>
                   <select name="preferredUsage" id="addUsage">
-                    <option value="backup">Backup - only if primary fails</option>
-                    <option value="manual">Manual one-time payments</option>
-                    <option value="split">Split invoices with primary</option>
+                    <option value="backup" data-i18n-key="option_backup">Backup - only if primary fails</option>
+                    <option value="manual" data-i18n-key="option_manual">Manual one-time payments</option>
+                    <option value="split" data-i18n-key="option_split">Split invoices with primary</option>
                   </select>
                 </label>
                 <label class="form-field">
-                  <span>Billing contact email</span>
+                  <span data-i18n-key="billing_form_contact_email">Billing contact email</span>
                   <input type="email" name="billingEmail" id="addEmail" placeholder="billing@legacybridge.co" />
                 </label>
                 <label class="form-field form-field--full">
-                  <span>Notes</span>
-                  <textarea name="notes" id="addNotes" rows="4" placeholder="Add internal instructions or handoff details"></textarea>
+                  <span data-i18n-key="form_internal_notes">Notes</span>
+                  <textarea name="notes" id="addNotes" rows="4" data-i18n-key="form_internal_notes_placeholder" placeholder="Add internal instructions or handoff details"></textarea>
                 </label>
               </div>
               <div class="billing-form__actions">
-                <button class="business-button business-button--ghost" type="button" data-close-forms>Cancel</button>
-                <button class="business-button business-button--primary" type="submit">Add payment method</button>
+                <button class="business-button business-button--ghost" type="button" data-close-forms data-i18n-key="button_cancel">Cancel</button>
+                <button class="business-button business-button--primary" type="submit" data-i18n-key="payments_add_method_button">Add payment method</button>
               </div>
             </form>
           </div>
         </section>
-      </main>
-    </div>
+      </main> -->
+  </div>
+  <script src="i18n.js"></script>
+    <script src="app.js"></script>
     <script src="business-billing.js"></script>
-  </body>
+</body>
+
 </html>

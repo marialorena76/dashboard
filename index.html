@@ -3,66 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MallowCare Insurance</title>
+  <title>Select User Type</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">MallowCare</div>
-    <a href="#" class="login-button">Login</a>
-  </nav>
-
-  <section class="hero">
-    <h1>Protect your loved ones, starting today.</h1>
-    <p>Secure comprehensive insurance coverage crafted for a peaceful tomorrow, for both individuals and businesses.</p>
-    <div class="hero-buttons">
-      <a href="#" class="primary">Request a Consultation</a>
-      <a href="#" class="secondary">Learn More</a>
-    </div>
-  </section>
-
-  <section class="section-center">
-    <h2>Tailored protection for individuals and businesses.</h2>
-    <div class="cards">
-      <div class="card" id="family-card">
-        <div class="card-content">
-          <h3>Coverage That Puts Your Family First</h3>
-          <p>Keep your loved ones safe with flexible plans designed around your family's needs.</p>
-          <a href="#">Get Started</a>
-        </div>
-      </div>
-      <div class="card" id="team-card">
-        <div class="card-content">
-          <h3>Support Your Team With Meaningful Benefits</h3>
-          <p>Offer your employees peace of mind with comprehensive workplace coverage.</p>
-          <a href="#">Get Started</a>
-        </div>
+  <div class="login-wrapper">
+    <div class="login-form">
+      <div class="logo-circle">MC</div>
+      <h2>Select User Type</h2>
+      <div class="option-buttons">
+        <a class="btn primary" href="individual-login.html">Personal</a>
+        <a class="btn secondary" href="business-login.html">Business</a>
       </div>
     </div>
-  </section>
-
-  <section class="contact">
-    <h2>Let's find the right plan for you.</h2>
-    <div class="form-container">
-      <form>
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Phone" required>
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Submit</button>
-      </form>
+    <div class="login-hero business">
+      <div class="content">
+        <h3>Human-centered benefits for your team.</h3>
+        <p>Offer your employees reliable and affordable funeral protections. A practical solution to enhance your company's benefit offering and support your team when they need it most.</p>
+      </div>
     </div>
-  </section>
-
-  <footer>
-    <p>Keeping lives safe and secure: made with love, knowledge, and dedication.</p>
-    <div class="links">
-      <a href="#">Terms and Conditions</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-  </footer>
+  </div>
+  <script src="i18n.js"></script>
 </body>
 </html>

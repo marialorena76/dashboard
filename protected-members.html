@@ -3,250 +3,237 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Protected Team</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
+    <title>Protected Team</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="dashboard dashboard--enterprise">
-      <aside class="sidebar sidebar--enterprise" aria-label="Employer navigation">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub">Employer Portal</span>
-          </div>
-        </div>
-        <nav class="menu enterprise-menu" aria-label="Primary">
-          <a href="business-dashboard.html">Overview</a>
-          <a href="protected-members.html" class="active">Protected Team</a>
-          <a href="#">Plans &amp; Billing</a>
-          <a href="#">Support</a>
-          <a href="#">Settings</a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" type="button">Log Out</button>
-          <div class="lang" role="group" aria-label="Language selection">
-            <button type="button" class="active">English</button>
-            <button type="button">Español</button>
-          </div>
-        </div>
-      </aside>
+    <main class="main-content">
+      <h1 class="page-title">Protected <span class="highlight">Team</span></h1>
 
-      <main class="main-content main-content--enterprise">
-        <header class="page-heading page-heading--enterprise">
-          <p class="breadcrumb">Dashboard • Protected Team</p>
-          <h1>Protected Team</h1>
-          <p class="page-heading__subtitle">
-            Keep your employee roster current and confirm coverage details before each payroll run.
+      <!-- Protected Employees Table -->
+      <section class="section-card">
+        <div class="section-card__header">
+          <h2>Protected Employees</h2>
+          <button class="primary-button add-member-btn">+ Add Member</button>
+        </div>
+
+        <table class="members-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Role</th>
+              <th>Coverage</th>
+              <th>Status</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody id="membersTableBody">
+            <!-- Filled dynamically by members.js -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Add NEW EMPLOYEE -->
+      <section
+        class="section-card add-member"
+        id="addMemberSection"
+        aria-labelledby="addNewEmployeeHeading"
+      >
+        <div class="add-member__header">
+          <h2 id="addNewEmployeeHeading">Add New Employee</h2>
+          <p class="add-member__subtitle">
+            Add or update employee details and include them in your company’s
+            plan.
           </p>
-        </header>
+        </div>
 
-        <section class="section-card members-table" aria-labelledby="protectedTeamHeading">
-          <div class="members-table__header">
-            <div>
-              <h2 id="protectedTeamHeading">Who's Protected</h2>
-              <p class="members-table__subtitle">
-                Add employees to extend coverage, adjust plan access as roles change, and keep invitations up to date.
-              </p>
+        <form id="employeeForm" class="add-member__form">
+          <div class="add-member__grid">
+            <div class="form-field form-field--full">
+              <label>Full Name</label>
+              <div class="form-field__row">
+                <input type="text" id="empFirstName" placeholder="First name" />
+                <input type="text" id="empLastName" placeholder="Last name" />
+              </div>
             </div>
-            <div class="members-table__actions">
-              <button type="button" class="ghost" id="exportRoster">Export roster</button>
-              <button type="button" class="primary" id="toAdd">+ Add Employee</button>
+
+            <div class="form-field form-field--full">
+              <label>Work Email</label>
+              <input type="email" id="empEmail" placeholder="name@company.com" />
             </div>
-          </div>
-          <div class="members-table__controls">
-            <label class="members-table__entries" for="entriesSelect">
-              Show
-              <select id="entriesSelect">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
+
+            <div class="form-field form-field--full">
+              <label>Role / Title</label>
+              <input type="text" id="empRole" placeholder="e.g. Manager" />
+            </div>
+
+            <div class="form-field form-field--full">
+              <label>Department</label>
+              <input
+                type="text"
+                id="empDepartment"
+                placeholder="e.g. People Operations"
+              />
+            </div>
+
+            <div class="form-field">
+              <label>Coverage start date</label>
+              <input type="date" id="empCoverageStart" />
+            </div>
+
+            <div class="form-field">
+              <label>Coverage type</label>
+              <select id="empCoverageType">
+                <option value="Full Coverage">Full Coverage</option>
+                <option value="Health + Vision">Health + Vision</option>
+                <option value="Health + Dental">Health + Dental</option>
+                <option value="Dental Only">Dental Only</option>
               </select>
-              entries
-            </label>
-            <label class="members-table__search" for="memberSearch">
-              Search
-              <input type="search" id="memberSearch" placeholder="Search team" />
-            </label>
-          </div>
-          <div class="table-wrapper">
-            <table id="membersTable">
-              <thead>
-                <tr>
-                  <th scope="col">Employee</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Coverage</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" class="actions-column">Manage</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div class="members-table__footer">
-            <p class="members-table__count" id="membersCount">Showing 0 entries</p>
-            <nav class="members-table__pagination" id="membersPagination" aria-label="Protected team pagination"></nav>
-          </div>
-        </section>
+            </div>
 
-        <section class="section-card" id="addMemberSection" aria-labelledby="addMemberHeading">
-          <div class="section-card__header">
-            <h2 id="addMemberHeading">Add New Employee</h2>
-            <p>Invite your team to the plan and confirm when their coverage should begin.</p>
+            <div class="form-field">
+              <label>Status</label>
+              <select id="empStatus">
+                <option value="Protected">Protected</option>
+                <option value="Invited">Invited</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
           </div>
-          <form id="addMemberForm" autocomplete="off">
+
+          <div class="add-member__actions">
+            <button type="button" class="secondary-button">Cancel</button>
+            <button type="submit" class="primary-button">Add Member</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ADD BENEFICIARY -->
+        <section
+          class="section-card add-beneficiary"
+          id="addBeneficiarySection"
+          aria-labelledby="addBeneficiaryHeading"
+        >
+          <div class="section-card__header">
+            <h2 id="addBeneficiaryHeading">Add Employee’s Beneficiary</h2>
+            <p>Link a beneficiary to one of your covered employees.</p>
+          </div>
+
+          <form id="beneficiaryForm" autocomplete="off">
             <div class="form-row">
-              <div class="form-group">
-                <label for="addFirstName">First Name</label>
-                <input type="text" id="addFirstName" name="firstName" required />
+              <div class="form-group form-group--full">
+                <label for="benefFirstName">Full Name</label>
+                <div class="form-row form-row--inline">
+                  <input
+                    type="text"
+                    id="benefFirstName"
+                    name="benefFirstName"
+                    placeholder="First name"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="benefLastName"
+                    name="benefLastName"
+                    placeholder="Last name"
+                    required
+                  />
+                </div>
               </div>
+
               <div class="form-group">
-                <label for="addLastName">Last Name</label>
-                <input type="text" id="addLastName" name="lastName" required />
+                <label for="benefEmployeeId">Employee ID</label>
+                <input
+                  type="text"
+                  id="benefEmployeeId"
+                  name="benefEmployeeId"
+                  placeholder="e.g. 8375930"
+                />
               </div>
+
               <div class="form-group">
-                <label for="addEmail">Work Email</label>
-                <input type="email" id="addEmail" name="email" required />
+                <label for="benefEmail">Email</label>
+                <input
+                  type="email"
+                  id="benefEmail"
+                  name="benefEmail"
+                  placeholder="john@email.com"
+                />
               </div>
-            </div>
-            <div class="form-row">
+
               <div class="form-group">
-                <label for="addRole">Role</label>
-                <input type="text" id="addRole" name="role" placeholder="e.g., Product Manager" required />
+                <label for="benefEnrollmentDate">Enrollment Date</label>
+                <input
+                  type="date"
+                  id="benefEnrollmentDate"
+                  name="benefEnrollmentDate"
+                />
               </div>
-              <div class="form-group">
-                <label for="addDepartment">Department</label>
-                <input type="text" id="addDepartment" name="department" placeholder="e.g., Product" />
+
+              <div class="form-group form-group--full">
+                <label for="benefAddress1">Address</label>
+                <input
+                  type="text"
+                  id="benefAddress1"
+                  name="benefAddress1"
+                  placeholder="123 Main Street"
+                />
               </div>
-              <div class="form-group">
-                <label for="addCoverageStart">Coverage Start</label>
-                <input type="date" id="addCoverageStart" name="coverageStart" />
+
+              <div class="form-group form-group--full">
+                <input
+                  type="text"
+                  id="benefAddress2"
+                  name="benefAddress2"
+                  placeholder="Address Line 2"
+                />
               </div>
-            </div>
-            <div class="form-row">
+
               <div class="form-group">
-                <label for="addPlanAccess">Plan Access</label>
-                <select id="addPlanAccess" name="planAccess">
-                  <option value="Full Coverage">Full Coverage</option>
-                  <option value="Health + Vision">Health + Vision</option>
-                  <option value="Health + Dental">Health + Dental</option>
-                  <option value="Dental Only">Dental Only</option>
+                <label for="benefCity">City</label>
+                <input
+                  type="text"
+                  id="benefCity"
+                  name="benefCity"
+                  placeholder="Miami"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="benefState">State</label>
+                <select id="benefState" name="benefState">
+                  <option value="">Select</option>
+                  <option value="FL">Florida</option>
+                  <option value="CA">California</option>
+                  <option value="NY">New York</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="addStatus">Status</label>
-                <select id="addStatus" name="status">
-                  <option value="Protected">Protected</option>
-                  <option value="Invited">Invited</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Suspended">Suspended</option>
-                </select>
+
+              <div class="form-group form-group--full">
+                <label for="benefPhone">Phone</label>
+                <input
+                  type="tel"
+                  id="benefPhone"
+                  name="benefPhone"
+                  placeholder="+1 555-123-4567"
+                />
               </div>
             </div>
+
             <div class="form-actions">
-              <button type="button" class="cancel" id="cancelAdd">Cancel</button>
-              <button type="submit">Add Employee</button>
+              <button
+                type="button"
+                id="cancelBeneficiary"
+                class="cancel"
+              >
+                Cancel
+              </button>
+              <button type="submit">Add Member</button>
             </div>
           </form>
         </section>
 
-        <section class="section-card" id="editMemberSection" aria-labelledby="editMemberHeading">
-          <div class="section-card__header">
-            <h2 id="editMemberHeading">Edit Employee</h2>
-            <p>Adjust coverage access or update employee details as roles evolve.</p>
-          </div>
-          <form id="editMemberForm" autocomplete="off">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editSelect">Select Employee</label>
-                <select id="editSelect" name="selectedMember">
-                  <option value="">Select employee</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editFirstName">First Name</label>
-                <input type="text" id="editFirstName" name="firstName" required />
-              </div>
-              <div class="form-group">
-                <label for="editLastName">Last Name</label>
-                <input type="text" id="editLastName" name="lastName" required />
-              </div>
-              <div class="form-group">
-                <label for="editEmail">Work Email</label>
-                <input type="email" id="editEmail" name="email" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editRole">Role</label>
-                <input type="text" id="editRole" name="role" required />
-              </div>
-              <div class="form-group">
-                <label for="editDepartment">Department</label>
-                <input type="text" id="editDepartment" name="department" />
-              </div>
-              <div class="form-group">
-                <label for="editCoverageStart">Coverage Start</label>
-                <input type="date" id="editCoverageStart" name="coverageStart" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="editPlanAccess">Plan Access</label>
-                <select id="editPlanAccess" name="planAccess">
-                  <option value="Full Coverage">Full Coverage</option>
-                  <option value="Health + Vision">Health + Vision</option>
-                  <option value="Health + Dental">Health + Dental</option>
-                  <option value="Dental Only">Dental Only</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="editStatus">Status</label>
-                <select id="editStatus" name="status">
-                  <option value="Protected">Protected</option>
-                  <option value="Invited">Invited</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Suspended">Suspended</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="cancel" id="cancelEdit">Cancel</button>
-              <button type="submit">Save Changes</button>
-            </div>
-          </form>
-        </section>
-
-        <section class="section-card" id="removeMemberSection" aria-labelledby="removeMemberHeading">
-          <div class="section-card__header">
-            <h2 id="removeMemberHeading">Remove Employee</h2>
-            <p>Deactivate coverage for someone who has left the company.</p>
-          </div>
-          <form id="removeMemberForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="removeSelect">Select Employee</label>
-                <select id="removeSelect" name="selectedRemove">
-                  <option value="">Select employee</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="button" class="cancel" id="cancelRemove">Cancel</button>
-              <button type="submit" class="danger">Remove Employee</button>
-            </div>
-          </form>
-        </section>
-      </main>
-    </div>
 
     <script src="members.js"></script>
   </body>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Iniciar sesión | MemoraCare</title>
+  <style>
+    :root{
+      --bg: #8da6a1;
+      --panel: #fff;
+      --text: #233;
+      --muted: #6b7a78;
+      --primary: #d6b35b;
+      --primary-hover:#c7a243;
+      --input: #eef2f1;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:var(--bg);
+    }
+    .wrap{
+      min-height:100%;
+      display:grid;
+      grid-template-columns: minmax(320px, 420px) 1fr;
+    }
+    @media (max-width: 920px){
+      .wrap{grid-template-columns:1fr}
+      .hero{display:none}
+    }
+    .panel{
+      background:var(--panel);
+      padding:48px 36px;
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{height:34px; width:auto; display:block}
+    .title{margin:0 0 4px 0;font-weight:800;font-size:28px;}
+    form{display:grid; gap:14px}
+    label{font-size:14px; color:var(--muted)}
+    .input{
+      display:block; width:100%;
+      background:var(--input);
+      border:1px solid #dde6e3;
+      border-radius:10px;
+      padding:14px 14px;
+      font-size:16px;
+      outline:none;
+      transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .input:focus{
+      border-color:#9fb7b1;
+      box-shadow:0 0 0 4px rgba(159,183,177,.18);
+      background:#fff;
+    }
+    .actions{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px}
+    .link{
+      color:var(--muted); font-size:14px; text-decoration:none;
+    }
+    .link:hover{text-decoration:underline}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--primary); color:#1b1b1b;
+      border:0; border-radius:999px; padding:12px 18px;
+      font-weight:700; cursor:pointer; min-width:160px;
+      transition:background .15s ease, transform .02s ease;
+    }
+    .btn:hover{background:var(--primary-hover)}
+    .btn:active{transform:translateY(1px)}
+    .btn[disabled]{opacity:.6; cursor:not-allowed}
+    .alert{font-size:14px; padding:10px 12px; border-radius:10px; display:none}
+    .alert.show{display:block}
+    .alert.error{background:#fdecea; color:#7c2f2a; border:1px solid #f3c1bc}
+    .alert.ok{background:#e9f7f2; color:#0b624a; border:1px solid #bfe6d7}
+    .muted{color:var(--muted); font-size:14px}
+    .hero{
+      background:var(--bg);
+      display:grid; place-items:center;
+      padding:48px;
+    }
+    .hero-inner{max-width:720px; color:#f3f7f6;}
+    .hero h2{font-size:40px; line-height:1.15; margin:0 0 12px 0;}
+    .hero p{font-size:18px; opacity:.95; margin:0}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="panel">
+      <div class="brand">
+        <img src="/logo.png" alt="Logotipo de MemoraCare" onerror="this.style.display='none'">
+      </div>
+
+      <header>
+        <h1 class="title">¡Bienvenido de nuevo!</h1>
+        <p class="muted">Accedé con tu cuenta de MemoraCare para continuar.</p>
+      </header>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="loginForm" autocomplete="on">
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input id="email" class="input" type="email" placeholder="usuario@ejemplo.com" required>
+        </div>
+
+        <div>
+          <label for="password">Contraseña</label>
+          <input id="password" class="input" type="password" placeholder="********" required>
+        </div>
+
+        <div class="actions">
+          <a class="link" href="https://memoracare.org/my-account/lost-password/">¿Olvidaste tu contraseña?</a>
+          <button id="submitBtn" class="btn" type="submit">
+            <span id="btnText">Iniciar sesión</span>
+            <span id="spinner" style="display:none">⏳</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="hero">
+      <div class="hero-inner">
+        <h2>Protegé a tus seres queridos, desde hoy.</h2>
+        <p>
+          Planes simples y grandes que aseguran que tu familia esté cubierta cuando sea más importante.
+          Sin papeleo complicado, sin cargos ocultos. Alcanzá la tranquilidad en minutos.
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const API_BASE = '/wp-json';
+    const alertBox = document.getElementById('alert');
+    const btn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
+
+function showAlert(msg, type = 'error') {
+  alertBox.className = 'alert show ' + (type === 'ok' ? 'ok' : 'error');
+
+  // Si viene HTML desde WordPress (como <strong>Error</strong>...), lo mostramos como HTML.
+  // Si querés, después podemos filtrar etiquetas permitidas.
+  alertBox.innerHTML = msg;
+}
+
+function clearAlert() {
+  alertBox.className = 'alert';
+  alertBox.innerHTML = '';
+}
+
+
+    async function loginMemora(e){
+      e.preventDefault();
+      clearAlert();
+      btn.disabled = true; spinner.style.display='inline'; btnText.textContent='Verificando...';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      try{
+        const r1 = await fetch(`${API_BASE}/jwt-auth/v1/token`, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ username: email, password })
+        });
+
+        const t1 = await r1.json();
+        if(!r1.ok){ throw new Error(t1?.message || 'Usuario o contraseña inválidos'); }
+        const token = t1.token;
+
+        const r2 = await fetch(`${API_BASE}/memora/v1/me`, {
+          headers:{ 'Authorization': 'Bearer '+token }
+        });
+        const me = await r2.json();
+        if(!r2.ok){ throw new Error(me?.message || 'No se pudo obtener tu plan'); }
+
+        sessionStorage.setItem('memora_token', token);
+        sessionStorage.setItem('memora_user', JSON.stringify(me));
+
+        if(me.status && me.status !== 'active'){
+          showAlert('Tu suscripción no está activa. Revisá tu cuenta en MemoraCare.', 'error');
+          return;
+        }
+
+// Redirección según el plan del usuario
+let destino = '/';
+switch ((me.plan || '').toLowerCase()) {
+  case 'personal':
+  case 'familiar':
+    destino = '/individual-dashboard.html';
+    break;
+
+  case 'bussines':
+  case 'business': // por si el backend devuelve esta variante
+  case 'corporate':
+    destino = '/business-dashboard.html';
+    break;
+
+  default:
+    // si el plan no existe o no se detecta
+    showAlert('No encontramos un plan activo. Revisá tu cuenta o suscripción.', 'error');
+    setTimeout(() => { window.location.href = 'https://memoracare.org/planes/'; }, 1000);
+    return;
+}
+
+showAlert('¡Ingreso correcto! Redirigiendo…', 'ok');
+setTimeout(() => { window.location.href = destino; }, 600);
+
+
+      }catch(err){
+        console.error(err);
+        showAlert(err.message || 'Error inesperado al iniciar sesión');
+      }finally{
+        btn.disabled = false; spinner.style.display='none'; btnText.textContent='Iniciar sesión';
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', loginMemora);
+  </script>
+</body>
+</html>

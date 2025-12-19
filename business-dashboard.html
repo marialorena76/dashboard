@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Business Overview</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard dashboard--enterprise">
-      <aside class="sidebar sidebar--enterprise">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub">Employer Portal</span>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Business Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard dashboard--enterprise">
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true" id="businessInitials"></div>
+        <div class="enterprise-brand__text">
+          <!-- Antes: LegacyBridge -->
+          <span class="enterprise-brand__label" id="businessNameLabel"></span>
         </div>
+
         <nav class="menu enterprise-menu">
           <a class="active" href="#">Overview</a>
           <a href="business-plans-billing.html">Plans &amp; Billing</a>
@@ -34,56 +33,89 @@
             <button class="active">English</button>
             <button>Español</button>
           </div>
+
+      </div>
+      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <nav class="menu enterprise-menu">
+        <div class="menu-item has-submenu">
+          <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
+            <span>Overview</span>
+            <span class="submenu-arrow"></span>
+          </button>
+          <ul class="submenu">
+            <li><a href="business-profile.html" data-i18n-key="menu_company_profile">Company Profile</a></li>
+            <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
+          </ul>
+
         </div>
-      </aside>
-      <main class="main-content main-content--enterprise">
-        <header class="page-heading page-heading--enterprise">
-          <p class="breadcrumb">Dashboard • Overview</p>
-          <h1>
-            Welcome back,
-            <span class="page-heading__highlight">LegacyBridge</span>
-          </h1>
-          <p class="page-heading__subtitle">
-            You&apos;re all caught up. Review the latest plan insights or invite
-            new team members to keep everyone covered.
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="business-support.html" data-i18n-key="menu_support">Support</a>
+        
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+    </aside>
+    <main class="main-content main-content--enterprise">
+      <div class="main-card">
+       <header class="main-card__header">
+        <h1>
+          <span>
+          <!-- Antes: Legacy Bridge -->
+            Welcome back, <strong id="businessWelcomeName"></strong>
+          </span>
+        </h1>
+       </header>
+
+        <div class="main-card__metrics">
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
+            <span id="planStatusPill" class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
+            <span id="totalCoveragePill" class="status-pill status-pill--coverage">UP TO $150,000</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
+            <span id="nextPaymentPill" class="status-pill status-pill--payment">MAY 01, 2025</span>
+              2025</span>
+          </div>
+        </div>
+        <div class="main-card__actions">
+          <button 
+            type="button"
+            class="enterprise-action"
+            data-i18n-key="add_employee_button"
+          >
+            Add Employee
+          </button>
+          <button class="enterprise-action" data-i18n-key="view_coverage_button">View Coverage</button>
+          <button class="enterprise-action" data-i18n-key="update_payment_button">Update Payment</button>
+          
+        </div>
+      </div>
+      <section class="enterprise-banner">
+        <div class="enterprise-banner__content">
+          <h2 data-i18n-key="promo_text_title">Human-centered benefits for your team.</h2>
+          <p>Offer your employees reliable and affordable funeral protection. A
+            practical solution to enhance your company's benefit offering and support your team when they need it most.
           </p>
-        </header>
-        <section class="enterprise-status">
-          <div class="metrics-card">
-            <div class="metrics-card__heading">
-              <span>Plan Status</span>
-              <span class="status-pill status-pill--active">Active</span>
-            </div>
-            <p class="metrics-card__detail">Coverage renewed Apr 18, 2025</p>
-          </div>
-          <div class="metrics-card">
-            <div class="metrics-card__heading">
-              <span>Total Coverage</span>
-              <span class="status-pill">Up to $150,000</span>
-            </div>
-            <p class="metrics-card__detail">Across medical, vision &amp; dental</p>
-          </div>
-          <div class="metrics-card">
-            <div class="metrics-card__heading">
-              <span>Next Payment</span>
-              <span class="status-pill">May 01, 2025</span>
-            </div>
-            <p class="metrics-card__detail">Auto pay scheduled via ACH</p>
-          </div>
-        </section>
-        <section class="enterprise-actions">
-          <button class="enterprise-action">Add employees</button>
-          <button class="enterprise-action">View headcount</button>
-          <button class="enterprise-action">Update payment</button>
-          <button class="enterprise-action">Manage alerts</button>
-        </section>
-        <section class="enterprise-banner">
-          <div class="enterprise-banner__content">
-            <h2>Human-centered benefits for your team.</h2>
-            <p class="enterprise-banner__meta">©2025 MallowCare — Privacy Policy</p>
-          </div>
-        </section>
-      </main>
-    </div>
-  </body>
+        </div>
+        <div class="banner-nav">
+          <button class="banner-nav__arrow">←</button>
+          <button class="banner-nav__arrow">→</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
