@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Toggle functionality for submenus in the sidebar
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const submenuContainer = toggle.closest('.has-submenu');
+      if (submenuContainer) {
+        submenuContainer.classList.toggle('open');
+      }
+    });
+  });
+
   if (typeof DASH_USER === 'undefined') return;
 
   const fullName =
@@ -17,9 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (initialsEl) initialsEl.textContent = makeInitials(label);
 
   // 3) “Welcome back, ____” (si existe)
-  // Usá cualquiera de estos IDs/clases según tu HTML (te dejo soportados varios)
   const welcomeNameEl =
-        document.getElementById('businessWelcomeName') ||   // <-- TU CASO
+        document.getElementById('businessWelcomeName') ||
         document.getElementById('welcomeName') ||
         document.querySelector('[data-welcome-name]') ||
         document.querySelector('.welcome-name');
