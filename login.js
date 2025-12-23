@@ -1,49 +1,82 @@
-document.getElementById('loginForm').addEventListener('submit', loginMemora);
+document.addEventListener('DOMContentLoaded', () => {
+  const individualLoginForm = document.getElementById('individual-login-form');
+  const businessLoginForm = document.getElementById('business-login-form');
 
-async function loginMemora(e) {
-  e.preventDefault();
+  const handleLogin = async (event, form) => {
+    event.preventDefault();
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[type="password"]').value;
 
-  const email = document.querySelector('#email').value.trim();
-  const password = document.querySelector('#password').value.trim();
+    try {
+      // Step 1: Get the JWT token
+      const tokenResponse = await fetch('/wp-json/jwt-auth/v1/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: email,
+          password: password,
+        }),
+      });
 
-  const msg = document.getElementById('mensaje');
-  msg.innerText = 'Verificando credenciales...';
+      if (!tokenResponse.ok) {
+        throw new Error('Invalid credentials');
+      }
 
-  try {
-    // 1️⃣ Pedimos el token a WordPress
-    const res = await fetch('https://memoracare.org/wp-json/jwt-auth/v1/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: email, password })
-    });
+      const tokenData = await tokenResponse.json();
+      const token = tokenData.token;
 
-    const data = await res.json();
+      if (!tokenData.token) {
+        throw new Error('Token not found in response');
+      }
 
-    if (!res.ok) throw new Error(data.message || 'Error al autenticar');
+      sessionStorage.setItem('memora_token', tokenData.token);
 
-    // 2️⃣ Guardamos el token en localStorage
-    localStorage.setItem('token', data.token);
+      const user = {
+        email: tokenData.user_email,
+        name: tokenData.user_nicename,
+        display: tokenData.user_display_name,
+      };
 
-    // 3️⃣ Consultamos el plan del usuario
-    const planRes = await fetch('https://memoracare.org/wp-json/memora/v1/me', {
-      headers: { Authorization: `Bearer ${data.token}` }
-    });
+      sessionStorage.setItem('memora_user', JSON.stringify(user));
 
-    const planData = await planRes.json();
+      // Step 2: Determine user type
+      const planResponse = await fetch('/wp-json/memora/v1/business-plan', {
+        headers: {
+          'Authorization': `Bearer ${tokenData.token}`,
+        },
+      });
 
-    // 4️⃣ Redirigir según membresía
-    if (planData.plan === 'personal') {
-      window.location.href = '/personal/index.html';
-    } else if (planData.plan === 'familiar') {
-      window.location.href = '/familiar/index.html';
-    } else if (planData.plan === 'empresarial') {
-      window.location.href = '/empresa/index.html';
-    } else {
-      msg.innerText = 'No se detectó un plan válido.';
+      if (!planResponse.ok) {
+        // If this endpoint fails, we assume it's an individual user.
+        localStorage.setItem('userType', 'individual');
+        window.location.href = 'individual-dashboard.html';
+        return;
+      }
+
+      const planData = await planResponse.json();
+      const { plan_status, employee_limit } = planData;
+
+      if (['active', 'on-hold', 'pending-cancel'].includes(plan_status) && employee_limit > 0) {
+        localStorage.setItem('userType', 'business');
+        window.location.href = 'business-dashboard.html';
+      } else {
+        localStorage.setItem('userType', 'individual');
+        window.location.href = 'individual-dashboard.html';
+      }
+
+    } catch (error) {
+      console.error('Login failed:', error);
+      alert('Login failed: ' + error.message);
     }
+  };
 
-  } catch (err) {
-    console.error(err);
-    msg.innerText = 'Error: ' + err.message;
+  if (individualLoginForm) {
+    individualLoginForm.addEventListener('submit', (event) => handleLogin(event, individualLoginForm));
   }
-}
+
+  if (businessLoginForm) {
+    businessLoginForm.addEventListener('submit', (event) => handleLogin(event, businessLoginForm));
+  }
+});

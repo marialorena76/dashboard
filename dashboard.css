@@ -6037,3 +6037,158 @@ body.modal-open {
   font-size: 20px;
   margin-bottom: 16px;
 }
+
+/* ===== New Individual Dashboard Styles ===== */
+
+/* --- General Layout & Colors --- */
+.individual-dashboard {
+  background-color: #FAF3E0; /* Cream background for the main content area */
+}
+
+.individual-dashboard__sidebar {
+  background: linear-gradient(180deg, #d9b65d 0%, #b48f36 100%);
+  color: #1f2933; /* Dark text for the sidebar */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* --- Sidebar Header --- */
+.individual-dashboard__sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}
+
+.individual-dashboard__sidebar .sidebar-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Add placeholder styles if needed */
+}
+
+.individual-dashboard__sidebar .sidebar-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* --- Sidebar Menu --- */
+.individual-dashboard__sidebar .sidebar-nav {
+  padding: 0 24px;
+}
+
+/* Collapsible Menu Logic */
+.individual-dashboard__menu .submenu {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  display: none; /* Hidden by default */
+}
+
+.has-submenu.open .submenu {
+  display: block; /* Shown when parent has .open class */
+}
+
+.submenu-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.submenu-arrow {
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg); /* Arrow points right by default */
+  transition: transform 0.3s ease;
+}
+
+.has-submenu.open .submenu-arrow {
+  transform: rotate(225deg); /* Arrow points up-left when open */
+}
+
+/* Main nav links */
+.individual-dashboard__sidebar .sidebar-link {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: block;
+}
+.individual-dashboard__sidebar .sidebar-link--primary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.individual-dashboard__sidebar .sidebar-link--primary::after {
+    content: '›';
+    font-size: 1.2rem;
+}
+
+
+/* --- Main Content Card --- */
+.individual-dashboard__main .main-card {
+  background-color: #FFFDF6;
+  border-radius: 12px;
+  padding: 2.5rem;
+}
+
+.individual-dashboard__main .main-card__header h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* --- Status Pills --- */
+.individual-dashboard__main .status-pill {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.individual-dashboard__main .status-pill--active {
+  background-color: #C6F6D5; /* Light green */
+  color: #22543D;
+}
+
+.individual-dashboard__main .status-pill--coverage {
+  background-color: #FEEBC8; /* Light orange/gold */
+  color: #9C4221;
+}
+
+.individual-dashboard__main .status-pill--payment {
+  background-color: #FEEBC8; /* Light orange/gold */
+  color: #9C4221;
+}
+
+/* --- Action Buttons --- */
+.individual-dashboard__main .main-card__actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.individual-dashboard__main .individuals-action {
+  background-color: #1A4D2E; /* Dark green from screenshot */
+  color: white;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.individual-dashboard__main .individuals-action:hover {
+  background-color: #276749; /* Slightly lighter green for hover */
+}

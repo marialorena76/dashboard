@@ -40,5 +40,12 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    proxy: {
+      "/wp-json": {
+        target: "https://memoracare.org",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 });

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const token = sessionStorage.getItem('memora_token');
   const userType = localStorage.getItem('userType');
   const pathname = window.location.pathname;
   const pageName = pathname.split('/').pop(); // extrae sólo el nombre del archivo
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isProtectedPage = isIndividualPage || isBusinessPage;
 
   // 1. If on a protected page but no user is logged in, redirect to the correct login.
-  if (isProtectedPage && !userType) {
+  if (isProtectedPage && !token) {
     if (isIndividualPage) {
       window.location.href = individualLoginPage;
     } else if (isBusinessPage) {
@@ -56,15 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const logoutDestination = userType === 'business'
         ? businessLoginPage
         : individualLoginPage;
-      // Clear all user-related data from localStorage
-      const keysToRemove = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('mallow-') || key === 'userType') {
-          keysToRemove.push(key);
-        }
-      }
-      keysToRemove.forEach(key => localStorage.removeItem(key));
+      // Clear all user-related data from localStorage and sessionStorage
+      localStorage.removeItem('userType');
+      sessionStorage.removeItem('memora_token');
+      sessionStorage.removeItem('memora_user');
+
 
       window.location.href = logoutDestination;
     });
