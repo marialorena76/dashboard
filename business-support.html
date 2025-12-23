@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard dashboard--enterprise">
+      <aside class="sidebar sidebar--enterprise" aria-label="Employer portal navigation">
+        <div class="enterprise-brand">
+          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+          <div class="enterprise-brand__text">
+            <span class="enterprise-brand__label">LegacyBridge</span>
+            <span class="enterprise-brand__sub">Employer Portal</span>
+          </div>
+        </div>
+        <nav class="menu enterprise-menu" aria-label="Primary">
+          <a href="business-dashboard.html">Overview</a>
+          <a href="business-plans-billing.html">Plans &amp; Billing</a>
+          <a href="business-support.html" class="active" aria-current="page">Support</a>
+          <a href="business-settings.html">Settings</a>
+        </nav>
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout" type="button">Log Out</button>
+          <div class="lang" aria-label="Language selection">
+            <button class="active" type="button">English</button>
+            <button type="button">Español</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content main-content--enterprise support-main">
+        <header class="page-heading page-heading--enterprise support-heading">
+          <p class="breadcrumb">Dashboard • Support</p>
+          <h1>Support</h1>
+          <p class="page-heading__subtitle">
+            Partner with our care team to onboard employees, answer plan questions, and resolve billing needs without the wait.
+          </p>
+        </header>
+
+        <section class="support-hero" aria-label="Help center overview">
+          <div class="support-hero__body">
+            <span class="eyebrow">Help Center</span>
+            <h2>Dedicated support for your workforce</h2>
+            <p>
+              Access guided onboarding, plan documentation, and real specialists who understand employer benefits. We keep your organization informed so every employee feels taken care of.
+            </p>
+            <div class="support-hero__actions">
+              <button class="support-button support-button--primary" type="button">Open help center</button>
+              <button class="support-button" type="button">Schedule onboarding</button>
+            </div>
+          </div>
+          <dl class="support-hero__meta">
+            <div>
+              <dt>Care hours</dt>
+              <dd>Mon–Fri · 7am–7pm CT</dd>
+            </div>
+            <div>
+              <dt>Priority phone</dt>
+              <dd>+1 (888) 555-0128</dd>
+            </div>
+            <div>
+              <dt>Average response</dt>
+              <dd>Under 10 minutes</dd>
+            </div>
+            <div>
+              <dt>Dedicated specialist</dt>
+              <dd>Jordan Patel</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="support-contact" aria-label="Contact options">
+          <h2>Contact our care specialists</h2>
+          <div class="support-contact__grid">
+            <article class="support-card">
+              <div class="support-card__icon" aria-hidden="true">💬</div>
+              <h3>Chat with us</h3>
+              <p>Start a secure chat to get answers about eligibility, invoices, or onboarding in real time.</p>
+              <button class="support-link" type="button">Start live chat</button>
+            </article>
+            <article class="support-card">
+              <div class="support-card__icon" aria-hidden="true">📞</div>
+              <h3>Call our hotline</h3>
+              <p>Speak directly with a benefits specialist for escalations or time-sensitive requests.</p>
+              <div class="support-card__meta">
+                <span>+1 (888) 555-0128</span>
+                <span>Mon–Fri · 7am–7pm CT</span>
+              </div>
+            </article>
+            <article class="support-card">
+              <div class="support-card__icon" aria-hidden="true">📧</div>
+              <h3>Email the team</h3>
+              <p>Send detailed documentation or upload rosters and we will respond with next steps.</p>
+              <button class="support-link" type="button">support@legacybridge.com</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="support-resources" aria-label="Resources">
+          <div class="support-resources__header">
+            <h2>Popular employer resources</h2>
+            <a class="support-link" href="#">Browse resource library</a>
+          </div>
+          <div class="support-resources__grid">
+            <article class="resource-card">
+              <h3>Onboarding toolkit</h3>
+              <p>Templates, welcome emails, and launch materials to introduce LegacyBridge to new hires.</p>
+              <ul>
+                <li>Checklist for HR teams</li>
+                <li>Employee FAQ PDF</li>
+                <li>Benefits kickoff deck</li>
+              </ul>
+            </article>
+            <article class="resource-card">
+              <h3>Claims &amp; coverage guides</h3>
+              <p>Step-by-step instructions to help employees submit claims and understand their coverage.</p>
+              <ul>
+                <li>Claims submission walkthrough</li>
+                <li>Coverage tiers overview</li>
+                <li>International travel add-ons</li>
+              </ul>
+            </article>
+            <article class="resource-card">
+              <h3>Billing &amp; compliance</h3>
+              <p>Stay audit ready with invoice reports, tax documentation, and compliance checklists.</p>
+              <ul>
+                <li>Monthly invoice reconciliation</li>
+                <li>1095-C distribution guide</li>
+                <li>State-by-state requirements</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="support-faq" aria-label="Support quick answers">
+          <h2>Quick answers</h2>
+          <div class="support-faq__grid">
+            <article class="faq-card">
+              <h3>How do we add or remove employees?</h3>
+              <p>Upload a roster in CSV or sync your HRIS to automatically provision coverage for new team members.</p>
+              <a class="support-link" href="#">View employee onboarding guide</a>
+            </article>
+            <article class="faq-card">
+              <h3>Where can I review pending claims?</h3>
+              <p>Navigate to Plans &amp; Billing &gt; Claims to monitor status updates and export detailed reports.</p>
+              <a class="support-link" href="#">Open claims dashboard</a>
+            </article>
+            <article class="faq-card">
+              <h3>Need escalated assistance?</h3>
+              <p>Message Jordan Patel, your assigned specialist, for complex approvals or compliance questions.</p>
+              <a class="support-link" href="#">Message my specialist</a>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

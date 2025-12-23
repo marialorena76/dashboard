@@ -68,7 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
       console.error('Login failed:', error);
+
       alert('Login failed: ' + error.message);
+
+      alert('Login failed. Please check your credentials and try again.');
+
     }
   };
 
