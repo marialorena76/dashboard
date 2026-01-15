@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Step 1: Get the JWT token
-      const tokenResponse = await fetch('/wp-json/jwt-auth/v1/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const tokenResponse = await fetch('https://memoracare.org/wp-json/jwt-auth/v1/token', {
+         headers: {
+           'Authorization': `Bearer ${tokenData.token}`,
         },
+
         body: JSON.stringify({
           username: email,
           password: password,
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sessionStorage.setItem('memora_user', JSON.stringify(user));
 
       // Step 2: Determine user type
-      const planResponse = await fetch('/wp-json/memora/v1/business-plan', {
+      const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
         headers: {
           'Authorization': `Bearer ${tokenData.token}`,
         },
