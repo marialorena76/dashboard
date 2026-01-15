@@ -9,37 +9,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Step 1: Get the JWT token
+      // Step 1: Get the JWT token
       const tokenResponse = await fetch('https://memoracare.org/wp-json/jwt-auth/v1/token', {
-         headers: {
-           'Authorization': `Bearer ${tokenData.token}`,
-        },
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+    },
+      body: JSON.stringify({
+        username: email,
+        password: password,
+    }),
+  });
 
-        body: JSON.stringify({
-          username: email,
-          password: password,
-        }),
-      });
+if (!tokenResponse.ok) {
+  throw new Error('Invalid credentials');
+}
 
-      if (!tokenResponse.ok) {
-        throw new Error('Invalid credentials');
-      }
+const tokenData = await tokenResponse.json();
+if (!tokenData.token) {
+  throw new Error('Token not found in response');
+}
 
-      const tokenData = await tokenResponse.json();
-      const token = tokenData.token;
-
-      if (!tokenData.token) {
-        throw new Error('Token not found in response');
-      }
-
-      sessionStorage.setItem('memora_token', tokenData.token);
-
-      const user = {
-        email: tokenData.user_email,
-        name: tokenData.user_nicename,
-        display: tokenData.user_display_name,
-      };
-
-      sessionStorage.setItem('memora_user', JSON.stringify(user));
+// Guardar token y datos del usuario
+sessionStorage.setItem('memora_token', tokenData.token);
+const user = {
+  email: tokenData.user_email,
+  name: tokenData.user_nicename,
+  display: tokenData.user_display_name,
+};
+sessionStorage.setItem('memora_user', JSON.stringify(user));
 
       // Step 2: Determine user type
       const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
