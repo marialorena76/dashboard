@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Step 1: Get the JWT token
+      // Step 1: Get the JWT token
       const tokenResponse = await fetch('https://memoracare.org/wp-json/jwt-auth/v1/token', {
         method: 'POST',
         headers: {
@@ -38,9 +39,14 @@ const user = {
 };
 sessionStorage.setItem('memora_user', JSON.stringify(user));
 
+
 // Ahora usar el token para consultar el plan
   const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
         method: 'GET',
+
+      // Step 2: Determine user type
+      const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
+
         headers: {
           'Authorization': `Bearer ${tokenData.token}`,
          'Content-Type': 'application/json'
