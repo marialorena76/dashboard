@@ -10,55 +10,54 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       // Step 1: Get the JWT token
       const tokenResponse = await fetch('https://memoracare.org/wp-json/jwt-auth/v1/token', {
-         headers: {
-           'Authorization': `Bearer ${tokenData.token}`,
-        },
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+    },
+      body: JSON.stringify({
+        username: email,
+        password: password,
+    }),
+  });
 
-        body: JSON.stringify({
-          username: email,
-          password: password,
-        }),
-      });
+if (!tokenResponse.ok) {
+  throw new Error('Invalid credentials');
+}
 
-      if (!tokenResponse.ok) {
-        throw new Error('Invalid credentials');
-      }
+const tokenData = await tokenResponse.json();
+if (!tokenData.token) {
+  throw new Error('Token not found in response');
+}
 
-      const tokenData = await tokenResponse.json();
-      const token = tokenData.token;
+// Guardar token y datos del usuario
+sessionStorage.setItem('memora_token', tokenData.token);
+const user = {
+  email: tokenData.user_email,
+  name: tokenData.user_nicename,
+  display: tokenData.user_display_name,
+};
+sessionStorage.setItem('memora_user', JSON.stringify(user));
 
-      if (!tokenData.token) {
-        throw new Error('Token not found in response');
-      }
-
-      sessionStorage.setItem('memora_token', tokenData.token);
-
-      const user = {
-        email: tokenData.user_email,
-        name: tokenData.user_nicename,
-        display: tokenData.user_display_name,
-      };
-
-      sessionStorage.setItem('memora_user', JSON.stringify(user));
-
-      // Step 2: Determine user type
-      const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
+// Ahora usar el token para consultar el plan
+  const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
+        method: 'GET',
         headers: {
           'Authorization': `Bearer ${tokenData.token}`,
+         'Content-Type': 'application/json'
         },
-      });
+  })
 
-      if (!planResponse.ok) {
-        // If this endpoint fails, we assume it's an individual user.
-        localStorage.setItem('userType', 'individual');
-        window.location.href = 'individual-dashboard.html';
-        return;
-      }
+
+
+  if (!planResponse.ok) {
+    alert('Estamos activando tu plan empresarial. Por favor, intenta iniciar sesión de nuevo en unos minutos.');
+    return;
+  }
 
       const planData = await planResponse.json();
       const { plan_status, employee_limit } = planData;
 
-      if (['active', 'on-hold', 'pending-cancel'].includes(plan_status) && employee_limit > 0) {
+      if (['active', 'on-hold', 'pending-cancel'].includes(plan_status)) {
         localStorage.setItem('userType', 'business');
         window.location.href = 'business-dashboard.html';
       } else {
@@ -68,11 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
       console.error('Login failed:', error);
-
       alert('Login failed: ' + error.message);
-
-      alert('Login failed. Please check your credentials and try again.');
-
     }
   };
 
