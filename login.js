@@ -25,7 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: tokenData.user_display_name,
       }));
 
-      // 3. Consultar plan empresarial
+      // 2a. Si el formulario es el de login individual, no consultamos el plan.
+      if (form.id === 'individual-login-form') {
+        localStorage.setItem('userType', 'individual');      // marcamos al usuario como individual
+        window.location.href = 'individual-dashboard.html';  // redirigimos al dashboard individual
+        return;                                              // terminamos el flujo aquí
+      }
+
+      // 3. Consultar plan empresarial (solo para logins de empresa)
       const planResponse = await fetch('https://memoracare.org/wp-json/memora/v1/business-plan', {
         method: 'GET',
         headers: {
