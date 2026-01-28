@@ -41,9 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       });
       if (!planResponse.ok) {
-        alert('Estamos activando tu plan empresarial. Por favor, intenta iniciar sesión de nuevo en unos minutos.');
+        // Si la API aún no devuelve el plan, asumimos usuario empresarial y redirigimos al dashboard de empresa.
+        localStorage.setItem('userType', 'business');
+        window.location.href = 'business-dashboard.html';
         return;
       }
+
       const planData   = await planResponse.json();
       const planStatus = planData.plan_status;
 
