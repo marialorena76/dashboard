@@ -6450,3 +6450,4 @@ body.modal-open {
 .individual-dashboard__menu .has-submenu.open .submenu-arrow {
   transform: rotate(225deg);     /* flecha apuntando hacia arriba cuando se abre */
 }
+}
