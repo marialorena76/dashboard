@@ -5638,11 +5638,11 @@ body.modal-open {
 .sidebar-welcome__line {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(217, 182, 93, 0.5);
 }
 
 .sidebar-welcome__text {
-  font-size: 12px;
+  font-size: 12px; 
   font-weight: 500;
   opacity: 0.9;
 }
@@ -5911,7 +5911,7 @@ body.modal-open {
 .individual-dashboard__sidebar .sidebar-welcome__line {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(217, 182, 93, 0.5);
 }
 
 .individual-dashboard__sidebar .sidebar-welcome__text {
