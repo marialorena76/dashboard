@@ -3936,10 +3936,6 @@ body.modal-open {
   color: var(--sand-900);
 }
 
-.individual-dashboard__sidebar {
-  background: linear-gradient(180deg, #d9b65d 0%, #b48f36 100%);
-  /* color: #fdf9ed; */
-}
 
 .individual-sidebar__header {
   display: flex;
