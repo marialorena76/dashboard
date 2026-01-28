@@ -18,6 +18,7 @@
     <div class="sidebar-header">
       <div class="sidebar-avatar"></div>
         <!-- si después querés meter una imagen, va acá -->
+         <img src="logo-mallowcare.png" alt="Memora Logo" class="sidebar-logo">
       <div class="sidebar-name" id="sidebarUserName"></div>
     </div>
 
@@ -150,8 +151,18 @@
         // display_name viene en "name"
         const fullName = user.name || '';
 
-        const nameEl = document.querySelector('#userName');
-        if (nameEl) nameEl.textContent = fullName;
+// Seleccionar el <strong> dentro de #userName y el div de la barra lateral
+const nameEl = document.querySelector('#userName strong');
+const sidebarNameEl = document.querySelector('#sidebarUserName');
+
+// Asignar el nombre del usuario si existen los elementos
+if (nameEl) {
+  nameEl.textContent = fullName;
+}
+if (sidebarNameEl) {
+  sidebarNameEl.textContent = fullName;
+}
+
     })
     .catch(err => console.error(err));
   }
@@ -211,7 +222,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   const displayName = me.display || me.name || titleCaseEmail(me.email);
 
   // Pintar nombre (targets típicos + data-user-name)
-  const nameTargets = ['[data-user-name]','.individual-dashboard__profile-name','.profile-name','#user-name','.user-name'];
+  const nameTargets = [
+  '#userName strong',    // selecciona el <strong> en el encabezado
+  '#sidebarUserName',    // selecciona el nombre en la barra lateral
+  '[data-user-name]',
+  '.individual-dashboard__profile-name',
+  '.profile-name',
+  '#user-name',
+  '.user-name'
+];
+
   let painted = false;
   for(const sel of nameTargets){ $$(sel).forEach(el=>{ el.textContent = displayName; painted = true; }); }
   if(!painted){
