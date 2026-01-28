@@ -6352,7 +6352,14 @@ body.modal-open {
   padding: 3px;
   transform: rotate(45deg); /* Arrow points right by default */
   transition: transform 0.3s ease;
-}
+  /* Flecha más grande y con color oscuro para que se vea sobre el dorado */
+  display: inline-block;
+  border: solid #1f2933;
+  border-width: 0 3px 3px 0;
+  padding: 5px;
+  transform: rotate(45deg); /* flecha apuntando hacia abajo */
+  transition: transform 0.3s ease;
+ }
 
 .has-submenu.open .submenu-arrow {
   transform: rotate(225deg); /* Arrow points up-left when open */
@@ -6432,4 +6439,19 @@ body.modal-open {
 
 .individual-dashboard__main .individuals-action:hover {
   background-color: #276749; /* Slightly lighter green for hover */
+}
+
+/* Ajuste de visibilidad para la flecha del submenú en dashboards individuales */
+.individual-dashboard__menu .submenu-arrow {
+  display: inline-block;
+  border: solid #1f2933;
+  border-width: 0 3px 3px 0;
+  padding: 5px;
+  transform: rotate(45deg);     /* flecha apuntando hacia abajo */
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.individual-dashboard__menu .has-submenu.open .submenu-arrow {
+  transform: rotate(225deg);     /* flecha apuntando hacia arriba cuando se abre */
 }
