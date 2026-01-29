@@ -377,7 +377,9 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((err) => {
       console.error("Error al cargar business-plan:", err);
+    });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("businessProfileForm");
   if (!form) return; // no estamos en esa sección

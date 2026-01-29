@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const defaultMethod = {
     method: 'Visa',
-    cardholder: 'Maria Thompson',
+    cardholder: 'User Name',
     cardNumber: '4242 4242 4242 4321',
     expiry: '09/27',
     autopay: 'active',
