@@ -9,54 +9,150 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
+  <style>
+    /* Estilos para el sidebar del dashboard individual - Refinados para mayor especificidad */
+    aside.sidebar.individual-dashboard__sidebar {
+      background: #d9b65d; /* Color sólido oro/mostaza de la captura */
+    }
+
+    nav.individual-dashboard__menu .submenu-toggle,
+    aside.sidebar.individual-dashboard__sidebar .sidebar-link {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #163c30;
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    nav.individual-dashboard__menu .submenu-toggle {
+      margin-top: 0;
+    }
+
+    nav.individual-dashboard__menu .has-submenu {
+      margin-top: 1.25rem;
+    }
+
+    /* Flechas consistentes para My Account y Settings */
+    nav.individual-dashboard__menu .submenu-arrow,
+    aside.sidebar.individual-dashboard__sidebar .sidebar-link--primary::after {
+      content: '';
+      display: inline-block;
+      border: solid #163c30;
+      border-width: 0 3px 3px 0;
+      padding: 4px;
+      transform: rotate(-45deg); /* Apunta a la derecha */
+      transition: transform 0.3s ease;
+      margin-left: 0.5rem;
+    }
+
+    nav.individual-dashboard__menu .has-submenu.open .submenu-arrow {
+      transform: rotate(45deg); /* Apunta hacia abajo cuando está abierto */
+    }
+
+    /* Estilos del Submenú */
+    nav.individual-dashboard__menu .submenu {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0 0;
+      display: none;
+    }
+
+    nav.individual-dashboard__menu .has-submenu.open .submenu {
+      display: block;
+    }
+
+    nav.individual-dashboard__menu .submenu li {
+      margin-bottom: 0.65rem;
+      list-style: none;
+    }
+
+    nav.individual-dashboard__menu .submenu a {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #163c30;
+      padding: 0;
+      display: block;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="dashboard settings-dashboard" data-settings-prefix="ivy-settings-">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="images/flying-kite.jpg" alt="Portrait of Maria Thompson">
-        <h2>Maria Thompson</h2>
-        <p>Welcome to your Dashboard</p>
-
-  <div class="dashboard new-dashboard">
-    <aside class="sidebar individual-dashboard__sidebar">
-      <div class="individual-dashboard__profile-card">
-        <div class="individual-dashboard__profile-avatar">
-          <img src="images/avatar-default.svg" alt="Avatar del usuario"
-            class="individual-dashboard__profile-avatar-image" data-user-avatar>
-        </div>
-        <h2 class="individual-dashboard__profile-name"><span data-user-name>Dcaceres2097</span></h2>
-
-
+  <div class="dashboard new-dashboard individual-dashboard">
+  <aside class="sidebar individual-dashboard__sidebar">
+<!-- Avatar + Nombre -->
+    <div class="sidebar-header">
+      <div class="sidebar-brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+        <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
+        <div class="sidebar-name" id="sidebarUserName"></div>
       </div>
-      <p class="gray-text" data-i18n-key="sidebar_dashboard">Welcome to your Dashboard</p>
-      <nav class="individual-dashboard__menu">
-        <div class="menu-item has-submenu">
-          <button type="button" class="submenu-toggle" data-i18n-key="menu_my_account">
-            <span>My Account</span>
-            <span class="submenu-arrow"></span>
-          </button>
-          <ul class="submenu">
-            <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
-            <li><a href="protected-members-individual.html" data-i18n-key="menu_protected_members">Protected Members</a></li>
-            <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
-          </ul>
-        </div>
-        <a href="payments.html" data-i18n-key="menu_payments">Payments</a>
-        <a href="help.html" data-i18n-key="menu_help">Help</a>
-        <a href="settings.html" data-i18n-key="menu_settings">Settings ></a>
-      </nav>
-      <div class="sidebar-bottom individual-dashboard__sidebar-footer">
-        <button class="logout" data-i18n-key="logout_button">Log Out</button>
-        <div class="lang-switcher">
-          <button data-lang="en" class="active" data-i18n-key="lang_english">English</button>
-          <button data-lang="es" data-i18n-key="lang_spanish">Español</button>
-        </div>
-        <p class="gray-text" data-i18n-key="sidebar_dashboard">©2025 MemoraCare | Privacy Policy</p>
+    </div>
+
+  <!-- Línea + subtítulo -->
+    <div class="sidebar-welcome">
+      <span class="sidebar-welcome__line"></span>
+      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+      <span class="sidebar-welcome__line"></span>
+    </div>
+
+
+  <!-- Menú -->
+
+    <nav class="sidebar-nav individual-dashboard__menu">
+
+      <!-- My Account con submenú -->
+      <div class="has-submenu">
+        <button class="submenu-toggle" type="button">
+          <span>My Account</span>
+          <span class="submenu-arrow"></span>
+        </button>
+
+        <ul class="submenu">
+          <li><a href="my-profile.html">My Profile</a></li>
+          <li><a href="protected-members-individual.html">Protected Members</a></li>
+          <li><a href="manage-my-plan.html">Manage My Plan</a></li>
+        </ul>
       </div>
-    </aside>
+
+      <!-- Links principales -->
+      <a href="payments.html" class="sidebar-link">Payments</a>
+      <a href="help.html" class="sidebar-link">Help</a>
+      <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+
+      <!-- Botón Log Out -->
+   <button class="sidebar-logout logout" data-i18n-key="logout_button">
+      Log Out
+   </button>
+
+
+      <!-- Idiomas -->
+     <div class="sidebar-languages">
+        <button class="lang-btn active">English</button>
+        <button class="lang-btn">Español</button>
+     </div>
+
+      <!-- Línea + Copyright -->
+      <div class="sidebar-footer-legal">
+        <span class="footer-line"></span>
+        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+        <span class="footer-line"></span>
+      </div>
+
+    </div>
+
+  </aside>
 
     <main class="main-content new-main-content">
       <div class="settings-main">
