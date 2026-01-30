@@ -1,0 +1,53 @@
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /individual-dashboard.html HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /images/memora-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /i18n.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /images/imagen%20blanca.png HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /locales/en.json HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /individual-login.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 44562)
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /individual-login.html HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 1311, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 679, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/http/server.py", line 878, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+  File "/home/jules/.pyenv/versions/3.12.12/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /login.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /login.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /images/logo-mallowcare.png HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /images/foto_personal(1).jpg HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jan/2026 16:16:42] "GET /individual-login.html HTTP/1.1" 304 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /individual-dashboard.html HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /images/memora-logo.png HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /i18n.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /locales/en.json HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /wp-json/wp/v2/users/me HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] code 404, message File not found
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /wp-json/memora/v1/me HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jan/2026 16:19:39] "GET /images/imagen%20blanca.png HTTP/1.1" 200 -

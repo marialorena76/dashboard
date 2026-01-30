@@ -6,205 +6,280 @@
   <title>Dashboard - My Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+  <!--<div class="dashboard new-dashboard">-->
   <div class="dashboard new-dashboard individual-dashboard">
-    <aside class="sidebar individual-dashboard__sidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-brand u-flex-column-center">
-          <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
-          <span class="sidebar-name" id="sidebarUserName" data-user-name>User Name</span>
-        </div>
-      </div>
-      <div class="sidebar-welcome">
-        <span class="sidebar-welcome__line"></span>
-        <span class="sidebar-welcome__text" data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</span>
-        <span class="sidebar-welcome__line"></span>
-      </div>
-      <nav class="sidebar-nav individual-dashboard__menu">
-        <a href="individual-dashboard.html" class="sidebar-link" data-i18n-key="sidebar_dashboard">Dashboard</a>
-        <div class="has-submenu">
-          <button class="submenu-toggle" type="button">
-            <span data-i18n-key="menu_my_account">My Account</span>
-            <span class="submenu-arrow"></span>
-          </button>
-          <ul class="submenu">
-            <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
-            <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
-            <li><a href="payments.html" data-i18n-key="menu_payments">Payments</a></li>
-          </ul>
-        </div>
-        <a href="protected-members-individual.html" class="sidebar-link" data-i18n-key="menu_protected_members">Protected Members</a>
-        <a href="settings.html" class="sidebar-link" data-i18n-key="menu_settings">Settings</a>
-        <a href="help.html" class="sidebar-link" data-i18n-key="sidebar_help">Help</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button class="sidebar-logout logout" data-i18n-key="logout_button">Log Out</button>
-        <div class="sidebar-languages">
-          <button class="lang-btn" data-lang="en" data-i18n-key="lang_english">English</button>
-          <button class="lang-btn" data-lang="es" data-i18n-key="lang_spanish">Español</button>
-        </div>
-        <div class="sidebar-footer-legal">
-          <span class="footer-line"></span>
-          <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
-          <span class="footer-line"></span>
-        </div>
-      </div>
-    </aside>
+  <aside class="sidebar individual-dashboard__sidebar">
+    <!-- Avatar + Nombre -->
+    <div class="sidebar-header">
+      <div class="sidebar-avatar"></div>
+        <!-- si después querés meter una imagen, va acá -->
+      <div class="sidebar-name" id="sidebarUserName"></div>
+    </div>
 
-    <main class="main-content individual-dashboard__main">
+  <!-- Línea + subtítulo -->
+    <div class="sidebar-welcome">
+      <span class="sidebar-welcome__line"></span>
+      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+      <span class="sidebar-welcome__line"></span>
+    </div>
+
+
+  <!-- Menú -->
+
+    <nav class="sidebar-nav individual-dashboard__menu">
+
+      <!-- My Account con submenú -->
+      <div class="has-submenu">
+        <button class="submenu-toggle" type="button">
+          <span>My Account</span>
+          <span class="submenu-arrow"></span>
+        </button>
+
+        <ul class="submenu">
+          <li><a href="my-profile.html">My Profile</a></li>
+          <li><a href="protected-members-individual.html">Protected Members</a></li>
+          <li><a href="manage-my-plan.html">Manage My Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- Links principales -->
+      <a href="payments.html" class="sidebar-link">Payments</a>
+      <a href="help.html" class="sidebar-link">Help</a>
+      <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+
+      <!-- Botón Log Out -->
+        <button class="sidebar-logout logout" data-i18n-key="logout_button">
+          Log Out
+        </button>
+
+      <!-- Idiomas -->
+     <div class="sidebar-languages">
+        <button class="lang-btn active">English</button>
+        <button class="lang-btn">Español</button>
+     </div>
+
+      <!-- Línea + Copyright -->
+      <div class="sidebar-footer-legal">
+        <span class="footer-line"></span>
+        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+        <span class="footer-line"></span>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+    <main class="main-content new-main-content">
       <header class="content-header">
-        <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
+        <div>
+          <h1 data-i18n-key="profile_my_profile_title">My <strong>Profile</strong></h1>
+        </div>
       </header>
 
-      <!-- Personal Details -->
-      <section class="main-card">
-        <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
-        <p data-i18n-key="profile_personal_details_subtitle">Update your contact information so we can reach you without delays.</p>
-
-        <div class="profile-section-content">
-          <div class="profile-emblem-container">
-            <img src="images/memora-logo.png" alt="Profile Emblem">
-          </div>
-
-          <div class="profile-form-container">
-            <!-- Display Mode -->
-            <div data-personal-display>
-              <div class="u-margin-bottom-sm">
-                <strong data-user-name>Maria Thompson</strong>
-              </div>
-              <div class="u-margin-bottom-sm">
-                <span data-user-email>maria@email.com</span>
-              </div>
-              <div class="u-margin-bottom-sm">
-                <span data-user-phone>+1 555-123-4567</span>
-              </div>
-              <div class="u-margin-bottom-sm">
-                <span data-user-address>123 Maple Ave, Springfield, IL 62704</span>
-              </div>
-              <button type="button" class="profile-save-btn" data-personal-edit-trigger data-i18n-key="update_profile_button">Update My Profile</button>
+      <div class="profile-main">
+        <section class="main-card profile-section">
+          <div class="profile-section-content">
+            <div class="profile-emblem-container">
+              <span id="profileInitials" style="font-size: 80px; font-weight: 700; color: #163c30;"></span>
             </div>
 
-            <!-- Edit Mode -->
-            <form id="personalForm" data-personal-form class="is-hidden">
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_full_name">Full Name</label>
-                <input type="text" name="personal-full-name" class="profile-field-styled">
+            <div class="profile-form-container">
+              <div class="panel-copy u-margin-bottom-sm">
+                <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
+                <p data-i18n-key="profile_personal_details_subtitle">Keep your details current so we can reach you when it matters most.</p>
               </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_email_address">Email</label>
-                <input type="email" name="personal-email" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_phone_number">Phone</label>
-                <input type="tel" name="personal-phone" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_address1">Address 1</label>
-                <input type="text" name="personal-address-1" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_address2">Address 2</label>
-                <input type="text" name="personal-address-2" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_city">City</label>
-                <input type="text" name="personal-city" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_state">State</label>
-                <input type="text" name="personal-state" class="profile-field-styled">
-              </div>
-              <div class="profile-form-group">
-                <label class="profile-form-label" data-i18n-key="form_postal_code">ZIP Code</label>
-                <input type="text" name="personal-zip" class="profile-field-styled">
-              </div>
-              <!-- Hidden fields expected by app.js -->
-              <input type="hidden" name="personal-preferred-name">
-              <input type="hidden" name="personal-country">
 
-              <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <button type="submit" class="profile-save-btn" data-i18n-key="button_save_changes">Save Changes</button>
-                <button type="button" class="profile-save-btn" style="background: #999;" data-personal-cancel data-i18n-key="button_cancel">Cancel</button>
+              <form id="personalForm" class="panel-form" autocomplete="on">
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>First Name</span>
+                    <input type="text" name="firstName" value="Maria" autocomplete="given-name" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Last Name</span>
+                    <input type="text" name="lastName" value="Thompson" autocomplete="family-name" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Email address*</span>
+                    <input type="email" name="emailAddress" value="maria@email.com" autocomplete="email" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Phone</span>
+                    <input type="tel" name="phoneNumber" value="+1 555-123-4567" autocomplete="tel" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Address Line 1</span>
+                    <input type="text" name="address1" value="123 Main Street" autocomplete="address-line1" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Address Line 2</span>
+                    <input type="text" name="address2" placeholder="Apartment, suite, etc." autocomplete="address-line2">
+                  </label>
+                </div>
+                <div class="form-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                  <label class="form-field">
+                    <span>City</span>
+                    <input type="text" name="city" value="Miami" autocomplete="address-level2" required>
+                  </label>
+                  <label class="form-field">
+                    <span>State</span>
+                    <select name="state" autocomplete="address-level1" required>
+                      <option value="" disabled>State</option>
+                      <option value="FL" selected>Florida</option>
+                      <option value="TX">Texas</option>
+                      <option value="CA">California</option>
+                      <option value="NY">New York</option>
+                    </select>
+                  </label>
+                  <label class="form-field">
+                    <span>Postal Code</span>
+                    <input type="text" name="postalCode" value="33101" autocomplete="postal-code" required>
+                  </label>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+                  <button type="submit" class="button primary-button" data-i18n-key="button_save_changes">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+            <section class="main-card beneficiary-panel">
+              <div class="panel-header u-margin-bottom-sm">
+                <div class="panel-copy">
+                  <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
+                  <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
+                </div>
               </div>
-            </form>
+              <form id="beneficiaryForm" class="panel-form" autocomplete="on">
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>First Name</span>
+                    <input type="text" name="beneficiaryFirstName" value="Maria" autocomplete="given-name" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Last Name</span>
+                    <input type="text" name="beneficiaryLastName" value="Thompson" autocomplete="family-name" required>
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Email address*</span>
+                    <input type="email" name="beneficiaryEmail" value="maria@email.com" autocomplete="email" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Phone</span>
+                    <input type="tel" name="beneficiaryPhone" value="+1 555-123-4567" autocomplete="tel">
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <label class="form-field">
+                    <span>Address Line 1</span>
+                    <input type="text" name="beneficiaryAddress1" value="123 Main Street" autocomplete="address-line1" required>
+                  </label>
+                  <label class="form-field">
+                    <span>Address Line 2</span>
+                    <input type="text" name="beneficiaryAddress2" placeholder="Apartment, suite, etc." autocomplete="address-line2">
+                  </label>
+                </div>
+                <div class="form-grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                  <label class="form-field">
+                    <span>City</span>
+                    <input type="text" name="beneficiaryCity" value="Miami" autocomplete="address-level2" required>
+                  </label>
+                  <label class="form-field">
+                    <span>State</span>
+                    <select name="beneficiaryState" autocomplete="address-level1" required>
+                      <option value="" disabled>State</option>
+                      <option value="FL" selected>Florida</option>
+                      <option value="TX">Texas</option>
+                      <option value="CA">California</option>
+                      <option value="NY">New York</option>
+                    </select>
+                  </label>
+                  <label class="form-field">
+                    <span>Postal Code</span>
+                    <input type="text" name="beneficiaryPostalCode" value="33101" autocomplete="postal-code">
+                  </label>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="button cancel-button" data-action="cancel" data-i18n-key="button_cancel">Cancel</button>
+                  <button type="submit" class="button primary-button" data-i18n-key="button_save_beneficiary">Save Changes</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="main-card documents-panel">
+              <div class="panel-header u-margin-bottom-sm">
+                <div class="panel-copy">
+                  <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
+                  <p data-i18n-key="profile_documents_subtitle">Securely upload your ID's to keep your account verified and protected. Only one document is required for verification.</p>
+                </div>
+              </div>
+              <form id="documentsForm" class="documents-form" enctype="multipart/form-data">
+                <div class="documents-table">
+                  <div class="documents-row">
+                    <span class="doc-title" data-i18n-key="doc_passport">Passport</span>
+                    <span class="status-badge status-pending" data-status-pill-target="passportStatus">Not Submitted</span>
+                    <span class="file-name" data-file-name="passportFile">No document uploaded</span>
+                    <button type="button" class="button primary-button" data-target="passportInput">Upload/Update Document</button>
+                    <input id="passportInput" type="file" name="passport" accept="image/*,application/pdf" hidden data-file-output="passportFile">
+                  </div>
+                  <div class="documents-row">
+                    <span class="doc-title" data-i18n-key="doc_drivers_license">Driver's License</span>
+                    <span class="status-badge status-pending" data-status-pill-target="licenseStatus">Not Submitted</span>
+                    <span class="file-name" data-file-name="licenseFile">No document uploaded</span>
+                    <button type="button" class="button primary-button" data-target="licenseInput">Upload/Update Document</button>
+                    <input id="licenseInput" type="file" name="driversLicense" accept="image/*,application/pdf" hidden data-file-output="licenseFile">
+                  </div>
+                  <div class="documents-row">
+                    <span class="doc-title" data-i18n-key="doc_ssn">Social Security</span>
+                    <span class="status-badge status-pending" data-status-pill-target="ssnStatus">Not Submitted</span>
+                    <span class="file-name" data-file-name="ssnFile">No document uploaded</span>
+                    <button type="button" class="button primary-button" data-target="ssnInput">Upload/Update Document</button>
+                    <input id="ssnInput" type="file" name="socialSecurity" accept="image/*,application/pdf" hidden data-file-output="ssnFile">
+                  </div>
+                </div>
+                <div class="form-actions" style="margin-top: 20px;">
+                  <button type="submit" class="button primary-button" data-i18n-key="button_save_documents">Save Documents</button>
+                </div>
+              </form>
+            </section>
+
+            <section class="main-card language-panel">
+              <div class="panel-header u-margin-bottom-sm">
+                <div class="panel-copy">
+                  <h2 data-i18n-key="profile_language_title">Language Preference</h2>
+                  <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
+                </div>
+              </div>
+              <div class="language-preference" style="display: flex; align-items: flex-end; gap: 20px;">
+                <label for="languageSelect" class="form-field" style="flex: 1; margin-bottom: 0;">
+                  <select id="languageSelect" name="languageSelect">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                  </select>
+                </label>
+                <button type="button" class="button primary-button" id="updateLang">Update Language</button>
+              </div>
+            </section>
           </div>
         </div>
-      </section>
-
-      <!-- My Beneficiary -->
-      <section class="main-card beneficiary u-relative">
-        <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
-        <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
-
-        <div class="profile-beneficiary-view" data-beneficiary-display>
-          <div class="u-margin-bottom-sm">
-            <strong data-beneficiary-name>Maria Thompson</strong>
-          </div>
-          <p><span data-i18n-key="form_relationship">Relationship</span>: <span data-beneficiary-relationship>Spouse</span></p>
-        </div>
-
-        <div class="profile-beneficiary-initials">
-          <div class="profile-initial-circle profile-initial-circle--blue">D</div>
-          <div class="profile-initial-circle profile-initial-circle--indigo">M</div>
-        </div>
-
-        <div class="profile-beneficiary-view" data-beneficiary-actions>
-           <button type="button" class="profile-save-btn" data-beneficiary-edit-trigger data-i18n-key="button_save_changes">Save Changes</button>
-        </div>
-
-        <!-- Hidden forms for JS -->
-        <form data-beneficiary-edit-form class="is-hidden">
-           <div class="profile-form-group">
-             <label class="profile-form-label" data-i18n-key="form_full_name">Full Name</label>
-             <input type="text" name="beneficiary-edit-name" class="profile-field-styled">
-           </div>
-           <div class="profile-form-group">
-             <label class="profile-form-label" data-i18n-key="form_relationship">Relationship</label>
-             <input type="text" name="beneficiary-edit-relationship" class="profile-field-styled">
-           </div>
-           <div style="display: flex; gap: 10px; margin-top: 20px;">
-             <button type="submit" class="profile-save-btn" data-i18n-key="button_save_changes">Submit</button>
-             <button type="button" class="profile-save-btn" style="background: #999;" data-beneficiary-cancel data-i18n-key="button_cancel">Cancel</button>
-           </div>
-        </form>
-      </section>
-
-      <!-- Identification Documents -->
-      <section class="main-card">
-        <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
-        <p data-i18n-key="profile_documents_subtitle">Securely upload your ID's to keep your account verified and protected.</p>
-
-        <form id="documentsForm" class="u-margin-top-md">
-          <div class="profile-document-row">
-            <strong data-i18n-key="doc_passport">Passport</strong>
-            <span class="status-pill status-pill--active" data-i18n-key="option_not_submitted">Not Submitted</span>
-            <span class="profile-document-status-text" data-i18n-key="placeholder_no_document">No document uploaded</span>
-            <input type="file" id="passportInput" class="is-hidden">
-            <button type="button" class="profile-save-btn" onclick="document.getElementById('passportInput').click()" data-i18n-key="button_upload">UPLOAD DOCUMENT</button>
-          </div>
-          <div class="profile-document-row">
-            <strong data-i18n-key="doc_drivers_license">Driver's License</strong>
-            <span class="status-pill status-pill--active" data-i18n-key="option_not_submitted">Not Submitted</span>
-            <span class="profile-document-status-text" data-i18n-key="placeholder_no_document">No document uploaded</span>
-            <input type="file" id="licenseInput" class="is-hidden">
-            <button type="button" class="profile-save-btn" onclick="document.getElementById('licenseInput').click()" data-i18n-key="button_upload">UPLOAD DOCUMENT</button>
-          </div>
-        </form>
-      </section>
-
-      <!-- Language Preference -->
-      <section class="main-card">
-        <h2 data-i18n-key="profile_language_title">Language Preference</h2>
-        <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
-        <div class="profile-language-selector">
-          <span>Current Language: <strong data-i18n-key="lang_english">English</strong></span>
-          <button type="button" class="profile-save-btn" data-i18n-key="button_update_preference">Update Language</button>
-        </div>
-      </section>
-
+      </div>
     </main>
   </div>
   <script src="i18n.js"></script>

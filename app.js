@@ -90,6 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Load user data from sessionStorage for individual dashboard
+  if (isIndividualPage) {
+    const user = JSON.parse(sessionStorage.getItem('memora_user') || '{}');
+    const displayName = user.display || user.name || (user.email ? user.email.split('@')[0] : 'User');
+
+    // Update name targets
+    const nameTargets = document.querySelectorAll('[data-user-name], #sidebarUserName');
+    nameTargets.forEach(el => {
+      // If the target has a strong inside, update that instead to preserve bolding
+      const strong = el.querySelector('strong');
+      if (strong) {
+        strong.textContent = displayName;
+      } else {
+        el.textContent = displayName;
+      }
+    });
+
+    // Update initials if element exists
+    const initialsEl = document.getElementById('profileInitials');
+    if (initialsEl) {
+      const parts = displayName.split(/\s+/).filter(Boolean);
+      const initials = (parts[0]?.[0] || '').toUpperCase() + (parts[parts.length - 1]?.[0] || '').toUpperCase();
+      initialsEl.textContent = initials || 'U';
+    }
+  }
+
   // Individual dashboard profile interactions
   const personalEditTrigger = document.querySelector('[data-personal-edit-trigger]');
   const personalDisplay = document.querySelector('[data-personal-display]');
@@ -127,7 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formData = new FormData(personalForm);
 
-      const fullName = (formData.get('personal-full-name') || '').toString().trim();
+      const firstName = (formData.get('firstName') || formData.get('personal-full-name') || '').toString().trim();
+      const lastName = (formData.get('lastName') || '').toString().trim();
+      const fullName = lastName ? `${firstName} ${lastName}` : firstName;
       const preferredName = (formData.get('personal-preferred-name') || '').toString().trim();
       const email = (formData.get('personal-email') || '').toString().trim();
       const phone = (formData.get('personal-phone') || '').toString().trim();
