@@ -77,6 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Highlight current page in sidebar
+  const sidebarLinks = document.querySelectorAll('.sidebar-nav a, .submenu a');
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === pageName) {
+      link.classList.add('active');
+      // If it's in a submenu, also open the submenu
+      const parentSubmenu = link.closest('.has-submenu');
+      if (parentSubmenu) {
+        parentSubmenu.classList.add('open');
+      }
+    }
+  });
+
   // Individual dashboard profile interactions
   const personalEditTrigger = document.querySelector('[data-personal-edit-trigger]');
   const personalDisplay = document.querySelector('[data-personal-display]');

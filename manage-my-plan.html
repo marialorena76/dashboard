@@ -14,71 +14,47 @@
 <body>
     <div class="dashboard new-dashboard individual-dashboard">
     <aside class="sidebar individual-dashboard__sidebar">
-<!-- Avatar + Nombre -->
-    <div class="sidebar-header">
-      <div class="sidebar-brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
-        <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
-        <span class="sidebar-name" id="sidebarUserName">User Name</span>
+      <div class="sidebar-header">
+        <div class="sidebar-brand u-flex-column-center">
+          <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
+          <span class="sidebar-name" id="sidebarUserName" data-user-name>User Name</span>
+        </div>
       </div>
-    </div>
-
-  <!-- Línea + subtítulo -->
-    <div class="sidebar-welcome">
-      <span class="sidebar-welcome__line"></span>
-      <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
-      <span class="sidebar-welcome__line"></span>
-    </div>
-
-
-  <!-- Menú -->
-
-    <nav class="sidebar-nav individual-dashboard__menu">
-
-      <!-- My Account con submenú -->
-      <div class="has-submenu">
-        <button class="submenu-toggle" type="button">
-          <span>My Account</span>
-          <span class="submenu-arrow"></span>
-        </button>
-
-        <ul class="submenu">
-          <li><a href="my-profile.html">My Profile</a></li>
-          <li><a href="protected-members-individual.html">Protected Members</a></li>
-          <li><a href="manage-my-plan.html">Manage My Plan</a></li>
-        </ul>
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text" data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
       </div>
-
-      <!-- Links principales -->
-      <a href="payments.html" class="sidebar-link">Payments</a>
-      <a href="help.html" class="sidebar-link">Help</a>
-      <a href="settings.html" class="sidebar-link sidebar-link--primary">Settings</a>
-
-    </nav>
-
-    <div class="sidebar-footer">
-
-      <!-- Botón Log Out -->
-   <button class="sidebar-logout logout" data-i18n-key="logout_button">
-      Log Out
-   </button>
-
-
-      <!-- Idiomas -->
-     <div class="sidebar-languages">
-        <button class="lang-btn active">English</button>
-        <button class="lang-btn">Español</button>
-     </div>
-
-      <!-- Línea + Copyright -->
-      <div class="sidebar-footer-legal">
-        <span class="footer-line"></span>
-        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
-        <span class="footer-line"></span>
+      <nav class="sidebar-nav individual-dashboard__menu">
+        <a href="individual-dashboard.html" class="sidebar-link" data-i18n-key="sidebar_dashboard">Dashboard</a>
+        <div class="has-submenu">
+          <button class="submenu-toggle" type="button">
+            <span data-i18n-key="menu_my_account">My Account</span>
+            <span class="submenu-arrow"></span>
+          </button>
+          <ul class="submenu">
+            <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
+            <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
+            <li><a href="payments.html" data-i18n-key="menu_payments">Payments</a></li>
+          </ul>
+        </div>
+        <a href="protected-members-individual.html" class="sidebar-link" data-i18n-key="menu_protected_members">Protected Members</a>
+        <a href="settings.html" class="sidebar-link" data-i18n-key="menu_settings">Settings</a>
+        <a href="help.html" class="sidebar-link" data-i18n-key="sidebar_help">Help</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-logout logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="sidebar-languages">
+          <button class="lang-btn" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-btn" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <div class="sidebar-footer-legal">
+          <span class="footer-line"></span>
+          <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+          <span class="footer-line"></span>
+        </div>
       </div>
-
-    </div>
-
-  </aside>
+    </aside>
 
     <main class="main-content  new-main-content">
       <div class="manage-main">

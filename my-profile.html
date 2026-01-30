@@ -6,340 +6,209 @@
   <title>Dashboard - My Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
   <div class="dashboard new-dashboard individual-dashboard">
-  <aside class="sidebar individual-dashboard__sidebar">
-<!-- Avatar + Nombre -->
-    <div class="sidebar-header">
-      <div class="sidebar-brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
-        <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
-        <span class="sidebar-name" id="sidebarUserName">User Name</span>
-      </div>
-    </div>
-
-  <!-- Línea + subtítulo -->
-    <div class="sidebar-welcome">
-      <span class="sidebar-welcome__line"></span>
-      <span class="sidebar-welcome__text" data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</span>
-      <span class="sidebar-welcome__line"></span>
-    </div>
-
-
-  <!-- Menú -->
-
-    <nav class="sidebar-nav individual-dashboard__menu">
-
-      <!-- My Account con submenú -->
-      <div class="has-submenu">
-        <button class="submenu-toggle" type="button">
-          <span data-i18n-key="menu_my_account">My Account</span>
-          <span class="submenu-arrow"></span>
-        </button>
-
-        <ul class="submenu">
-          <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
-          <li><a href="protected-members-individual.html" data-i18n-key="menu_protected_members">Protected Members</a></li>
-          <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
-        </ul>
-      </div>
-
-      <!-- Links principales -->
-      <a href="payments.html" class="sidebar-link" data-i18n-key="menu_payments">Payments</a>
-      <a href="help.html" class="sidebar-link" data-i18n-key="menu_help">Help</a>
-      <a href="settings.html" class="sidebar-link sidebar-link--primary" data-i18n-key="menu_settings">Settings</a>
-
-    </nav>
-
-    <div class="sidebar-footer">
-
-      <!-- Botón Log Out -->
-   <button class="sidebar-logout logout" data-i18n-key="logout_button">
-      Log Out
-   </button>
-
-
-      <!-- Idiomas -->
-     <div class="sidebar-languages">
-        <button class="lang-btn active" data-lang="en" data-i18n-key="lang_english">English</button>
-        <button class="lang-btn" data-lang="es" data-i18n-key="lang_spanish">Español</button>
-     </div>
-
-      <!-- Línea + Copyright -->
-      <div class="sidebar-footer-legal">
-        <span class="footer-line"></span>
-        <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
-        <span class="footer-line"></span>
-      </div>
-
-    </div>
-
-  </aside>
-
-
-    <main class="main-content new-main-content">
-      
-      <div class="profile-main">
-        <div class="profile-wrapper">
-
-
-          <div class="profile-details-new">
-            <header class="content-header-new">
-              <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
-            </header>
-
-            <!-- Personal Details Card -->
-            <section class="card-new personal-details-card">
-              <div class="card-header-new">
-                <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
-                <p data-i18n-key="profile_personal_details_subtitle">Keep your details current so we can reach you when it matters most.</p>
-              </div>
-
-              <!-- Display View -->
-              <div class="card-content-new personal-info-layout" data-personal-display>
-                <div class="emblem-container">
-                  <svg viewBox="0 0 100 100" class="crest-large">
-                    <circle cx="50" cy="50" r="48" fill="#fbf5e7" stroke="#d9b65d" stroke-width="1"/>
-                    <path d="M50 25 C65 35, 35 45, 50 55 C65 65, 35 75, 50 85" fill="none" stroke="#d9b65d" stroke-width="2"/>
-                    <path d="M25 50 C35 40, 65 60, 75 50" fill="none" stroke="#d9b65d" stroke-width="2"/>
-                    <path d="M50 20 L50 80 M20 50 L80 50" fill="none" stroke="#d9b65d" stroke-width="0.5" opacity="0.3"/>
-                  </svg>
-                </div>
-                <div class="info-text-container">
-                  <div class="info-group">
-                    <p class="info-value" data-user-name>User Name</p>
-                    <p class="info-value" data-user-email>email@example.com</p>
-                    <p class="info-value" data-user-phone>+1 000-000-0000</p>
-                    <p class="info-value" data-user-address>Address placeholder</p>
-                  </div>
-                  <button class="btn-dark-green" data-personal-edit-trigger data-i18n-key="button_edit_details">Edit Details</button>
-                </div>
-              </div>
-
-              <!-- Edit Form -->
-              <form id="personalForm" class="panel-form is-hidden" data-personal-form autocomplete="on">
-                <fieldset class="form-group">
-                  <legend data-i18n-key="form_full_name">Full Name</legend>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only" data-i18n-key="form_full_name">Full Name</span>
-                      <input type="text" name="personal-full-name" value="" placeholder="Full Name" required>
-                    </label>
-                  </div>
-                </fieldset>
-                <div class="field-grid">
-                  <label class="form-field">
-                    <span data-i18n-key="form_email_address">Email address*</span>
-                    <input type="email" name="personal-email" value="" autocomplete="email" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_phone_number">Phone</span>
-                    <input type="tel" name="personal-phone" value="" autocomplete="tel" required>
-                  </label>
-                </div>
-                <fieldset class="form-group">
-                  <legend data-i18n-key="form_address1">Address</legend>
-                  <label class="form-field">
-                    <span class="sr-only" data-i18n-key="form_address1">Street Address</span>
-                    <input type="text" name="personal-address-1" value="" placeholder="Address Line 1" required>
-                  </label>
-                  <label class="form-field">
-                    <span class="sr-only" data-i18n-key="form_address2">Apartment, suite, etc.</span>
-                    <input type="text" name="personal-address-2" placeholder="Address Line 2">
-                  </label>
-                  <div class="field-pair">
-                    <label class="form-field">
-                      <span class="sr-only" data-i18n-key="form_city">City</span>
-                      <input type="text" name="personal-city" value="" placeholder="City" required>
-                    </label>
-                    <label class="form-field">
-                      <span class="sr-only" data-i18n-key="form_state">State</span>
-                      <input type="text" name="personal-state" value="" placeholder="State" required>
-                    </label>
-                  </div>
-                  <label class="form-field">
-                    <span class="sr-only" data-i18n-key="form_postal_code">Postal Code</span>
-                    <input type="text" name="personal-zip" value="" placeholder="Zip Code" required>
-                  </label>
-                </fieldset>
-                <div class="form-actions">
-                  <button type="button" class="button cancel-button" data-personal-cancel data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button primary-button" data-i18n-key="button_save_changes">Save Changes</button>
-                </div>
-              </form>
-            </section>
-
-            <!-- My Beneficiary Card -->
-            <section class="card-new beneficiary">
-              <div class="card-header-new">
-                <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
-                <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
-              </div>
-
-              <!-- Display View -->
-              <div class="card-content-new beneficiary-info-layout" data-beneficiary-display>
-                <div class="info-text-container">
-                   <h3 class="details-subtitle" data-i18n-key="profile_beneficiary_details_subtitle">Beneficiary <strong>Details</strong></h3>
-                  <div class="info-group">
-                    <p class="info-value" data-beneficiary-name>User Name</p>
-                    <p class="info-value" data-beneficiary-email>email@example.com</p>
-                    <p class="info-value" data-beneficiary-phone>+1 000-000-0000</p>
-                    <p class="info-value" data-beneficiary-relationship>Relationship</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="btn-group-new" data-beneficiary-actions>
-                <button class="btn-dark-green" data-beneficiary-add-trigger data-i18n-key="button_add_beneficiary">Add Beneficiary</button>
-                <button class="btn-dark-green" data-beneficiary-edit-trigger data-i18n-key="button_edit_beneficiary">Edit / Remove Beneficiary</button>
-              </div>
-
-              <!-- Add/Edit Form -->
-              <form id="beneficiaryForm" class="panel-form is-hidden" data-beneficiary-edit-form autocomplete="on">
-                 <div class="field-grid">
-                  <label class="form-field">
-                    <span data-i18n-key="form_full_name">Full Name</span>
-                    <input type="text" name="beneficiary-edit-name" value="" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_relationship">Relationship</span>
-                    <input type="text" name="beneficiary-edit-relationship" value="" required>
-                  </label>
-                </div>
-                <div class="field-grid">
-                  <label class="form-field">
-                    <span data-i18n-key="form_email_address">Email address*</span>
-                    <input type="email" name="beneficiary-edit-email" value="" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_phone_number">Phone</span>
-                    <input type="tel" name="beneficiary-edit-phone" value="" required>
-                  </label>
-                </div>
-                <div class="form-actions">
-                  <button type="button" class="button cancel-button" data-beneficiary-cancel data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button primary-button" data-i18n-key="button_save_changes">Save Changes</button>
-                </div>
-              </form>
-
-              <form id="beneficiaryAddForm" class="panel-form is-hidden" data-beneficiary-add-form autocomplete="on">
-                 <div class="field-grid">
-                  <label class="form-field">
-                    <span data-i18n-key="form_full_name">Full Name</span>
-                    <input type="text" name="beneficiary-add-name" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_relationship">Relationship</span>
-                    <input type="text" name="beneficiary-add-relationship" required>
-                  </label>
-                </div>
-                <div class="field-grid">
-                  <label class="form-field">
-                    <span data-i18n-key="form_email_address">Email address*</span>
-                    <input type="email" name="beneficiary-add-email" required>
-                  </label>
-                  <label class="form-field">
-                    <span data-i18n-key="form_phone_number">Phone</span>
-                    <input type="tel" name="beneficiary-add-phone">
-                  </label>
-                </div>
-                <div class="form-actions">
-                  <button type="button" class="button cancel-button" data-beneficiary-cancel data-i18n-key="button_cancel">Cancel</button>
-                  <button type="submit" class="button primary-button" data-i18n-key="button_add_beneficiary">Add Beneficiary</button>
-                </div>
-              </form>
-            </section>
-
-            <!-- Identification Documents Card -->
-            <section class="card-new documents-card">
-              <div class="card-header-new">
-                <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
-                <p data-i18n-key="profile_documents_subtitle">Securely upload your IDs to keep your account verified and protected. <strong>(Only one document is required for verification)</strong></p>
-              </div>
-              <div class="card-content-new documents-layout">
-                <div class="doc-rows-container">
-                  <div class="doc-row-new">
-                    <span class="doc-name" data-i18n-key="doc_personal_id">Personal ID</span>
-                    <div class="doc-actions-new">
-                      <span class="pill-uploaded" data-i18n-key="option_uploaded">UPLOADED</span>
-                      <button class="btn-dark-green-small" data-i18n-key="button_upload_replace">Upload/Update Document</button>
-                    </div>
-                  </div>
-                  <div class="doc-row-new">
-                    <span class="doc-name" data-i18n-key="doc_passport">Passport</span>
-                    <div class="doc-actions-new">
-                      <span class="pill-uploaded" data-i18n-key="option_uploaded">UPLOADED</span>
-                      <button class="btn-dark-green-small" data-i18n-key="button_upload_replace">Upload/Update Document</button>
-                    </div>
-                  </div>
-                  <div class="doc-row-new">
-                    <span class="doc-name" data-i18n-key="doc_drivers_license">Driver's License</span>
-                    <div class="doc-actions-new">
-                      <span class="pill-uploaded" data-i18n-key="option_uploaded">UPLOADED</span>
-                      <button class="btn-dark-green-small" data-i18n-key="button_upload_replace">Upload/Update Document</button>
-                    </div>
-                  </div>
-                  <div class="doc-row-new">
-                    <span class="doc-name" data-i18n-key="doc_ssn">Social Security</span>
-                    <div class="doc-actions-new">
-                      <span class="pill-uploaded" data-i18n-key="option_uploaded">UPLOADED</span>
-                      <button class="btn-dark-green-small" data-i18n-key="button_upload_replace">Upload/Update Document</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="overlapping-icons">
-                  <div class="overlap-circle purple">D</div>
-                  <div class="overlap-circle blue">M</div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Language Preference Card -->
-            <section class="card-new language-card">
-              <div class="card-header-new">
-                <h2 data-i18n-key="profile_language_title">Language Preference</h2>
-                <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
-              </div>
-              <div class="card-content-new language-layout">
-                <p><span data-i18n-key="option_active">Current</span>: <strong data-i18n-key="lang_english">English</strong></p>
-                <button class="btn-dark-green" data-i18n-key="button_change">Change Language</button>
-              </div>
-            </section>
-          </div>
+    <aside class="sidebar individual-dashboard__sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand u-flex-column-center">
+          <img src="images/memora-logo.png" alt="Memora Logo" class="sidebar-logo">
+          <span class="sidebar-name" id="sidebarUserName" data-user-name>User Name</span>
         </div>
       </div>
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text" data-i18n-key="dashboard_welcome_message">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
+      </div>
+      <nav class="sidebar-nav individual-dashboard__menu">
+        <a href="individual-dashboard.html" class="sidebar-link" data-i18n-key="sidebar_dashboard">Dashboard</a>
+        <div class="has-submenu">
+          <button class="submenu-toggle" type="button">
+            <span data-i18n-key="menu_my_account">My Account</span>
+            <span class="submenu-arrow"></span>
+          </button>
+          <ul class="submenu">
+            <li><a href="my-profile.html" data-i18n-key="menu_my_profile">My Profile</a></li>
+            <li><a href="manage-my-plan.html" data-i18n-key="menu_manage_my_plan">Manage My Plan</a></li>
+            <li><a href="payments.html" data-i18n-key="menu_payments">Payments</a></li>
+          </ul>
+        </div>
+        <a href="protected-members-individual.html" class="sidebar-link" data-i18n-key="menu_protected_members">Protected Members</a>
+        <a href="settings.html" class="sidebar-link" data-i18n-key="menu_settings">Settings</a>
+        <a href="help.html" class="sidebar-link" data-i18n-key="sidebar_help">Help</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-logout logout" data-i18n-key="logout_button">Log Out</button>
+        <div class="sidebar-languages">
+          <button class="lang-btn" data-lang="en" data-i18n-key="lang_english">English</button>
+          <button class="lang-btn" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+        </div>
+        <div class="sidebar-footer-legal">
+          <span class="footer-line"></span>
+          <span class="footer-text">©2025 MemoraCare | Privacy Policy</span>
+          <span class="footer-line"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content individual-dashboard__main">
+      <header class="content-header">
+        <h1 data-i18n-key="profile_my_profile_title">My Profile</h1>
+      </header>
+
+      <!-- Personal Details -->
+      <section class="main-card">
+        <h2 data-i18n-key="profile_personal_details_title">Personal Details</h2>
+        <p data-i18n-key="profile_personal_details_subtitle">Update your contact information so we can reach you without delays.</p>
+
+        <div class="profile-section-content">
+          <div class="profile-emblem-container">
+            <img src="images/memora-logo.png" alt="Profile Emblem">
+          </div>
+
+          <div class="profile-form-container">
+            <!-- Display Mode -->
+            <div data-personal-display>
+              <div class="u-margin-bottom-sm">
+                <strong data-user-name>Maria Thompson</strong>
+              </div>
+              <div class="u-margin-bottom-sm">
+                <span data-user-email>maria@email.com</span>
+              </div>
+              <div class="u-margin-bottom-sm">
+                <span data-user-phone>+1 555-123-4567</span>
+              </div>
+              <div class="u-margin-bottom-sm">
+                <span data-user-address>123 Maple Ave, Springfield, IL 62704</span>
+              </div>
+              <button type="button" class="profile-save-btn" data-personal-edit-trigger data-i18n-key="update_profile_button">Update My Profile</button>
+            </div>
+
+            <!-- Edit Mode -->
+            <form id="personalForm" data-personal-form class="is-hidden">
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_full_name">Full Name</label>
+                <input type="text" name="personal-full-name" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_email_address">Email</label>
+                <input type="email" name="personal-email" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_phone_number">Phone</label>
+                <input type="tel" name="personal-phone" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_address1">Address 1</label>
+                <input type="text" name="personal-address-1" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_address2">Address 2</label>
+                <input type="text" name="personal-address-2" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_city">City</label>
+                <input type="text" name="personal-city" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_state">State</label>
+                <input type="text" name="personal-state" class="profile-field-styled">
+              </div>
+              <div class="profile-form-group">
+                <label class="profile-form-label" data-i18n-key="form_postal_code">ZIP Code</label>
+                <input type="text" name="personal-zip" class="profile-field-styled">
+              </div>
+              <!-- Hidden fields expected by app.js -->
+              <input type="hidden" name="personal-preferred-name">
+              <input type="hidden" name="personal-country">
+
+              <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button type="submit" class="profile-save-btn" data-i18n-key="button_save_changes">Save Changes</button>
+                <button type="button" class="profile-save-btn" style="background: #999;" data-personal-cancel data-i18n-key="button_cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Beneficiary -->
+      <section class="main-card beneficiary u-relative">
+        <h2 data-i18n-key="profile_beneficiary_title">My Beneficiary</h2>
+        <p data-i18n-key="profile_beneficiary_subtitle">Name the trusted person who will receive your plan's benefits if something happens to you.</p>
+
+        <div class="profile-beneficiary-view" data-beneficiary-display>
+          <div class="u-margin-bottom-sm">
+            <strong data-beneficiary-name>Maria Thompson</strong>
+          </div>
+          <p><span data-i18n-key="form_relationship">Relationship</span>: <span data-beneficiary-relationship>Spouse</span></p>
+        </div>
+
+        <div class="profile-beneficiary-initials">
+          <div class="profile-initial-circle profile-initial-circle--blue">D</div>
+          <div class="profile-initial-circle profile-initial-circle--indigo">M</div>
+        </div>
+
+        <div class="profile-beneficiary-view" data-beneficiary-actions>
+           <button type="button" class="profile-save-btn" data-beneficiary-edit-trigger data-i18n-key="button_save_changes">Save Changes</button>
+        </div>
+
+        <!-- Hidden forms for JS -->
+        <form data-beneficiary-edit-form class="is-hidden">
+           <div class="profile-form-group">
+             <label class="profile-form-label" data-i18n-key="form_full_name">Full Name</label>
+             <input type="text" name="beneficiary-edit-name" class="profile-field-styled">
+           </div>
+           <div class="profile-form-group">
+             <label class="profile-form-label" data-i18n-key="form_relationship">Relationship</label>
+             <input type="text" name="beneficiary-edit-relationship" class="profile-field-styled">
+           </div>
+           <div style="display: flex; gap: 10px; margin-top: 20px;">
+             <button type="submit" class="profile-save-btn" data-i18n-key="button_save_changes">Submit</button>
+             <button type="button" class="profile-save-btn" style="background: #999;" data-beneficiary-cancel data-i18n-key="button_cancel">Cancel</button>
+           </div>
+        </form>
+      </section>
+
+      <!-- Identification Documents -->
+      <section class="main-card">
+        <h2 data-i18n-key="profile_documents_title">Identification Documents</h2>
+        <p data-i18n-key="profile_documents_subtitle">Securely upload your ID's to keep your account verified and protected.</p>
+
+        <form id="documentsForm" class="u-margin-top-md">
+          <div class="profile-document-row">
+            <strong data-i18n-key="doc_passport">Passport</strong>
+            <span class="status-pill status-pill--active" data-i18n-key="option_not_submitted">Not Submitted</span>
+            <span class="profile-document-status-text" data-i18n-key="placeholder_no_document">No document uploaded</span>
+            <input type="file" id="passportInput" class="is-hidden">
+            <button type="button" class="profile-save-btn" onclick="document.getElementById('passportInput').click()" data-i18n-key="button_upload">UPLOAD DOCUMENT</button>
+          </div>
+          <div class="profile-document-row">
+            <strong data-i18n-key="doc_drivers_license">Driver's License</strong>
+            <span class="status-pill status-pill--active" data-i18n-key="option_not_submitted">Not Submitted</span>
+            <span class="profile-document-status-text" data-i18n-key="placeholder_no_document">No document uploaded</span>
+            <input type="file" id="licenseInput" class="is-hidden">
+            <button type="button" class="profile-save-btn" onclick="document.getElementById('licenseInput').click()" data-i18n-key="button_upload">UPLOAD DOCUMENT</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Language Preference -->
+      <section class="main-card">
+        <h2 data-i18n-key="profile_language_title">Language Preference</h2>
+        <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
+        <div class="profile-language-selector">
+          <span>Current Language: <strong data-i18n-key="lang_english">English</strong></span>
+          <button type="button" class="profile-save-btn" data-i18n-key="button_update_preference">Update Language</button>
+        </div>
+      </section>
+
     </main>
   </div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="profile.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const API_BASE = '/wp-json';
-    const token = sessionStorage.getItem('memora_token');
-    if(!token) return;
-
-    let me = null;
-    try { me = JSON.parse(sessionStorage.getItem('memora_user')||'null'); } catch(_){}
-    try {
-      const r = await fetch(`${API_BASE}/memora/v1/me`, { headers:{ Authorization: 'Bearer '+token }});
-      if(r.ok){ me = await r.json(); sessionStorage.setItem('memora_user', JSON.stringify(me)); }
-    } catch(e){ console.warn('[Memora] error fetching /me', e); }
-
-    if(me){
-      const displayName = me.display || me.name || me.email;
-      const nameTargets = document.querySelectorAll('[data-user-name]');
-      nameTargets.forEach(el => { el.textContent = displayName; });
-
-      const emailTargets = document.querySelectorAll('[data-user-email]');
-      emailTargets.forEach(el => { el.textContent = me.email; });
-
-      const sidebarNameEl = document.querySelector('#sidebarUserName');
-      if(sidebarNameEl) sidebarNameEl.textContent = displayName;
-    }
-  });
-  </script>
 </body>
 </html>
