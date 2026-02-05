@@ -4708,7 +4708,7 @@ body.modal-open {
 
 .profile-sidebar {
   width: 312px;
-  background: linear-gradient(180deg, #d8b76a 0%, #f7e5c3 100%);
+  background: #d9b65d;
   padding: 3.25rem 2.5rem 2.75rem;
   display: flex;
   flex-direction: column;
@@ -4801,7 +4801,7 @@ body.modal-open {
 
 .account-sidebar {
   width: 280px;
-  background: linear-gradient(180deg, #d2b46d 0%, #f7e9cd 100%);
+  background: #d9b65d;
   padding: 3rem 2.25rem;
   display: flex;
   flex-direction: column;
@@ -5869,7 +5869,7 @@ body.modal-open {
 .individual-dashboard__sidebar {
   width: 280px;
   min-height: 100vh;
-  background: linear-gradient(#d4ad47, #b58f30);
+  background: #d9b65d;
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -6282,7 +6282,7 @@ body.modal-open {
 }
 
 .individual-dashboard__sidebar {
-  background: linear-gradient(180deg, #d9b65d 0%, #b48f36 100%);
+  background: #d9b65d;
   color: #1f2933; /* Dark text for the sidebar */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -6293,6 +6293,13 @@ body.modal-open {
   align-items: center;
   gap: 16px;
   padding: 24px;
+}
+
+.individual-dashboard__sidebar .sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .individual-dashboard__sidebar .sidebar-avatar {
@@ -6450,4 +6457,74 @@ body.modal-open {
 .individual-dashboard__menu .has-submenu.open .submenu-arrow {
   transform: rotate(225deg);     /* flecha apuntando hacia arriba cuando se abre */
 }
+}
+/* Consolidated Sidebar Styles for Individual Dashboard */
+.individual-dashboard__sidebar {
+  background: #d9b65d !important;
+}
+
+.individual-dashboard__menu .submenu-toggle,
+.individual-dashboard__sidebar .sidebar-link {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #163c30;
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+.individual-dashboard__menu .submenu-toggle {
+  margin-top: 0;
+}
+
+.individual-dashboard__menu .has-submenu {
+  margin-top: 1.25rem;
+}
+
+.individual-dashboard__menu .submenu-arrow,
+.individual-dashboard__sidebar .sidebar-link--primary::after {
+  content: '';
+  display: inline-block;
+  border: solid #163c30;
+  border-width: 0 3px 3px 0;
+  padding: 4px;
+  transform: rotate(-45deg); /* Apunta a la derecha */
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.individual-dashboard__menu .has-submenu.open .submenu-arrow {
+  transform: rotate(45deg) !important; /* Apunta hacia abajo cuando está abierto */
+}
+
+/* Estilos del Submenú */
+.individual-dashboard__menu .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  display: none;
+}
+
+.individual-dashboard__menu .has-submenu.open .submenu {
+  display: block !important;
+}
+
+.individual-dashboard__menu .submenu li {
+  margin-bottom: 0.65rem;
+  list-style: none;
+}
+
+.individual-dashboard__menu .submenu a {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #163c30;
+  padding: 0;
+  display: block;
+  text-decoration: none;
 }
