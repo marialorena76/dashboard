@@ -6593,3 +6593,72 @@ body.modal-open {
   display: block;
   text-decoration: none;
 }
+
+/* --- Identification Documents Redesign (Individual) --- */
+.individual-dashboard .documents-panel .documents-table {
+  gap: 0;
+}
+
+.individual-dashboard .documents-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 2rem !important;
+  padding: 1.25rem 0 !important;
+  border-bottom: 1px solid rgba(22, 60, 48, 0.1) !important;
+}
+
+.individual-dashboard .documents-row:last-child {
+  border-bottom: none;
+}
+
+.individual-dashboard .documents-row .doc-title {
+  min-width: 160px;
+  font-weight: 700;
+  color: #163c30;
+  font-size: 1.05rem;
+}
+
+.individual-dashboard .status-badge {
+  min-width: 150px;
+  text-align: center;
+  background: #B7E4C7; /* Lighter green */
+  color: #163c30;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.individual-dashboard .status-badge.status-pending {
+  background: #FAD2D2; /* Light red for not submitted */
+  color: #9B2C2C;
+}
+
+.individual-dashboard .status-badge.status-success {
+  background: #B7E4C7;
+  color: #163c30;
+}
+
+.individual-dashboard .doc-button {
+  margin-left: auto;
+  background: #163c30;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.individual-dashboard .doc-button:hover {
+  background: #1b4d3e;
+  transform: translateY(-1px);
+}
+
+.individual-dashboard .documents-form .form-actions {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(22, 60, 48, 0.1);
+}

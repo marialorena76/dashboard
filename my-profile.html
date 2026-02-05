@@ -246,23 +246,26 @@
               <form id="documentsForm" class="documents-form" enctype="multipart/form-data">
                 <div class="documents-table">
                   <div class="documents-row">
+                    <span class="doc-title" data-i18n-key="doc_personal_id">Personal ID</span>
+                    <span class="status-badge status-pending" data-status-pill-target="personalIdStatus">Not Submitted</span>
+                    <button type="button" class="button doc-button" data-target="personalIdInput">Upload/Update Document</button>
+                    <input id="personalIdInput" type="file" name="personalId" accept="image/*,application/pdf" hidden data-file-output="personalIdFile">
+                  </div>
+                  <div class="documents-row">
                     <span class="doc-title" data-i18n-key="doc_passport">Passport</span>
                     <span class="status-badge status-pending" data-status-pill-target="passportStatus">Not Submitted</span>
-                    <span class="file-name" data-file-name="passportFile">No document uploaded</span>
                     <button type="button" class="button doc-button" data-target="passportInput">Upload/Update Document</button>
                     <input id="passportInput" type="file" name="passport" accept="image/*,application/pdf" hidden data-file-output="passportFile">
                   </div>
                   <div class="documents-row">
                     <span class="doc-title" data-i18n-key="doc_drivers_license">Driver's License</span>
                     <span class="status-badge status-pending" data-status-pill-target="licenseStatus">Not Submitted</span>
-                    <span class="file-name" data-file-name="licenseFile">No document uploaded</span>
                     <button type="button" class="button doc-button" data-target="licenseInput">Upload/Update Document</button>
                     <input id="licenseInput" type="file" name="driversLicense" accept="image/*,application/pdf" hidden data-file-output="licenseFile">
                   </div>
                   <div class="documents-row">
                     <span class="doc-title" data-i18n-key="doc_ssn">Social Security</span>
                     <span class="status-badge status-pending" data-status-pill-target="ssnStatus">Not Submitted</span>
-                    <span class="file-name" data-file-name="ssnFile">No document uploaded</span>
                     <button type="button" class="button doc-button" data-target="ssnInput">Upload/Update Document</button>
                     <input id="ssnInput" type="file" name="socialSecurity" accept="image/*,application/pdf" hidden data-file-output="ssnFile">
                   </div>
@@ -271,24 +274,6 @@
                   <button type="submit" class="button primary-button" data-i18n-key="button_save_documents">Save Documents</button>
                 </div>
               </form>
-            </section>
-
-            <section class="profile-panel language-panel">
-              <div class="panel-header">
-                <div class="panel-copy">
-                  <h2 data-i18n-key="profile_language_title">Language Preference</h2>
-                  <p data-i18n-key="profile_language_subtitle">Choose the language you're most comfortable with.</p>
-                </div>
-              </div>
-              <div class="language-preference">
-                <label for="languageSelect" class="form-field">
-                  <select id="languageSelect" name="languageSelect">
-                    <option value="en" selected>English</option>
-                    <option value="es">Español</option>
-                  </select>
-                </label>
-                <button type="button" class="button primary-button" id="updateLang">Update Language</button>
-              </div>
             </section>
           </div>
         </div>

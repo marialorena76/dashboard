@@ -159,6 +159,8 @@
   "profile_beneficiary_footnote": "Puedes actualizar a tu beneficiario en cualquier momento antes de procesar un reclamo.",
   "profile_documents_title": "Documentos de Identificación",
   "profile_documents_subtitle": "Sube una identificación actual para que podamos verificar tu elegibilidad y reclamos de beneficiarios.",
+  "doc_personal_id": "ID Personal",
+  "doc_personal_id_subtitle": "Sube una identificación oficial válida.",
   "doc_passport": "Pasaporte",
   "doc_passport_subtitle": "Sube un escaneo claro de la página de la foto.",
   "form_status": "Estado",

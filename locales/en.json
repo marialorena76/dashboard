@@ -159,6 +159,8 @@
   "profile_beneficiary_footnote": "You can update your beneficiary any time before a claim is processed.",
   "profile_documents_title": "Identification Documents",
   "profile_documents_subtitle": "Upload current identification so we can verify your eligibility and beneficiary claims.",
+  "doc_personal_id": "Personal ID",
+  "doc_personal_id_subtitle": "Upload a valid government-issued ID.",
   "doc_passport": "Passport",
   "doc_passport_subtitle": "Upload a clear scan of the picture page.",
   "form_status": "Status",
