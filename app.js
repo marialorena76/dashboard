@@ -377,7 +377,9 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((err) => {
       console.error("Error al cargar business-plan:", err);
+    });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("businessProfileForm");
   if (!form) return; // no estamos en esa sección
@@ -446,7 +448,6 @@ fetch("/wp-json/memora/v1/business-profile", {
   });
 
 
-document.addEventListener("DOMContentLoaded", () => {
   const addEmployeeCta = document.querySelector(
     ".enterprise-action[data-i18n-key='add_employee_button']"
   );
@@ -456,8 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "employees-covered.html#addMemberSection";
     });
   }
-});
-
 });
 
 

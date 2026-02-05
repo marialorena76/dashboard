@@ -9,79 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
-  <style>
-    /* Estilos para el sidebar del dashboard individual - Refinados para mayor especificidad */
-    aside.sidebar.individual-dashboard__sidebar {
-      background: #d9b65d; /* Color sólido oro/mostaza de la captura */
-    }
-
-    nav.individual-dashboard__menu .submenu-toggle,
-    aside.sidebar.individual-dashboard__sidebar .sidebar-link {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #163c30;
-      margin-top: 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      background: transparent;
-      border: none;
-      padding: 0;
-      text-decoration: none;
-    }
-
-    nav.individual-dashboard__menu .submenu-toggle {
-      margin-top: 0;
-    }
-
-    nav.individual-dashboard__menu .has-submenu {
-      margin-top: 1.25rem;
-    }
-
-    /* Flechas consistentes para My Account y Settings */
-    nav.individual-dashboard__menu .submenu-arrow,
-    aside.sidebar.individual-dashboard__sidebar .sidebar-link--primary::after {
-      content: '';
-      display: inline-block;
-      border: solid #163c30;
-      border-width: 0 3px 3px 0;
-      padding: 4px;
-      transform: rotate(-45deg); /* Apunta a la derecha */
-      transition: transform 0.3s ease;
-      margin-left: 0.5rem;
-    }
-
-    nav.individual-dashboard__menu .has-submenu.open .submenu-arrow {
-      transform: rotate(45deg); /* Apunta hacia abajo cuando está abierto */
-    }
-
-    /* Estilos del Submenú */
-    nav.individual-dashboard__menu .submenu {
-      list-style: none;
-      padding: 0;
-      margin: 0.75rem 0 0 0;
-      display: none;
-    }
-
-    nav.individual-dashboard__menu .has-submenu.open .submenu {
-      display: block;
-    }
-
-    nav.individual-dashboard__menu .submenu li {
-      margin-bottom: 0.65rem;
-      list-style: none;
-    }
-
-    nav.individual-dashboard__menu .submenu a {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #163c30;
-      padding: 0;
-      display: block;
-      text-decoration: none;
-    }
-  </style>
 </head>
 
 <body>
@@ -89,7 +16,7 @@
   <aside class="sidebar individual-dashboard__sidebar">
 <!-- Avatar + Nombre -->
     <div class="sidebar-header">
-      <div class="sidebar-brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <div class="sidebar-brand">
         <img src="images/Memora-isologo.png" alt="Logotipo de Memora" class="sidebar-logo">
         <div class="sidebar-name" id="sidebarUserName"></div>
       </div>
