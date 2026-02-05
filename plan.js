@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const exploreUpgradesBtn = document.getElementById('exploreUpgrades');
 
   const defaults = {
-    status: 'ACTIVE',
-    coverage: 'Up to $100,000',
-    nextPayment: '$490.03 due Jan 17, 2025',
-    currentPlan: 'Individual Plan'
+    status: '-',
+    coverage: '-',
+    nextPayment: '-',
+    currentPlan: '-'
   };
 
   const plan = JSON.parse(localStorage.getItem('planInfo') || JSON.stringify(defaults));

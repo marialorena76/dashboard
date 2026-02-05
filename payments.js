@@ -42,21 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const HISTORY_STORAGE_KEY = 'dashboard.paymentHistory';
 
   const defaultMethod = {
-    method: 'Visa',
-    cardholder: 'Maria Thompson',
-    cardNumber: '4242 4242 4242 4321',
-    expiry: '09/27',
+    method: '-',
+    cardholder: '-',
+    cardNumber: '',
+    expiry: '-',
     autopay: 'active',
-    nextPayment: '2025-09-15',
-    billingAddress: '123 Garden Avenue, Austin, TX 78704'
+    nextPayment: '',
+    billingAddress: '-'
   };
 
-  const defaultHistory = [
-    { id: 'INV-1098', date: '2025-09-15', amount: 120, status: 'paid' },
-    { id: 'INV-1087', date: '2025-08-15', amount: 120, status: 'paid' },
-    { id: 'INV-1076', date: '2025-07-15', amount: 120, status: 'processing' },
-    { id: 'INV-1065', date: '2025-06-15', amount: 120, status: 'failed' }
-  ];
+  const defaultHistory = [];
 
   let currentMethod = loadMethod();
   let history = loadHistory();

@@ -82,9 +82,9 @@
             <section class="section-card payment-summary" id="currentPaymentCard">
               <div class="payment-summary__details">
                 <h2 data-i18n-key="payments_current_method_title">Current Payment Method</h2>
-                <p class="payment-summary" data-summary="method">Visa •••• 4321</p>
-                <p class="payment-summary" data-summary="meta">Expires: 03/27</p>
-                <p class="payment-summary" data-summary="method">Default Method: Yes</p>
+                <p class="payment-summary" data-summary="method">-</p>
+                <p class="payment-summary" data-summary="meta">-</p>
+                <p class="payment-summary" data-summary="method">-</p>
                 <div class="payments-buttons">
                   <button type="button" id="openEdit" class="button primary-button"
                     data-i18n-key="payments_edit_method_button">Update Payment Method</button>
@@ -92,8 +92,8 @@
                     data-i18n-key="payments_add_method_button">Add New Payment Method</button>
                 </div>
                 <div class="next_payment">
-                  <div class="payment-summary__next" data-summary="next">Next Payment Due: $49.99 on Sep 15, 2025</div>
-                  <div class="payment-summary__next" data-summary="next">Status: Scheduled</div>
+                  <div class="payment-summary__next" data-summary="next">Next Payment Due: -</div>
+                  <div class="payment-summary__next" data-summary="next">Status: -</div>
                 </div>
                 <!-- <div class="payment-summary__status">
           </div> -->
@@ -162,39 +162,40 @@
             <div class="form-grid two-column">
               <label class="form-field">
                 <span data-i18n-key="payments_form_method_name">Payment Method Name</span>
-                <input type="text" id="editMethod" name="method" value="Visa" required>
+                <input type="text" id="editMethod" name="method" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_cardholder_name">Cardholder Name</span>
-                <input type="text" id="editCardholder" name="cardholder" value="Maria Thompson" autocomplete="cc-name"
+                <input type="text" id="editCardholder" name="cardholder" autocomplete="cc-name"
                   required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_card_number">Card Number</span>
-                <input type="text" id="editCard" name="cardNumber" value="4242 4242 4242 4321" inputmode="numeric"
+                <input type="text" id="editCard" name="cardNumber" inputmode="numeric"
                   autocomplete="cc-number" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_expiry_date">Expiration Date</span>
-                <input type="text" id="editExp" name="expiry" value="09/27" placeholder="MM/YY" inputmode="numeric"
+                <input type="text" id="editExp" name="expiry" placeholder="MM/YY" inputmode="numeric"
                   autocomplete="cc-exp" required>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_autopay_status">Autopay Status</span>
                 <select id="editAutopay" name="autopay">
+                  <option value="" disabled selected>Select</option>
                   <option value="active" data-i18n-key="option_autopay_active">Autopay Active</option>
                   <option value="paused" data-i18n-key="option_autopay_paused">Autopay Paused</option>
                 </select>
               </label>
               <label class="form-field">
                 <span data-i18n-key="payments_form_next_payment_date">Next Payment Date</span>
-                <input type="date" id="editNextPayment" name="nextPayment" value="2025-09-15" required>
+                <input type="date" id="editNextPayment" name="nextPayment" required>
               </label>
             </div>
             <label class="form-field">
               <span data-i18n-key="payments_form_billing_address">Billing Address</span>
               <textarea id="editAddress" name="billingAddress" rows="3"
-                required>123 Garden Avenue, Austin, TX 78704</textarea>
+                required></textarea>
             </label>
             <div class="form-actions">
               <button type="button" class="button outline-button" data-close-forms

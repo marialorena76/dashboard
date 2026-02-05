@@ -15,25 +15,42 @@
   <body>
     <div class="dashboard dashboard--enterprise" data-settings-prefix="legacybridge-settings-">
       <aside class="sidebar sidebar--enterprise" aria-label="Employer portal navigation">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub">Employer Portal</span>
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <img src="images/Memora-isologo.png" alt="Logotipo de Memora" class="sidebar-logo">
+            <div class="sidebar-name" id="businessNameLabel"></div>
           </div>
         </div>
+
+        <div class="sidebar-welcome">
+          <span class="sidebar-welcome__line"></span>
+          <span class="sidebar-welcome__text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</span>
+          <span class="sidebar-welcome__line"></span>
+        </div>
+
         <nav class="menu enterprise-menu" aria-label="Primary">
-          <a href="business-dashboard.html">Overview</a>
-          <a href="business-plans-billing.html">Plans &amp; Billing</a>
-          <a href="business-support.html">Support</a>
-          <a href="business-settings.html" class="active" aria-current="page">Settings</a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" type="button">Log Out</button>
-          <div class="lang" aria-label="Language selection">
-            <button class="active" type="button">English</button>
-            <button type="button">Español</button>
+          <div class="menu-item has-submenu">
+            <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
+              <span>Overview</span>
+              <span class="submenu-arrow"></span>
+            </button>
+            <ul class="submenu">
+              <li><a href="business-profile.html" data-i18n-key="menu_company_profile">Company Profile</a></li>
+              <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
+            </ul>
           </div>
+          <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+          <a href="business-support.html" data-i18n-key="menu_support">Support</a>
+          <a class="active" href="business-settings.html" data-i18n-key="menu_settings">Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout" type="button" data-i18n-key="logout_button">Log Out</button>
+          <div class="lang-buttons">
+            <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+            <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+          </div>
+          <p class="sidebar-gray-text">©2025 MemoraCare | Privacy Policy</p>
         </div>
       </aside>
 
@@ -48,27 +65,27 @@
 
         <section class="settings-hero enterprise-settings-hero" aria-label="Workspace overview">
           <div class="hero-copy">
-            <h2>Tailor LegacyBridge for your organization</h2>
-            <p>
+            <h2 data-i18n-key="settings_hero_title">Tailor the platform for your organization</h2>
+            <p data-i18n-key="settings_hero_description">
               Manage how administrators receive alerts, keep your login experience secure, and control the data we retain for your workforce.
             </p>
           </div>
           <dl class="hero-meta">
             <div>
-              <dt>Plan</dt>
-              <dd>Enterprise Shield</dd>
+              <dt data-i18n-key="plan_label">Plan</dt>
+              <dd>-</dd>
             </div>
             <div>
-              <dt>Employees covered</dt>
-              <dd>62 active · 4 pending</dd>
+              <dt data-i18n-key="form_employees_covered">Employees covered</dt>
+              <dd>-</dd>
             </div>
             <div>
-              <dt>Assigned specialist</dt>
-              <dd>Jordan Patel</dd>
+              <dt data-i18n-key="assigned_specialist_label">Assigned specialist</dt>
+              <dd>-</dd>
             </div>
             <div>
-              <dt>Status</dt>
-              <dd class="status-pill success">In good standing</dd>
+              <dt data-i18n-key="status_label">Status</dt>
+              <dd class="status-pill success">-</dd>
             </div>
           </dl>
         </section>
@@ -76,9 +93,9 @@
         <div class="settings-layout enterprise-settings-layout">
           <aside class="settings-nav" aria-label="Settings sections">
             <div class="nav-heading">
-              <span class="eyebrow">LegacyBridge Settings</span>
-              <h2>Manage your workspace</h2>
-              <p>Choose a category to update notifications, account security, or retained data.</p>
+              <span class="eyebrow" data-i18n-key="settings_eyebrow">Organization Settings</span>
+              <h2 data-i18n-key="manage_workspace_title">Manage your workspace</h2>
+              <p data-i18n-key="manage_workspace_subtitle">Choose a category to update notifications, account security, or retained data.</p>
             </div>
             <nav class="nav-links" role="tablist">
               <button
@@ -131,8 +148,8 @@
               tabindex="0"
             >
               <header class="panel-header">
-                <h2>Notifications</h2>
-                <p>Decide which LegacyBridge alerts reach your administrator team.</p>
+                <h2 data-i18n-key="notifications_label">Notifications</h2>
+                <p data-i18n-key="notifications_description">Decide which alerts reach your administrator team.</p>
               </header>
               <div class="preference-list">
                 <article class="preference-item">
@@ -272,6 +289,8 @@
         </div>
       </main>
     </div>
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
     <script src="settings.js"></script>
   </body>
 </html>

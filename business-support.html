@@ -15,25 +15,42 @@
   <body>
     <div class="dashboard dashboard--enterprise">
       <aside class="sidebar sidebar--enterprise" aria-label="Employer portal navigation">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-            <span class="enterprise-brand__sub">Employer Portal</span>
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <img src="images/Memora-isologo.png" alt="Logotipo de Memora" class="sidebar-logo">
+            <div class="sidebar-name" id="businessNameLabel"></div>
           </div>
         </div>
+
+        <div class="sidebar-welcome">
+          <span class="sidebar-welcome__line"></span>
+          <span class="sidebar-welcome__text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</span>
+          <span class="sidebar-welcome__line"></span>
+        </div>
+
         <nav class="menu enterprise-menu" aria-label="Primary">
-          <a href="business-dashboard.html">Overview</a>
-          <a href="business-plans-billing.html">Plans &amp; Billing</a>
-          <a href="business-support.html" class="active" aria-current="page">Support</a>
-          <a href="business-settings.html">Settings</a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" type="button">Log Out</button>
-          <div class="lang" aria-label="Language selection">
-            <button class="active" type="button">English</button>
-            <button type="button">Español</button>
+          <div class="menu-item has-submenu">
+            <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
+              <span>Overview</span>
+              <span class="submenu-arrow"></span>
+            </button>
+            <ul class="submenu">
+              <li><a href="business-profile.html" data-i18n-key="menu_company_profile">Company Profile</a></li>
+              <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
+            </ul>
           </div>
+          <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+          <a class="active" href="business-support.html" data-i18n-key="menu_support">Support</a>
+          <a href="business-settings.html" data-i18n-key="menu_settings">Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom enterprise-sidebar-bottom">
+          <button class="logout" type="button" data-i18n-key="logout_button">Log Out</button>
+          <div class="lang-buttons">
+            <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
+            <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
+          </div>
+          <p class="sidebar-gray-text">©2025 MemoraCare | Privacy Policy</p>
         </div>
       </aside>
 
@@ -72,8 +89,8 @@
               <dd>Under 10 minutes</dd>
             </div>
             <div>
-              <dt>Dedicated specialist</dt>
-              <dd>Jordan Patel</dd>
+              <dt data-i18n-key="dedicated_specialist_label">Dedicated specialist</dt>
+              <dd>-</dd>
             </div>
           </dl>
         </section>
@@ -98,9 +115,9 @@
             </article>
             <article class="support-card">
               <div class="support-card__icon" aria-hidden="true">📧</div>
-              <h3>Email the team</h3>
-              <p>Send detailed documentation or upload rosters and we will respond with next steps.</p>
-              <button class="support-link" type="button">support@legacybridge.com</button>
+              <h3 data-i18n-key="email_team_title">Email the team</h3>
+              <p data-i18n-key="email_team_description">Send detailed documentation or upload rosters and we will respond with next steps.</p>
+              <button class="support-link" type="button">support@memoracare.com</button>
             </article>
           </div>
         </section>
@@ -112,8 +129,8 @@
           </div>
           <div class="support-resources__grid">
             <article class="resource-card">
-              <h3>Onboarding toolkit</h3>
-              <p>Templates, welcome emails, and launch materials to introduce LegacyBridge to new hires.</p>
+              <h3 data-i18n-key="resource_onboarding_toolkit_title">Onboarding toolkit</h3>
+              <p data-i18n-key="resource_onboarding_toolkit_description">Templates, welcome emails, and launch materials to introduce the platform to new hires.</p>
               <ul>
                 <li>Checklist for HR teams</li>
                 <li>Employee FAQ PDF</li>
@@ -155,13 +172,15 @@
               <a class="support-link" href="#">Open claims dashboard</a>
             </article>
             <article class="faq-card">
-              <h3>Need escalated assistance?</h3>
-              <p>Message Jordan Patel, your assigned specialist, for complex approvals or compliance questions.</p>
-              <a class="support-link" href="#">Message my specialist</a>
+              <h3 data-i18n-key="faq_escalated_assistance_title">Need escalated assistance?</h3>
+              <p data-i18n-key="faq_escalated_assistance_description">Message your assigned specialist for complex approvals or compliance questions.</p>
+              <a class="support-link" href="#" data-i18n-key="button_message_specialist">Message my specialist</a>
             </article>
           </div>
         </section>
       </main>
     </div>
+    <script src="i18n.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -77,7 +77,7 @@
   "menu_plans_billing": "Planes y Facturación",
   "menu_support": "Soporte",
   "business_dashboard_breadcrumb": "Panel • Resumen",
-  "business_dashboard_welcome": "Bienvenido de nuevo, LegacyBridge",
+  "business_dashboard_welcome": "Bienvenido de nuevo, <strong id=\"businessWelcomeName\">-</strong>",
   "business_dashboard_subtitle": "Estás al día. Revisa las últimas novedades del plan o invita a nuevos miembros del equipo para mantener a todos cubiertos.",
   "plan_status_label": "Estado del Plan",
   "plan_status_pill_active": "Activo",

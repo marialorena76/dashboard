@@ -105,56 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3a1 1 0 0 0-.894.553L7.382 5H4a1 1 0 0 0 0 2h1l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12h1a1 1 0 0 0 0-2h-3.382l-.724-1.447A1 1 0 0 0 15 3H9zm1.618 2L11 4h2l.382 1H10.618zM9 9a1 1 0 0 1 1.006.894L10.5 17a1 1 0 0 1-1.993.112L8 10a1 1 0 0 1 1-1zm6 0a1 1 0 0 1 1 1l-.5 7a1 1 0 1 1-1.994-.112L14 10a1 1 0 0 1 1-1z"></path></svg>';
 
   const defaultMembers = [
-    {
-      firstName: 'Ava',
-      lastName: 'Montgomery',
-      email: 'ava.montgomery@legacybridge.com',
-      role: 'People Operations Lead',
-      department: 'People Operations',
-      coverageStart: '2023-01-15',
-      planAccess: 'Full Coverage',
-      status: 'Protected'
-    },
-    {
-      firstName: 'Jordan',
-      lastName: 'Lee',
-      email: 'jordan.lee@legacybridge.com',
-      role: 'Product Manager',
-      department: 'Product',
-      coverageStart: '2024-02-29',
-      planAccess: 'Health + Vision',
-      status: 'Protected'
-    },
-    {
-      firstName: 'Priya',
-      lastName: 'Shah',
-      email: 'priya.shah@legacybridge.com',
-      role: 'Finance Director',
-      department: 'Finance',
-      coverageStart: '2022-09-11',
-      planAccess: 'Full Coverage',
-      status: 'Protected'
-    },
-    {
-      firstName: 'Noah',
-      lastName: 'Garcia',
-      email: 'noah.garcia@legacybridge.com',
-      role: 'Customer Success Manager',
-      department: 'Customer Success',
-      coverageStart: '2024-07-08',
-      planAccess: 'Health + Dental',
-      status: 'Invited'
-    },
-    {
-      firstName: 'Sofía',
-      lastName: 'Alvarez',
-      email: 'sofia.alvarez@legacybridge.com',
-      role: 'HR Coordinator',
-      department: 'People Operations',
-      coverageStart: '2023-11-20',
-      planAccess: 'Dental Only',
-      status: 'Pending'
-    }
   ];
 
   function normalizeMember(member = {}) {

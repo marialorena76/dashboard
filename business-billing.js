@@ -5,55 +5,18 @@ const STATUS_CONFIG = {
   refunded: { label: 'Refunded', className: 'status-pill--warning' }
 };
 
-const BILLING_HISTORY = [
-  {
-    date: '2025-04-15',
-    invoice: 'INV-2098',
-    amount: 4820,
-    status: 'paid'
-  },
-  {
-    date: '2025-03-15',
-    invoice: 'INV-2086',
-    amount: 4820,
-    status: 'paid'
-  },
-  {
-    date: '2025-02-15',
-    invoice: 'INV-2072',
-    amount: 4795,
-    status: 'paid'
-  },
-  {
-    date: '2025-01-15',
-    invoice: 'INV-2059',
-    amount: 4795,
-    status: 'processing'
-  },
-  {
-    date: '2024-12-15',
-    invoice: 'INV-2041',
-    amount: 4750,
-    status: 'overdue'
-  },
-  {
-    date: '2024-11-15',
-    invoice: 'INV-2028',
-    amount: 4750,
-    status: 'paid'
-  }
-];
+const BILLING_HISTORY = [];
 
 const billingState = {
   autopay: true,
   summary: {
-    methodName: 'Corporate Visa',
-    cardholder: 'LegacyBridge Benefits',
-    cardNumber: '4321432143214321',
-    expiry: '11/27',
-    nextInvoiceDate: '2025-05-15',
-    invoiceAmount: 4820,
-    address: '4100 Market Street, Suite 1200 · Denver, CO 80205'
+    methodName: '-',
+    cardholder: '-',
+    cardNumber: '',
+    expiry: '-',
+    nextInvoiceDate: '',
+    invoiceAmount: 0,
+    address: '-'
   }
 };
 

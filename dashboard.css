@@ -170,6 +170,26 @@ button {
   gap: 0.85rem;
 }
 
+.sidebar--enterprise .sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.sidebar--enterprise .sidebar-logo {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+.sidebar--enterprise .sidebar-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
 .enterprise-brand__text {
   display: flex;
   flex-direction: column;
@@ -6601,10 +6621,10 @@ body.modal-open {
 
 .individual-dashboard .documents-row {
   display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
   justify-content: flex-start !important;
-  gap: 2rem !important;
+  gap: 1rem !important;
   padding: 1.25rem 0 !important;
   border-bottom: 1px solid rgba(22, 60, 48, 0.1) !important;
 }
@@ -6642,7 +6662,7 @@ body.modal-open {
 }
 
 .individual-dashboard .doc-button {
-  margin-left: auto;
+  margin-left: 0;
   background: #163c30;
   color: #fff;
   padding: 0.75rem 1.5rem;

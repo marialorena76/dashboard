@@ -14,28 +14,19 @@
 <body>
   <div class="dashboard dashboard--enterprise">
     <aside class="sidebar sidebar--enterprise">
-      <div class="enterprise-brand">
-        <div class="enterprise-brand__icon" aria-hidden="true" id="businessInitials"></div>
-        <div class="enterprise-brand__text">
-          <!-- Antes: LegacyBridge -->
-          <span class="enterprise-brand__label" id="businessNameLabel"></span>
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <img src="images/Memora-isologo.png" alt="Logotipo de Memora" class="sidebar-logo">
+          <div class="sidebar-name" id="businessNameLabel"></div>
         </div>
-
-        <nav class="menu enterprise-menu">
-          <a class="active" href="#">Overview</a>
-          <a href="business-plans-billing.html">Plans &amp; Billing</a>
-          <a href="business-support.html">Support</a>
-          <a href="business-settings.html">Settings</a>
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout">Log Out</button>
-          <div class="lang">
-            <button class="active">English</button>
-            <button>Español</button>
-          </div>
-
       </div>
-      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
+      </div>
+
       <nav class="menu enterprise-menu">
         <div class="menu-item has-submenu">
           <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
@@ -46,19 +37,19 @@
             <li><a href="business-profile.html" data-i18n-key="menu_company_profile">Company Profile</a></li>
             <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
           </ul>
-
         </div>
         <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
         <a href="business-support.html" data-i18n-key="menu_support">Support</a>
-        
+        <a href="business-settings.html" data-i18n-key="menu_settings">Settings</a>
       </nav>
+
       <div class="sidebar-bottom enterprise-sidebar-bottom">
         <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang-buttons">
           <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
           <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
-        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+        <p class="sidebar-gray-text">©2025 MemoraCare | Privacy Policy</p>
       </div>
     </aside>
     <main class="main-content main-content--enterprise">
@@ -66,7 +57,6 @@
        <header class="main-card__header">
         <h1>
           <span>
-          <!-- Antes: Legacy Bridge -->
             Welcome back, <strong id="businessWelcomeName"></strong>
           </span>
         </h1>
@@ -75,16 +65,15 @@
         <div class="main-card__metrics">
           <div class="metric-item">
             <span class="metric-item__label" data-i18n-key="plan_status_label">Your Plan Status</span>
-            <span id="planStatusPill" class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">ACTIVE</span>
+            <span id="planStatusPill" class="status-pill status-pill--active" data-i18n-key="plan_status_pill_active">-</span>
           </div>
           <div class="metric-item">
             <span class="metric-item__label" data-i18n-key="total_coverage_label">Your Coverage</span>
-            <span id="totalCoveragePill" class="status-pill status-pill--coverage">UP TO $150,000</span>
+            <span id="totalCoveragePill" class="status-pill status-pill--coverage">-</span>
           </div>
           <div class="metric-item">
             <span class="metric-item__label" data-i18n-key="next_payment_label">Next Payment</span>
-            <span id="nextPaymentPill" class="status-pill status-pill--payment">MAY 01, 2025</span>
-              2025</span>
+            <span id="nextPaymentPill" class="status-pill status-pill--payment">-</span>
           </div>
         </div>
         <div class="main-card__actions">
