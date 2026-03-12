@@ -15,7 +15,7 @@
        MemoraCare — Branding de botones (Individual)
        ================================================ */
     :root {
-      --mc-green:        #163c31;
+      --mc-green:        #163c30;
       --mc-green-hover:  #1f5843;
       --mc-green-light:  #e8f0ec;
       --mc-white:        #ffffff;
@@ -90,31 +90,31 @@
     }
 
     /* ── Botones de idioma ──────────────────────────── */
-    .lang-btn {
-      font-family: var(--mc-font);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: var(--mc-green);
-      background-color: var(--mc-white);
-      border: 1.5px solid var(--mc-green);
-      border-radius: 6px;
-      padding: 0.35rem 0.9rem;
-      cursor: pointer;
-      transition:
-        background-color var(--mc-ease),
-        color            var(--mc-ease);
-    }
 
-    .lang-btn:hover {
-      background-color: var(--mc-green-light);
-    }
+.individual-dashboard__sidebar .lang-btn {
+  font-family: var(--mc-font);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--mc-green) !important;
+  background-color: var(--mc-white) !important;
+  border: 1.5px solid var(--mc-green) !important;
+  border-radius: 6px !important;
+  padding: 0.35rem 0.9rem !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: background-color var(--mc-ease), color var(--mc-ease);
+}
 
-    .lang-btn.active {
-      background-color: var(--mc-green);
-      color:            var(--mc-white);
-      border-color:     var(--mc-green);
-    }
+.individual-dashboard__sidebar .lang-btn:hover {
+  background-color: var(--mc-green-light) !important;
+}
+
+.individual-dashboard__sidebar .lang-btn.active {
+  background-color: var(--mc-green) !important;
+  color: var(--mc-white) !important;
+  border-color: var(--mc-green) !important;
+}
 
     /* ── Flechas del banner ─────────────────────────── */
     .banner-nav__arrow {
@@ -364,5 +364,6 @@
 
 </body>
 </html>
-   
+  
+ 
  
