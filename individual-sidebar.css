@@ -1,0 +1,285 @@
+/* ============================================================
+   individual-sidebar.css
+   Estilos definitivos del sidebar para el dashboard individual.
+   Cargar DESPUÉS de dashboard.css en todos los HTML individuales.
+   ============================================================ */
+
+/* ── Reset selectivo solo sobre el sidebar ──────────────────── */
+.individual-dashboard__sidebar,
+.individual-dashboard__sidebar * {
+  box-sizing: border-box !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Contenedor principal ───────────────────────────────────── */
+.individual-dashboard__sidebar {
+  width: 260px !important;
+  min-height: 100vh !important;
+  background: #d9b65d !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 2rem 1.5rem 1.5rem !important;
+  color: #163c30 !important;
+  position: sticky !important;
+  top: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* ── Header: avatar circular + nombre ──────────────────────── */
+.individual-dashboard__sidebar .sidebar-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.individual-dashboard__sidebar .sidebar-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+}
+
+.individual-dashboard__sidebar .sidebar-logo {
+  width: 68px !important;
+  height: 68px !important;
+  border-radius: 50% !important;
+  object-fit: contain !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  padding: 6px !important;
+  display: block !important;
+}
+
+.individual-dashboard__sidebar .sidebar-name {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #163c30 !important;
+  text-align: center !important;
+  display: block !important;
+  line-height: 1.3 !important;
+}
+
+/* ── Separador "Welcome to your Dashboard" ──────────────────── */
+.individual-dashboard__sidebar .sidebar-welcome {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 1.25rem 0 1.5rem !important;
+  width: 100% !important;
+}
+
+.individual-dashboard__sidebar .sidebar-welcome__line {
+  flex: 1 !important;
+  height: 1px !important;
+  background: rgba(22, 60, 48, 0.35) !important;
+  display: block !important;
+  min-width: 10px !important;
+}
+
+.individual-dashboard__sidebar .sidebar-welcome__text {
+  font-size: 0.68rem !important;
+  font-weight: 500 !important;
+  color: rgba(22, 60, 48, 0.8) !important;
+  white-space: nowrap !important;
+  display: block !important;
+}
+
+/* ── Navegación ─────────────────────────────────────────────── */
+.individual-dashboard__sidebar .sidebar-nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  flex: 1 !important;
+  padding: 0 !important;
+}
+
+/* "My Account" — bloque con submenú */
+.individual-dashboard__menu .has-submenu {
+  margin-bottom: 0.25rem !important;
+}
+
+.individual-dashboard__menu .submenu-toggle {
+  all: unset !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0.5rem 0 !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #163c30 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+/* Flecha del submenú — cuadrado rotado */
+.individual-dashboard__menu .submenu-arrow {
+  all: unset !important;
+  display: inline-block !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-right: 2.5px solid #163c30 !important;
+  border-bottom: 2.5px solid #163c30 !important;
+  transform: rotate(-45deg) !important;
+  transition: transform 0.25s ease !important;
+  margin-left: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.individual-dashboard__menu .has-submenu.open .submenu-arrow {
+  transform: rotate(45deg) !important;
+}
+
+/* Lista del submenú */
+.individual-dashboard__menu .submenu {
+  all: unset !important;
+  display: none !important;
+  flex-direction: column !important;
+  padding-left: 0.75rem !important;
+  margin: 0.25rem 0 0.5rem !important;
+  box-sizing: border-box !important;
+}
+
+.individual-dashboard__menu .has-submenu.open .submenu {
+  display: flex !important;
+}
+
+.individual-dashboard__menu .submenu li {
+  all: unset !important;
+  display: block !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.individual-dashboard__menu .submenu a {
+  all: unset !important;
+  display: block !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  color: #163c30 !important;
+  cursor: pointer !important;
+  padding: 0.2rem 0 !important;
+}
+
+.individual-dashboard__menu .submenu a:hover {
+  opacity: 0.75 !important;
+}
+
+/* Links principales: Payments, Help, Settings */
+.individual-dashboard__sidebar .sidebar-link {
+  all: unset !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0.5rem 0 !important;
+  margin-top: 0.4rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #163c30 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+}
+
+.individual-dashboard__sidebar .sidebar-link:hover {
+  opacity: 0.75 !important;
+}
+
+/* Flecha "›" en Settings */
+.individual-dashboard__sidebar .sidebar-link--primary::after {
+  content: '›' !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.individual-dashboard__sidebar .sidebar-footer {
+  margin-top: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding-top: 1.5rem !important;
+  width: 100% !important;
+}
+
+/* Botón Log Out */
+.individual-dashboard__sidebar .sidebar-logout {
+  all: unset !important;
+  display: block !important;
+  width: 100% !important;
+  background: #163c30 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 0.7rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  transition: background 0.2s ease !important;
+}
+
+.individual-dashboard__sidebar .sidebar-logout:hover {
+  background: #1f5843 !important;
+}
+
+/* Botones de idioma */
+.individual-dashboard__sidebar .sidebar-languages {
+  display: flex !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+}
+
+.individual-dashboard__sidebar .lang-btn {
+  all: unset !important;
+  flex: 1 !important;
+  background: #ffffff !important;
+  color: #163c30 !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 0 !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+  display: block !important;
+}
+
+.individual-dashboard__sidebar .lang-btn.active {
+  background: #163c30 !important;
+  color: #ffffff !important;
+}
+
+.individual-dashboard__sidebar .lang-btn:hover:not(.active) {
+  background: #f0e8d0 !important;
+}
+
+/* Línea + copyright */
+.individual-dashboard__sidebar .sidebar-footer-legal {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.individual-dashboard__sidebar .footer-line {
+  flex: 1 !important;
+  height: 1px !important;
+  background: rgba(22, 60, 48, 0.3) !important;
+  display: block !important;
+  min-width: 10px !important;
+}
+
+.individual-dashboard__sidebar .footer-text {
+  font-size: 0.62rem !important;
+  color: rgba(22, 60, 48, 0.65) !important;
+  white-space: nowrap !important;
+  display: block !important;
+}
