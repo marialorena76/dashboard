@@ -9,28 +9,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="business-sidebar.css">
 </head>
 
 <body>
   <div class="dashboard dashboard--enterprise">
     <aside class="sidebar sidebar--enterprise">
+
+      <!-- Logo + Nombre -->
       <div class="enterprise-brand">
-        <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
+        <div class="enterprise-brand__icon" aria-hidden="true" id="businessInitials"></div>
         <div class="enterprise-brand__text">
-          <span class="enterprise-brand__label">LegacyBridge</span>
+          <span class="enterprise-brand__label" id="businessNameLabel"></span>
         </div>
       </div>
 
-      <nav class="menu menu--business" aria-label="Primary">
-        <p class="menu-label">Workspace</p>
-        <a href="#" class="active">Overview</a>
-        <a href="#">Business Profile</a>
-        <a href="#">Team Access</a>
-        <a href="#">Verification</a>
-        <a href="business-plans-billing.html">Billing</a>
-        <a href="business-support.html">Support</a>
+      <!-- Separador -->
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
+      </div>
 
-      <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">Welcome to your Dashboard</p>
+      <!-- Menú -->
       <nav class="menu enterprise-menu">
         <div class="menu-item has-submenu open">
           <button type="button" class="submenu-toggle" data-i18n-key="menu_overview">
@@ -42,19 +43,21 @@
             <li><a href="employees-covered.html" data-i18n-key="menu_employees_covered">Employees Covered</a></li>
           </ul>
         </div>
-        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans & Billing</a>
+        <a href="business-plans-billing.html" data-i18n-key="menu_plans_billing">Plans &amp; Billing</a>
         <a href="business-support.html" data-i18n-key="menu_support">Support</a>
-        <a href="business-settings.html" data-i18n-key="menu_settings">Settings&nbsp;></a>
-
+        <a href="business-settings.html" data-i18n-key="menu_settings" class="menu-link--arrow">Settings</a>
       </nav>
+
+      <!-- Footer -->
       <div class="sidebar-bottom enterprise-sidebar-bottom">
         <button class="logout" data-i18n-key="logout_button">Log Out</button>
         <div class="lang-buttons">
           <button class="active lang-button" data-lang="en" data-i18n-key="lang_english">English</button>
           <button class="lang-button" data-lang="es" data-i18n-key="lang_spanish">Español</button>
         </div>
-        <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+        <p class="sidebar-gray-text">©2025 MemoraCare | Privacy Policy</p>
       </div>
+
     </aside>
 
     <main class="business-main" data-view="overview">
@@ -64,301 +67,151 @@
         </div>
       </header>
 
+      <!-- PANEL OVERVIEW -->
       <section class="business-panel is-active" data-business-panel="overview" aria-labelledby="overview-heading">
         <h2 id="overview-heading" class="sr-only">Overview</h2>
         <div class="business-grid">
+
+          <!-- Contact Info -->
           <article class="business-card business-card--full">
             <div class="business-card__header">
               <div>
                 <h3 data-i18n-key="contact_info_title">Contact Information</h3>
-                <p data-i18n-key="contact_info_subtitle">Keep your company details up to date so we can support you
-                  better.</p>
+                <p data-i18n-key="contact_info_subtitle">Keep your company details up to date so we can support you better.</p>
               </div>
             </div>
             <div class="contact-info">
-              <div>LegacyBridge</div>
-              <div>María Thompson</div>
-              <div>LegacyBridge@email.com</div>
-              <div>+1 555-123-4567</div>
-              <div>123 Main Street, Miami, FL</div>
+              <div id="overviewCompanyName">LegacyBridge</div>
+              <div id="overviewContactName">María Thompson</div>
+              <div id="overviewEmail">email@company.com</div>
+              <div id="overviewPhone">+1 555-123-4567</div>
+              <div id="overviewAddress">123 Main Street, Miami, FL</div>
             </div>
-
             <div class="business-header__actions">
               <button id="businessViewToggle" class="business-button business-button--primary" type="button"
                 data-i18n-key="button_edit_details">Edit details</button>
             </div>
           </article>
 
+          <!-- Verification Documents -->
           <article class="business-card business-card--full">
             <div class="business-card__header">
               <div>
                 <h3 data-i18n-key="verification_docs_title">Verification Documents</h3>
-                <p data-i18n-key="verification_docs_subtitle">Upload and keep important records in one place. (Only one
-                  document is required for verification)</p>
+                <p data-i18n-key="verification_docs_subtitle">Upload and keep important records in one place. <strong>(Only one document is required for verification)</strong></p>
               </div>
             </div>
             <div class="documents-table business-documents">
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_drivers_license">Business Registration Certificate</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_business_registration">Business Registration Certificate</span>
+                <span class="status-badge status-uploaded" id="status-doc1">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc1">Upload/Update Document</button>
+                <input id="input-doc1" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_ssn">Tax Identification Number (TIN) / VAT Certificate</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_tin">Tax Identification Number (TIN) / VAT Certificate</span>
+                <span class="status-badge status-uploaded" id="status-doc2">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc2">Upload/Update Document</button>
+                <input id="input-doc2" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_passport">Operating License</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_operating_license">Operating License</span>
+                <span class="status-badge status-uploaded" id="status-doc3">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc3">Upload/Update Document</button>
+                <input id="input-doc3" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_drivers_license">Proof of Address</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_proof_address">Proof of Address</span>
+                <span class="status-badge status-uploaded" id="status-doc4">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc4">Upload/Update Document</button>
+                <input id="input-doc4" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_ssn">Authorized Signatory ID</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_signatory_id">Authorized Signatory ID</span>
+                <span class="status-badge status-uploaded" id="status-doc5">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc5">Upload/Update Document</button>
+                <input id="input-doc5" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
               <div class="documents-row">
-                <span class="doc-title" data-i18n-key="doc_passport">Insurance or Compliance Certificates</span>
-                <span class="status-badge status-uploaded">Uploaded</span>
-                <button type="button" class="button doc-button">Upload/Update Document</button>
+                <span class="doc-title" data-i18n-key="doc_insurance">Insurance or Compliance Certificates</span>
+                <span class="status-badge status-uploaded" id="status-doc6">UPLOADED</span>
+                <button type="button" class="button doc-button" data-target="input-doc6">Upload/Update Document</button>
+                <input id="input-doc6" type="file" accept="image/*,application/pdf" hidden>
               </div>
+
             </div>
           </article>
 
-          <article class="business-card business-card--full">
-            <div class="business-card__header">
-              <div>
-                <h3 data-i18n-key="language_preference_title">Language Preference</h3>
-                <p data-i18n-key="language_preference_subtitle">Choose the language you’re most comfortable with.</p>
-              </div>
-            </div>
-            <div class="language-options" role="group" aria-label="Language preference">
-              <p class="language-selected"><strong data-i18n-key="primary_language_label">Current language:</strong> <span
-                data-language-display>English </span></p>
-              <button class="business-button" type="button" data-language-option="en"
-                data-i18n-key="lang_english">Change Lenguage</button>
-            </div>
-          </article>
         </div>
       </section>
 
-      <section class="business-panel" data-business-panel="edit" aria-labelledby="edit-heading" style="margin-top: 2rem;">
-        <h2 id="edit-heading" class="sr-only" data-i18n-key="edit_details_title">Edit details</h2>
+      <!-- PANEL EDIT -->
+      <section class="business-panel" data-business-panel="edit" aria-labelledby="edit-heading">
+        <h2 id="edit-heading" class="sr-only">Edit Profile</h2>
         <div class="business-grid">
+
           <article class="business-card business-card--full">
-            <form id="businessContactForm" class="business-form" autocomplete="on">
+            <form id="businessContactForm" class="business-form">
               <div class="business-card__header">
                 <div>
                   <h3 data-i18n-key="contact_info_title">Contact Information</h3>
-                  <p data-i18n-key="contact_info_subtitle">Update core business details so your benefits never miss an
-                    important update.</p>
+                  <p data-i18n-key="contact_info_subtitle">Update your company contact details.</p>
                 </div>
               </div>
               <div class="form-grid">
                 <label class="form-field">
-                  <span data-i18n-key="form_company_name">Company name</span>
-                  <input type="text" name="companyName" value="Spacebridge Studio LLC" autocomplete="organization"
-                    required>
+                  <span data-i18n-key="form_company_name">Company Name</span>
+                  <input type="text" name="companyName" value="LegacyBridge">
                 </label>
                 <label class="form-field">
-                  <span data-i18n-key="form_primary_contact">Primary contact</span>
-                  <input type="text" name="primaryContact" value="Ana Velásquez" autocomplete="name" required>
+                  <span data-i18n-key="form_contact_name">Contact Name</span>
+                  <input type="text" name="contactName" value="María Thompson">
                 </label>
                 <label class="form-field">
-                  <span data-i18n-key="form_work_email">Work email</span>
-                  <input type="email" name="workEmail" value="ana.velasquez@spacebridge.co" autocomplete="email"
-                    required>
+                  <span data-i18n-key="form_email">Email</span>
+                  <input type="email" name="email" value="maria@legacybridge.com">
                 </label>
                 <label class="form-field">
-                  <span data-i18n-key="form_work_phone">Work phone</span>
-                  <input type="tel" name="workPhone" value="+1 (305) 555-9823" autocomplete="tel" required>
+                  <span data-i18n-key="form_phone">Phone</span>
+                  <input type="tel" name="phone" value="+1 555-123-4567">
                 </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_hq_street">Headquarters street</span>
-                  <input type="text" name="hqStreet" value="8290 NW 27th Street" autocomplete="street-address" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_suite_unit">Suite or unit</span>
-                  <input type="text" name="hqUnit" value="Suite 400" autocomplete="address-line2">
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_city">City</span>
-                  <input type="text" name="hqCity" value="Doral" autocomplete="address-level2" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_state">State</span>
-                  <input type="text" name="hqState" value="FL" autocomplete="address-level1" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_postal">Postal code</span>
-                  <input type="text" name="hqPostal" value="33122" autocomplete="postal-code" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_tax_id">Tax ID (EIN)</span>
-                  <input type="text" name="taxId" value="65-9182034" autocomplete="off" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_employees_covered">Employees covered</span>
-                  <input type="number" name="employeesCovered" value="48" min="0" required>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_billing_cadence">Billing cadence</span>
-                  <select name="billingCadence" required>
-                    <option value="monthly" selected data-i18n-key="billing_monthly">Monthly on the 15th</option>
-                    <option value="quarterly" data-i18n-key="billing_quarterly">Quarterly on the 1st</option>
-                    <option value="annually" data-i18n-key="billing_annually">Annually on enrollment date</option>
-                  </select>
+                <label class="form-field form-field--full">
+                  <span data-i18n-key="form_address">Address</span>
+                  <input type="text" name="address" value="123 Main Street, Miami, FL">
                 </label>
               </div>
               <div class="form-actions">
                 <button class="business-button business-button--ghost" type="button" data-action="cancel"
                   data-i18n-key="button_cancel">Cancel</button>
                 <button class="business-button business-button--primary" type="submit"
-                  data-i18n-key="button_save_changes">Save changes</button>
+                  data-i18n-key="button_save_changes">Save Changes</button>
               </div>
             </form>
           </article>
 
-          <article class="business-card">
-            <form id="businessDocumentsForm" class="business-form">
-              <div class="business-card__header">
-                <div>
-                  <h3 data-i18n-key="verification_docs_title">Verification Documents</h3>
-                  <p data-i18n-key="verification_docs_subtitle">Upload refreshed documentation or update review statuses
-                    from your compliance workspace.</p>
-                </div>
-                <button class="business-button business-button--ghost" type="button"
-                  data-i18n-key="button_add_document">Add document</button>
-              </div>
-              <div class="document-editor">
-                <div class="document-editor__row">
-                  <div class="document-editor__details">
-                    <h4 data-i18n-key="doc_articles_incorporation">Articles of Incorporation</h4>
-                    <p data-i18n-key="doc_articles_inc_uploaded">PDF · Last uploaded Feb 12, 2025</p>
-                  </div>
-                  <div class="document-editor__status">
-                    <label>
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="docArticles" data-status-pill="docArticles">
-                        <option value="approved" selected data-i18n-key="status_approved">Approved</option>
-                        <option value="review" data-i18n-key="status_in_review">In Review</option>
-                        <option value="requested" data-i18n-key="status_requested">Requested</option>
-                      </select>
-                    </label>
-                    <span class="status-pill status-success" data-status-pill-target="docArticles"
-                      data-i18n-key="status_approved">Approved</span>
-                  </div>
-                  <div class="document-editor__actions">
-                    <button class="business-button business-button--ghost" type="button"
-                      data-i18n-key="button_upload_new">Upload new</button>
-                  </div>
-                </div>
-                <div class="document-editor__row">
-                  <div class="document-editor__details">
-                    <h4 data-i18n-key="doc_w9">IRS Form W-9</h4>
-                    <p data-i18n-key="doc_w9_uploaded">PDF · Last uploaded Jan 28, 2025</p>
-                  </div>
-                  <div class="document-editor__status">
-                    <label>
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="docW9" data-status-pill="docW9">
-                        <option value="approved" data-i18n-key="status_approved">Approved</option>
-                        <option value="review" selected data-i18n-key="status_in_review">In Review</option>
-                        <option value="requested" data-i18n-key="status_requested">Requested</option>
-                      </select>
-                    </label>
-                    <span class="status-pill status-warning" data-status-pill-target="docW9"
-                      data-i18n-key="status_in_review">In Review</span>
-                  </div>
-                  <div class="document-editor__actions">
-                    <button class="business-button business-button--ghost" type="button"
-                      data-i18n-key="button_upload_new">Upload new</button>
-                  </div>
-                </div>
-                <div class="document-editor__row">
-                  <div class="document-editor__details">
-                    <h4 data-i18n-key="doc_beneficiary_policy">Beneficiary Policy</h4>
-                    <p data-i18n-key="doc_beneficiary_policy_none">None on file · Requested Mar 04, 2025</p>
-                  </div>
-                  <div class="document-editor__status">
-                    <label>
-                      <span data-i18n-key="form_status">Status</span>
-                      <select name="docPolicy" data-status-pill="docPolicy">
-                        <option value="approved" data-i18n-key="status_approved">Approved</option>
-                        <option value="review" data-i18n-key="status_in_review">In Review</option>
-                        <option value="requested" selected data-i18n-key="status_requested">Requested</option>
-                      </select>
-                    </label>
-                    <span class="status-pill status-pending" data-status-pill-target="docPolicy"
-                      data-i18n-key="status_requested">Requested</span>
-                  </div>
-                  <div class="document-editor__actions">
-                    <button class="business-button business-button--primary" type="button"
-                      data-i18n-key="button_request_upload">Request upload</button>
-                  </div>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="business-button business-button--ghost" type="button" data-action="cancel"
-                  data-i18n-key="button_cancel">Cancel</button>
-                <button class="business-button business-button--primary" type="submit"
-                  data-i18n-key="button_save_updates">Save updates</button>
-              </div>
-            </form>
-          </article>
-
-          <article class="business-card">
-            <form id="businessLanguageForm" class="business-form">
-              <div class="business-card__header">
-                <div>
-                  <h3 data-i18n-key="language_preference_title">Language Preference</h3>
-                  <p data-i18n-key="language_preference_subtitle">Select the default language for notifications and
-                    onboarding.</p>
-                </div>
-              </div>
-              <div class="form-grid single-column">
-                <label class="form-field">
-                  <span data-i18n-key="form_pref_lang">Preferred language</span>
-                  <select id="languageSelect" name="preferredLanguage">
-                    <option value="en" selected>English (US)</option>
-                    <option value="es">Español (LatAm)</option>
-                  </select>
-                </label>
-                <label class="form-field">
-                  <span data-i18n-key="form_internal_notes">Internal notes</span>
-                  <textarea name="languageNotes" rows="3" data-i18n-key="form_internal_notes_placeholder"
-                    placeholder="Share context for our onboarding team"></textarea>
-                </label>
-              </div>
-              <div class="form-actions">
-                <button class="business-button business-button--ghost" type="button" data-action="cancel"
-                  data-i18n-key="button_cancel">Cancel</button>
-                <button class="business-button business-button--primary" type="submit"
-                  data-i18n-key="button_update_preference">Update preference</button>
-              </div>
-            </form>
-          </article>
         </div>
       </section>
+
     </main>
   </div>
+
   <script src="i18n.js"></script>
   <script src="app.js"></script>
   <script src="business-profile.js"></script>
+
   <script>
+    // Panel toggle
     document.addEventListener("DOMContentLoaded", function () {
       const overviewPanel = document.querySelector('[data-business-panel="overview"]');
       const editPanel = document.querySelector('[data-business-panel="edit"]');
       const editBtn = document.getElementById("businessViewToggle");
-      const cancelBtns = document.querySelectorAll(
-        '[data-business-panel="edit"] [data-action="cancel"]'
-      );
+      const cancelBtns = document.querySelectorAll('[data-business-panel="edit"] [data-action="cancel"]');
 
       if (!overviewPanel || !editPanel || !editBtn) return;
 
@@ -366,16 +219,48 @@
         overviewPanel.classList.remove("is-active");
         editPanel.classList.add("is-active");
       }
-
       function showOverview() {
         editPanel.classList.remove("is-active");
         overviewPanel.classList.add("is-active");
       }
 
       editBtn.addEventListener("click", showEdit);
-      cancelBtns.forEach((btn) => btn.addEventListener("click", showOverview));
+      cancelBtns.forEach(btn => btn.addEventListener("click", showOverview));
+
+      // Upload buttons
+      document.querySelectorAll('.doc-button').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const targetId = this.getAttribute('data-target');
+          const input = document.getElementById(targetId);
+          if (input) input.click();
+        });
+      });
+
+      document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function () {
+          if (this.files.length) {
+            const row = this.closest('.documents-row');
+            const badge = row ? row.querySelector('.status-badge') : null;
+            if (badge) {
+              badge.textContent = 'UPLOADED';
+              badge.classList.remove('status-pending');
+              badge.classList.add('status-uploaded');
+            }
+          }
+        });
+      });
+
+      // Nombre usuario
+      try {
+        var u = JSON.parse(sessionStorage.getItem('memora_user') || '{}');
+        var n = u.display || u.name || u.company_name || '';
+        ['businessNameLabel','sidebarUserName'].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el && n) el.textContent = n;
+        });
+      } catch(e) {}
     });
   </script>
-</body>
 
+</body>
 </html>
