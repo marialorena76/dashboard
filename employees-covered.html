@@ -1,461 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Employees Covered</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dashboard.css" />
-  </head>
-  <body>
-    <div class="dashboard dashboard--enterprise">
-      <aside class="sidebar sidebar--enterprise">
-        <div class="enterprise-brand">
-          <div class="enterprise-brand__icon" aria-hidden="true">LB</div>
-          <div class="enterprise-brand__text">
-            <span class="enterprise-brand__label">LegacyBridge</span>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Employees Covered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="business-sidebar.css" />
+</head>
+<body>
+  <div class="dashboard dashboard--enterprise">
+    <aside class="sidebar sidebar--enterprise">
+      <div class="enterprise-brand">
+        <div class="enterprise-brand__icon" aria-hidden="true" id="businessInitials"></div>
+        <div class="enterprise-brand__text">
+          <span class="enterprise-brand__label" id="businessNameLabel"></span>
         </div>
-        <p class="sidebar-gray-text" data-i18n-key="welcome_to_dashboard">
-          Welcome to your Dashboard
-        </p>
-        <nav class="menu enterprise-menu">
-          <div class="menu-item has-submenu open">
-            <button
-              type="button"
-              class="submenu-toggle"
-              data-i18n-key="menu_overview"
-            >
-              <span>Overview</span>
-              <span class="submenu-arrow"></span>
-            </button>
-            <ul class="submenu">
-              <li>
-                <a
-                  href="business-profile.html"
-                  data-i18n-key="menu_company_profile"
-                  >Company Profile</a
-                >
-              </li>
-              <li>
-                <a
-                  class="active"
-                  href="employees-covered.html"
-                  data-i18n-key="menu_employees_covered"
-                  >Employees Covered</a
-                >
-              </li>
-            </ul>
-          </div>
-          <a
-            href="business-plans-billing.html"
-            data-i18n-key="menu_plans_billing"
-            >Plans &amp; Billing</a
-          >
-          <a href="business-support.html" data-i18n-key="menu_support"
-            >Support</a
-          >
-          <!-- Settings eliminado -->
-        </nav>
-        <div class="sidebar-bottom enterprise-sidebar-bottom">
-          <button class="logout" data-i18n-key="logout_button">Log Out</button>
-          <div class="lang-buttons">
-            <button
-              class="active lang-button"
-              data-lang="en"
-              data-i18n-key="lang_english"
-            >
-              English
-            </button>
-            <button
-              class="lang-button"
-              data-lang="es"
-              data-i18n-key="lang_spanish"
-            >
-              Español
-            </button>
-          </div>
-          <p class="sidebar-gray-text">©2025 MemaraCare | Privacy Policy</p>
+      </div>
+      <div class="sidebar-welcome">
+        <span class="sidebar-welcome__line"></span>
+        <span class="sidebar-welcome__text">Welcome to your Dashboard</span>
+        <span class="sidebar-welcome__line"></span>
+      </div>
+      <nav class="menu enterprise-menu">
+        <div class="menu-item has-submenu open">
+          <button type="button" class="submenu-toggle">
+            <span>Overview</span>
+            <span class="submenu-arrow"></span>
+          </button>
+          <ul class="submenu">
+            <li><a href="business-profile.html">Company Profile</a></li>
+            <li><a class="active" href="employees-covered.html">Employees Covered</a></li>
+          </ul>
         </div>
-      </aside>
+        <a href="business-plans-billing.html">Plans &amp; Billing</a>
+        <a href="business-support.html">Support</a>
+        <a href="business-settings.html" class="menu-link--arrow">Settings</a>
+      </nav>
+      <div class="sidebar-bottom enterprise-sidebar-bottom">
+        <button class="logout">Log Out</button>
+        <div class="lang-buttons">
+          <button class="active lang-button" data-lang="en">English</button>
+          <button class="lang-button" data-lang="es">Español</button>
+        </div>
+        <p class="sidebar-gray-text">©2025 MemoraCare | Privacy Policy</p>
+      </div>
+    </aside>
 
-      <main class="main-content main-content--enterprise">
-        <header class="business-header">
+    <main class="main-content main-content--enterprise">
+      <header class="business-header">
+        <h1>Protected <strong>Team</strong></h1>
+      </header>
+
+      <!-- TABLA DE EMPLEADOS -->
+      <section class="section-card members-table">
+        <div class="members-table__header">
           <div>
-            <h1 data-i18n-key="employees_covered_title">
-              Employees <strong>Covered</strong>
-            </h1>
+            <h2>Protected Employees</h2>
+            <p class="members-table__subtitle">Add or update employee details and manage who is included in your company's plan.</p>
           </div>
-        </header>
-
-        <!-- PROTECTED EMPLOYEES (tabla) -->
-        <section
-          class="section-card members-table"
-          aria-labelledby="employeesCoveredHeading"
-        >
-          <div class="members-table__header">
-            <div>
-              <h2
-                id="employeesCoveredHeading"
-                data-i18n-key="employees_covered_heading"
-              >
-                Employees Covered
-              </h2>
-              <p
-                class="members-table__subtitle"
-                data-i18n-key="employees_covered_subtitle"
-              >
-                Review who is included in your company’s plan and manage their
-                coverage.
-              </p>
-            </div>
-
-            <!-- Botón que baja al formulario de nuevo empleado -->
-            <div class="members-table__header-actions">
-              <button
-                type="button"
-                id="toAdd"
-                class="primary-button"
-                data-i18n-key="employees_add_member_button"
-              >
-                + Add Member
-              </button>
-            </div>
+          <div class="members-table__actions">
+            <button type="button" id="toAdd" class="business-button business-button--primary">+ Add Member</button>
           </div>
+        </div>
 
-          <div class="members-table__controls">
-            <label class="members-table__entries" for="entriesSelect">
-              <span data-i18n-key="table_show_entries">Show</span>
-              <select id="entriesSelect">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
+        <div class="members-table__controls">
+          <label class="members-table__entries" for="entriesSelect">
+            Show
+            <select id="entriesSelect">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+            entries
+          </label>
+          <label class="members-table__search" for="memberSearch">
+            <input type="search" id="memberSearch" placeholder="Search..." />
+          </label>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="membersTable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Enrollment Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit/Remove</th>
+                <th scope="col">Beneficiary</th>
+              </tr>
+            </thead>
+            <tbody id="membersBody">
+              <tr>
+                <td colspan="6" class="members-table__empty">No employees added yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="members-table__footer">
+          <p class="members-table__count" id="membersCount">Showing 0 entries</p>
+          <nav class="members-table__pagination" id="membersPagination"></nav>
+        </div>
+      </section>
+
+      <!-- FORMULARIO AGREGAR EMPLEADO -->
+      <section class="section-card" id="addMemberSection" style="display:none">
+        <h2>Add New Employee</h2>
+        <form id="addMemberForm">
+          <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1rem">
+            <label class="form-field">
+              <span>First Name</span>
+              <input type="text" name="firstName" placeholder="John" required />
+            </label>
+            <label class="form-field">
+              <span>Last Name</span>
+              <input type="text" name="lastName" placeholder="Smith" required />
+            </label>
+            <label class="form-field">
+              <span>Employee ID</span>
+              <input type="text" name="employeeId" placeholder="e.g. 8375930" />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="john@email.com" required />
+            </label>
+            <label class="form-field">
+              <span>Enrollment Date</span>
+              <input type="date" name="enrollmentDate" required />
+            </label>
+            <label class="form-field">
+              <span>Phone</span>
+              <input type="tel" name="phone" placeholder="+1 555-123-4567" />
+            </label>
+            <label class="form-field" style="grid-column:span 2">
+              <span>Address</span>
+              <input type="text" name="address" placeholder="123 Main Street" />
+            </label>
+            <label class="form-field">
+              <span>Address Line 2</span>
+              <input type="text" name="address2" placeholder="Address Line 2" />
+            </label>
+            <label class="form-field">
+              <span>City</span>
+              <input type="text" name="city" placeholder="Miami" />
+            </label>
+            <label class="form-field">
+              <span>State</span>
+              <select name="state">
+                <option value="">Select</option>
+                <option value="FL">Florida</option>
+                <option value="TX">Texas</option>
+                <option value="CA">California</option>
+                <option value="NY">New York</option>
               </select>
-              <span
-                data-i18n-key="table_show_entries"
-                style="display: none;"
-                >entries</span
-              >
-            </label>
-            <label class="members-table__search" for="memberSearch">
-              <input
-                type="search"
-                id="memberSearch"
-                data-i18n-key="table_search_placeholder"
-                placeholder="Search"
-              />
             </label>
           </div>
-
-          <div class="table-wrapper">
-            <table id="membersTable">
-              <thead>
-                <tr>
-                  <th scope="col" data-i18n-key="table_header_employee">
-                    Employee
-                  </th>
-                  <th scope="col" data-i18n-key="table_header_role">Role</th>
-                  <th scope="col" data-i18n-key="table_header_coverage">
-                    Coverage
-                  </th>
-                  <th scope="col" data-i18n-key="table_header_status">
-                    Status
-                  </th>
-                  <th
-                    scope="col"
-                    class="actions-column"
-                    data-i18n-key="table_header_manage"
-                  >
-                    Manage
-                  </th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+          <div class="form-actions">
+            <button type="button" id="cancelAdd" class="business-button business-button--ghost">Cancel</button>
+            <button type="submit" class="business-button business-button--primary">Add Member</button>
           </div>
-          <div class="members-table__footer">
-            <p class="members-table__count" id="membersCount">
-              Showing 0 entries
-            </p>
-            <nav
-              class="members-table__pagination"
-              id="membersPagination"
-              aria-label="Employees covered pagination"
-            ></nav>
+        </form>
+      </section>
+
+      <!-- FORMULARIO AGREGAR BENEFICIARIO -->
+      <section class="section-card" id="addBeneficiarySection" style="display:none">
+        <h2>Add Employee's Beneficiary</h2>
+        <form id="beneficiaryForm">
+          <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1rem">
+            <label class="form-field">
+              <span>First Name</span>
+              <input type="text" name="benefFirstName" placeholder="First name" required />
+            </label>
+            <label class="form-field">
+              <span>Last Name</span>
+              <input type="text" name="benefLastName" placeholder="Last name" required />
+            </label>
+            <label class="form-field">
+              <span>Employee ID</span>
+              <input type="text" name="benefEmployeeId" placeholder="e.g. 8375930" />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="benefEmail" placeholder="john@email.com" />
+            </label>
+            <label class="form-field">
+              <span>Enrollment Date</span>
+              <input type="date" name="benefEnrollmentDate" />
+            </label>
+            <label class="form-field">
+              <span>Phone</span>
+              <input type="tel" name="benefPhone" placeholder="+1 555-123-4567" />
+            </label>
+            <label class="form-field" style="grid-column:span 2">
+              <span>Address</span>
+              <input type="text" name="benefAddress1" placeholder="123 Main Street" />
+            </label>
+            <label class="form-field">
+              <span>City</span>
+              <input type="text" name="benefCity" placeholder="Miami" />
+            </label>
+            <label class="form-field">
+              <span>State</span>
+              <select name="benefState">
+                <option value="">Select</option>
+                <option value="FL">Florida</option>
+                <option value="TX">Texas</option>
+                <option value="CA">California</option>
+                <option value="NY">New York</option>
+              </select>
+            </label>
           </div>
-        </section>
-
-        <!-- ADD NEW EMPLOYEE -->
-        <section
-          class="section-card add-member"
-          id="addMemberSection"
-          aria-labelledby="addNewEmployeeHeading"
-        >
-          <div class="add-member__header">
-            <h2 id="addNewEmployeeHeading">Add New Employee</h2>
-            <p class="add-member__subtitle">
-              Add or update employee details and include them in your company’s
-              plan.
-            </p>
+          <div class="form-actions">
+            <button type="button" id="cancelBeneficiary" class="business-button business-button--ghost">Cancel</button>
+            <button type="submit" class="business-button business-button--primary">Add Beneficiary</button>
           </div>
+        </form>
+      </section>
 
-          <form id="addMemberForm" class="add-member__form">
-            <div class="add-member__grid">
-              <!-- Full Name -->
-              <div class="form-field form-field--full">
-                <label for="firstName">Full Name</label>
-                <div class="form-field__row">
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    placeholder="First name"
-                    required
-                  />
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Last name"
-                    required
-                  />
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="form-field form-field--full">
-                <label for="email">Work Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="name@company.com"
-                  required
-                />
-              </div>
-
-              <!-- Role -->
-              <div class="form-field">
-                <label for="role">Role / Title</label>
-                <input
-                  type="text"
-                  id="role"
-                  name="role"
-                  placeholder="e.g. HR Coordinator"
-                />
-              </div>
-
-              <!-- Department -->
-              <div class="form-field">
-                <label for="department">Department</label>
-                <input
-                  type="text"
-                  id="department"
-                  name="department"
-                  placeholder="e.g. People Operations"
-                />
-              </div>
-
-              <!-- Coverage Start -->
-              <div class="form-field">
-                <label for="coverageStart">Coverage start date</label>
-                <input
-                  type="date"
-                  id="coverageStart"
-                  name="coverageStart"
-                  required
-                />
-              </div>
-
-              <!-- Plan Access -->
-              <div class="form-field">
-                <label for="planAccess">Coverage type</label>
-                <select id="planAccess" name="planAccess">
-                  <option value="Full Coverage">Full Coverage</option>
-                  <option value="Health + Dental">Health + Dental</option>
-                  <option value="Health + Vision">Health + Vision</option>
-                  <option value="Dental Only">Dental Only</option>
-                </select>
-              </div>
-
-              <!-- Status -->
-              <div class="form-field">
-                <label for="status">Status</label>
-                <select id="status" name="status">
-                  <option value="Protected">Protected</option>
-                  <option value="Invited">Invited</option>
-                  <option value="Pending">Pending</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="add-member__actions">
-              <button
-                type="button"
-                id="cancelAdd"
-                class="secondary-button"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="primary-button"
-              >
-                Add Member
-              </button>
-            </div>
-          </form>
-        </section>
-            <!-- ADD EMPLOYEE'S BENEFICIARY -->
-<section
-  class="section-card add-beneficiary"
-  id="addBeneficiarySection"
-  aria-labelledby="addBeneficiaryHeading"
->
-  <div class="add-member__header">
-    <h2 id="addBeneficiaryHeading">Add Employee’s Beneficiary</h2>
-    <p class="add-member__subtitle">
-      Link a beneficiary to one of your covered employees.
-    </p>
+    </main>
   </div>
 
-  <form id="beneficiaryForm" class="add-member__form">
-    <div class="add-member__grid">
-      <!-- Full Name -->
-      <div class="form-field form-field--full">
-        <label for="benefFirstName">Full Name</label>
-        <div class="form-field__row">
-          <input
-            type="text"
-            id="benefFirstName"
-            name="benefFirstName"
-            placeholder="First name"
-            required
-          />
-          <input
-            type="text"
-            id="benefLastName"
-            name="benefLastName"
-            placeholder="Last name"
-            required
-          />
-        </div>
-      </div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+  <script src="members.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      // Nombre usuario
+      try{
+        var u = JSON.parse(sessionStorage.getItem("memora_user")||"{}");
+        var n = u.display||u.name||u.company_name||"";
+        ["businessNameLabel"].forEach(function(id){
+          var el=document.getElementById(id); if(el&&n) el.textContent=n;
+        });
+      }catch(e){}
 
-      <!-- Employee ID (opcional / texto) -->
-      <div class="form-field">
-        <label for="benefEmployeeId">Employee ID</label>
-        <input
-          type="text"
-          id="benefEmployeeId"
-          name="benefEmployeeId"
-          placeholder="e.g. 8375930"
-        />
-      </div>
+      // Submenu toggle
+      document.querySelectorAll(".submenu-toggle").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          this.closest(".has-submenu").classList.toggle("open");
+        });
+      });
 
-      <!-- Email -->
-      <div class="form-field">
-        <label for="benefEmail">Email</label>
-        <input
-          type="email"
-          id="benefEmail"
-          name="benefEmail"
-          placeholder="john@email.com"
-        />
-      </div>
+      // Mostrar/ocultar formulario agregar empleado
+      var addSection = document.getElementById("addMemberSection");
+      var benefSection = document.getElementById("addBeneficiarySection");
 
-      <!-- Enrollment Date -->
-      <div class="form-field">
-        <label for="benefEnrollmentDate">Enrollment Date</label>
-        <input
-          type="date"
-          id="benefEnrollmentDate"
-          name="benefEnrollmentDate"
-        />
-      </div>
+      document.getElementById("toAdd").addEventListener("click", function(){
+        addSection.style.display = "block";
+        addSection.scrollIntoView({ behavior: "smooth" });
+      });
 
-      <!-- Address -->
-      <div class="form-field form-field--full">
-        <label for="benefAddress1">Address</label>
-        <input
-          type="text"
-          id="benefAddress1"
-          name="benefAddress1"
-          placeholder="123 Main Street"
-        />
-      </div>
+      document.getElementById("cancelAdd").addEventListener("click", function(){
+        addSection.style.display = "none";
+      });
 
-      <div class="form-field form-field--full">
-        <label class="sr-only" for="benefAddress2">Address Line 2</label>
-        <input
-          type="text"
-          id="benefAddress2"
-          name="benefAddress2"
-          placeholder="Address Line 2"
-        />
-      </div>
+      document.getElementById("cancelBeneficiary").addEventListener("click", function(){
+        benefSection.style.display = "none";
+      });
 
-      <div class="form-field">
-        <label for="benefCity">City</label>
-        <input
-          type="text"
-          id="benefCity"
-          name="benefCity"
-          placeholder="Miami"
-        />
-      </div>
-
-      <div class="form-field">
-        <label for="benefState">State</label>
-        <select id="benefState" name="benefState">
-          <option value="">Select</option>
-          <option value="FL">Florida</option>
-          <option value="CA">California</option>
-          <option value="NY">New York</option>
-          <!-- etc -->
-        </select>
-      </div>
-
-      <!-- Phone -->
-      <div class="form-field form-field--full">
-        <label for="benefPhone">Phone</label>
-        <input
-          type="tel"
-          id="benefPhone"
-          name="benefPhone"
-          placeholder="+1 555-123-4567"
-        />
-      </div>
-    </div>
-
-    <div class="add-member__actions">
-      <button
-        type="button"
-        id="cancelBeneficiary"
-        class="secondary-button"
-      >
-        Cancel
-      </button>
-      <button
-        type="submit"
-        class="primary-button"
-      >
-        Add Member
-      </button>
-    </div>
-  </form>
-</section>
-      </main>
-    </div>
-
-
-    <script src="i18n.js"></script>
-    <script src="app.js"></script>
-    <script src="members.js"></script>
-  </body>
+      // Logout
+      document.querySelectorAll(".logout").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          sessionStorage.removeItem("memora_token");
+          sessionStorage.removeItem("memora_user");
+          location.href="/login.html";
+        });
+      });
+    });
+  </script>
+</body>
 </html>
